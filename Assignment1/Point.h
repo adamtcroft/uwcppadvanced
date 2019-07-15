@@ -4,12 +4,12 @@
 class Point
 {
 public:
-	Point();
-	Point(int x, int y);
+	constexpr Point();
+	constexpr Point(int x, int y);
 	~Point();
 
-	int getX() const;
-	int getY() const;
+	constexpr int getX();
+	int const getY() const;
 
 	void setX(int value);
 	void setY(int value);
@@ -19,5 +19,6 @@ public:
 	friend std::ostream& operator<<(std::ostream& output, Point& p);
 
 private:
-	int _x, _y;
+	int _x;
+	int _y;
 };

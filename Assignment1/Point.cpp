@@ -1,11 +1,11 @@
 #include "stdafx.h"
 #include "Point.h"
 
-Point::Point()
+constexpr Point::Point()
 {
 }
 
-Point::Point(int x, int y)
+constexpr Point::Point(int x, int y)
 	:_x(x), _y(y)
 {
 
@@ -15,12 +15,12 @@ Point::~Point()
 {
 }
 
-int Point::getX() const
+constexpr int Point::getX()
 {
 	return _x;
 }
 
-int Point::getY() const
+int const Point::getY() const
 {
 	return _y;
 }
