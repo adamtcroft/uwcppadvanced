@@ -6,26 +6,45 @@ Point::Point()
 {
 }
 
+Point::Point(int x, int y)
+	:_x(x), _y(y)
+{
+
+}
+
 Point::~Point()
 {
 }
 
 int Point::getX() const
 {
-	return x;
+	return _x;
 }
 
 int Point::getY() const
 {
-	return y;
+	return _y;
 }
 
 void Point::setX(int value)
 {
-	x = value;
+	_x = value;
 }
 
 void Point::setY(int value)
 {
-	y = value;
+	_y = value;
+}
+
+bool operator==(const Point& lhs, const Point& rhs)
+{
+	return lhs.getX() == rhs.getX() && lhs.getY() == rhs.getY();
+}
+
+std::ostream& operator<<(std::ostream& output, Point& p)
+{
+	output << p._x << ", " << p._y;
+	output.flush();
+
+	return output;
 }

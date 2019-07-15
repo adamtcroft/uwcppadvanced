@@ -1,8 +1,11 @@
 #pragma once
+#include <iostream>
+
 class Point
 {
 public:
 	Point();
+	Point(int x, int y);
 	~Point();
 
 	int getX() const;
@@ -11,7 +14,10 @@ public:
 	void setX(int value);
 	void setY(int value);
 
+	friend bool operator==(const Point& lhs, const Point& rhs);
+	friend std::ostream& operator<<(std::ostream& output, Point& p);
+
 private:
-	int x, y;
+	int _x, _y;
 };
 
