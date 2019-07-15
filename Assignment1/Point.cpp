@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Point.h"
 
-
 Point::Point()
 {
 }
@@ -41,9 +40,14 @@ bool operator==(const Point& lhs, const Point& rhs)
 	return lhs.getX() == rhs.getX() && lhs.getY() == rhs.getY();
 }
 
+bool operator!=(const Point& lhs, const Point& rhs)
+{
+	return lhs.getX() != rhs.getX() && lhs.getY() != rhs.getY();
+}
+
 std::ostream& operator<<(std::ostream& output, Point& p)
 {
-	output << p._x << ", " << p._y;
+	output << p.getX() << ", " << p.getY();
 	output.flush();
 
 	return output;

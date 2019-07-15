@@ -12,14 +12,32 @@
 
 TEST(equality, Point)
 {
-    CHECK_EQUAL(Point(1, 2), Point(1, 2));
+	CHECK_EQUAL(Point(1, 2), Point(1, 2));
 }
-/*
-
 
 TEST(inequality, Point)
 {
-    CHECK(VectorGraphic::Point(1, 2) != VectorGraphic::Point(3, 4));
+	CHECK(Point(1, 2) != Point(3, 4));
+}
+
+/*
+TEST(constexprPoint, Point)
+{
+	constexpr int i = Point{ 4, 5 }.getX();
+
+	CHECK_EQUAL(i, 4);
+}
+
+
+/*
+TEST(equality, Point)
+{
+    CHECK_EQUAL(VG::Point(1, 2), VG::Point(1, 2));
+}
+
+TEST(inequality, Point)
+{
+    CHECK(VG::Point(1, 2) != VG::Point(3, 4));
 }
 
 TEST(constexprPoint, Point)
