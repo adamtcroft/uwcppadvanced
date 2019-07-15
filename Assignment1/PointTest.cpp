@@ -10,11 +10,12 @@
 #include "VectorGraphic.h"
 #include "TestHarness.h"
 
-/*
 TEST(equality, Point)
 {
     CHECK_EQUAL(Point(1, 2), Point(1, 2));
 }
+/*
+
 
 TEST(inequality, Point)
 {
