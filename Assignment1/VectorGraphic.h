@@ -1,4 +1,10 @@
 #pragma once
+
+#include <vector>
+#include "Point.h"
+
+using Points = std::vector<Point>;
+
 class VectorGraphic
 {
 public:
