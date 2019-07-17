@@ -18,7 +18,6 @@ struct Pint
 };
 int main()
 {
-	/*
 	// random number generator used in some tests
 	srand(::time_t(NULL));
 
@@ -28,12 +27,11 @@ int main()
 	// force console screen to hold
 	char ch;
 	std::cin >> ch;
-	*/
 
-	constexpr Pint myPint{ 4,5 };
-	constexpr int p = myPint.getX();
+	//constexpr Pint myPint{ 4,5 };
+	//constexpr int p = myPint.getX();
 
-	constexpr VG::Point myPoint{ 4,5 };
+	//constexpr VG::Point myPoint{ 4,5 };
 
 	//constexpr VG::Point myPoint{ 4,5 };
 	//constexpr int i = VG::Point{ 4, 5 }.getX();

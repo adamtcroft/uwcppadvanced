@@ -24,9 +24,13 @@ namespace VG
 		bool isClosed() const;
 		int getWidth() const;
 		int getHeight() const;
+		Points getPath() const;
 
 		int getPointCount() const;
 		Point getPoint(int index) const;
+
+		friend bool operator==(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs);
+		friend bool operator!=(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs);
 
 	private:
 		Points myPath;

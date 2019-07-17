@@ -31,12 +31,12 @@ int const VG::Point::getY() const
 
 void VG::Point::setX(int value)
 {
-	_x = value;
+	myX = value;
 }
 
 void VG::Point::setY(int value)
 {
-	_y = value;
+	myY = value;
 }
 
 bool VG::operator==(const VG::Point& lhs, const VG::Point& rhs)

@@ -6,14 +6,12 @@ namespace VG
 	struct Point
 	{
 	public:
-		float _x, _y;
 		Point();
-		constexpr Point(int x = 0, int y = 0) noexcept
-			:_x(x), _y(y) {};
+		Point(int x, int y) :myX(x), myY(y) {};
 		~Point();
 
-		constexpr float getX() const noexcept { return _x; };
-		constexpr float getY() const noexcept { return _y; };
+		constexpr int getX() const noexcept { return myX; };
+		constexpr int getY() const noexcept { return myY; };
 
 		void setX(int value);
 		void setY(int value);
@@ -23,5 +21,6 @@ namespace VG
 		friend std::ostream& operator<<(std::ostream& output, VG::Point& p);
 
 	private:
+		int myX, myY;
 	};
 }

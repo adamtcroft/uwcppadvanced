@@ -46,7 +46,7 @@ TEST(erasePoint, VectorGraphic)
     CHECK_EQUAL(VG::Point(3, 3), vg.getPoint(1));
 }
 
-/*
+
 TEST(erasePointOutOfRange, VectorGraphic)
 {
     VG::VectorGraphic vg;
@@ -66,7 +66,6 @@ TEST(erasePointOutOfRange, VectorGraphic)
     CHECK(false); // should have caught exception
 }
 
-/*
 TEST(equality, VectorGraphic)
 {
     VG::VectorGraphic vg1;
@@ -121,6 +120,7 @@ TEST(openShape, VectorGraphic)
     CHECK_EQUAL(true, vg.isOpen());
 }
 
+/*
 TEST(widthHeight, VectorGraphic)
 {
     VG::VectorGraphic vectorGraphic;
