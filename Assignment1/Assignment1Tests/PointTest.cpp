@@ -24,9 +24,7 @@ TEST(inequality, Point)
 /*
 TEST(constexprPoint, Point)
 {
-	VG::Point p(4,5);
-	int i = p.getX();
-	constexpr int i = p.getX();
+	constexpr int i = VG::Point{ 4,5 }.getX();
 
 	CHECK_EQUAL(i, 4);
 }

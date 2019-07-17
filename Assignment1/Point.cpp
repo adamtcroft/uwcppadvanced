@@ -5,16 +5,19 @@ VG::Point::Point()
 {
 }
 
+/*
 VG::Point::Point(int x, int y) 
 	:_x(x), _y(y)
 {
 
 }
+*/
 
 VG::Point::~Point()
 {
 }
 
+/*
 int VG::Point::getX() const 
 {
 	return _x;
@@ -24,6 +27,7 @@ int const VG::Point::getY() const
 {
 	return _y;
 }
+*/
 
 void VG::Point::setX(int value)
 {

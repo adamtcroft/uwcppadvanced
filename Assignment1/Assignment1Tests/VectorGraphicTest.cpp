@@ -46,6 +46,7 @@ TEST(erasePoint, VectorGraphic)
     CHECK_EQUAL(VG::Point(3, 3), vg.getPoint(1));
 }
 
+/*
 TEST(erasePointOutOfRange, VectorGraphic)
 {
     VG::VectorGraphic vg;
