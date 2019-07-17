@@ -5,7 +5,7 @@ VG::Point::Point()
 {
 }
 
-constexpr VG::Point::Point(int x = 0, int y = 0) 
+VG::Point::Point(int x, int y) 
 	:_x(x), _y(y)
 {
 
@@ -15,7 +15,7 @@ VG::Point::~Point()
 {
 }
 
-constexpr int VG::Point::getX() const 
+int VG::Point::getX() const 
 {
 	return _x;
 }

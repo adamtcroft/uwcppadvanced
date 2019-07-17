@@ -5,10 +5,11 @@
 //  Created by Chris Elderkin on 4/26/15.
 //  Copyright (c) 2015 Chris Elderkin. All rights reserved.
 //
-/*
-#include "Point.h"
-#include "VectorGraphic.h"
+
+#include "..\Point.h"
+#include "..\VectorGraphic.h"
 #include "TestHarness.h"
+
 
 TEST(equality, Point)
 {
@@ -23,28 +24,10 @@ TEST(inequality, Point)
 /*
 TEST(constexprPoint, Point)
 {
-	constexpr int i = Point{4, 5}.getX();
+	VG::Point p(4,5);
+	int i = p.getX();
+	constexpr int i = p.getX();
 
 	CHECK_EQUAL(i, 4);
-}
-*/
-
-
-/*
-TEST(equality, Point)
-{
-    CHECK_EQUAL(VG::Point(1, 2), VG::Point(1, 2));
-}
-
-TEST(inequality, Point)
-{
-    CHECK(VG::Point(1, 2) != VG::Point(3, 4));
-}
-
-TEST(constexprPoint, Point)
-{
-    constexpr int i = VectorGraphic::Point{4, 5}.getX();
-    
-    CHECK_EQUAL(i, 4);
 }
 */

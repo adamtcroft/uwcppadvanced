@@ -5,7 +5,7 @@
 
 namespace VG
 {
-	using Points = std::vector<Point>;
+	using Points = std::vector<VG::Point>;
 
 	class VectorGraphic
 	{
@@ -13,8 +13,8 @@ namespace VG
 		VectorGraphic();
 		~VectorGraphic();
 
-		void addPoint(const Point& p);
-		void removePoint(const Point& p);
+		void addPoint(const VG::Point& p);
+		void removePoint(const VG::Point& p);
 		void erasePoint(int index);
 
 		void openShape();
@@ -30,5 +30,6 @@ namespace VG
 
 	private:
 		Points myPath;
+		bool openness;
 	};
 }

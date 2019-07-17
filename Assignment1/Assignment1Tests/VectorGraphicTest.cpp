@@ -1,9 +1,8 @@
 //#include "ParseTool.h"
-//#include "VectorGraphic.h"
+#include "../VectorGraphic.h"
 //#include "VectorGraphicStreamer.h"
-//#include "TestHarness.h"
+#include "TestHarness.h"
 
-/*
 TEST(ctor, VectorGraphic)
 {
     VG::VectorGraphic vg;
@@ -11,6 +10,7 @@ TEST(ctor, VectorGraphic)
     CHECK_EQUAL(true, vg.isClosed());
     CHECK_EQUAL(false, vg.isOpen());
 }
+
 
 TEST(insertPoint, VectorGraphic)
 {
@@ -65,6 +65,7 @@ TEST(erasePointOutOfRange, VectorGraphic)
     CHECK(false); // should have caught exception
 }
 
+/*
 TEST(equality, VectorGraphic)
 {
     VG::VectorGraphic vg1;

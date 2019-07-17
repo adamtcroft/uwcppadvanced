@@ -7,18 +7,18 @@ namespace VG
 	{
 	public:
 		Point();
-		constexpr Point(int x, int y);
+		Point(int x, int y);
 		~Point();
 
-		constexpr int getX() const;
+		int getX() const;
 		int const getY() const;
 
 		void setX(int value);
 		void setY(int value);
 
-		friend bool operator==(const Point& lhs, const Point& rhs);
-		friend bool operator!=(const Point& lhs, const Point& rhs);
-		friend std::ostream& operator<<(std::ostream& output, Point& p);
+		friend bool operator==(const VG::Point& lhs, const VG::Point& rhs);
+		friend bool operator!=(const VG::Point& lhs, const VG::Point& rhs);
+		friend std::ostream& operator<<(std::ostream& output, VG::Point& p);
 
 	private:
 		int _x;
