@@ -3,30 +3,32 @@
 #include <vector>
 #include "Point.h"
 
-using Points = std::vector<Point>;
-
-class VectorGraphic
+namespace VG
 {
-public:
-	VectorGraphic();
-	~VectorGraphic();
+	using Points = std::vector<Point>;
 
-	void addPoint(const Point& p);
-	void removePoint(const Point& p);
-	void erasePoint(int index);
+	class VectorGraphic
+	{
+	public:
+		VectorGraphic();
+		~VectorGraphic();
 
-	void openShape();
-	void closeShape();
+		void addPoint(const Point& p);
+		void removePoint(const Point& p);
+		void erasePoint(int index);
 
-	bool isOpen() const;
-	bool isClosed() const;
-	int getWidth() const;
-	int getHeight() const;
+		void openShape();
+		void closeShape();
 
-	int getPointCount() const;
-	Point getPoint(int index) const;
+		bool isOpen() const;
+		bool isClosed() const;
+		int getWidth() const;
+		int getHeight() const;
 
-private:
-	Points myPath;
-};
+		int getPointCount() const;
+		Point getPoint(int index) const;
 
+	private:
+		Points myPath;
+	};
+}

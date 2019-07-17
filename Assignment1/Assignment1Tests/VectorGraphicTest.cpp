@@ -1,9 +1,9 @@
-/*
-#include "Parse.h"
-#include "VectorGraphic.h"
-#include "VectorGraphicStreamer.h"
-#include "TestHarness.h"
+//#include "ParseTool.h"
+//#include "VectorGraphic.h"
+//#include "VectorGraphicStreamer.h"
+//#include "TestHarness.h"
 
+/*
 TEST(ctor, VectorGraphic)
 {
     VG::VectorGraphic vg;
