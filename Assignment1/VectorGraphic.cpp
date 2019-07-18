@@ -64,7 +64,29 @@ bool VG::VectorGraphic::isClosed() const
 
 int VG::VectorGraphic::getWidth() const
 {
-	return -1;
+	int smallest, largest;
+	for (int i = 0; i < myPath.size(); i++)
+	{
+		if (i == 0)
+		{
+			smallest = myPath[i].getX();
+			largest = myPath[i].getX();
+		}
+		else
+		{
+			if (myPath[i].getX() < smallest)
+			{
+				smallest = myPath[i].getX();
+			}
+
+			if (myPath[i].getX() > largest)
+			{
+				largest = myPath[i].getX();
+			}
+		}
+	}
+
+	return largest - smallest;
 }
 
 int VG::VectorGraphic::getHeight() const

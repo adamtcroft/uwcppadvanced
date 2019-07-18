@@ -7,12 +7,12 @@ VG::Point::Point()
 
 void VG::Point::setX(int value)
 {
-	myX = value;
+	_x = value;
 }
 
 void VG::Point::setY(int value)
 {
-	myY = value;
+	_y = value;
 }
 
 bool VG::operator==(const VG::Point& lhs, const VG::Point& rhs)

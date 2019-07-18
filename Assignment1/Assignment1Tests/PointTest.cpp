@@ -27,4 +27,3 @@ TEST(constexprPoint, Point)
 
 	CHECK_EQUAL(i, 4);
 }
-
