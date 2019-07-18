@@ -128,11 +128,11 @@ TEST(widthHeight, VectorGraphic)
     vectorGraphic.addPoint(VG::Point{5, 8});
     vectorGraphic.addPoint(VG::Point{2, 1});
     CHECK_EQUAL(5, vectorGraphic.getWidth());
-    //CHECK_EQUAL(7, vectorGraphic.getHeight());
+    CHECK_EQUAL(7, vectorGraphic.getHeight());
     
     vectorGraphic.erasePoint(2);
     CHECK_EQUAL(4, vectorGraphic.getWidth());
-    //CHECK_EQUAL(2, vectorGraphic.getHeight());
+    CHECK_EQUAL(2, vectorGraphic.getHeight());
 }
 /*
 // C++11 has a new "raw string literal" that is useful for

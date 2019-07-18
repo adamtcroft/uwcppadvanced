@@ -91,7 +91,29 @@ int VG::VectorGraphic::getWidth() const
 
 int VG::VectorGraphic::getHeight() const
 {
-	return -1;
+	int smallest, largest;
+	for (int i = 0; i < myPath.size(); i++)
+	{
+		if (i == 0)
+		{
+			smallest = myPath[i].getY();
+			largest = myPath[i].getY();
+		}
+		else
+		{
+			if (myPath[i].getY() < smallest)
+			{
+				smallest = myPath[i].getY();
+			}
+
+			if (myPath[i].getY() > largest)
+			{
+				largest = myPath[i].getY();
+			}
+		}
+	}
+
+	return largest - smallest;
 }
 
 Points VG::VectorGraphic::getPath() const
