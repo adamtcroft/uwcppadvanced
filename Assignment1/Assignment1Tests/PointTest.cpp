@@ -21,11 +21,10 @@ TEST(inequality, Point)
 	CHECK(VG::Point(1, 2) != VG::Point(3, 4));
 }
 
-/*
 TEST(constexprPoint, Point)
 {
 	constexpr int i = VG::Point{ 4,5 }.getX();
 
 	CHECK_EQUAL(i, 4);
 }
-*/
+

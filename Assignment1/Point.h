@@ -7,11 +7,11 @@ namespace VG
 	{
 	public:
 		Point();
-		Point(int x, int y) :myX(x), myY(y) {};
-		~Point();
+		constexpr Point(int x, int y) :myX(x), myY(y) {};
+		~Point() = default;
 
-		constexpr int getX() const noexcept { return myX; };
-		constexpr int getY() const noexcept { return myY; };
+		constexpr int getX() const { return myX; };
+		constexpr int getY() const { return myY; };
 
 		void setX(int value);
 		void setY(int value);
