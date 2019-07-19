@@ -1,7 +1,8 @@
 //#include "ParseTool.h"
 #include "../VectorGraphic.h"
-//#include "VectorGraphicStreamer.h"
+#include "..\VectorGraphicStreamer.h"
 #include "TestHarness.h"
+#include <sstream>
 
 TEST(ctor, VectorGraphic)
 {
@@ -134,7 +135,7 @@ TEST(widthHeight, VectorGraphic)
     CHECK_EQUAL(4, vectorGraphic.getWidth());
     CHECK_EQUAL(2, vectorGraphic.getHeight());
 }
-/*
+
 // C++11 has a new "raw string literal" that is useful for
 // embedding long strings in a file for testing. Previously
 // this would have to be done with a "stringification" macro:
@@ -150,6 +151,7 @@ const std::string VectorGraphicXml = R"(
 </VectorGraphic>
 )";
 
+/*
 TEST(fromXml, VectorGraphic)
 {
     std::stringstream sstr(VectorGraphicXml);
@@ -170,7 +172,7 @@ TEST(toXml, VectorGraphic)
     vg1.addPoint(VG::Point(3, 3));
     
     std::stringstream sstr;
-    VG::VectorGraphicStreamer::toXml(vg1, sstr);
+    VG::VectorGraphicStreamer::toXml(vIg1, sstr);
     
     auto vg2 = VG::VectorGraphicStreamer::fromXml(sstr);
     

@@ -1,6 +1,7 @@
-/*
-#include "Parse.h"
 #include "TestHarness.h"
+#include "..\Parse.h"
+
+
 
 TEST(trimBeginning, Parse)
 {
@@ -51,6 +52,7 @@ TEST(trimEverything, Parse)
     CHECK_EQUAL("", actual);
 }
 
+/*
 TEST(eatNothing, Parse)
 {
     std::istringstream stream{"Hello"};
