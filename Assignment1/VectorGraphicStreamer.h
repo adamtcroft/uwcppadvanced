@@ -10,7 +10,7 @@ namespace VG
 		VectorGraphicStreamer();
 		~VectorGraphicStreamer();
 
-		//static VG::VectorGraphic fromXml(std::stringstream& ss);
+		static VG::VectorGraphic fromXml(std::stringstream& ss);
 
 	private:
 		std::stringstream stream;

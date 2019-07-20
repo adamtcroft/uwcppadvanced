@@ -52,7 +52,6 @@ TEST(trimEverything, Parse)
     CHECK_EQUAL("", actual);
 }
 
-/*
 TEST(eatNothing, Parse)
 {
     std::istringstream stream{"Hello"};
@@ -85,4 +84,3 @@ TEST(eatSomeLeadingWhitespace, Parse)
     
     CHECK_EQUAL("I had leading whitespace", actual.str());
 }
-*/

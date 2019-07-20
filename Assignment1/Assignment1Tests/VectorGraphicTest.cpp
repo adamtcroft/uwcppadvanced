@@ -1,5 +1,4 @@
-//#include "ParseTool.h"
-#include "../VectorGraphic.h"
+#include "..\VectorGraphic.h"
 #include "..\VectorGraphicStreamer.h"
 #include "TestHarness.h"
 #include <sstream>
