@@ -21,6 +21,7 @@ namespace VG
 
 		static VectorGraphic fromXml(std::stringstream& ss);
 		static void toXml(VG::VectorGraphic& vg, std::stringstream& ss);
+		static void toXml(VG::VectorGraphic& vg);
 
 	private:
 		static void addPoint(std::string& point, VG::VectorGraphic& vg);

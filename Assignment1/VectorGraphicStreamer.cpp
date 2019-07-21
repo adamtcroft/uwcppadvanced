@@ -55,6 +55,12 @@ void VG::VectorGraphicStreamer::toXml(VG::VectorGraphic& vg, std::stringstream& 
 	outFile << ss.rdbuf();
 }
 
+void VG::VectorGraphicStreamer::toXml(VG::VectorGraphic& vg)
+{
+	std::stringstream ss;
+	toXml(vg, ss);
+}
+
 void VG::VectorGraphicStreamer::addPoint(std::string& point, VG::VectorGraphic& vg)
 {
 	int x, y;
