@@ -12,6 +12,9 @@ namespace VG
 	{
 	public:
 		VectorGraphic();
+		VectorGraphic(const VectorGraphic& other) = delete;
+		VectorGraphic(VectorGraphic&& other) = default;
+		VectorGraphic& operator=(const VectorGraphic& other) = delete;
 		~VectorGraphic();
 
 		void addPoint(const VG::Point& p);
