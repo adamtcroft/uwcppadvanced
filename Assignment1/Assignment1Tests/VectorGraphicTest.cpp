@@ -162,7 +162,6 @@ TEST(fromXml, VectorGraphic)
     CHECK_EQUAL(10, vg.getPoint(2).getY());
 }
 
-/*
 TEST(toXml, VectorGraphic)
 {
     VG::VectorGraphic vg1;
@@ -171,10 +170,9 @@ TEST(toXml, VectorGraphic)
     vg1.addPoint(VG::Point(3, 3));
     
     std::stringstream sstr;
-    VG::VectorGraphicStreamer::toXml(vIg1, sstr);
+    VG::VectorGraphicStreamer::toXml(vg1, sstr);
     
     auto vg2 = VG::VectorGraphicStreamer::fromXml(sstr);
     
     CHECK(vg1 == vg2);
 }
-*/

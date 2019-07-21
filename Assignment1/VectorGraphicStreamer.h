@@ -3,6 +3,8 @@
 #include <regex>
 #include <string>
 #include <algorithm>
+#include <fstream>
+#include <iomanip>
 #include "Parse.h"
 #include "VectorGraphic.h"
 
@@ -15,6 +17,7 @@ namespace VG
 		~VectorGraphicStreamer();
 
 		static VectorGraphic fromXml(std::stringstream& ss);
+		static void toXml(VG::VectorGraphic& vg, std::stringstream& ss);
 
 	private:
 		static void addPoint(std::string& point, VG::VectorGraphic& vg);
