@@ -150,7 +150,6 @@ const std::string VectorGraphicXml = R"(
 </VectorGraphic>
 )";
 
-/*
 TEST(fromXml, VectorGraphic)
 {
     std::stringstream sstr(VectorGraphicXml);
@@ -163,6 +162,7 @@ TEST(fromXml, VectorGraphic)
     CHECK_EQUAL(10, vg.getPoint(2).getY());
 }
 
+/*
 TEST(toXml, VectorGraphic)
 {
     VG::VectorGraphic vg1;
