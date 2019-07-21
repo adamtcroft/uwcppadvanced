@@ -1,6 +1,6 @@
 #include "VectorGraphicStreamer.h"
 
-/*
+
 VG::VectorGraphicStreamer::VectorGraphicStreamer()
 {
 }
@@ -9,7 +9,7 @@ VG::VectorGraphicStreamer::VectorGraphicStreamer()
 VG::VectorGraphicStreamer::~VectorGraphicStreamer()
 {
 }
-*/
+
 
 VG::VectorGraphic VG::VectorGraphicStreamer::fromXml(std::stringstream& ss)
 {
@@ -82,6 +82,7 @@ void VG::VectorGraphicStreamer::addPoint(std::string& point, VG::VectorGraphic& 
 void VG::VectorGraphicStreamer::addPoints(std::string& stream, VG::VectorGraphic& vg)
 {
 	// This does not check if a point is well-formed!!
+	// Ran out of time - should check for closing tags too
 	std::regex regex("<Point [x-y]=\\W*\\d*\\W* [x-y]=\\W*\\d*\\W*>");
 	std::vector<std::string> results = matchRegex(stream, regex);
 

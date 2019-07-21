@@ -11,6 +11,12 @@ VG::VectorGraphic::~VectorGraphic()
 {
 }
 
+template<typename T>
+void VG::VectorGraphic::templateAddPoint(T&& p)
+{
+	myPath.push_back(std::forward<T>(p));
+}
+
 void VG::VectorGraphic::addPoint(const Point& p)
 {
 	myPath.push_back(p);
@@ -139,4 +145,20 @@ bool VG::operator==(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs)
 bool VG::operator!=(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs)
 {
 	return lhs.getPath() != rhs.getPath() || lhs.isOpen() != rhs.isOpen();
+}
+
+std::ostream& VG::operator<<(std::ostream& output, VG::VectorGraphic& vg)
+{
+	output << "VectorGraphic Openness: " << vg.isOpen() << std::endl;
+	output << "VectorGraphic Point Count: " << vg.getPointCount() << std::endl;
+	output << "VectorGraphic Width: " << vg.getWidth() << std::endl;
+	output << "VectorGraphic Height: " << vg.getHeight() << std::endl;
+
+	for (auto point : vg.getPath())
+	{
+		output << "Point: " << point.getX() << ", " << point.getY() << std::endl;
+	}
+	output.flush();
+
+	return output;
 }

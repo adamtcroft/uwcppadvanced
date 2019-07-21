@@ -12,11 +12,13 @@ namespace VG
 	{
 	public:
 		VectorGraphic();
-		VectorGraphic(const VectorGraphic& other) = delete;
+		VectorGraphic(const VectorGraphic& other) = default;
 		VectorGraphic(VectorGraphic&& other) = default;
 		VectorGraphic& operator=(const VectorGraphic& other) = delete;
 		~VectorGraphic();
 
+		template<typename T>
+		void templateAddPoint(T&& p);
 		void addPoint(const VG::Point& p);
 		void removePoint(const VG::Point& p);
 		void erasePoint(int index);
@@ -35,6 +37,7 @@ namespace VG
 
 		friend bool operator==(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs);
 		friend bool operator!=(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs);
+		friend std::ostream& operator<<(std::ostream& output, VG::VectorGraphic& vg);
 
 	private:
 		Points myPath;

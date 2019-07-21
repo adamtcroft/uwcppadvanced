@@ -27,3 +27,10 @@ TEST(constexprPoint, Point)
 
 	CHECK_EQUAL(i, 4);
 }
+
+TEST(constexprPointY, Point)
+{
+	constexpr int i = VG::Point{ 4,5 }.getY();
+
+	CHECK_EQUAL(i, 5);
+}

@@ -135,6 +135,17 @@ TEST(widthHeight, VectorGraphic)
     CHECK_EQUAL(2, vectorGraphic.getHeight());
 }
 
+// This test throws an unresolved external symbol error and I'm not sure why
+// as the function is defined and seen by the IDE...
+/*
+TEST(templateAdd, VectorGraphic)
+{
+    VG::VectorGraphic vectorGraphic;
+    vectorGraphic.templateAddPoint(VG::Point{0, 2});
+    CHECK_EQUAL(0, vectorGraphic.getPoint(0).getX());
+}
+*/
+
 // C++11 has a new "raw string literal" that is useful for
 // embedding long strings in a file for testing. Previously
 // this would have to be done with a "stringification" macro:
@@ -175,4 +186,23 @@ TEST(toXml, VectorGraphic)
     auto vg2 = VG::VectorGraphicStreamer::fromXml(sstr);
     
     CHECK(vg1 == vg2);
+}
+
+std::string testXML = R"(
+<VectorGraphic closed="true">
+<Point x="0" y="0"/>
+<Point x="10" y="0">
+</Point>
+<Point x="10" y="10"/>
+<Point x="0" y="10"/>
+)";
+
+TEST(validXML, VectorGraphic)
+{
+	std::stringstream sstr(testXML);
+
+	auto vg = VG::VectorGraphicStreamer::fromXml(sstr);
+	VG::VectorGraphic control;
+
+	CHECK_EQUAL(vg, control);
 }
