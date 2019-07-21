@@ -24,5 +24,6 @@ namespace VG
 		static void addPoints(std::string& stream, VG::VectorGraphic& vg);
 		static void setOpenOrClosed(std::string& stream, VG::VectorGraphic& vg);
 		static bool isValidVG(std::string& stream);
+		static std::vector<std::string> matchRegex(std::string& stream, std::regex& regex);
 	};
 }

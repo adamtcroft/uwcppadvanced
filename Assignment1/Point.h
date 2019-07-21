@@ -3,7 +3,7 @@
 
 namespace VG
 {
-	struct Point
+	class Point
 	{
 	public:
 		Point();
