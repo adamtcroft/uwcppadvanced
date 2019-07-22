@@ -14,14 +14,14 @@ VG::VectorGraphicStreamer::~VectorGraphicStreamer()
 VG::VectorGraphic VG::VectorGraphicStreamer::fromXml(std::stringstream& ss)
 {
 	VectorGraphic vg;
-	std::string stream = ss.str();
+	std::string myString = ss.str();
 
-	if (isValidVG(stream))
+	if (isValidVG(myString))
 	{
-		stream = ss.str();
-		setOpenOrClosed(stream, vg);
-		stream = ss.str();
-		addPoints(stream, vg);
+		myString = ss.str();
+		setOpenOrClosed(myString, vg);
+		myString = ss.str();
+		addPoints(myString, vg);
 	}
 
 	return vg;
@@ -41,10 +41,10 @@ void VG::VectorGraphicStreamer::toXml(VG::VectorGraphic& vg, std::stringstream& 
 		ss << s;
 	}
 
-	for (auto point : vg.getPath())
+	for (int i = 0; i < vg.getPointCount(); i++)
 	{
-		std::string p = R"(<Point x=")" + std::to_string(point.getX())
-			+ R"(" y=")" + std::to_string(point.getY()) + R"(" />)";
+		std::string p = R"(<Point x=")" + std::to_string(vg.getPoint(i).getX())
+			+ R"(" y=")" + std::to_string(vg.getPoint(i).getY()) + R"(" />)";
 		ss << p;
 	}
 
@@ -85,12 +85,12 @@ void VG::VectorGraphicStreamer::addPoint(std::string& point, VG::VectorGraphic& 
 	vg.addPoint(VG::Point{ x, y });
 }
 
-void VG::VectorGraphicStreamer::addPoints(std::string& stream, VG::VectorGraphic& vg)
+void VG::VectorGraphicStreamer::addPoints(std::string& myString, VG::VectorGraphic& vg)
 {
 	// This does not check if a point is well-formed!!
 	// Ran out of time - should check for closing tags too
 	std::regex regex("<Point [x-y]=\\W*\\d*\\W* [x-y]=\\W*\\d*\\W*>");
-	std::vector<std::string> results = matchRegex(stream, regex);
+	std::vector<std::string> results = matchRegex(myString, regex);
 
 	for (std::string point : results)
 	{
@@ -98,10 +98,10 @@ void VG::VectorGraphicStreamer::addPoints(std::string& stream, VG::VectorGraphic
 	}
 }
 
-void VG::VectorGraphicStreamer::setOpenOrClosed(std::string& stream, VG::VectorGraphic& vg)
+void VG::VectorGraphicStreamer::setOpenOrClosed(std::string& myString, VG::VectorGraphic& vg)
 {
 	std::regex regex("<VectorGraphic closed=.*(true|false).*?>");
-	std::vector<std::string> results = matchRegex(stream, regex);
+	std::vector<std::string> results = matchRegex(myString, regex);
 
 	if (std::find(results.begin(), results.end(), "true") != results.end()
 )
@@ -115,10 +115,10 @@ void VG::VectorGraphicStreamer::setOpenOrClosed(std::string& stream, VG::VectorG
 	}
 }
 
-bool VG::VectorGraphicStreamer::isValidVG(std::string& stream)
+bool VG::VectorGraphicStreamer::isValidVG(std::string& myString)
 {
 	std::regex regex("\/*VectorGraphic");
-	std::vector<std::string> results = matchRegex(stream, regex);
+	std::vector<std::string> results = matchRegex(myString, regex);
 
 	if (std::find(results.begin(), results.end(), "VectorGraphic") != results.end()
 		&& std::find(results.begin(), results.end(), "/VectorGraphic") != results.end())
@@ -131,18 +131,18 @@ bool VG::VectorGraphicStreamer::isValidVG(std::string& stream)
 	}
 }
 
-std::vector<std::string> VG::VectorGraphicStreamer::matchRegex(std::string& stream, std::regex& regex)
+std::vector<std::string> VG::VectorGraphicStreamer::matchRegex(std::string& myString, std::regex& regex)
 {
 	std::smatch matches;
 	std::vector<std::string> results;
 
-	while (std::regex_search(stream, matches, regex))
+	while (std::regex_search(myString, matches, regex))
 	{
 		for (auto match : matches)
 		{
 			results.push_back(match);
 		}
-		stream = matches.suffix().str();
+		myString = matches.suffix().str();
 	}
 
 	return results;

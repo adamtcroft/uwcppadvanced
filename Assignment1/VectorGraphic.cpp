@@ -24,19 +24,15 @@ void VG::VectorGraphic::addPoint(const Point& p)
 
 void VG::VectorGraphic::removePoint(const Point& p)
 {
-	for (Points::iterator i = myPath.begin(); i < myPath.end(); i++)
-	{
-		if (*i == p)
-		{
-			myPath.erase(i);
-			return;
-		}
-	}
+	auto result = std::find(myPath.begin(), myPath.end(), p);
+
+	if (result != myPath.end())
+		myPath.erase(result);
 }
 
 void VG::VectorGraphic::erasePoint(int index)
 {
-	if (index > myPath.size() || index < 1 || myPath.empty())
+	if (index > myPath.size() || index < 0 || myPath.empty())
 		throw std::out_of_range("Cannot erase element out of range!");
 	else
 		myPath.erase(myPath.begin() + index);
@@ -54,77 +50,38 @@ void VG::VectorGraphic::closeShape()
 
 bool VG::VectorGraphic::isOpen() const
 {
-	if (openness)
-		return true;
-	else
-		return false;
+	return openness;
 }
 
 bool VG::VectorGraphic::isClosed() const
 {
-	if (!openness)
-		return true;
-	else
-		return false;
+	return !openness;
 }
 
 int VG::VectorGraphic::getWidth() const
 {
-	int smallest, largest;
-	for (int i = 0; i < myPath.size(); i++)
+	std::vector<int> coords;
+	for (auto point : myPath)
 	{
-		if (i == 0)
-		{
-			smallest = myPath[i].getX();
-			largest = myPath[i].getX();
-		}
-		else
-		{
-			if (myPath[i].getX() < smallest)
-			{
-				smallest = myPath[i].getX();
-			}
-
-			if (myPath[i].getX() > largest)
-			{
-				largest = myPath[i].getX();
-			}
-		}
+		coords.push_back(point.getX());
 	}
 
-	return largest - smallest;
+	auto result = std::minmax_element(coords.begin(), coords.end());
+
+	return *result.second - *result.first;
 }
 
 int VG::VectorGraphic::getHeight() const
 {
-	int smallest, largest;
-	for (int i = 0; i < myPath.size(); i++)
+	std::vector<int> coords;
+	for (auto point : myPath)
 	{
-		if (i == 0)
-		{
-			smallest = myPath[i].getY();
-			largest = myPath[i].getY();
-		}
-		else
-		{
-			if (myPath[i].getY() < smallest)
-			{
-				smallest = myPath[i].getY();
-			}
-
-			if (myPath[i].getY() > largest)
-			{
-				largest = myPath[i].getY();
-			}
-		}
+		coords.push_back(point.getY());
 	}
 
-	return largest - smallest;
-}
+	auto result = std::minmax_element(coords.begin(), coords.end());
 
-Points VG::VectorGraphic::getPath() const
-{
-	return myPath;
+	return *result.second - *result.first;
 }
 
 int VG::VectorGraphic::getPointCount() const
@@ -134,17 +91,25 @@ int VG::VectorGraphic::getPointCount() const
 
 VG::Point VG::VectorGraphic::getPoint(int index) const
 {
-	return myPath[index];
+	if (index > -1 && index < myPath.size())
+		return myPath[index];
+	else
+		throw std::out_of_range("Index of point out of range!");
 }
 
 bool VG::operator==(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs)
 {
-	return lhs.getPath() == rhs.getPath() && lhs.isOpen() == rhs.isOpen();
+	if (lhs.isOpen() != rhs.isOpen())
+		return false;
+	else if (lhs.myPath != rhs.myPath)
+		return false;
+	else
+		return true;
 }
 
 bool VG::operator!=(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs)
 {
-	return lhs.getPath() != rhs.getPath() || lhs.isOpen() != rhs.isOpen();
+	return !VG::operator==(lhs, rhs);
 }
 
 std::ostream& VG::operator<<(std::ostream& output, VG::VectorGraphic& vg)
@@ -154,7 +119,7 @@ std::ostream& VG::operator<<(std::ostream& output, VG::VectorGraphic& vg)
 	output << "VectorGraphic Width: " << vg.getWidth() << std::endl;
 	output << "VectorGraphic Height: " << vg.getHeight() << std::endl;
 
-	for (auto point : vg.getPath())
+	for (auto point : vg.myPath)
 	{
 		output << "Point: " << point.getX() << ", " << point.getY() << std::endl;
 	}

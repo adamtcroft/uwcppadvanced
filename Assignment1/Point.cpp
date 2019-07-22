@@ -22,7 +22,7 @@ bool VG::operator==(const VG::Point& lhs, const VG::Point& rhs)
 
 bool VG::operator!=(const VG::Point& lhs, const VG::Point& rhs)
 {
-	return lhs.getX() != rhs.getX() && lhs.getY() != rhs.getY();
+	return lhs.getX() != rhs.getX() || lhs.getY() != rhs.getY();
 }
 
 std::ostream& VG::operator<<(std::ostream& output, VG::Point& p)

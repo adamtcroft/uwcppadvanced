@@ -12,6 +12,7 @@ namespace VG
 		Point(const Point& other) = default;
 		Point(Point&& other) = default;
 		Point& operator=(const Point& other) = default;
+		Point& operator=(Point&& other) = default;
 		~Point() = default;
 
 		constexpr int getX() const { return _x; };

@@ -1,8 +1,6 @@
 #include "TestHarness.h"
 #include "..\Parse.h"
 
-
-
 TEST(trimBeginning, Parse)
 {
     std::string actual{"  \tHello"};
@@ -25,6 +23,20 @@ TEST(trimBeginningAndEnd, Parse)
     Parse::trim(actual, " \t\n");
     
     CHECK_EQUAL("Hello", actual);
+}
+
+TEST(PhraseWithSpaces, Parse)
+{
+	std::string actual{ "   Trim this.   " };
+	Parse::trim(actual);
+	CHECK_EQUAL("Trim this.", actual);
+}
+
+TEST(MultipleSpaces, Parse)
+{
+	std::string actual{ "  This one, it has a phrase.  " };
+	Parse::trim(actual);
+	CHECK_EQUAL("This one, it has a phrase.", actual);
 }
 
 TEST(trimNone, Parse)

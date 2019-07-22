@@ -11,6 +11,12 @@ TEST(ctor, VectorGraphic)
     CHECK_EQUAL(false, vg.isOpen());
 }
 
+TEST(defaultOpenness, VectorGraphic)
+{
+	VG::VectorGraphic vg;
+	CHECK_EQUAL(false, vg.isOpen());
+	CHECK_EQUAL(true, vg.isClosed());
+}
 
 TEST(insertPoint, VectorGraphic)
 {
@@ -44,6 +50,9 @@ TEST(erasePoint, VectorGraphic)
     CHECK_EQUAL(2, vg.getPointCount());
     CHECK_EQUAL(VG::Point(1, 1), vg.getPoint(0));
     CHECK_EQUAL(VG::Point(3, 3), vg.getPoint(1));
+
+	vg.erasePoint(0);
+	CHECK_EQUAL(VG::Point(3, 3), vg.getPoint(0));
 }
 
 
@@ -115,6 +124,8 @@ TEST(closeShape, VectorGraphic)
 TEST(openShape, VectorGraphic)
 {
     VG::VectorGraphic vg;
+	CHECK_EQUAL(false, vg.isOpen());
+	CHECK_EQUAL(true, vg.isClosed());
     vg.openShape();
     CHECK_EQUAL(false, vg.isClosed());
     CHECK_EQUAL(true, vg.isOpen());
@@ -134,6 +145,22 @@ TEST(widthHeight, VectorGraphic)
     CHECK_EQUAL(4, vectorGraphic.getWidth());
     CHECK_EQUAL(2, vectorGraphic.getHeight());
 }
+
+TEST(getPointRange, VectorGraphic)
+{
+	VG::VectorGraphic vg;
+    vg.addPoint(VG::Point{0, 2});
+
+	try
+	{
+		auto point = vg.getPoint(1);
+	}
+	catch (std::out_of_range& e)
+	{
+		CHECK_EQUAL("Index of point out of range!", e.what())
+	}
+}
+
 
 // This test throws an unresolved external symbol error and I'm not sure why
 // as the function is defined and seen by the IDE...

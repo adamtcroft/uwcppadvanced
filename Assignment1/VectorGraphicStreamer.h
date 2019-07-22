@@ -16,7 +16,8 @@ namespace VG
 		VectorGraphicStreamer();
 		VectorGraphicStreamer(const VectorGraphicStreamer& other) = delete;
 		VectorGraphicStreamer(VectorGraphicStreamer&& other) = delete;
-		VectorGraphicStreamer& operator =(const VectorGraphicStreamer& other) = delete;
+		VectorGraphicStreamer& operator=(const VectorGraphicStreamer& other) = delete;
+		VectorGraphicStreamer& operator=(VectorGraphicStreamer&& other) = delete;
 		~VectorGraphicStreamer();
 
 		static VectorGraphic fromXml(std::stringstream& ss);

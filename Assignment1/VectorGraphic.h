@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <functional>
+#include <algorithm>
 #include "Point.h"
 
 namespace VG
@@ -14,7 +15,8 @@ namespace VG
 		VectorGraphic();
 		VectorGraphic(const VectorGraphic& other) = default;
 		VectorGraphic(VectorGraphic&& other) = default;
-		VectorGraphic& operator=(const VectorGraphic& other) = delete;
+		VectorGraphic& operator=(const VectorGraphic& other) = default;
+		VectorGraphic& operator=(VectorGraphic&& other) = default;
 		~VectorGraphic();
 
 		template<typename T>
@@ -30,7 +32,6 @@ namespace VG
 		bool isClosed() const;
 		int getWidth() const;
 		int getHeight() const;
-		Points getPath() const;
 
 		int getPointCount() const;
 		Point getPoint(int index) const;
@@ -41,6 +42,6 @@ namespace VG
 
 	private:
 		Points myPath;
-		bool openness;
+		bool openness = false;
 	};
 }
