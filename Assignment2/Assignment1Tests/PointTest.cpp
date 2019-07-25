@@ -6,11 +6,9 @@
 //  Copyright (c) 2015 Chris Elderkin. All rights reserved.
 //
 
-/*
 #include "Point.h"
 #include "VectorGraphic.h"
 #include "TestHarness.h"
-
 
 TEST(equality, Point)
 {
@@ -67,4 +65,3 @@ TEST(ostream, Point)
 
 	CHECK_EQUAL("8, 10", myString);
 }
-*/

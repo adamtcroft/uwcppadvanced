@@ -88,6 +88,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Libraries\CppUnitLite;$(SolutionDir)Assignment2</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -114,6 +115,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Libraries\CppUnitLite;$(SolutionDir)Assignment2</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -123,7 +125,7 @@
   <ItemGroup>
     <ClCompile Include="ParseTest.cpp" />
     <ClCompile Include="PointTest.cpp" />
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Assignment1Tests.cpp" />
     <ClCompile Include="VectorGraphicTest.cpp" />
   </ItemGroup>
   <ItemGroup>
