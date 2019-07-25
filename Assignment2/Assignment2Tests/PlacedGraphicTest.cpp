@@ -1,8 +1,12 @@
 #include "PlacedGraphic.h"
 #include "VectorGraphic.h"
 #include "TestHarness.h"
-/*
 
+TEST(dummy, fake)
+{
+	CHECK_EQUAL(1, 1);
+}
+/*
 TEST(ctor, PlacedGraphic)
 {
     VG::HVectorGraphic vg(new VG::VectorGraphic);

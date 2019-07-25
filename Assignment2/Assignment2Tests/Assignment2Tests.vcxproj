@@ -141,7 +141,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AssignmentTests.cpp" />
+    <ClCompile Include="ParseTest.cpp" />
     <ClCompile Include="PlacedGraphicTest.cpp" />
+    <ClCompile Include="PointTest.cpp" />
     <ClCompile Include="SceneReaderTest.cpp" />
     <ClCompile Include="SceneTest.cpp" />
     <ClCompile Include="SceneWriterTest.cpp" />
