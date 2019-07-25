@@ -39,22 +39,22 @@ void VG::VectorGraphic::erasePoint(int index)
 
 void VG::VectorGraphic::openShape()
 {
-	openness = true;
+	shapeOpenness = Openness::Open;
 }
 
 void VG::VectorGraphic::closeShape()
 {
-	openness = false;
+	shapeOpenness = Openness::Closed;
 }
 
 bool VG::VectorGraphic::isOpen() const
 {
-	return openness;
+	return shapeOpenness == Openness::Open;
 }
 
 bool VG::VectorGraphic::isClosed() const
 {
-	return !openness;
+	return shapeOpenness == Openness::Closed;
 }
 
 int VG::VectorGraphic::getWidth() const

@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Assignment2Tests", "Assignm
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CppUnitLite", "..\..\..\..\..\..\Libraries\CppUnitLite\CppUnitLite.vcxproj", "{D8A7B324-826B-4AE8-86B5-475751549E14}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Assignment1Tests", "Assignment1Tests\Assignment1Tests.vcxproj", "{655E4410-61DA-46DF-891D-1B9955F7F8F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{D8A7B324-826B-4AE8-86B5-475751549E14}.Release|x64.Build.0 = Release|x64
 		{D8A7B324-826B-4AE8-86B5-475751549E14}.Release|x86.ActiveCfg = Release|Win32
 		{D8A7B324-826B-4AE8-86B5-475751549E14}.Release|x86.Build.0 = Release|Win32
+		{655E4410-61DA-46DF-891D-1B9955F7F8F3}.Debug|x64.ActiveCfg = Debug|x64
+		{655E4410-61DA-46DF-891D-1B9955F7F8F3}.Debug|x64.Build.0 = Debug|x64
+		{655E4410-61DA-46DF-891D-1B9955F7F8F3}.Debug|x86.ActiveCfg = Debug|Win32
+		{655E4410-61DA-46DF-891D-1B9955F7F8F3}.Debug|x86.Build.0 = Debug|Win32
+		{655E4410-61DA-46DF-891D-1B9955F7F8F3}.Release|x64.ActiveCfg = Release|x64
+		{655E4410-61DA-46DF-891D-1B9955F7F8F3}.Release|x64.Build.0 = Release|x64
+		{655E4410-61DA-46DF-891D-1B9955F7F8F3}.Release|x86.ActiveCfg = Release|Win32
+		{655E4410-61DA-46DF-891D-1B9955F7F8F3}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

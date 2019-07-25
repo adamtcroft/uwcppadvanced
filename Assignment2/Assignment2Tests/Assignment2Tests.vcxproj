@@ -76,7 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Libraries\CppUnitLite</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Libraries\CppUnitLite;$(SolutionDir)Assignment2</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>
@@ -107,7 +107,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Libraries\CppUnitLite</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Libraries\CppUnitLite;$(SolutionDir)Assignment2</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -154,6 +154,9 @@
     </ProjectReference>
     <ProjectReference Include="..\Assignment2.vcxproj">
       <Project>{a75c8bc2-8ea1-4b21-9b65-d87393647bbc}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Assignment2\Assignment2.vcxproj">
+      <Project>{f23b2a2b-8ad6-4dd3-819d-02ecc91953a3}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

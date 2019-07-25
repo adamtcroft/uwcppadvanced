@@ -1,3 +1,4 @@
+/*
 #include "VectorGraphic.h"
 #include "VectorGraphicStreamer.h"
 #include "TestHarness.h"
@@ -178,6 +179,7 @@ TEST(templateAdd, VectorGraphic)
 // this would have to be done with a "stringification" macro:
 //   #define STR(a) #a
 
+/*
 const std::string VectorGraphicXml = R"(
 <VectorGraphic closed="true">
 <Point x="0" y="0"/>
@@ -233,3 +235,4 @@ TEST(validXML, VectorGraphic)
 
 	CHECK_EQUAL(vg, control);
 }
+*/

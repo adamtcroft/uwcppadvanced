@@ -1,3 +1,4 @@
+/*
 #include "TestHarness.h"
 #include "Parse.h"
 
@@ -96,3 +97,4 @@ TEST(eatSomeLeadingWhitespace, Parse)
     
     CHECK_EQUAL("I had leading whitespace", actual.str());
 }
+*/

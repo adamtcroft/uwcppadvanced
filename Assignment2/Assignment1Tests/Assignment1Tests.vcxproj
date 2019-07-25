@@ -18,31 +18,9 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Failure.h" />
-    <ClInclude Include="Test.h" />
-    <ClInclude Include="TestHarness.h" />
-    <ClInclude Include="TestRegistry.h" />
-    <ClInclude Include="TestResult.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Failure.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="ParseTest.cpp" />
-    <ClCompile Include="PointTest.cpp" />
-    <ClCompile Include="Test.cpp" />
-    <ClCompile Include="TestRegistry.cpp" />
-    <ClCompile Include="TestResult.cpp" />
-    <ClCompile Include="VectorGraphicTest.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Assignment2\Assignment2\Assignment2.vcxproj">
-      <Project>{f23b2a2b-8ad6-4dd3-819d-02ecc91953a3}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{650A0DEB-257E-46B9-961F-5898044091FA}</ProjectGuid>
+    <ProjectGuid>{655E4410-61DA-46DF-891D-1B9955F7F8F3}</ProjectGuid>
     <RootNamespace>Assignment1Tests</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -98,12 +76,10 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Assignment2</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Libraries\CppUnitLite;$(SolutionDir)Assignment2</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>
-      </AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\adamt\Documents\UW CPP\CppUnitLite\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -122,14 +98,12 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Assignment2</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Libraries\CppUnitLite;$(SolutionDir)Assignment2</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>
-      </AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\adamt\Documents\UW CPP\CppUnitLite\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -146,6 +120,20 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ParseTest.cpp" />
+    <ClCompile Include="PointTest.cpp" />
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="VectorGraphicTest.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\..\Libraries\CppUnitLite\CppUnitLite.vcxproj">
+      <Project>{d8a7b324-826b-4ae8-86b5-475751549e14}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Assignment2\Assignment2.vcxproj">
+      <Project>{f23b2a2b-8ad6-4dd3-819d-02ecc91953a3}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

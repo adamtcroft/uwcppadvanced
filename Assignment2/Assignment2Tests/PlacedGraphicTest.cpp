@@ -3,7 +3,6 @@
 #include "TestHarness.h"
 /*
 
-
 TEST(ctor, PlacedGraphic)
 {
     VG::HVectorGraphic vg(new VG::VectorGraphic);

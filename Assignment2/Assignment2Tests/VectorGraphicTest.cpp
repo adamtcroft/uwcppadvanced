@@ -1,4 +1,3 @@
-/*
 #include "Parse.h"
 #include "VectorGraphic.h"
 #include "TestHarness.h"
@@ -11,6 +10,7 @@ TEST(ctor, VectorGraphic)
 	CHECK_EQUAL(false, vg.isOpen());
 }
 
+/*
 TEST(insertPoint, VectorGraphic)
 {
 	VG::VectorGraphic vg;

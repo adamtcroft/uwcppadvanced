@@ -42,6 +42,6 @@ namespace VG
 
 	private:
 		Points myPath;
-		bool openness = false;
+		enum class Openness { Open, Closed } shapeOpenness = Openness::Closed;
 	};
 }

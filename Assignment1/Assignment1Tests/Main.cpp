@@ -1,7 +1,6 @@
 #include "TestHarness.h"
 #include <iostream>
 #include <cstdlib>
-#include "..\Point.h"
 
 int main()
 {
