@@ -10,22 +10,25 @@ VG::VectorGraphic::~VectorGraphic()
 {
 }
 
-template<typename T>
-void VG::VectorGraphic::templateAddPoint(T&& p)
-{
-	myPath.push_back(std::forward<T>(p));
-}
-
 void VG::VectorGraphic::addPoint(const Point& p)
 {
 	myPath.push_back(p);
 }
 
+//TEST THIS!!
+void VG::VectorGraphic::addPoint(VG::Point&& p)
+{
+	myPath.emplace_back(std::forward<VG::Point>(p));
+}
+
+//TEST THROW!!
 void VG::VectorGraphic::removePoint(const Point& p)
 {
 	auto result = std::find(myPath.begin(), myPath.end(), p);
 
-	if (result != myPath.end())
+	if (result == myPath.end())
+		throw std::out_of_range("The point provided does not exist.");
+	else
 		myPath.erase(result);
 }
 
@@ -85,15 +88,12 @@ int VG::VectorGraphic::getHeight() const
 
 int VG::VectorGraphic::getPointCount() const
 {
-	return myPath.size();
+	return static_cast<int>(myPath.size());
 }
 
-VG::Point VG::VectorGraphic::getPoint(int index) const
+const VG::Point& VG::VectorGraphic::getPoint(int index) const
 {
-	if (index > -1 && index < myPath.size())
-		return myPath[index];
-	else
-		throw std::out_of_range("Index of point out of range!");
+	return myPath.at(index);
 }
 
 bool VG::operator==(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs)

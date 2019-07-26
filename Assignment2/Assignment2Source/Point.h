@@ -7,16 +7,18 @@ namespace VG
 	{
 	public:
 		Point();
-		constexpr Point(int x, int y)
-			:_x(x), _y(y) {};
+		constexpr Point(int initialX, int initialY) :x(initialX), y(initialY) {};
+
 		Point(const Point& other) = default;
 		Point(Point&& other) = default;
+
 		Point& operator=(const Point& other) = default;
 		Point& operator=(Point&& other) = default;
+
 		~Point() = default;
 
-		constexpr int getX() const { return _x; };
-		constexpr int getY() const { return _y; };
+		constexpr int getX() const { return x; };
+		constexpr int getY() const { return y; };
 
 		void setX(int value);
 		void setY(int value);
@@ -26,6 +28,7 @@ namespace VG
 		friend std::ostream& operator<<(std::ostream& output, VG::Point& p);
 
 	private:
-		int _x, _y;
+		int x{ 0 };
+		int y{ 0 };
 	};
 }

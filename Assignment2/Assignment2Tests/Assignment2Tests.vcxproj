@@ -76,7 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Libraries\CppUnitLite;$(SolutionDir)Assignment2</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Libraries\CppUnitLite;$(SolutionDir)Assignment2Source</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>
@@ -108,7 +108,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Libraries\CppUnitLite;$(SolutionDir)Assignment2</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Libraries\CppUnitLite;$(SolutionDir)Assignment2Source</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

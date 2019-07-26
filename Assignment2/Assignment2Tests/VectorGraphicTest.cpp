@@ -157,7 +157,7 @@ TEST(getPointRange, VectorGraphic)
 	}
 	catch (std::out_of_range& e)
 	{
-		CHECK_EQUAL("Index of point out of range!", e.what())
+		CHECK_EQUAL("invalid vector<T> subscript", e.what())
 	}
 }
 

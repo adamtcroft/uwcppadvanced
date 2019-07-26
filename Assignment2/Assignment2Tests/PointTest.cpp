@@ -63,5 +63,5 @@ TEST(ostream, Point)
 	oss << p;
 	std::string myString = oss.str();
 
-	CHECK_EQUAL("8, 10", myString);
+	CHECK_EQUAL("(8, 10)", myString);
 }

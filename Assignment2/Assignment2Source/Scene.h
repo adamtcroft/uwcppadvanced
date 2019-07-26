@@ -1,19 +1,29 @@
 #pragma once
+
 #include <string>
+#include <list>
+
+#include "Layer.h"
 
 namespace Canvas
 {
-	using PlacedGraphicCollection = std::list;
+	using LayerCollection = std::list<Layer>;
+	using LayerIterator = LayerCollection::iterator;
 
 	class Scene
 	{
 	public:
-		//ctors
-		//dtor
+		Scene() = default;
+		Scene(const Scene& other) = default;
+		Scene(Scene&& other) = default;
+		Scene& operator=(const Scene& other) = default;
+		Scene& operator=(Scene&& other) = default;
+		~Scene() = default;
+
 		//insert, remove, iteration support
-		//setter/getter for alias
+		//setter/getter for width/height
 	private:
-		PlacedGraphicCollection graphics;
-		std::string alias;
+		LayerCollection layers;
+		int width, height;
 	};
 }

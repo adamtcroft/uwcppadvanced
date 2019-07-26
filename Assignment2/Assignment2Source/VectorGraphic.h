@@ -13,15 +13,17 @@ namespace VG
 	{
 	public:
 		VectorGraphic();
+
 		VectorGraphic(const VectorGraphic& other) = default;
 		VectorGraphic(VectorGraphic&& other) = default;
+
 		VectorGraphic& operator=(const VectorGraphic& other) = default;
 		VectorGraphic& operator=(VectorGraphic&& other) = default;
+
 		~VectorGraphic();
 
-		template<typename T>
-		void templateAddPoint(T&& p);
 		void addPoint(const VG::Point& p);
+		void addPoint(VG::Point&& p);
 		void removePoint(const VG::Point& p);
 		void erasePoint(int index);
 
@@ -30,11 +32,12 @@ namespace VG
 
 		bool isOpen() const;
 		bool isClosed() const;
+
 		int getWidth() const;
 		int getHeight() const;
 
 		int getPointCount() const;
-		Point getPoint(int index) const;
+		const Point& getPoint(int index) const;
 
 		friend bool operator==(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs);
 		friend bool operator!=(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs);
