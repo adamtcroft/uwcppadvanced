@@ -27,6 +27,9 @@ namespace Framework
 		void setAlias(std::string& referenceAlias);
 		std::string const& getAlias() const;
 
+		friend bool operator==(const Layer& lhs, const Layer& rhs);
+		friend bool operator!=(const Layer& lhs, const Layer& rhs);
+
 		//insert, remove, iteration
 
 	private:

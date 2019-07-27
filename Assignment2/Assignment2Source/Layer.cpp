@@ -15,3 +15,13 @@ void Framework::Layer::setAlias(std::string& referenceAlias)
 {
 	return alias;
 }
+
+bool Framework::operator==(const Framework::Layer& lhs, const Framework::Layer& rhs)
+{
+	return lhs.graphics == rhs.graphics && lhs.alias == rhs.alias;
+}
+
+bool Framework::operator!=(const Framework::Layer& lhs, const Framework::Layer& rhs)
+{
+	return !(lhs == rhs);
+}

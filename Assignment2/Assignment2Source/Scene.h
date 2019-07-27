@@ -26,7 +26,7 @@ namespace Framework
 		//insert, remove, iteration support
 		
 		void pushBack(Layer&& layer);
-		void removeLayer();
+		void remove(const Layer&& layer);
 
 		LayerIterator begin();
 		LayerIterator end();

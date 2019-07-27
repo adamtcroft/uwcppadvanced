@@ -55,7 +55,6 @@ TEST(pushBack, Scene)
     CHECK(matcher.allLayersFound());
 }
 
-/*
 TEST(remove, Scene)
 {
     Framework::Scene scene(800, 600);
@@ -68,4 +67,3 @@ TEST(remove, Scene)
     LayerMatcher matcher = std::for_each(scene.begin(), scene.end(), LayerMatcher());
     CHECK(matcher.onlyMountainsSkyFound());
 }
-*/
