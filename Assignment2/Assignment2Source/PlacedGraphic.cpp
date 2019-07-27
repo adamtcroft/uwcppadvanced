@@ -1,38 +1,47 @@
 #include "PlacedGraphic.h"
-/*
-Framework::PlacedGraphic::PlacedGraphic()
-{
-}
-*/
 
-Framework::PlacedGraphic::PlacedGraphic(VG::Point& p, VG::HVectorGraphic& vg)
+Framework::PlacedGraphic::PlacedGraphic(VG::Point&& p, VG::HVectorGraphic& vg)
 	:placementPoint(p), graphic(vg)
 {
 }
 
 
-Framework::PlacedGraphic::~PlacedGraphic()
-{
-}
-
 void Framework::PlacedGraphic::setPlacementPoint(VG::Point const& placement)
 {
-
+	placementPoint = placement;
 }
 
 VG::Point const& Framework::PlacedGraphic::getPlacementPoint() const
 {
-	VG::Point temp;
-	return temp;
+	return placementPoint;
 }
 
-void Framework::PlacedGraphic::setGraphic(VG::HVectorGraphic const& graphic)
+void Framework::PlacedGraphic::setGraphic(VG::HVectorGraphic const& referenceGraphic)
 {
-
+	graphic = referenceGraphic;
 }
 
 VG::HVectorGraphic const& Framework::PlacedGraphic::getGraphic() const
 {
-	VG::VectorGraphic temp;
-	return temp;
+	return graphic;
+}
+
+bool Framework::operator==(const Framework::PlacedGraphic& lhs, const Framework::PlacedGraphic& rhs)
+{
+	return lhs.getPlacementPoint() == rhs.getPlacementPoint() && lhs.getGraphic() == rhs.getGraphic();
+}
+
+bool Framework::operator!=(const Framework::PlacedGraphic& lhs, const Framework::PlacedGraphic& rhs)
+{
+	return !(lhs == rhs);
+}
+
+std::ostream& Framework::operator<<(std::ostream& output, Framework::PlacedGraphic& pg)
+{
+	VG::Point point = pg.getPlacementPoint();
+	output << point;
+	output << pg.getGraphic();
+	output.flush();
+
+	return output;
 }

@@ -1,6 +1,7 @@
 #include "Scene.h"
 #include "TestHarness.h"
 #include <algorithm>
+#include "SceneTest.h"
 
 struct LayerMatcher
 {
@@ -54,6 +55,7 @@ TEST(pushBack, Scene)
     CHECK(matcher.allLayersFound());
 }
 
+/*
 TEST(remove, Scene)
 {
     Framework::Scene scene(800, 600);

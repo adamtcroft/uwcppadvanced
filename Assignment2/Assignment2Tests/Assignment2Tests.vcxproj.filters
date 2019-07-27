@@ -45,5 +45,16 @@
     <ClCompile Include="AssignmentTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LayerTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PlacedGraphicTest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneTest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

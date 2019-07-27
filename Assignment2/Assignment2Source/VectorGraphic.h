@@ -7,7 +7,6 @@
 namespace VG
 {
 	using Points = std::vector<VG::Point>;
-
 	class VectorGraphic
 	{
 	public:
@@ -46,4 +45,6 @@ namespace VG
 		Points myPath;
 		enum class Openness { Open, Closed } shapeOpenness = Openness::Closed;
 	};
+
+	using HVectorGraphic = std::shared_ptr<VectorGraphic>;
 }

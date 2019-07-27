@@ -1,10 +1,17 @@
 #include "Layer.h"
 
-Layer::Layer()
+Framework::Layer::Layer(std::string&& initialAlias)
+	:alias(initialAlias)
 {
+
 }
 
-
-Layer::~Layer()
+void Framework::Layer::setAlias(std::string& referenceAlias)
 {
+	alias = referenceAlias;
+}
+
+ std::string const& Framework::Layer::getAlias() const
+{
+	return alias;
 }

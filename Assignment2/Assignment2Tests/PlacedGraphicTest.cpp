@@ -9,9 +9,8 @@ TEST(ctor, PlacedGraphic)
 
     constexpr VG::Point expected(44, 55);
     CHECK_EQUAL(expected, pg.getPlacementPoint());
-    CHECK_EQUAL(vg.get(), &pg.getGraphic());
+    CHECK_EQUAL(vg, pg.getGraphic());
 }
-/*
 
 TEST(setPlacementPoint, PlacedGraphic)
 {
@@ -28,6 +27,28 @@ TEST(setGraphic, PlacedGraphic)
     VG::HVectorGraphic vg(new VG::VectorGraphic);
     pg.setGraphic(vg);
 
-    CHECK_EQUAL(vg.get(), &pg.getGraphic());
+	CHECK_EQUAL(vg, pg.getGraphic());
+}
+
+TEST(copyCtor, PlacedGraphic)
+{
+	Framework::PlacedGraphic pg;
+	VG::HVectorGraphic vg(new VG::VectorGraphic);
+
+	Framework::PlacedGraphic pg2(pg);
+
+	CHECK_EQUAL(pg, pg2);
+}
+
+// TEST RVALUE CTOR!
+/*
+TEST(rValueCopyCtor, PlacedGraphic)
+{
+	Framework::PlacedGraphic pg;
+	//VG::HVectorGraphic vg(new VG::VectorGraphic);
+
+	Framework::PlacedGraphic pg2(Framework::PlacedGraphic);
+
+	CHECK_EQUAL(pg, pg2);
 }
 */
