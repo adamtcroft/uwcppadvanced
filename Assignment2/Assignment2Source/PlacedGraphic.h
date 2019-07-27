@@ -3,6 +3,10 @@
 #include "VectorGraphic.h"
 #include "Point.h"
 
+namespace VG
+{
+	using HVectorGraphic = std::shared_ptr<VectorGraphic>;
+}
 
 namespace Framework
 {
@@ -10,7 +14,7 @@ namespace Framework
 	{
 	public:
 		//PlacedGraphic();
-		PlacedGraphic(VG::Point& p, const VG::VectorGraphic vg);
+		PlacedGraphic(VG::Point& p, VG::HVectorGraphic& vg);
 
 		PlacedGraphic(const PlacedGraphic& other) = default;
 		PlacedGraphic(PlacedGraphic&& other) = default;
@@ -29,8 +33,4 @@ namespace Framework
 		VG::Point placementPoint;
 		VG::HVectorGraphic graphic;
 	};
-}
-namespace VG
-{
-	using HVectorGraphic = const VG::VectorGraphic&;
 }
