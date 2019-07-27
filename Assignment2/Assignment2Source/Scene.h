@@ -5,7 +5,7 @@
 
 #include "Layer.h"
 
-namespace Canvas
+namespace Framework
 {
 	using LayerCollection = std::list<Layer>;
 	using LayerIterator = LayerCollection::iterator;
@@ -21,7 +21,13 @@ namespace Canvas
 		~Scene() = default;
 
 		//insert, remove, iteration support
-		//setter/getter for width/height
+
+		void setWidth();
+		void setHeight();
+
+		int getWidth();
+		int getHeight();
+
 	private:
 		LayerCollection layers;
 		int width, height;

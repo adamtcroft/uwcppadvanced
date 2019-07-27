@@ -1,4 +1,3 @@
-/*
 #include "Scene.h"
 #include "TestHarness.h"
 #include <algorithm>

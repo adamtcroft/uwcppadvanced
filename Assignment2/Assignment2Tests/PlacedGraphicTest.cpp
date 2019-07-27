@@ -2,11 +2,6 @@
 #include "VectorGraphic.h"
 #include "TestHarness.h"
 
-TEST(dummy, fake)
-{
-	CHECK_EQUAL(1, 1);
-}
-/*
 TEST(ctor, PlacedGraphic)
 {
     VG::HVectorGraphic vg(new VG::VectorGraphic);
@@ -16,6 +11,7 @@ TEST(ctor, PlacedGraphic)
     CHECK_EQUAL(expected, pg.getPlacementPoint());
     CHECK_EQUAL(vg.get(), &pg.getGraphic());
 }
+/*
 
 TEST(setPlacementPoint, PlacedGraphic)
 {

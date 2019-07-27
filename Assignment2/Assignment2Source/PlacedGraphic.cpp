@@ -1,32 +1,38 @@
 #include "PlacedGraphic.h"
+/*
+Framework::PlacedGraphic::PlacedGraphic()
+{
+}
+*/
 
-PlacedGraphic::PlacedGraphic()
+Framework::PlacedGraphic::PlacedGraphic(VG::Point& p, const VG::VectorGraphic vg)
+	:placementPoint(p), graphic(vg)
 {
 }
 
 
-PlacedGraphic::~PlacedGraphic()
+Framework::PlacedGraphic::~PlacedGraphic()
 {
 }
 
-void PlacedGraphic::setPlacementPoint(VG::Point const& placement)
+void Framework::PlacedGraphic::setPlacementPoint(VG::Point const& placement)
 {
 
 }
 
-VG::Point const& PlacedGraphic::getPlacementPoint() const
+VG::Point const& Framework::PlacedGraphic::getPlacementPoint() const
 {
 	VG::Point temp;
 	return temp;
 }
 
-void PlacedGraphic::setGraphic(HVectorGraphic const& graphic)
+void Framework::PlacedGraphic::setGraphic(VG::HVectorGraphic const& graphic)
 {
 
 }
 
-HVectorGraphic const& PlacedGraphic::getGraphic() const
+VG::HVectorGraphic const& Framework::PlacedGraphic::getGraphic() const
 {
-	HVectorGraphic temp = std::make_shared<VG::VectorGraphic>();
+	VG::VectorGraphic temp;
 	return temp;
 }
