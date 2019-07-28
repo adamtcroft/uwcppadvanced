@@ -6,7 +6,29 @@ Framework::Layer::Layer(std::string&& initialAlias)
 
 }
 
-void Framework::Layer::setAlias(std::string& referenceAlias)
+void Framework::Layer::pushBack(PlacedGraphic& pg)
+{
+	graphics.push_back(pg);
+}
+
+void Framework::Layer::remove(PlacedGraphic& pg)
+{
+	auto result = std::find(graphics.begin(), graphics.end(), pg);
+
+	if (result == graphics.end())
+		throw std::out_of_range("The graphic provided does not exist.");
+	else
+		graphics.erase(result);
+}
+
+Framework::PlacedGraphic const& Framework::Layer::getGraphic(const int& index) 
+{
+	PlacedGraphicIterator iterator = graphics.begin();
+	std::advance(iterator, index);
+	return *iterator;
+}
+
+void Framework::Layer::setAlias(const std::string& referenceAlias)
 {
 	alias = referenceAlias;
 }
@@ -24,4 +46,12 @@ bool Framework::operator==(const Framework::Layer& lhs, const Framework::Layer& 
 bool Framework::operator!=(const Framework::Layer& lhs, const Framework::Layer& rhs)
 {
 	return !(lhs == rhs);
+}
+
+std::ostream& Framework::operator<<(std::ostream& output, Framework::Layer& layer)
+{
+	output << layer.alias;
+	output.flush();
+
+	return output;
 }

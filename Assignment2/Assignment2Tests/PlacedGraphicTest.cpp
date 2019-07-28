@@ -81,11 +81,8 @@ TEST(sharedPtr, HVectorGraphic)
 /*
 TEST(rValueCopyCtor, PlacedGraphic)
 {
-	Framework::PlacedGraphic pg;
-	VG::HVectorGraphic vg(new VG::VectorGraphic);
-
-	Framework::PlacedGraphic pg2(new Framework::PlacedGraphic);
-
-	CHECK_EQUAL(pg, pg2);
+	Framework::PlacedGraphic pg(Framework::PlacedGraphic());
+	Framework::PlacedGraphic pg2;
+	CHECK_EQUAL(pg2, pg);
 }
 */

@@ -9,7 +9,9 @@ namespace Framework
 	{
 	public:
 		PlacedGraphic() = default;
+		PlacedGraphic(VG::Point& p, VG::HVectorGraphic& vg);
 		PlacedGraphic(VG::Point&& p, VG::HVectorGraphic& vg);
+		PlacedGraphic(VG::Point&& p, VG::HVectorGraphic&& vg);
 
 		//Test These
 		PlacedGraphic(const PlacedGraphic& other) = default;
@@ -26,13 +28,12 @@ namespace Framework
 		VG::Point const& getPlacementPoint() const;
 		VG::HVectorGraphic const& getGraphic() const;
 
-		friend bool operator==(const Framework::PlacedGraphic& lhs, const Framework::PlacedGraphic& rhs);
-		friend bool operator!=(const Framework::PlacedGraphic& lhs, const Framework::PlacedGraphic& rhs);
+		friend bool operator==(const PlacedGraphic& lhs, const PlacedGraphic& rhs);
+		friend bool operator!=(const PlacedGraphic& lhs, const PlacedGraphic& rhs);
 		friend std::ostream& operator<<(std::ostream& output, Framework::PlacedGraphic& pg);
 
 	private:
 		VG::Point placementPoint;
 		VG::HVectorGraphic graphic;
 	};
-
 }

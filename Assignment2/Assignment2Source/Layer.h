@@ -1,5 +1,6 @@
 #pragma once
 #include <list>
+#include <string>
 #include "PlacedGraphic.h"
 
 namespace Framework
@@ -10,7 +11,7 @@ namespace Framework
 	class Layer
 	{
 	public:
-		Layer() = default;
+		Layer() = delete;
 		Layer(std::string&& initialAlias);
 
 		Layer(const Layer& other) = default;
@@ -21,14 +22,17 @@ namespace Framework
 
 		~Layer() = default;
 
-		void addGraphic();
-		void removeGraphic();
+		void pushBack(PlacedGraphic& pg);
+		void remove(PlacedGraphic& pg);
 
-		void setAlias(std::string& referenceAlias);
+		PlacedGraphic const& getGraphic(const int& index);
+
+		void setAlias(const std::string& referenceAlias);
 		std::string const& getAlias() const;
 
 		friend bool operator==(const Layer& lhs, const Layer& rhs);
 		friend bool operator!=(const Layer& lhs, const Layer& rhs);
+		friend std::ostream& operator<<(std::ostream& output, Framework::Layer& layer);
 
 		//insert, remove, iteration
 

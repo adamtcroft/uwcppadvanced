@@ -1,10 +1,19 @@
 #include "PlacedGraphic.h"
 
+Framework::PlacedGraphic::PlacedGraphic(VG::Point& p, VG::HVectorGraphic& vg)
+	:placementPoint(p), graphic(vg)
+{
+}
+
 Framework::PlacedGraphic::PlacedGraphic(VG::Point&& p, VG::HVectorGraphic& vg)
 	:placementPoint(p), graphic(vg)
 {
 }
 
+Framework::PlacedGraphic::PlacedGraphic(VG::Point&& p, VG::HVectorGraphic&& vg)
+	:placementPoint(p), graphic(vg)
+{
+}
 
 void Framework::PlacedGraphic::setPlacementPoint(VG::Point const& placement)
 {
@@ -25,13 +34,13 @@ VG::HVectorGraphic const& Framework::PlacedGraphic::getGraphic() const
 {
 	return graphic;
 }
-
-bool Framework::operator==(const Framework::PlacedGraphic& lhs, const Framework::PlacedGraphic& rhs)
+	
+bool Framework::operator==(const PlacedGraphic& lhs, const PlacedGraphic& rhs)
 {
-	return lhs.getPlacementPoint() == rhs.getPlacementPoint() && lhs.getGraphic() == rhs.getGraphic();
+	return lhs.placementPoint == rhs.placementPoint && lhs.graphic == rhs.graphic;
 }
 
-bool Framework::operator!=(const Framework::PlacedGraphic& lhs, const Framework::PlacedGraphic& rhs)
+bool Framework::operator!=(const PlacedGraphic& lhs, const PlacedGraphic& rhs)
 {
 	return !(lhs == rhs);
 }
