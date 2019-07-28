@@ -76,7 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Libraries\CppUnitLite;$(SolutionDir)Assignment2Source</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Libraries\CppUnitLite;$(SolutionDir)Assignment2Source;C:\Libraries\tinyxml2-master</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>
@@ -108,7 +108,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Libraries\CppUnitLite;$(SolutionDir)Assignment2Source</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Libraries\CppUnitLite;$(SolutionDir)Assignment2Source;C:\Libraries\tinyxml2-master</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -156,6 +156,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\..\..\Libraries\CppUnitLite\CppUnitLite.vcxproj">
       <Project>{d8a7b324-826b-4ae8-86b5-475751549e14}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\..\Libraries\tinyxml2-master\tinyxml2\tinyxml2.vcxproj">
+      <Project>{d1c528b6-aa02-4d29-9d61-dc08e317a70d}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Assignment2Source\Assignment2Source.vcxproj">
       <Project>{f23b2a2b-8ad6-4dd3-819d-02ecc91953a3}</Project>

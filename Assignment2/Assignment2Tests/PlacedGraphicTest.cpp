@@ -40,14 +40,51 @@ TEST(copyCtor, PlacedGraphic)
 	CHECK_EQUAL(pg, pg2);
 }
 
+TEST(equality, PlacedGraphic)
+{
+    Framework::PlacedGraphic pg;
+    VG::HVectorGraphic vg(new VG::VectorGraphic);
+    pg.setGraphic(vg);
+
+    Framework::PlacedGraphic pg2;
+    pg2.setGraphic(vg);
+
+	CHECK_EQUAL(pg, pg2);
+}
+
+TEST(inequality, PlacedGraphic)
+{
+    Framework::PlacedGraphic pg;
+    VG::HVectorGraphic vg(new VG::VectorGraphic);
+    pg.setGraphic(vg);
+
+    Framework::PlacedGraphic pg2;
+    VG::HVectorGraphic vg2(new VG::VectorGraphic);
+    pg2.setGraphic(vg2);
+
+	CHECK(pg != pg2);
+}
+
+TEST(sharedPtr, HVectorGraphic)
+{
+    Framework::PlacedGraphic pg;
+    VG::HVectorGraphic vg(new VG::VectorGraphic);
+    pg.setGraphic(vg);
+
+    Framework::PlacedGraphic pg2;
+    pg2.setGraphic(vg);
+
+	CHECK_EQUAL(pg.getGraphic(), pg2.getGraphic());
+}
+
 // TEST RVALUE CTOR!
 /*
 TEST(rValueCopyCtor, PlacedGraphic)
 {
 	Framework::PlacedGraphic pg;
-	//VG::HVectorGraphic vg(new VG::VectorGraphic);
+	VG::HVectorGraphic vg(new VG::VectorGraphic);
 
-	Framework::PlacedGraphic pg2(Framework::PlacedGraphic);
+	Framework::PlacedGraphic pg2(new Framework::PlacedGraphic);
 
 	CHECK_EQUAL(pg, pg2);
 }
