@@ -4,6 +4,17 @@ VG::Point::Point()
 {
 }
 
+VG::Point::Point(VG::Point&& other)
+{
+	if (&other != this)
+	{
+		x = other.x;
+		y = other.y;
+		other.x = 0;
+		other.y = 0;
+	}
+}
+
 void VG::Point::setX(int value)
 {
 	x = value;
@@ -25,6 +36,14 @@ bool VG::operator!=(const VG::Point& lhs, const VG::Point& rhs)
 }
 
 std::ostream& VG::operator<<(std::ostream& output, VG::Point& p)
+{
+	output << "(" << p.getX() << ", " << p.getY() << ")";
+	output.flush();
+
+	return output;
+}
+
+std::ostream& VG::operator<<(std::ostream& output, const VG::Point& p)
 {
 	output << "(" << p.getX() << ", " << p.getY() << ")";
 	output.flush();

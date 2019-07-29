@@ -11,6 +11,72 @@ TEST(ctor, VectorGraphic)
     CHECK_EQUAL(false, vg.isOpen());
 }
 
+TEST(copyCtor, VectorGraphic)
+{
+	VG::VectorGraphic vg;
+	VG::Point p{ 9,3 };
+	vg.addPoint(p);
+	vg.openShape();
+
+	VG::VectorGraphic vg2(vg);
+
+	CHECK_EQUAL(vg, vg2);
+}
+
+TEST(moveCtor, VectorGraphic)
+{
+	VG::VectorGraphic vg;
+	VG::Point p{ 9,3 };
+	vg.addPoint(p);
+	vg.openShape();
+	VG::VectorGraphic vg2(std::move(vg));
+
+	CHECK_EQUAL(p, vg2.getPoint(0));
+	try
+	{
+		auto point = vg.getPoint(0);
+	}
+	catch (std::out_of_range& e)
+	{
+		CHECK_EQUAL("invalid vector<T> subscript", e.what())
+	}
+	CHECK_EQUAL(true, vg2.isOpen());
+	CHECK_EQUAL(true, vg.isClosed());
+}
+
+TEST(copyAssignment, VectorGraphic)
+{
+	VG::VectorGraphic vg;
+	VG::Point p{ 9,3 };
+	vg.addPoint(p);
+	vg.openShape();
+	VG::VectorGraphic vg2 = vg;
+
+	CHECK_EQUAL(vg, vg2);
+}
+
+TEST(moveAssignment, VectorGraphic)
+{
+	VG::VectorGraphic vg;
+	VG::Point p{ 9,3 };
+	vg.addPoint(p);
+	vg.openShape();
+	VG::VectorGraphic vg2;
+	vg2 = std::move(vg);
+
+	CHECK_EQUAL(p, vg2.getPoint(0));
+	try
+	{
+		auto point = vg.getPoint(0);
+	}
+	catch (std::out_of_range& e)
+	{
+		CHECK_EQUAL("invalid vector<T> subscript", e.what())
+	}
+	CHECK_EQUAL(true, vg2.isOpen());
+	CHECK_EQUAL(true, vg.isClosed());
+}
+
 TEST(defaultOpenness, VectorGraphic)
 {
 	VG::VectorGraphic vg;
@@ -54,7 +120,6 @@ TEST(erasePoint, VectorGraphic)
 	vg.erasePoint(0);
 	CHECK_EQUAL(VG::Point(3, 3), vg.getPoint(0));
 }
-
 
 TEST(erasePointOutOfRange, VectorGraphic)
 {
@@ -159,6 +224,14 @@ TEST(getPointRange, VectorGraphic)
 	{
 		CHECK_EQUAL("invalid vector<T> subscript", e.what())
 	}
+}
+
+TEST(getWidthHeightNoPoints, VectorGraphic)
+{
+	VG::VectorGraphic vg;
+
+	CHECK_EQUAL(0, vg.getWidth());
+	CHECK_EQUAL(0, vg.getHeight());
 }
 
 

@@ -10,7 +10,7 @@ namespace VG
 		constexpr Point(int initialX, int initialY) :x(initialX), y(initialY) {};
 
 		Point(const Point& other) = default;
-		Point(Point&& other) = default;
+		Point(Point&& other);
 
 		Point& operator=(const Point& other) = default;
 		Point& operator=(Point&& other) = default;
@@ -26,6 +26,7 @@ namespace VG
 		friend bool operator==(const VG::Point& lhs, const VG::Point& rhs);
 		friend bool operator!=(const VG::Point& lhs, const VG::Point& rhs);
 		friend std::ostream& operator<<(std::ostream& output, VG::Point& p);
+		friend std::ostream& operator<<(std::ostream& output, const VG::Point& p);
 
 	private:
 		int x{ 0 };

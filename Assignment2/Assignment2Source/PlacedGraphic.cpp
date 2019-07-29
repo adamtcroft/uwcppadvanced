@@ -1,5 +1,10 @@
 #include "PlacedGraphic.h"
 
+Framework::PlacedGraphic::PlacedGraphic()
+	:placementPoint(VG::Point(0,0)), graphic(VG::HVectorGraphic(new VG::VectorGraphic))
+{
+
+}
 Framework::PlacedGraphic::PlacedGraphic(VG::Point& p, VG::HVectorGraphic& vg)
 	:placementPoint(p), graphic(vg)
 {
@@ -67,8 +72,9 @@ bool Framework::operator!=(const PlacedGraphic& lhs, const PlacedGraphic& rhs)
 
 std::ostream& Framework::operator<<(std::ostream& output, Framework::PlacedGraphic& pg)
 {
-	output << pg.placementPoint;
-	output << pg.graphic;
+	auto g = *pg.graphic;
+	output << "Placement Point: " << pg.placementPoint << std::endl;
+	output << *pg.graphic;
 	output.flush();
 
 	return output;

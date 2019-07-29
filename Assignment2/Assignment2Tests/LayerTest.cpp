@@ -35,9 +35,48 @@ TEST(copyAssignment, Layer)
 
 TEST(moveAssignment, Layer)
 {
-	Framework::Layer myLayer = std::move(Framework::Layer("Test Alias"));
+	Framework::Layer myLayer("Placeholder");
+	Framework::Layer secondLayer("Test Alias");
+	myLayer = std::move(secondLayer);
 
 	CHECK_EQUAL("Test Alias", myLayer.getAlias());
+	CHECK_EQUAL("", secondLayer.getAlias())
+}
+
+TEST(pushBack, Layer)
+{
+	VG::HVectorGraphic vg(new VG::VectorGraphic);
+	Framework::Layer myLayer("Test Alias");
+	Framework::PlacedGraphic pg;
+	myLayer.pushBack(pg);
+
+	CHECK_EQUAL(pg, myLayer.getGraphic(0));
+}
+
+TEST(remove, Layer)
+{
+	VG::HVectorGraphic vg(new VG::VectorGraphic);
+	Framework::Layer myLayer("Test Alias");
+	Framework::PlacedGraphic pg(VG::Point{ 1,1 }, VG::HVectorGraphic(new VG::VectorGraphic));
+	Framework::PlacedGraphic pg2(VG::Point{ 0,0 }, VG::HVectorGraphic(new VG::VectorGraphic));
+	myLayer.pushBack(pg);
+	myLayer.pushBack(pg2);
+
+	CHECK_EQUAL(pg, myLayer.getGraphic(0));
+
+	myLayer.remove(pg);
+	std::cout << std::endl;
+
+	CHECK(pg != myLayer.getGraphic(0));
+}
+
+TEST(getGraphic, Layer)
+{
+	VG::HVectorGraphic vg(new VG::VectorGraphic);
+	Framework::Layer myLayer("Test Alias");
+	Framework::PlacedGraphic pg(VG::Point{ 0,0 }, vg);
+
+	CHECK_EQUAL(vg, pg.getGraphic());
 }
 
 TEST(setAlias, Layer)
@@ -56,34 +95,6 @@ TEST(getAlias, Layer)
 	Framework::Layer myLayer("Test Alias");
 
 	CHECK_EQUAL("Test Alias", myLayer.getAlias());
-}
-
-
-TEST(pushBack, Layer)
-{
-    VG::HVectorGraphic vg(new VG::VectorGraphic);
-	Framework::Layer myLayer("Test Alias");
-	Framework::PlacedGraphic pg;
-	myLayer.pushBack(pg);
-
-	CHECK_EQUAL(pg, myLayer.getGraphic(0));
-}
-
-TEST(remove, Layer)
-{
-    VG::HVectorGraphic vg(new VG::VectorGraphic);
-	Framework::Layer myLayer("Test Alias");
-	Framework::PlacedGraphic pg(VG::Point{ 1,1 }, VG::HVectorGraphic(new VG::VectorGraphic));
-	Framework::PlacedGraphic pg2(VG::Point{ 0,0 }, VG::HVectorGraphic(new VG::VectorGraphic));
-	myLayer.pushBack(pg);
-	myLayer.pushBack(pg2);
-
-	CHECK_EQUAL(pg, myLayer.getGraphic(0));
-
-	myLayer.remove(pg);
-	std::cout << std::endl;
-
-	CHECK(pg != myLayer.getGraphic(0));
 }
 
 TEST(equality, Layer)
@@ -107,7 +118,7 @@ TEST(outputStream, Layer)
 	Framework::Layer myLayer("Test Alias");
 	std::ostringstream oss;
 	oss << myLayer;
-	std::string myString = oss.str(); 
-		
+	std::string myString = oss.str();
+
 	CHECK_EQUAL("Test Alias", myString);
 }

@@ -8,7 +8,7 @@ namespace Framework
 	class PlacedGraphic
 	{
 	public:
-		PlacedGraphic() = default;
+		PlacedGraphic();
 		PlacedGraphic(VG::Point& p, VG::HVectorGraphic& vg);
 		PlacedGraphic(VG::Point&& p, VG::HVectorGraphic& vg);
 		PlacedGraphic(VG::Point&& p, VG::HVectorGraphic&& vg);

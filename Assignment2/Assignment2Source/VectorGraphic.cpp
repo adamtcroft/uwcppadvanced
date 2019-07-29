@@ -10,6 +10,27 @@ VG::VectorGraphic::~VectorGraphic()
 {
 }
 
+VG::VectorGraphic::VectorGraphic(VectorGraphic&& other)
+	:myPath(other.myPath), shapeOpenness(other.shapeOpenness)
+{
+	other.myPath.clear();
+	other.shapeOpenness = Openness::Closed;
+}
+
+VG::VectorGraphic& VG::VectorGraphic::operator=(VectorGraphic&& other)
+{
+	if (&other != this)
+	{
+		myPath = other.myPath;
+		other.myPath.clear();
+
+		shapeOpenness = other.shapeOpenness;
+		other.shapeOpenness = Openness::Closed;
+	}
+	return *this;
+
+}
+
 void VG::VectorGraphic::addPoint(const Point& p)
 {
 	myPath.push_back(p);
@@ -68,9 +89,14 @@ int VG::VectorGraphic::getWidth() const
 		coords.push_back(point.getX());
 	}
 
-	auto result = std::minmax_element(coords.begin(), coords.end());
+	if (coords.size() == 0)
+		return 0;
+	else
+	{
+		auto result = std::minmax_element(coords.begin(), coords.end());
 
-	return *result.second - *result.first;
+		return *result.second - *result.first;
+	}
 }
 
 int VG::VectorGraphic::getHeight() const
@@ -81,9 +107,14 @@ int VG::VectorGraphic::getHeight() const
 		coords.push_back(point.getY());
 	}
 
-	auto result = std::minmax_element(coords.begin(), coords.end());
+	if (coords.size() == 0)
+		return 0;
+	else
+	{
+		auto result = std::minmax_element(coords.begin(), coords.end());
 
-	return *result.second - *result.first;
+		return *result.second - *result.first;
+	}
 }
 
 int VG::VectorGraphic::getPointCount() const
@@ -113,7 +144,7 @@ bool VG::operator!=(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs)
 
 std::ostream& VG::operator<<(std::ostream& output, VG::VectorGraphic& vg)
 {
-	output << "VectorGraphic Openness: " << vg.isOpen() << std::endl;
+	output << "VectorGraphic Openness: " << (vg.isOpen() ? "open" : "closed") << std::endl;
 	output << "VectorGraphic Point Count: " << vg.getPointCount() << std::endl;
 	output << "VectorGraphic Width: " << vg.getWidth() << std::endl;
 	output << "VectorGraphic Height: " << vg.getHeight() << std::endl;

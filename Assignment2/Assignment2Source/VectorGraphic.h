@@ -13,10 +13,10 @@ namespace VG
 		VectorGraphic();
 
 		VectorGraphic(const VectorGraphic& other) = default;
-		VectorGraphic(VectorGraphic&& other) = default;
+		VectorGraphic(VectorGraphic&& other);
 
 		VectorGraphic& operator=(const VectorGraphic& other) = default;
-		VectorGraphic& operator=(VectorGraphic&& other) = default;
+		VectorGraphic& operator=(VectorGraphic&& other);
 
 		~VectorGraphic();
 

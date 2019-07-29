@@ -1,7 +1,6 @@
 #include "Scene.h"
 #include "TestHarness.h"
 #include <algorithm>
-#include "SceneTest.h"
 
 struct LayerMatcher
 {

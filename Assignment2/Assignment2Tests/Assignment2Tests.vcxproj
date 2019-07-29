@@ -164,10 +164,6 @@
       <Project>{f23b2a2b-8ad6-4dd3-819d-02ecc91953a3}</Project>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="PlacedGraphicTest.h" />
-    <ClInclude Include="SceneTest.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
