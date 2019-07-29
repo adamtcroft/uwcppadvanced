@@ -12,6 +12,35 @@ TEST(ctor, PlacedGraphic)
     CHECK_EQUAL(vg, pg.getGraphic());
 }
 
+TEST(lValuesCtor, PlacedGraphic)
+{
+    VG::HVectorGraphic vg(new VG::VectorGraphic);
+	VG::Point p(44, 55);
+    Framework::PlacedGraphic pg(p, vg);
+
+    constexpr VG::Point expected(44, 55);
+    CHECK_EQUAL(expected, pg.getPlacementPoint());
+    CHECK_EQUAL(vg, pg.getGraphic());
+}
+
+TEST(rValuesCtor, PlacedGraphic)
+{
+    Framework::PlacedGraphic pg(VG::Point(44,55), VG::HVectorGraphic(new VG::VectorGraphic));
+
+    constexpr VG::Point expected(44, 55);
+	auto vg = pg.getGraphic();
+    CHECK_EQUAL(expected, pg.getPlacementPoint());
+    CHECK_EQUAL(vg, pg.getGraphic());
+}
+
+TEST(copyAssignment, PlacedGraphic)
+{
+    Framework::PlacedGraphic pg(VG::Point(44,55), VG::HVectorGraphic(new VG::VectorGraphic));
+	auto pg2 = pg;
+
+	CHECK_EQUAL(pg, pg2);
+}
+
 TEST(setPlacementPoint, PlacedGraphic)
 {
     Framework::PlacedGraphic graphic;
@@ -38,6 +67,27 @@ TEST(copyCtor, PlacedGraphic)
 	Framework::PlacedGraphic pg2(pg);
 
 	CHECK_EQUAL(pg, pg2);
+}
+
+TEST(moveCtor, PlacedGraphic)
+{
+	Framework::PlacedGraphic pg(VG::Point{ 1,1 }, VG::HVectorGraphic(new VG::VectorGraphic));
+	Framework::PlacedGraphic pg2(std::move(pg));
+
+	CHECK(pg != pg2);
+}
+
+TEST(moveAssignment, PlacedGraphic)
+{
+	VG::HVectorGraphic vg(new VG::VectorGraphic);
+	Framework::PlacedGraphic pg(VG::Point{ 1,1 }, vg);
+	Framework::PlacedGraphic pg2;
+	pg2 = std::move(pg);
+
+	CHECK_EQUAL(VG::Point(1,1), pg2.getPlacementPoint());
+	CHECK_EQUAL(VG::Point(), pg.getPlacementPoint());
+	CHECK_EQUAL(vg, pg2.getGraphic());
+	CHECK(pg.getGraphic() == nullptr);
 }
 
 TEST(equality, PlacedGraphic)
@@ -76,13 +126,3 @@ TEST(sharedPtr, HVectorGraphic)
 
 	CHECK_EQUAL(pg.getGraphic(), pg2.getGraphic());
 }
-
-// TEST RVALUE CTOR!
-/*
-TEST(rValueCopyCtor, PlacedGraphic)
-{
-	Framework::PlacedGraphic pg(Framework::PlacedGraphic());
-	Framework::PlacedGraphic pg2;
-	CHECK_EQUAL(pg2, pg);
-}
-*/

@@ -67,3 +67,78 @@ TEST(remove, Scene)
     LayerMatcher matcher = std::for_each(scene.begin(), scene.end(), LayerMatcher());
     CHECK(matcher.onlyMountainsSkyFound());
 }
+
+TEST(setWidth, Scene)
+{
+	Framework::Scene scene(800, 600);
+
+	CHECK_EQUAL(800, scene.getWidth());
+
+	scene.setWidth(200);
+
+	CHECK_EQUAL(200, scene.getWidth());
+}
+
+TEST(getWidth, Scene)
+{
+	Framework::Scene scene(800, 600);
+
+	CHECK_EQUAL(800, scene.getWidth());
+}
+
+TEST(setHeigh, Scene)
+{
+	Framework::Scene scene(800, 600);
+
+	CHECK_EQUAL(600, scene.getHeight());
+
+	scene.setHeight(200);
+
+	CHECK_EQUAL(200, scene.getHeight());
+}
+
+TEST(getHeigh, Scene)
+{
+	Framework::Scene scene(800, 600);
+
+	CHECK_EQUAL(600, scene.getHeight());
+}
+
+TEST(ctor, Scene)
+{
+	Framework::Scene scene(800, 600);
+
+	CHECK_EQUAL(800, scene.getWidth());
+	CHECK_EQUAL(600, scene.getHeight());
+}
+
+TEST(copyCtor, Scene)
+{
+	Framework::Scene scene(800, 600);
+
+	Framework::Scene secondScene(scene);
+
+	CHECK_EQUAL(scene, secondScene);
+}
+
+TEST(copyAssignment, Scene)
+{
+	Framework::Scene scene(800, 600);
+
+	Framework::Scene secondScene = scene;
+
+	CHECK_EQUAL(scene, secondScene);
+}
+
+TEST(moveAssignment, Scene)
+{
+	Framework::Scene scene(800, 600);
+
+	Framework::Scene secondScene(400, 300);
+	secondScene = std::move(scene);
+
+	CHECK_EQUAL(800, secondScene.getWidth());
+	CHECK_EQUAL(600, secondScene.getHeight());
+	CHECK_EQUAL(0, scene.getHeight());
+	CHECK_EQUAL(0, scene.getWidth());
+}

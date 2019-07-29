@@ -6,13 +6,33 @@ Framework::PlacedGraphic::PlacedGraphic(VG::Point& p, VG::HVectorGraphic& vg)
 }
 
 Framework::PlacedGraphic::PlacedGraphic(VG::Point&& p, VG::HVectorGraphic& vg)
-	:placementPoint(p), graphic(vg)
+	:placementPoint(std::move(p)), graphic(vg)
 {
 }
 
 Framework::PlacedGraphic::PlacedGraphic(VG::Point&& p, VG::HVectorGraphic&& vg)
 	:placementPoint(p), graphic(vg)
 {
+}
+
+Framework::PlacedGraphic::PlacedGraphic(PlacedGraphic&& other)
+	:placementPoint(std::move(other.placementPoint)), graphic(std::move(other.graphic))
+{
+	other.placementPoint = VG::Point();
+	other.graphic = nullptr;
+}
+
+Framework::PlacedGraphic& Framework::PlacedGraphic::operator=(PlacedGraphic&& other)
+{
+	if (&other != this)
+	{
+		placementPoint = other.placementPoint;
+		other.placementPoint = VG::Point();
+
+		graphic = other.graphic;
+		other.graphic = nullptr;
+	}
+	return *this;
 }
 
 void Framework::PlacedGraphic::setPlacementPoint(VG::Point const& placement)
@@ -47,9 +67,8 @@ bool Framework::operator!=(const PlacedGraphic& lhs, const PlacedGraphic& rhs)
 
 std::ostream& Framework::operator<<(std::ostream& output, Framework::PlacedGraphic& pg)
 {
-	VG::Point point = pg.getPlacementPoint();
-	output << point;
-	output << pg.getGraphic();
+	output << pg.placementPoint;
+	output << pg.graphic;
 	output.flush();
 
 	return output;

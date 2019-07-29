@@ -10,6 +10,36 @@ TEST(ctor, Layer)
 	CHECK_EQUAL("Test Alias", myLayer.getAlias());
 }
 
+TEST(copyCtor, Layer)
+{
+	Framework::Layer myLayer("Test Alias");
+	Framework::Layer mySecondLayer(myLayer);
+
+	CHECK_EQUAL("Test Alias", mySecondLayer.getAlias());
+}
+
+TEST(moveConstructor, Layer)
+{
+	Framework::Layer mySecondLayer(std::move(Framework::Layer("Test Alias")));
+
+	CHECK_EQUAL("Test Alias", mySecondLayer.getAlias());
+}
+
+TEST(copyAssignment, Layer)
+{
+	Framework::Layer myLayer("Test Alias");
+	Framework::Layer mySecondLayer = myLayer;
+
+	CHECK_EQUAL(myLayer, mySecondLayer);
+}
+
+TEST(moveAssignment, Layer)
+{
+	Framework::Layer myLayer = std::move(Framework::Layer("Test Alias"));
+
+	CHECK_EQUAL("Test Alias", myLayer.getAlias());
+}
+
 TEST(setAlias, Layer)
 {
 	Framework::Layer myLayer("Test Alias");
@@ -28,35 +58,6 @@ TEST(getAlias, Layer)
 	CHECK_EQUAL("Test Alias", myLayer.getAlias());
 }
 
-TEST(copyCtor, Layer)
-{
-	Framework::Layer myLayer("Test Alias");
-	Framework::Layer mySecondLayer(myLayer);
-
-	CHECK_EQUAL("Test Alias", mySecondLayer.getAlias());
-}
-
-TEST(rValueCopyCtor, Layer)
-{
-	Framework::Layer mySecondLayer(Framework::Layer("Test Alias"));
-
-	CHECK_EQUAL("Test Alias", mySecondLayer.getAlias());
-}
-
-TEST(copyAssignment, Layer)
-{
-	Framework::Layer myLayer("Test Alias");
-	Framework::Layer mySecondLayer = myLayer;
-
-	CHECK_EQUAL(myLayer, mySecondLayer);
-}
-
-TEST(rValueCopyAssignment, Layer)
-{
-	Framework::Layer myLayer = Framework::Layer("Test Alias");
-
-	CHECK_EQUAL("Test Alias", myLayer.getAlias());
-}
 
 TEST(pushBack, Layer)
 {

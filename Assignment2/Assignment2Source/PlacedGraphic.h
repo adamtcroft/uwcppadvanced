@@ -13,12 +13,11 @@ namespace Framework
 		PlacedGraphic(VG::Point&& p, VG::HVectorGraphic& vg);
 		PlacedGraphic(VG::Point&& p, VG::HVectorGraphic&& vg);
 
-		//Test These
 		PlacedGraphic(const PlacedGraphic& other) = default;
-		PlacedGraphic(PlacedGraphic&& other) = default;
+		PlacedGraphic(PlacedGraphic&& other);
 
 		PlacedGraphic& operator=(const PlacedGraphic& other) = default;
-		PlacedGraphic& operator=(PlacedGraphic&& other) = default;
+		PlacedGraphic& operator=(PlacedGraphic&& other);
 
 		~PlacedGraphic() = default;
 
