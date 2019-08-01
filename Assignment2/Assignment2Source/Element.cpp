@@ -2,18 +2,33 @@
 
 namespace Xml
 {
-	void Element::setAttribute(const std::string& name, const std::string& value)
+	void Element::setName(const std::string& initialName)
 	{
-		attributes[name] = value;
+		name = initialName;
 	}
 
-	std::string const& Element::getAttribute(const std::string& name)
+	void Element::setAttribute(const std::string& key, const std::string& value)
 	{
-		return attributes[name];
+		attributes[key] = value;
 	}
 
-	std::string const& Element::getName() 
+	std::string const& Element::getAttribute(const std::string& key)
 	{
-		return attributes["name"];
+		return attributes[key];
+	}
+
+	AttributeMap const& Element::getAttributes() const
+	{
+		return attributes;
+	}
+
+	Element::ElementList Element::getChildElements()
+	{
+
+	}
+
+	std::string const& Element::getName() const
+	{
+		return name;
 	}
 }
