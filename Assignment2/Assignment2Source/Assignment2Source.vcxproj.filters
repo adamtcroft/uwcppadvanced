@@ -36,9 +36,6 @@
     <ClInclude Include="Layer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="XmlReader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SceneReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -65,14 +62,14 @@
     <ClCompile Include="Layer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="XmlReader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SceneReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Element.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="XmlReader.h">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
