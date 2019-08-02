@@ -3,6 +3,7 @@
 #include <sstream>
 #include <memory>
 #include <tinyxml2.h>
+#include <iostream>
 #include "Element.h"
 
 namespace Xml
@@ -15,19 +16,23 @@ namespace Xml
 		static void recurse(tinyxml2::XMLElement& docRoot, HElement& rootElement)
 		{
 			rootElement->setName(docRoot.Value());
+			std::cout << rootElement->getName() << std::endl;
 
 			auto attribute = docRoot.FirstAttribute();
 			while (attribute != nullptr)
 			{
 				rootElement->setAttribute(attribute->Name(), attribute->Value());
+				std::cout << "Added attribute " << attribute->Name() << " " << attribute->Value() << std::endl;
 				attribute = attribute->Next();
 			}
+				std::cout << std::endl;
 
 			auto child = docRoot.FirstChildElement();
 			while (child != nullptr)
 			{
 				HElement childElement = std::make_unique<Element>();
 				rootElement->addChild(childElement);
+				std::cout << "Adding Child Element" << std::endl;
 				recurse(*child, childElement);
 				child = child->FirstChildElement();
 			}

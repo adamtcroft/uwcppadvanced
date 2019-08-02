@@ -1,5 +1,6 @@
 #include "Element.h"
 #include "tinyxml2.h"
+#include <iostream>
 
 namespace Xml
 {
@@ -15,7 +16,8 @@ namespace Xml
 
 	void Element::addChild(std::unique_ptr<Element>& child)
 	{
-		childElements.push_back(child);
+		std::cout << "in add child" << std::endl;
+		//childElements.push_back(child);
 	}
 
 	std::string const Element::getAttribute(const std::string& key)
