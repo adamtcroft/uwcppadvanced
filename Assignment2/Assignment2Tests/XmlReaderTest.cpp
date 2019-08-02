@@ -51,8 +51,8 @@ TEST(loadXml, XmlReader)
     CHECK_EQUAL("600", attributes["height"])
 
     Xml::ElementList children = root->getChildElements();
-    //CHECK(!children.empty());
-    //CHECK_EQUAL(2, children.size());
+    CHECK(!children.empty());
+    CHECK_EQUAL(2, children.size());
 
     //Xml::HElement layer0 = children[0];
     //CHECK_EQUAL("Layer", layer0->getName());

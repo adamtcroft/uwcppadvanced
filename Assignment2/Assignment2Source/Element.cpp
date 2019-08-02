@@ -1,4 +1,5 @@
 #include "Element.h"
+#include "tinyxml2.h"
 
 namespace Xml
 {
@@ -12,9 +13,13 @@ namespace Xml
 		attributes[key] = value;
 	}
 
-	std::string const& Element::getAttribute(const std::string& key)
+	std::string const Element::getAttribute(const std::string& key)
 	{
-		return attributes[key];
+		auto result = attributes.find(key);
+		if (result != attributes.end())
+			return attributes[key];
+		else
+			return "";
 	}
 
 	AttributeMap const& Element::getAttributes() const
@@ -22,13 +27,24 @@ namespace Xml
 		return attributes;
 	}
 
-	Element::ElementList Element::getChildElements()
+	std::list<std::unique_ptr<Element>> const Element::getChildElements() const
 	{
-
+		std::list<std::unique_ptr<Element>> list;
+		return list;
 	}
 
 	std::string const& Element::getName() const
 	{
 		return name;
 	}
+
+// Get the element
+// Ge the element's name
+// Get the element's attributes
+// Check for child element
+	// if child element, go to step one
+	// else check for siblings
+		// if siblings, go to step one
+	// go back up
+		
 }

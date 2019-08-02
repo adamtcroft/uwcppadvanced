@@ -9,7 +9,6 @@ namespace Xml
 
 	class Element
 	{
-	using ElementList = std::list<Element>;
 	public:
 		Element() = default;
 		~Element() = default;
@@ -17,14 +16,15 @@ namespace Xml
 		void setName(const std::string& initialName);
 		void setAttribute(const std::string& key, const std::string& value);
 
-		std::string const& getAttribute(const std::string& key);
+		std::string const getAttribute(const std::string& key);
 		AttributeMap const& getAttributes() const;
-		ElementList getChildElements();
+		std::list<std::unique_ptr<Element>> const getChildElements() const;
 		std::string const& getName() const;
 
 	private:
 		std::string name;
-		ElementList childElements;
+		std::list<std::unique_ptr<Element>> childElements;
 		AttributeMap attributes;
 	};
+
 }
