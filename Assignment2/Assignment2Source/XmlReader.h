@@ -23,14 +23,14 @@ namespace Xml
 				attribute = attribute->Next();
 			}
 
-			//auto child = docRoot.FirstChildElement();
-			//while (child != nullptr)
-			//{
-			//	HElement childElement = std::make_unique<Element>();
-			//	rootElement->addChild(childElement);
-			//	recurse(*child, childElement);
-			//	child = child->FirstChildElement();
-			//}
+			auto child = docRoot.FirstChildElement();
+			while (child != nullptr)
+			{
+				HElement childElement = std::make_unique<Element>();
+				rootElement->addChild(childElement);
+				recurse(*child, childElement);
+				child = child->FirstChildElement();
+			}
 
 			//auto sibling = docRoot.NextSiblingElement();
 			//while (sibling != nullptr)

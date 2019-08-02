@@ -13,6 +13,11 @@ namespace Xml
 		attributes[key] = value;
 	}
 
+	void Element::addChild(std::unique_ptr<Element>& child)
+	{
+		childElements.push_back(child);
+	}
+
 	std::string const Element::getAttribute(const std::string& key)
 	{
 		auto result = attributes.find(key);

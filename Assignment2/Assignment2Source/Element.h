@@ -15,6 +15,7 @@ namespace Xml
 
 		void setName(const std::string& initialName);
 		void setAttribute(const std::string& key, const std::string& value);
+		void addChild(std::unique_ptr<Element>& child);
 
 		std::string const getAttribute(const std::string& key);
 		AttributeMap const& getAttributes() const;
