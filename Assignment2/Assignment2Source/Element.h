@@ -15,16 +15,16 @@ namespace Xml
 
 		void setName(const std::string& initialName);
 		void setAttribute(const std::string& key, const std::string& value);
-		void addChild(std::unique_ptr<Element>& child);
+		void addChild(std::shared_ptr<Element>& child);
 
 		std::string const getAttribute(const std::string& key);
 		AttributeMap const& getAttributes() const;
-		std::list<std::unique_ptr<Element>> const getChildElements() const;
+		std::list<std::shared_ptr<Element>> const getChildElements() const;
 		std::string const& getName() const;
 
 	private:
 		std::string name;
-		std::list<std::unique_ptr<Element>> childElements;
+		std::list<std::shared_ptr<Element>> childElements;
 		AttributeMap attributes;
 	};
 

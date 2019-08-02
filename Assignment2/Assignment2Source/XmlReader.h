@@ -8,7 +8,7 @@
 
 namespace Xml
 {
-	using HElement = std::unique_ptr<Element>;
+	using HElement = std::shared_ptr<Element>;
 	using ElementList = std::list<HElement>;
 
 	namespace Reader
@@ -34,17 +34,18 @@ namespace Xml
 				rootElement->addChild(childElement);
 				std::cout << "Adding Child Element" << std::endl;
 				recurse(*child, childElement);
-				child = child->FirstChildElement();
+				break;
 			}
 
-			//auto sibling = docRoot.NextSiblingElement();
-			//while (sibling != nullptr)
-			//{
-			//	HElement siblingElement = std::make_unique<Element>();
-			//	rootElement->addChild(siblingElement);
-			//	recurse(*sibling, rootElement);
-			//	sibling = sibling->NextSiblingElement();
-			//}
+			auto sibling = docRoot.NextSiblingElement();
+			while (sibling != nullptr)
+			{
+				HElement siblingElement = std::make_unique<Element>();
+				rootElement->addChild(siblingElement);
+				std::cout << "Adding Sibling Element" << std::endl;
+				recurse(*sibling, rootElement);
+				break;
+			}
 		}
 
 		static HElement loadXml(std::stringstream& xmlStream)

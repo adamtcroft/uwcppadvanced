@@ -14,10 +14,9 @@ namespace Xml
 		attributes[key] = value;
 	}
 
-	void Element::addChild(std::unique_ptr<Element>& child)
+	void Element::addChild(std::shared_ptr<Element>& child)
 	{
-		std::cout << "in add child" << std::endl;
-		//childElements.push_back(child);
+		childElements.push_back(child);
 	}
 
 	std::string const Element::getAttribute(const std::string& key)
@@ -34,9 +33,9 @@ namespace Xml
 		return attributes;
 	}
 
-	std::list<std::unique_ptr<Element>> const Element::getChildElements() const
+	std::list<std::shared_ptr<Element>> const Element::getChildElements() const
 	{
-		std::list<std::unique_ptr<Element>> list;
+		std::list<std::shared_ptr<Element>> list;
 		return list;
 	}
 
