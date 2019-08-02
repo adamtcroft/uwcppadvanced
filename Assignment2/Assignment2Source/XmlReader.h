@@ -4,16 +4,17 @@
 #include <memory>
 #include <tinyxml2.h>
 #include <iostream>
+#include <vector>
 #include "Element.h"
 
 namespace Xml
 {
 	using HElement = std::shared_ptr<Element>;
-	using ElementList = std::list<HElement>;
+	using ElementList = std::vector<HElement>;
 
 	namespace Reader
 	{
-		static void recurse(tinyxml2::XMLElement& docRoot, HElement& rootElement)
+		static void loadElements(tinyxml2::XMLElement& docRoot, HElement& rootElement)
 		{
 			rootElement->setName(docRoot.Value());
 			std::cout << rootElement->getName() << std::endl;
@@ -33,7 +34,7 @@ namespace Xml
 				HElement childElement = std::make_unique<Element>();
 				rootElement->addChild(childElement);
 				std::cout << "Adding Child Element" << std::endl;
-				recurse(*child, childElement);
+				loadElements(*child, childElement);
 				break;
 			}
 
@@ -43,7 +44,7 @@ namespace Xml
 				HElement siblingElement = std::make_unique<Element>();
 				rootElement->addChild(siblingElement);
 				std::cout << "Adding Sibling Element" << std::endl;
-				recurse(*sibling, rootElement);
+				loadElements(*sibling, rootElement);
 				break;
 			}
 		}
@@ -56,7 +57,7 @@ namespace Xml
 
 			HElement rootElement = std::make_unique<Element>();
 
-			recurse(*docRoot, rootElement);
+			loadElements(*docRoot, rootElement);
 
 			return rootElement;
 		}

@@ -54,8 +54,8 @@ TEST(loadXml, XmlReader)
     CHECK(!children.empty());
     CHECK_EQUAL(2, children.size());
 
-    //Xml::HElement layer0 = children[0];
-    //CHECK_EQUAL("Layer", layer0->getName());
+    Xml::HElement layer0 = children[0];
+    CHECK_EQUAL("Layer", layer0->getName());
     //attributes = layer0->getAttributes();
     //CHECK(!attributes.empty());
     //CHECK_EQUAL(1, attributes.size());

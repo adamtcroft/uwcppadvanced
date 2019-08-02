@@ -33,24 +33,13 @@ namespace Xml
 		return attributes;
 	}
 
-	std::list<std::shared_ptr<Element>> const Element::getChildElements() const
+	std::vector<std::shared_ptr<Element>> Element::getChildElements()
 	{
-		std::list<std::shared_ptr<Element>> list;
-		return list;
+		return childElements;
 	}
 
 	std::string const& Element::getName() const
 	{
 		return name;
 	}
-
-// Get the element
-// Ge the element's name
-// Get the element's attributes
-// Check for child element
-	// if child element, go to step one
-	// else check for siblings
-		// if siblings, go to step one
-	// go back up
-		
 }

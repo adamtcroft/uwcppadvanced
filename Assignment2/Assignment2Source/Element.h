@@ -1,5 +1,6 @@
 #pragma once
 #include <list>
+#include <vector>
 #include <map>
 #include <string>
 
@@ -19,12 +20,12 @@ namespace Xml
 
 		std::string const getAttribute(const std::string& key);
 		AttributeMap const& getAttributes() const;
-		std::list<std::shared_ptr<Element>> const getChildElements() const;
+		std::vector<std::shared_ptr<Element>> getChildElements();
 		std::string const& getName() const;
 
 	private:
 		std::string name;
-		std::list<std::shared_ptr<Element>> childElements;
+		std::vector<std::shared_ptr<Element>> childElements;
 		AttributeMap attributes;
 	};
 
