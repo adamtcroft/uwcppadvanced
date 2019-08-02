@@ -25,6 +25,9 @@ namespace Framework
 		void pushBack(PlacedGraphic& pg);
 		void remove(PlacedGraphic& pg);
 
+		PlacedGraphicIterator begin();
+		PlacedGraphicIterator end();
+
 		PlacedGraphic const& getGraphic(const int& index);
 
 		void setAlias(const std::string& referenceAlias);
@@ -34,7 +37,7 @@ namespace Framework
 		friend bool operator!=(const Layer& lhs, const Layer& rhs);
 		friend std::ostream& operator<<(std::ostream& output, Framework::Layer& layer);
 
-		//insert, remove, iteration
+		using PlacedGraphicIterator = PlacedGraphicCollection::iterator;
 
 	private:
 		PlacedGraphicCollection graphics;

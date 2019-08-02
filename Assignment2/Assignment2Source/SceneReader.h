@@ -1,8 +1,16 @@
 #pragma once
-class SceneReader
+#include "Scene.h"
+#include "XmlReader.h"
+
+namespace Framework
 {
-public:
-	SceneReader();
-	~SceneReader();
-};
+	class SceneReader
+	{
+	public:
+		SceneReader();
+		~SceneReader();
+
+		static Framework::Scene readScene(Xml::Element& root);
+	};
+}
 

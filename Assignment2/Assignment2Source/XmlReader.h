@@ -14,37 +14,32 @@ namespace Xml
 
 	namespace Reader
 	{
-		static void loadElements(tinyxml2::XMLElement& docRoot, HElement& rootElement)
+		static void loadElements(tinyxml2::XMLElement& tinyXMLElement, HElement& currentElement, HElement parentElement = nullptr)
 		{
-			rootElement->setName(docRoot.Value());
-			std::cout << rootElement->getName() << std::endl;
+			currentElement->setName(tinyXMLElement.Value());
 
-			auto attribute = docRoot.FirstAttribute();
-			while (attribute != nullptr)
+			auto tinyXMLAttribute = tinyXMLElement.FirstAttribute();
+			while (tinyXMLAttribute != nullptr)
 			{
-				rootElement->setAttribute(attribute->Name(), attribute->Value());
-				std::cout << "Added attribute " << attribute->Name() << " " << attribute->Value() << std::endl;
-				attribute = attribute->Next();
+				currentElement->setAttribute(tinyXMLAttribute->Name(), tinyXMLAttribute->Value());
+				tinyXMLAttribute = tinyXMLAttribute->Next();
 			}
-				std::cout << std::endl;
 
-			auto child = docRoot.FirstChildElement();
-			while (child != nullptr)
+			auto tinyXMLChild = tinyXMLElement.FirstChildElement();
+			while (tinyXMLChild != nullptr)
 			{
 				HElement childElement = std::make_unique<Element>();
-				rootElement->addChild(childElement);
-				std::cout << "Adding Child Element" << std::endl;
-				loadElements(*child, childElement);
+				currentElement->addChild(childElement);
+				loadElements(*tinyXMLChild, childElement, currentElement);
 				break;
 			}
 
-			auto sibling = docRoot.NextSiblingElement();
-			while (sibling != nullptr)
+			auto tinyXMLSibling = tinyXMLElement.NextSiblingElement();
+			while (tinyXMLSibling != nullptr)
 			{
 				HElement siblingElement = std::make_unique<Element>();
-				rootElement->addChild(siblingElement);
-				std::cout << "Adding Sibling Element" << std::endl;
-				loadElements(*sibling, rootElement);
+				parentElement->addChild(siblingElement);
+				loadElements(*tinyXMLSibling, siblingElement, parentElement);
 				break;
 			}
 		}
@@ -52,6 +47,7 @@ namespace Xml
 		static HElement loadXml(std::stringstream& xmlStream)
 		{
 			tinyxml2::XMLDocument document;
+
 			auto result = document.Parse(xmlStream.str().c_str());
 			auto docRoot = document.RootElement();
 
@@ -63,12 +59,3 @@ namespace Xml
 		}
 	}
 }
-
-// Get the element
-// Ge the element's name
-// Get the element's attributes
-// Check for child element
-	// if child element, go to step one
-	// else check for siblings
-		// if siblings, go to step one
-	// go back up

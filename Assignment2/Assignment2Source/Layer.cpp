@@ -1,4 +1,5 @@
 #include "Layer.h"
+#include "PlacedGraphic.h"
 
 Framework::Layer::Layer(std::string&& initialAlias)
 	:alias(initialAlias)
@@ -19,6 +20,16 @@ void Framework::Layer::remove(PlacedGraphic& pg)
 		throw std::out_of_range("The graphic provided does not exist.");
 	else
 		graphics.erase(result);
+}
+
+Framework::PlacedGraphicCollection::iterator Framework::Layer::begin()
+{
+	return graphics.begin();
+}
+
+Framework::PlacedGraphicCollection::iterator Framework::Layer::end()
+{
+	return graphics.end();
 }
 
 Framework::PlacedGraphic const& Framework::Layer::getGraphic(const int& index) 

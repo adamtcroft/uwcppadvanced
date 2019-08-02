@@ -1,9 +1,9 @@
-/*
 #include "XmlReader.h"
 #include "Element.h"
 #include "Scene.h"
 #include "SceneReader.h"
 #include "TestHarness.h"
+#include "Layer.h"
 
 const std::string TestXml = R"(
 <Scene width="800" height="600">
@@ -48,7 +48,7 @@ TEST(ReadScene, SceneReader)
     CHECK_EQUAL(600, s.getHeight());
 
     int numberOfLayers = 0;
-    for (auto pos = s.begin(); pos != s.end(); ++numberOfLayers, ++pos)
+    for (Framework::LayerIterator pos = s.begin(); pos != s.end(); ++numberOfLayers, ++pos)
     {
         auto layer = (*pos);
         if (numberOfLayers == 0)
@@ -63,17 +63,17 @@ TEST(ReadScene, SceneReader)
                 {
                     CHECK_EQUAL(VG::Point(0, 0), (*graphic).getPlacementPoint());
                     auto vg = (*graphic).getGraphic();
-                    CHECK_EQUAL(true, vg.isClosed());
-                    CHECK_EQUAL(3, vg.getPointCount());
-                    CHECK_EQUAL(VG::Point(1, 2), vg.getPoint(0));
-                    CHECK_EQUAL(VG::Point(3, 4), vg.getPoint(1));
-                    CHECK_EQUAL(VG::Point(5, 6), vg.getPoint(2));
+                    CHECK_EQUAL(true, vg->isClosed());
+                    CHECK_EQUAL(3, vg->getPointCount());
+                    CHECK_EQUAL(VG::Point(1, 2), vg->getPoint(0));
+                    CHECK_EQUAL(VG::Point(3, 4), vg->getPoint(1));
+                    CHECK_EQUAL(VG::Point(5, 6), vg->getPoint(2));
                 }
                 else if (iGraphic == 1)
                 {
                     CHECK_EQUAL(VG::Point(700, 0), (*graphic).getPlacementPoint());
                     auto vg = (*graphic).getGraphic();
-                    CHECK_EQUAL(false, vg.isClosed());
+                    CHECK_EQUAL(false, vg->isClosed());
                 }
             }
 
@@ -97,4 +97,3 @@ TEST(ReadScene, SceneReader)
     // Expect 2 layers
     CHECK_EQUAL(2, numberOfLayers);
 }
-*/
