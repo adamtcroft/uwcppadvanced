@@ -1,7 +1,7 @@
 #include "Layer.h"
 #include "PlacedGraphic.h"
 
-Framework::Layer::Layer(std::string&& initialAlias)
+Framework::Layer::Layer(std::string initialAlias)
 	:alias(initialAlias)
 {
 

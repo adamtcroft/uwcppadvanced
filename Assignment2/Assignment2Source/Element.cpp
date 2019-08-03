@@ -42,4 +42,9 @@ namespace Xml
 	{
 		return name;
 	}
+
+	std::shared_ptr<Element> Element::operator[](int i)
+	{
+		return childElements[i];
+	}
 }

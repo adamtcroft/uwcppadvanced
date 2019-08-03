@@ -12,7 +12,7 @@ namespace Framework
 	class Scene
 	{
 	public:
-		Scene() = delete;
+		Scene() = default;
 		Scene(int initialWidth, int initialHeight);
 
 		Scene(const Scene& other) = default;
@@ -25,7 +25,7 @@ namespace Framework
 
 		//insert, remove, iteration support
 		
-		void pushBack(Layer&& layer);
+		void pushBack(Layer layer);
 		void remove(const Layer&& layer);
 
 		LayerIterator begin();

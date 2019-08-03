@@ -21,7 +21,7 @@ Framework::Scene& Framework::Scene::operator=(Scene&& other)
 	return *this;
 }
 
-void Framework::Scene::pushBack(Layer&& layer)
+void Framework::Scene::pushBack(Layer layer)
 {
 	layers.push_back(layer);
 }

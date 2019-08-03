@@ -12,7 +12,7 @@ namespace Framework
 	{
 	public:
 		Layer() = delete;
-		Layer(std::string&& initialAlias);
+		Layer(std::string initialAlias);
 
 		Layer(const Layer& other) = default;
 		Layer(Layer&& other) = default;

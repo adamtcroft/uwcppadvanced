@@ -48,7 +48,7 @@ TEST(ReadScene, SceneReader)
     CHECK_EQUAL(600, s.getHeight());
 
     int numberOfLayers = 0;
-    for (Framework::LayerIterator pos = s.begin(); pos != s.end(); ++numberOfLayers, ++pos)
+    for (auto pos = s.begin(); pos != s.end(); ++numberOfLayers, ++pos)
     {
         auto layer = (*pos);
         if (numberOfLayers == 0)

@@ -5,6 +5,7 @@ Framework::PlacedGraphic::PlacedGraphic()
 {
 
 }
+
 Framework::PlacedGraphic::PlacedGraphic(VG::Point& p, VG::HVectorGraphic& vg)
 	:placementPoint(p), graphic(vg)
 {

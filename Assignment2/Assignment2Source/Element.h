@@ -23,6 +23,8 @@ namespace Xml
 		std::vector<std::shared_ptr<Element>> getChildElements();
 		std::string const& getName() const;
 
+		std::shared_ptr<Element> operator[](int i);
+
 	private:
 		std::string name;
 		std::vector<std::shared_ptr<Element>> childElements;
