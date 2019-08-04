@@ -142,6 +142,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssignmentTests.cpp" />
+    <ClCompile Include="ElementTests.cpp" />
     <ClCompile Include="LayerTest.cpp" />
     <ClCompile Include="ParseTest.cpp" />
     <ClCompile Include="PlacedGraphicTest.cpp" />

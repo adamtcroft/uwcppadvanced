@@ -22,7 +22,8 @@ namespace Framework
 		static Xml::HElement writeScene(Scene& scene);
 
 	private:
-		static void buildSceneChildren(LayerIterator iterator, Xml::HElement result);
+		static void writeLayers(LayerIterator iterator, Xml::HElement result);
+		static void writePlacedGraphics(PlacedGraphicIterator iterator, Xml::HElement layer);
 	};
 }
 
