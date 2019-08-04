@@ -287,22 +287,3 @@ TEST(toXml, VectorGraphic)
     
     CHECK(vg1 == vg2);
 }
-
-std::string testXML = R"(
-<VectorGraphic closed="true">
-<Point x="0" y="0"/>
-<Point x="10" y="0">
-</Point>
-<Point x="10" y="10"/>
-<Point x="0" y="10"/>
-)";
-
-TEST(validXML, VectorGraphic)
-{
-	std::stringstream sstr(testXML);
-
-	auto vg = VG::VectorGraphicStreamer::fromXml(sstr);
-	VG::VectorGraphic control;
-
-	CHECK_EQUAL(vg, control);
-}

@@ -86,6 +86,9 @@
     <ClCompile Include="VectorGraphicStreamer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Parse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="VectorGraphic.xml">

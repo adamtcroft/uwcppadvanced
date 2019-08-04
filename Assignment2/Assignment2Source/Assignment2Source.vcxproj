@@ -135,6 +135,7 @@
   <ItemGroup>
     <ClCompile Include="Element.cpp" />
     <ClCompile Include="Layer.cpp" />
+    <ClCompile Include="Parse.cpp" />
     <ClCompile Include="PlacedGraphic.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="VectorGraphicStreamer.cpp" />

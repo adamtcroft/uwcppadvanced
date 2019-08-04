@@ -1,136 +1,179 @@
-#include "VectorGraphicStreamer.h"
+#include "../Assignment2Source/VectorGraphicStreamer.h"
+#include "Parse.h"
+#include "Point.h"
+#include <iostream>
+#include <sstream>
+#include <deque>
+#include <map>
+#include <algorithm>
+#include <regex>
 
+using namespace std::string_literals;
+using namespace std;
 
-VG::VectorGraphicStreamer::VectorGraphicStreamer()
+namespace
 {
-}
+	static const string closingVectorGraphicTag{ "</VectorGraphic" };
+	static const string openingVectorGraphicTag{ "<VectorGraphic" };
+	static const string closingPointTag{ "</Point" };
+	static const string openingPointTag{ "<Point" };
+	static const std::regex attribute("(\\w+)=\"(\\w+)\"");
 
-
-VG::VectorGraphicStreamer::~VectorGraphicStreamer()
-{
-}
-
-
-VG::VectorGraphic VG::VectorGraphicStreamer::fromXml(std::stringstream& ss)
-{
-	VectorGraphic vg;
-	std::string myString = ss.str();
-
-	if (isValidVG(myString))
+	deque<string> splitNodes(istream& xml)
 	{
-		myString = ss.str();
-		setOpenOrClosed(myString, vg);
-		myString = ss.str();
-		addPoints(myString, vg);
-	}
+		deque<string> nodes;
+		xml.seekg(0, xml.end);
+		auto size{ xml.tellg() };
+		xml.seekg(0);
 
-	return vg;
-}
-
-void VG::VectorGraphicStreamer::toXml(VG::VectorGraphic& vg, std::ostream& os)
-{
-	os << R"(<VectorGraphic closed=")";
-	os << std::boolalpha << vg.isClosed();
-	os << ">";
-
-	for (int i = 0; i < vg.getPointCount(); i++)
-	{
-		os << R"(<Point x=")";
-		os << std::to_string(vg.getPoint(i).getX());
-		os << R"(" y=")";
-		os << std::to_string(vg.getPoint(i).getY());
-		os << R"(" />)";
-	}
-
-	os << "</VectorGraphic>";
-
-	std::ofstream outFile("myVG.xml");
-	outFile << os.rdbuf();
-}
-
-void VG::VectorGraphicStreamer::addPoint(std::string& point, VG::VectorGraphic& vg)
-{
-	int x, y;
-	std::regex regex("[x-y]=\"\\d*\"");
-	std::vector<std::string> results = matchRegex(point, regex);
-
-	for (auto result : results)
-	{
-		if (result[0] == 'x')
+		while (!xml.eof())
 		{
-			Parse::trim(result, "x=\"");
-			x = std::stoi(result);
+			string str(size, '\n');
+			xml.getline(&str[0], size, '>');
+			Parse::trim(str);
+			str.shrink_to_fit();
+
+			if (str.length() > 1)
+			{
+				nodes.push_back(std::move(str));
+			}
 		}
 
-		if (result[0] == 'y')
+		return std::move(nodes);
+	}
+    
+	void testValidVectorGraphicXML(deque<string>& theNodes)
+	{		
+		if (theNodes.front().find(openingVectorGraphicTag) != 0 
+			|| theNodes.back().compare(0, closingVectorGraphicTag.length(), closingVectorGraphicTag) != 0)
 		{
-			Parse::trim(result, "y=\"");
-			y = std::stoi(result);
+			throw std::runtime_error{ "Invalid XML: root element tag not VectorGraphic" };
 		}
 	}
 
-	vg.addPoint(VG::Point{ x, y });
-}
-
-void VG::VectorGraphicStreamer::addPoints(std::string& myString, VG::VectorGraphic& vg)
-{
-	// This does not check if a point is well-formed!!
-	// Ran out of time - should check for closing tags too
-	std::regex regex("<Point [x-y]=\\W*\\d*\\W* [x-y]=\\W*\\d*\\W*>");
-	std::vector<std::string> results = matchRegex(myString, regex);
-
-	for (std::string point : results)
+	void testValidVectorGraphicAttributes(std::smatch& match)
 	{
-		addPoint(point, vg);
-	}
-}
-
-void VG::VectorGraphicStreamer::setOpenOrClosed(std::string& myString, VG::VectorGraphic& vg)
-{
-	std::regex regex("<VectorGraphic closed=.*(true|false).*?>");
-	std::vector<std::string> results = matchRegex(myString, regex);
-
-	if (std::find(results.begin(), results.end(), "true") != results.end()
-		)
-	{
-		vg.closeShape();
-	}
-
-	if (std::find(results.begin(), results.end(), "false") != results.end())
-	{
-		vg.openShape();
-	}
-}
-
-bool VG::VectorGraphicStreamer::isValidVG(std::string& myString)
-{
-	std::regex regex("\/*VectorGraphic");
-	std::vector<std::string> results = matchRegex(myString, regex);
-
-	if (std::find(results.begin(), results.end(), "VectorGraphic") != results.end()
-		&& std::find(results.begin(), results.end(), "/VectorGraphic") != results.end())
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-
-std::vector<std::string> VG::VectorGraphicStreamer::matchRegex(std::string& myString, std::regex& regex)
-{
-	std::smatch matches;
-	std::vector<std::string> results;
-
-	while (std::regex_search(myString, matches, regex))
-	{
-		for (auto match : matches)
+		if (match.size() != 3 || match[1] != "closed")
 		{
-			results.push_back(match);
+			throw std::runtime_error{ "Invalid VectorGraphic XML node: does not contain a closed attribute." };
 		}
-		myString = matches.suffix().str();
 	}
 
-	return results;
+	void testValidPointXML(deque<string>& theNodes)
+	{
+		auto it = theNodes.cbegin();
+
+		while (it != theNodes.cend())
+		{
+			const string& pointOpen{ *it };
+			if (pointOpen.find(openingPointTag) != 0)
+			{
+				throw std::runtime_error{ "Invalid XML: Node is not a Point node." };
+			}
+
+			if (pointOpen.find('/',0) != pointOpen.length() - 2)
+			{
+				++it;
+				if ((*it).compare(0, closingPointTag.length(), closingPointTag) != 0)
+				{
+					throw std::runtime_error{ "Invalid XML: Point node is not properly closed." };
+				}
+			}
+			++it;
+		}
+	}
+
+	void testValidPoint(std::map<string, int>& coords)
+	{
+		if (coords.size() != 2)
+		{
+			throw std::runtime_error{ "Invalid Point: does not have exactly 2 coordinates." };
+		}
+	}
+
+	void removePointClosingTags(deque<string>& theNodes)
+	{
+		auto newend = std::remove_if(theNodes.begin(), theNodes.end(), [](auto& str) { return str.compare(0, closingPointTag.length(), closingPointTag) == 0; });
+
+		theNodes.erase(newend, theNodes.end());
+	}
+
+	std::map<std::string, int> getPointAttrs(const std::string& text) 
+	{
+		std::smatch match;
+		std::string remainder(text);
+		std::map<std::string, int> attrs;
+
+		while (std::regex_search(remainder, match, attribute)) 
+		{
+			attrs.emplace(match[1], std::stoi(match[2])); //stoi throws if not a valid conversion
+			remainder = match.suffix();
+		}
+
+		return std::move(attrs);
+	}
+
+	VG::VectorGraphic parseVectorGraphic(deque<string>& theNodes)
+	{
+		testValidVectorGraphicXML(theNodes);
+
+		theNodes.pop_back();
+		
+		std::smatch match;
+		std::regex_search(theNodes.front(), match, attribute);
+
+		VG::VectorGraphic graphic;		
+		
+		testValidVectorGraphicAttributes(match);
+
+		auto ss = stringstream(match[2]);
+		auto closed{ Parse::getBool(ss) };		
+		closed ? graphic.closeShape() : graphic.openShape();		
+
+		theNodes.pop_front();
+
+		testValidPointXML(theNodes);
+		removePointClosingTags(theNodes);
+
+		std::map<string, int> coords;
+
+		while (theNodes.size() != 0)
+		{
+			std::map<string, int> coords{ getPointAttrs(theNodes.front()) };
+			theNodes.pop_front();
+
+			graphic.addPoint({ coords.at("x"), coords.at("y") });
+		}
+
+		return std::move(graphic);
+	}
+}
+
+
+namespace VG
+{
+
+	VectorGraphic VectorGraphicStreamer::fromXml(std::istream& xml)
+	{
+		deque<string> nodes{ splitNodes(xml) };		
+
+		VectorGraphic vg{ parseVectorGraphic(nodes) };
+
+
+		return std::move(vg);
+	}
+
+	void VectorGraphicStreamer::toXml(const VectorGraphic& vg,
+	                                    std::ostream& os)
+	{
+		os << "<VectorGraphic closed=\"" << std::boolalpha << vg.isClosed() << "\">" << std::endl;        
+	        
+	    for (auto i = 0; i < vg.getPointCount(); ++i)
+	    {
+	        auto& p = vg.getPoint(i);
+	        os << "<Point x=\"" << p.getX() << "\" y=\"" << p.getY() << "\"/>" << std::endl;
+	    }
+	        
+	    os << "</VectorGraphic>";
+	}
 }
