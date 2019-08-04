@@ -1,4 +1,3 @@
-/*
 #include "XmlReader.h"
 #include "Scene.h"
 #include "SceneReader.h"
@@ -80,6 +79,7 @@ TEST(WriteScene, SceneWriter)
     Xml::Element& vectorGraphic = *placedGraphicElements[0];
     CHECK_EQUAL(1, vectorGraphic.getAttributes().size());
     CHECK_EQUAL("true", vectorGraphic.getAttribute("closed"));
+/*
 
     Xml::ElementList pointElements = vectorGraphic.getChildElements();
     CHECK_EQUAL(3, pointElements.size());
@@ -95,5 +95,5 @@ TEST(WriteScene, SceneWriter)
     CHECK_EQUAL("Point", pointElements[2]->getName());
     CHECK_EQUAL("5", pointElements[2]->getAttribute("x"));
     CHECK_EQUAL("6", pointElements[2]->getAttribute("y"));
-}
 */
+}

@@ -42,6 +42,12 @@
     <ClInclude Include="SceneReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SceneWriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XmlReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VectorGraphic.cpp">
@@ -65,10 +71,13 @@
     <ClCompile Include="Element.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="XmlReader.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="SceneReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneWriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="XmlReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -7,8 +7,8 @@ namespace Framework
 	class SceneReader
 	{
 	public:
-		SceneReader();
-		~SceneReader();
+		SceneReader() = delete;
+		~SceneReader() = delete;
 
 		static Framework::Scene readScene(Xml::Element& root);
 
