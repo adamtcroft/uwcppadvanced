@@ -12,6 +12,13 @@ namespace Xml
 	{
 	public:
 		Element() = default;
+		
+		Element(const Element& other) = delete;
+		Element(Element&& other) = delete;
+
+		Element& operator=(const Element& other) = delete;
+		Element& operator=(Element&& other) = delete;
+
 		~Element() = default;
 
 		void setName(const std::string& initialName);

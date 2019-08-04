@@ -124,12 +124,12 @@
     <ClInclude Include="Parse.h" />
     <ClInclude Include="PlacedGraphic.h" />
     <ClInclude Include="Point.h" />
+    <ClInclude Include="VectorGraphicStreamer.h" />
     <ClInclude Include="XmlReader.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneReader.h" />
     <ClInclude Include="SceneWriter.h" />
     <ClInclude Include="VectorGraphic.h" />
-    <ClInclude Include="VectorGraphicStreamer.h" />
     <ClInclude Include="XmlWriter.h" />
   </ItemGroup>
   <ItemGroup>
@@ -137,12 +137,12 @@
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="PlacedGraphic.cpp" />
     <ClCompile Include="Point.cpp" />
+    <ClCompile Include="VectorGraphicStreamer.cpp" />
     <ClCompile Include="XmlReader.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneReader.cpp" />
     <ClCompile Include="SceneWriter.cpp" />
     <ClCompile Include="VectorGraphic.cpp" />
-    <ClCompile Include="VectorGraphicStreamer.cpp" />
     <ClCompile Include="XmlWriter.cpp" />
   </ItemGroup>
   <ItemGroup>

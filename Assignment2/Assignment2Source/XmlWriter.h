@@ -9,6 +9,13 @@ namespace Xml
 	{
 	public:
 		Writer() = delete;
+
+		Writer(const Writer& other) = delete;
+		Writer(Writer&& other) = delete;
+
+		Writer& operator=(const Writer& other) = delete;
+		Writer& operator=(Writer&& other) = delete;
+
 		~Writer() = delete;
 
 		static void writeXml(Xml::HElement& root, std::ostream& os);

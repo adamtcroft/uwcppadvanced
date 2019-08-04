@@ -16,6 +16,13 @@ namespace Xml
 	{
 	public:
 		Reader() = delete;
+
+		Reader(const Reader& other) = delete;
+		Reader(Reader&& other) = delete;
+
+		Reader& operator=(const Reader& other) = delete;
+		Reader& operator=(Reader&& other) = delete;
+
 		~Reader() = delete;
 
 		static HElement loadXml(std::stringstream& xmlStream);
