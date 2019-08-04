@@ -26,6 +26,8 @@ namespace Xml
 		~Reader() = delete;
 
 		static HElement loadXml(std::stringstream& xmlStream);
+
+	private:
 		static void loadElements(tinyxml2::XMLElement& tinyXMLElement, HElement& currentElement, HElement parentElement = nullptr);
 	};
 }

@@ -6,7 +6,7 @@ void Xml::Writer::writeXml(Xml::HElement& root, std::ostream& os)
 
 	auto scene = xmlDoc.NewElement(root->getName().c_str());
 
-	setAttributes(root, scene);
+	writeAttributes(root, scene);
 	xmlDoc.LinkEndChild(scene);
 
 	buildChildrenRecursively(root, scene);
@@ -14,14 +14,13 @@ void Xml::Writer::writeXml(Xml::HElement& root, std::ostream& os)
 	xmlDoc.SaveFile("myXml.xml");
 }
 
-void Xml::Writer::setAttributes(Xml::HElement& root, tinyxml2::XMLElement* element)
+void Xml::Writer::writeAttributes(Xml::HElement& root, tinyxml2::XMLElement* element)
 {
 	for (auto attribute : root->getAttributes())
 	{
 		element->SetAttribute(attribute.first.c_str(), attribute.second.c_str());
 	}
 }
-
 
 void Xml::Writer::buildChildrenRecursively(Xml::HElement& root, tinyxml2::XMLElement* tinyxmlParent)
 {
@@ -30,7 +29,7 @@ void Xml::Writer::buildChildrenRecursively(Xml::HElement& root, tinyxml2::XMLEle
 	{
 		auto xmlDoc = tinyxmlParent->GetDocument();
 		auto grandchildOfRoot = xmlDoc->NewElement(childOfRoot->getName().c_str());
-		setAttributes(childOfRoot, grandchildOfRoot);
+		writeAttributes(childOfRoot, grandchildOfRoot);
 		tinyxmlParent->LinkEndChild(grandchildOfRoot);
 		buildChildrenRecursively(childOfRoot, grandchildOfRoot);
 	}

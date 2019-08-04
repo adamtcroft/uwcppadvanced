@@ -23,8 +23,6 @@ namespace Framework
 
 		~Scene() = default;
 
-		//insert, remove, iteration support
-		
 		void pushBack(Layer layer);
 		void remove(const Layer&& layer);
 

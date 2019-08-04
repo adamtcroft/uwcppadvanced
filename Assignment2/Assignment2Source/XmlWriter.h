@@ -19,7 +19,9 @@ namespace Xml
 		~Writer() = delete;
 
 		static void writeXml(Xml::HElement& root, std::ostream& os);
-		static void setAttributes(Xml::HElement& root, tinyxml2::XMLElement* element);
+
+	private:
+		static void writeAttributes(Xml::HElement& root, tinyxml2::XMLElement* element);
 		static void buildChildrenRecursively(Xml::HElement& root, tinyxml2::XMLElement* tinyxmlElement);
 	};
 }
