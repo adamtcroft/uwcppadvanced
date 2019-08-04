@@ -21,6 +21,19 @@ void Framework::SceneWriter::buildSceneChildren(LayerIterator iterator, Xml::HEl
 		VG::HVectorGraphic vg = pgIterator->getGraphic();
 		vgChild->setAttribute("closed", (vg->isClosed() == true ? "true" : "false"));
 		pgChild->addChild(vgChild);
+
+		int count = 0;
+		while (count < vg->getPointCount())
+		{
+			VG::Point childPoint = vg->getPoint(count);
+			Xml::HElement point = std::make_unique<Xml::Element>();
+			point->setName("Point");
+			point->setAttribute("x", std::to_string(childPoint.getX()));
+			point->setAttribute("y", std::to_string(childPoint.getY()));
+			vgChild->addChild(point);
+			count++;
+		}
+
 	}
 }
 

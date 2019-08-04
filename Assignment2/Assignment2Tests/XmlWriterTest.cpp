@@ -1,4 +1,3 @@
-/*
 #include "XmlWriter.h"
 #include "XmlReader.h"
 #include "VectorGraphic.h"
@@ -41,8 +40,9 @@ TEST(writeXml, XmlWriter)
     std::stringstream xmlStream(SceneXml);
     Xml::HElement root = Xml::Reader::loadXml(xmlStream);
     Xml::Writer::writeXml(root, std::cout);
+/*
     
     // TODO: find a good automated way to verify instead of looking at cout.
     // Strings don't have to be equal, so string comparison wouldn't work well.
-}
 */
+}
