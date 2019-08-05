@@ -43,7 +43,7 @@ TEST(moveAssignment, Layer)
 	CHECK_EQUAL("", secondLayer.getAlias())
 }
 
-TEST(pushBack, Layer)
+TEST(getAndpushBack, Layer)
 {
 	VG::HVectorGraphic vg(new VG::VectorGraphic);
 	Framework::Layer myLayer("Test Alias");
@@ -59,6 +59,7 @@ TEST(remove, Layer)
 	Framework::Layer myLayer("Test Alias");
 	Framework::PlacedGraphic pg(VG::Point{ 1,1 }, VG::HVectorGraphic(new VG::VectorGraphic));
 	Framework::PlacedGraphic pg2(VG::Point{ 0,0 }, VG::HVectorGraphic(new VG::VectorGraphic));
+	Framework::PlacedGraphic pg3(VG::Point{ 3,8 }, VG::HVectorGraphic(new VG::VectorGraphic));
 	myLayer.pushBack(pg);
 	myLayer.pushBack(pg2);
 
@@ -68,15 +69,15 @@ TEST(remove, Layer)
 	std::cout << std::endl;
 
 	CHECK(pg != myLayer.getGraphic(0));
-}
 
-TEST(getGraphic, Layer)
-{
-	VG::HVectorGraphic vg(new VG::VectorGraphic);
-	Framework::Layer myLayer("Test Alias");
-	Framework::PlacedGraphic pg(VG::Point{ 0,0 }, vg);
-
-	CHECK_EQUAL(vg, pg.getGraphic());
+	try
+	{
+		myLayer.remove(pg3);
+	}
+	catch (std::out_of_range& e)
+	{
+		CHECK_EQUAL(e.what(), "The graphic provided does not exist.")
+	}
 }
 
 TEST(setAlias, Layer)
@@ -121,4 +122,21 @@ TEST(outputStream, Layer)
 	std::string myString = oss.str();
 
 	CHECK_EQUAL("Test Alias", myString);
+}
+
+TEST(getOutOfRange, Layer)
+{
+	VG::HVectorGraphic vg(new VG::VectorGraphic);
+	Framework::Layer myLayer("Test Alias");
+	Framework::PlacedGraphic pg(VG::Point{ 0,0 }, vg);
+	myLayer.pushBack(pg);
+
+	try
+	{
+		auto graphic = myLayer.getGraphic(12);
+	}
+	catch (std::out_of_range& e)
+	{
+		CHECK_EQUAL(e.what(), "The graphic requested does not exist.")
+	}
 }

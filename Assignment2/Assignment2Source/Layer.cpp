@@ -32,11 +32,17 @@ Framework::PlacedGraphicCollection::iterator Framework::Layer::end()
 	return graphics.end();
 }
 
-Framework::PlacedGraphic const& Framework::Layer::getGraphic(const int& index) 
+Framework::PlacedGraphic const& Framework::Layer::getGraphic(const int& index)
 {
-	PlacedGraphicIterator iterator = graphics.begin();
-	std::advance(iterator, index);
-	return *iterator;
+	if (index > graphics.size())
+		throw std::out_of_range("The graphic requested does not exist.");
+	else
+	{
+		PlacedGraphicIterator iterator = graphics.begin();
+		std::advance(iterator, index);
+		return *iterator;
+	}
+
 }
 
 void Framework::Layer::setAlias(const std::string& referenceAlias)
@@ -44,7 +50,7 @@ void Framework::Layer::setAlias(const std::string& referenceAlias)
 	alias = referenceAlias;
 }
 
- std::string const& Framework::Layer::getAlias() const
+std::string const& Framework::Layer::getAlias() const
 {
 	return alias;
 }
