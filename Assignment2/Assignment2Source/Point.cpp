@@ -17,12 +17,17 @@ VG::Point::Point(VG::Point&& other)
 
 void VG::Point::setX(int value)
 {
-	x = value;
+	x = validateCoordinate(value);
 }
 
 void VG::Point::setY(int value)
 {
-	y = value;
+	y = validateCoordinate(value);
+}
+
+int VG::Point::validateCoordinate(int& n) 
+{
+	return (n < 0) ? 0 : n;
 }
 
 bool VG::operator==(const VG::Point& lhs, const VG::Point& rhs)

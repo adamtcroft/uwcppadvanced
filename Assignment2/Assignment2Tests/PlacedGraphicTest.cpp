@@ -147,7 +147,19 @@ TEST(oStream, PlacedGraphic)
 	CHECK_EQUAL(expected.str(), oss.str());
 }
 
-TEST(sharedPtr, HVectorGraphic)
+TEST(sharedPtr, PlacedGraphic)
+{
+    Framework::PlacedGraphic pg;
+    VG::HVectorGraphic vg(new VG::VectorGraphic);
+    pg.setGraphic(vg);
+
+    Framework::PlacedGraphic pg2;
+    pg2.setGraphic(vg);
+
+	CHECK_EQUAL(pg.getGraphic(), pg2.getGraphic());
+}
+
+TEST(validateCoord, PlacedGraphic)
 {
     Framework::PlacedGraphic pg;
     VG::HVectorGraphic vg(new VG::VectorGraphic);

@@ -3,7 +3,6 @@
 Framework::PlacedGraphic::PlacedGraphic()
 	:placementPoint(VG::Point(0,0)), graphic(VG::HVectorGraphic(new VG::VectorGraphic))
 {
-
 }
 
 Framework::PlacedGraphic::PlacedGraphic(VG::Point& p, VG::HVectorGraphic& vg)
@@ -60,7 +59,7 @@ VG::HVectorGraphic const& Framework::PlacedGraphic::getGraphic() const
 {
 	return graphic;
 }
-	
+
 bool Framework::operator==(const PlacedGraphic& lhs, const PlacedGraphic& rhs)
 {
 	return lhs.placementPoint == rhs.placementPoint && lhs.graphic == rhs.graphic;

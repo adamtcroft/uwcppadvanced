@@ -7,7 +7,13 @@ namespace VG
 	{
 	public:
 		Point();
-		constexpr Point(int initialX, int initialY) :x(initialX), y(initialY) {};
+		constexpr Point(int initialX, int initialY) :x(initialX), y(initialY)
+		{
+			if (x < 0)
+				x = 0;
+			if (y < 0)
+				y = 0;
+		};
 
 		Point(const Point& other) = default;
 		Point(Point&& other);
@@ -22,6 +28,7 @@ namespace VG
 
 		void setX(int value);
 		void setY(int value);
+		int validateCoordinate(int& n);
 
 		friend bool operator==(const VG::Point& lhs, const VG::Point& rhs);
 		friend bool operator!=(const VG::Point& lhs, const VG::Point& rhs);

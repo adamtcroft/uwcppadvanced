@@ -105,3 +105,17 @@ TEST(getters, Point)
 	CHECK_EQUAL(8, p.getX());
 	CHECK_EQUAL(9, p.getY());
 }
+
+TEST(lessThanZero, Point)
+{
+	VG::Point p{ -3, -9 };
+
+	CHECK_EQUAL(0, p.getX());
+	CHECK_EQUAL(0, p.getY());
+	
+	p.setX(-100);
+	p.setY(-10);
+
+	CHECK_EQUAL(0, p.getX());
+	CHECK_EQUAL(0, p.getY());
+}
