@@ -1,7 +1,7 @@
 #pragma once
 #include "XmlReader.h"
-#include <tinyxml2.h>
 #include <fstream>
+#include "../tinyxml2-master/tinyxml2.h"
 
 namespace Xml
 {

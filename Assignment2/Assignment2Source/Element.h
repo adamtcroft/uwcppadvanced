@@ -3,6 +3,7 @@
 #include <vector>
 #include <map>
 #include <string>
+#include "../tinyxml2-master/tinyxml2.h"
 
 namespace Xml
 {

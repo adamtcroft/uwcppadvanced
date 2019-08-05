@@ -1,5 +1,4 @@
 #include "Element.h"
-#include "tinyxml2.h"
 #include <iostream>
 
 namespace Xml
