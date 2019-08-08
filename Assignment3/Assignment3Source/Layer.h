@@ -5,14 +5,15 @@
 
 namespace Framework
 {
-	using PlacedGraphicCollection = std::list<PlacedGraphic>;
-	using PlacedGraphicIterator = PlacedGraphicCollection::iterator;
 
 	class Layer
 	{
+		using PlacedGraphicCollection = std::list<PlacedGraphic>;
+		using PlacedGraphicIterator = PlacedGraphicCollection::const_iterator;
+
 	public:
 		Layer() = delete;
-		Layer(std::string initialAlias);
+		Layer(std::string& initialAlias);
 
 		Layer(const Layer& other) = default;
 		Layer(Layer&& other) = default;
@@ -22,22 +23,21 @@ namespace Framework
 
 		~Layer() = default;
 
-		void pushBack(PlacedGraphic& pg);
-		void remove(PlacedGraphic& pg);
+		template<class C> void pushBack(C&& placedGraphic);
+		//void pushBack(PlacedGraphic& pg);
+		void remove(const PlacedGraphic& pg);
 
-		PlacedGraphicIterator begin();
-		PlacedGraphicIterator end();
+		PlacedGraphicIterator begin() const;
+		PlacedGraphicIterator end() const;
 
-		PlacedGraphic const& getGraphic(const int& index);
+		PlacedGraphic const& getGraphic(const int& index); //REMOVE??
 
-		void setAlias(const std::string& referenceAlias);
+		void setAlias(const std::string& referenceAlias); //REMOVE??
 		std::string const& getAlias() const;
 
-		friend bool operator==(const Layer& lhs, const Layer& rhs);
-		friend bool operator!=(const Layer& lhs, const Layer& rhs);
+		bool operator==(const Layer& rhs) const;
+		bool operator!=(const Layer& rhs) const;
 		friend std::ostream& operator<<(std::ostream& output, Framework::Layer& layer);
-
-		using PlacedGraphicIterator = PlacedGraphicCollection::iterator;
 
 	private:
 		PlacedGraphicCollection graphics;

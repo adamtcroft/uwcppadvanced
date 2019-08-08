@@ -9,7 +9,6 @@
 
 namespace Xml
 {
-	using HElement = std::shared_ptr<Element>;
 	using ElementList = std::vector<HElement>;
 
 	class Reader
