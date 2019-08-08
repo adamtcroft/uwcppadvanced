@@ -10,39 +10,44 @@ Framework::PlacedGraphic::PlacedGraphic(VG::Point& p, VG::HVectorGraphic& vg)
 {
 }
 
-Framework::PlacedGraphic::PlacedGraphic(VG::Point&& p, VG::HVectorGraphic& vg)
-	:placementPoint(std::move(p)), graphic(vg)
-{
-}
+//Framework::PlacedGraphic::PlacedGraphic(VG::Point&& p, VG::HVectorGraphic& vg)
+//	:placementPoint(std::move(p)), graphic(vg)
+//{
+//}
+//
+//Framework::PlacedGraphic::PlacedGraphic(VG::Point&& p, VG::HVectorGraphic&& vg)
+//	:placementPoint(p), graphic(vg)
+//{
+//}
 
-Framework::PlacedGraphic::PlacedGraphic(VG::Point&& p, VG::HVectorGraphic&& vg)
-	:placementPoint(p), graphic(vg)
-{
-}
+//Framework::PlacedGraphic::PlacedGraphic(PlacedGraphic&& other)
+//	:placementPoint(std::move(other.placementPoint)), graphic(std::move(other.graphic))
+//{
+//	other.placementPoint = VG::Point();
+//	other.graphic = nullptr;
+//}
 
-Framework::PlacedGraphic::PlacedGraphic(PlacedGraphic&& other)
-	:placementPoint(std::move(other.placementPoint)), graphic(std::move(other.graphic))
-{
-	other.placementPoint = VG::Point();
-	other.graphic = nullptr;
-}
+//Framework::PlacedGraphic& Framework::PlacedGraphic::operator=(PlacedGraphic&& other)
+//{
+//	if (&other != this)
+//	{
+//		placementPoint = other.placementPoint;
+//		other.placementPoint = VG::Point();
+//
+//		graphic = other.graphic;
+//		other.graphic = nullptr;
+//	}
+//	return *this;
+//}
 
-Framework::PlacedGraphic& Framework::PlacedGraphic::operator=(PlacedGraphic&& other)
-{
-	if (&other != this)
-	{
-		placementPoint = other.placementPoint;
-		other.placementPoint = VG::Point();
+//void Framework::PlacedGraphic::setPlacementPoint(VG::Point const& placement)
+//{
+//	placementPoint = placement;
+//}
 
-		graphic = other.graphic;
-		other.graphic = nullptr;
-	}
-	return *this;
-}
-
-void Framework::PlacedGraphic::setPlacementPoint(VG::Point const& placement)
+template<class P> void Framework::PlacedGraphic::setPlacementPoint(P&& p)
 {
-	placementPoint = placement;
+	placementPoint = std::forward<P>(p);
 }
 
 VG::Point const& Framework::PlacedGraphic::getPlacementPoint() const

@@ -10,18 +10,19 @@ namespace Framework
 	public:
 		PlacedGraphic();
 		PlacedGraphic(VG::Point& p, VG::HVectorGraphic& vg);
-		PlacedGraphic(VG::Point&& p, VG::HVectorGraphic& vg);
-		PlacedGraphic(VG::Point&& p, VG::HVectorGraphic&& vg);
+		//PlacedGraphic(VG::Point&& p, VG::HVectorGraphic& vg);
+		//PlacedGraphic(VG::Point&& p, VG::HVectorGraphic&& vg);
 
 		PlacedGraphic(const PlacedGraphic& other) = default;
-		PlacedGraphic(PlacedGraphic&& other);
+		PlacedGraphic(PlacedGraphic&& other) = default;
 
 		PlacedGraphic& operator=(const PlacedGraphic& other) = default;
-		PlacedGraphic& operator=(PlacedGraphic&& other);
+		PlacedGraphic& operator=(PlacedGraphic&& other) = default;
 
 		~PlacedGraphic() = default;
 
-		void setPlacementPoint(VG::Point const& placement);
+		template<class P> void setPlacementPoint(P&& p);
+		//void setPlacementPoint(VG::Point const& placement);
 		void setGraphic(VG::HVectorGraphic const& referenceGraphic);
 
 		VG::Point const& getPlacementPoint() const;

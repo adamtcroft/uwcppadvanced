@@ -42,10 +42,10 @@ namespace Xml
 		myElement->SetAttribute(name.c_str(), value.c_str());
 	}
 
-	void Element::addChild(HElement& child)
-	{
-		childElements.push_back(child);
-	}
+	//void Element::addChild(HElement& child)
+	//{
+	//	childElements.push_back(child);
+	//}
 
 	HElement Element::appendChild(const std::string& name) noexcept
 	{
