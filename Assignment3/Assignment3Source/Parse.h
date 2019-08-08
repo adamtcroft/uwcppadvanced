@@ -2,6 +2,7 @@
 
 #include <iosfwd>
 #include <string>
+#include <sstream>
 
 namespace Parse
 {
@@ -12,4 +13,8 @@ namespace Parse
              std::string const& edibles = " \t\n\r");
 
 	bool getBool(std::istream& sourceStream);
+
+	std::string boolToString(const bool b);
+
+	std::string readUntil(std::istream& in, const std::string& delimiters);
 };

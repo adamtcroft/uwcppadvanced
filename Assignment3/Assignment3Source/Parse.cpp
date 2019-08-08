@@ -41,4 +41,32 @@ namespace Parse
 
 		return theBool;
 	}
+	std::string boolToString(const bool b)
+	{
+		std::ostringstream ss;
+		ss << std::boolalpha << b;
+		return ss.str();
+	}
+
+	std::string readUntil(std::istream& in, const std::string& delimiters)
+	{
+		std::string token;
+		char ch{ 0 };
+
+		while (in.get(ch))
+		{
+			if (delimiters.find(ch) == std::string::npos)
+			{
+				token.push_back(ch);
+			}
+			else
+			{
+				in.putback(ch);
+				break;
+			}
+		}
+
+		return token;
+	}
+
 }

@@ -2,7 +2,7 @@
 #include <list>
 #include <vector>
 #include <map>
-#include <string>
+#include <cstring>
 #include "XmlInterfaces.h"
 #include "../tinyxml2-master/tinyxml2.h"
 
@@ -26,15 +26,16 @@ namespace Xml
 		~Element() = default;
 
 		void setName(const std::string& initialName);
-		void setAttribute(const std::string& key, const std::string& value);
+		void setAttribute(const std::string& name, const std::string& value);
 		void addChild(HElement& child);
+		HElement appendChild(const std::string& name) noexcept;
 
-		std::string const& getAttribute(const std::string& key) noexcept override;
+		std::string const& getAttribute(const std::string& name) noexcept override;
 		AttributeMap const& getAttributes() const noexcept override;
 		ElementCollection const& getChildElements() const noexcept override;
 		std::string const& getName() const noexcept override;
 
-		HElement operator[](int i);
+		//HElement operator[](int i);
 
 	private:
 		Element(tinyxml2::XMLElement* node);
@@ -43,8 +44,8 @@ namespace Xml
 
 		//Remove???
 		std::string name;
-		ElementCollection childElements;
-		AttributeMap attributes;
+		//ElementCollection childElements;
+		//AttributeMap attributes;
 	};
 
 }
