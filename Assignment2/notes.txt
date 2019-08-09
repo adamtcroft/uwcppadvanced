@@ -1,0 +1,96 @@
+
+General:
+
+#pragma once should be used in header files
+
+Feel free to define non-member functions if a class contains only static functions. (Less typing, less to read)
+
+
+
+Xml 6/7
+
+
+Element:
+  addChild() should copy shared_ptr (remove &)
+  inconsistent behavior for member access:
+    
+getChildElements() returns a copy of std::vector
+    
+getName() returns a const reference to std::string
+    
+getAttribute() returns a copy of std::string 
+    
+getAttributes() returns a const reference to std::map
+  operator[] is unsafe, use std::vector::at as described in lesson 1
+
+sceneReader.cpp
+  
+readScene() unnecessary else case
+
+sceneWriter.cpp
+  
+writeScene() make_shared not make_unique
+
+XmlReader.cpp
+  
+loadXml make_shared not make_unique
+  
+loadXml no check for null docRoot or use of 'result' returned from Parse
+  
+loadElements make_shared not make_unique
+
+XmlWriter.cpp
+  
+writeXml unused parameter os
+  variable naming is misleading:
+      
+auto grandchildOfRoot = xmlDoc->NewElement(childOfRoot->getName().c_str());
+ 
+   Instead try:
+ auto tinyxmlChild = tinyxmlParent->GetDocument()->NewElement(childOfRoot->getName().c_str()); 
+
+
+
+Scene/Layer/PlacedGraphic 5/8
+
+
+PlacedGraphic
+  
+why not use default move constructor and move assignment?
+
+
+
+Layer
+  
+non-explicit single parameter constructor is dangerous
+  
+getGraphic returns invalid iterator if index == size
+  
+getGraphic parameter type should be size_t to prevent negative values
+  
+getGraphic primitive types should be passed by value, remove const&
+
+
+
+Scene
+  
+validateSize parameter should be passed by value, remove &
+ validation that width/height >= 0 should be in SceneReader, class Scene can remain simple by using size_t (or unsigned) values.
+
+
+
+shared_ptr 0/2
+  Pass HElement (shared_ptr) by value (remove &)
+  prefer .reset() to assignment to nullptr
+  
+mixed usage of std::make_shared and new to allocate
+
+
+
+Unit Tests 3/4
+  would like to see more scene reader examples
+
+
+
+UML - 2/4
+  Doesn't show relationships of XML components
