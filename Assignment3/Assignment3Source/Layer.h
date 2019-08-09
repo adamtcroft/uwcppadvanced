@@ -13,7 +13,7 @@ namespace Framework
 
 	public:
 		Layer() = delete;
-		Layer(std::string const& initialAlias);
+		explicit Layer(std::string const& initialAlias);
 
 		Layer(const Layer& other) = default;
 		Layer(Layer&& other) = default;
@@ -23,24 +23,25 @@ namespace Framework
 
 		~Layer() = default;
 
-//		template<class C> void pushBack(C&& placedGraphic);
+		template<class C> void pushBack(C&& placedGraphic);
 		//void pushBack(PlacedGraphic& pg);
 //		void remove(const PlacedGraphic& pg);
 
 //		PlacedGraphicIterator begin() const;
 //		PlacedGraphicIterator end() const;
 
-//		PlacedGraphic const& getGraphic(const int& index); //REMOVE??
+		PlacedGraphic const& getGraphic(size_t index); //REMOVE??
 
 //		void setAlias(const std::string& referenceAlias); //REMOVE??
 		std::string const& getAlias() const;
 
-//		bool operator==(const Layer& rhs) const;
-//		bool operator!=(const Layer& rhs) const;
-//		friend std::ostream& operator<<(std::ostream& output, Framework::Layer& layer);
+		friend std::ostream& operator<<(std::ostream& output, Framework::Layer& layer);
 
 	private:
 		PlacedGraphicCollection graphics;
 		std::string alias;
 	};
+
+//		bool operator==(const Layer& rhs) const;
+//		bool operator!=(const Layer& rhs) const;
 }

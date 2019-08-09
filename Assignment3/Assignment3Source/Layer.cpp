@@ -6,11 +6,11 @@ Framework::Layer::Layer(std::string const& initialAlias) :
 {
 }
 
-//template<class C> void Framework::Layer::pushBack(C&& placedGraphic)
-//{
-//	graphics.push_back(std::forward<C>(placedGraphic));
-//}
-//
+template<class C> void Framework::Layer::pushBack(C&& placedGraphic)
+{
+	graphics.push_back(std::forward<C>(placedGraphic));
+}
+
 ////void Framework::Layer::pushBack(PlacedGraphic& pg)
 ////{
 ////	graphics.push_back(pg);
@@ -31,18 +31,18 @@ Framework::Layer::Layer(std::string const& initialAlias) :
 //	return graphics.end();
 //}
 //
-//Framework::PlacedGraphic const& Framework::Layer::getGraphic(const int& index)
-//{
-//	if (index > graphics.size())
-//		throw std::out_of_range("The graphic requested does not exist.");
-//	else
-//	{
-//		PlacedGraphicIterator iterator = graphics.begin();
-//		std::advance(iterator, index);
-//		return *iterator;
-//	}
-//
-//}
+Framework::PlacedGraphic const& Framework::Layer::getGraphic(size_t index)
+{
+	if (index >= graphics.size())
+		throw std::out_of_range("The graphic requested does not exist.");
+	else
+	{
+		PlacedGraphicIterator iterator = graphics.begin();
+		std::advance(iterator, index);
+		return *iterator;
+	}
+
+}
 //
 //void Framework::Layer::setAlias(const std::string& referenceAlias)
 //{
@@ -54,20 +54,20 @@ std::string const& Framework::Layer::getAlias() const
 	return alias;
 }
 
-//bool Framework::Layer::operator==(const Framework::Layer& rhs) const
+//bool Framework::operator==(const Framework::Layer& rhs, const Framework::Layer& rhs) const
 //{
-//	return (graphics == rhs.graphics) && (alias == rhs.alias);
+//	return (lhs.get == rhs.graphics) && (alias == rhs.alias);
 //}
 //
-//bool Framework::Layer::operator!=(const Framework::Layer& rhs) const
+//bool Framework::operator!=(const Framework::Layer& rhs) const
 //{
 //	return !operator==(rhs);
 //}
-//
-//std::ostream& Framework::operator<<(std::ostream& output, Framework::Layer& layer)
-//{
-//	output << layer.alias;
-//	output.flush();
-//
-//	return output;
-//}
+
+std::ostream& Framework::operator<<(std::ostream& output, Framework::Layer& layer)
+{
+	output << layer.alias;
+	output.flush();
+
+	return output;
+}

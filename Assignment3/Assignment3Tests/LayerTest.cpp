@@ -10,39 +10,6 @@ TEST(ctor, Layer)
 	CHECK_EQUAL("Test Alias", myLayer.getAlias());
 }
 
-//TEST(copyCtor, Layer)
-//{
-//	Framework::Layer myLayer("Test Alias");
-//	Framework::Layer mySecondLayer(myLayer);
-//
-//	CHECK_EQUAL("Test Alias", mySecondLayer.getAlias());
-//}
-
-//TEST(moveConstructor, Layer)
-//{
-//	Framework::Layer mySecondLayer(std::move(Framework::Layer("Test Alias")));
-//
-//	CHECK_EQUAL("Test Alias", mySecondLayer.getAlias());
-//}
-//
-//TEST(copyAssignment, Layer)
-//{
-//	Framework::Layer myLayer("Test Alias");
-//	Framework::Layer mySecondLayer = myLayer;
-//
-//	CHECK_EQUAL(myLayer, mySecondLayer);
-//}
-//
-//TEST(moveAssignment, Layer)
-//{
-//	Framework::Layer myLayer("Placeholder");
-//	Framework::Layer secondLayer("Test Alias");
-//	myLayer = std::move(secondLayer);
-//
-//	CHECK_EQUAL("Test Alias", myLayer.getAlias());
-//	CHECK_EQUAL("", secondLayer.getAlias())
-//}
-//
 //TEST(getAndpushBack, Layer)
 //{
 //	VG::HVectorGraphic vg(std::make_shared<VG::VectorGraphic>());
