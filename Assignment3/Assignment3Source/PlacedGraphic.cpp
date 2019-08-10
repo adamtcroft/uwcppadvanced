@@ -78,12 +78,13 @@ bool Framework::operator!=(const PlacedGraphic& lhs, const PlacedGraphic& rhs)
 	return !(lhs == rhs);
 }
 
-////std::ostream& Framework::operator<<(std::ostream& output, Framework::PlacedGraphic& pg)
-////{
-////	auto g = *pg.graphic;
-////	output << "Placement Point: " << pg.placementPoint << std::endl;
-////	output << *pg.graphic;
-////	output.flush();
-////
-////	return output;
-////}
+std::ostream& operator<<(std::ostream& output, Framework::PlacedGraphic& pg)
+{
+	//auto g = *pg.graphic;
+	//output << "Placement Point: " << pg.placementPoint << std::endl;
+	//output << *pg.graphic;
+	output << "PLACEDGRAPHIC";
+	output.flush();
+
+	return output;
+}

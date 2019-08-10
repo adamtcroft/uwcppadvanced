@@ -2,38 +2,6 @@
 
 //using Points = std::vector<VG::Point>;
 
-//VG::VectorGraphic::VectorGraphic(VectorGraphic&& other)
-//	:myPath(other.myPath), shapeOpenness(other.shapeOpenness)
-//{
-//	other.myPath.clear();
-//	other.shapeOpenness = Openness::Closed;
-//}
-//
-//VG::VectorGraphic& VG::VectorGraphic::operator=(VectorGraphic&& other)
-//{
-//	if (&other != this)
-//	{
-//		myPath = other.myPath;
-//		other.myPath.clear();
-//
-//		shapeOpenness = other.shapeOpenness;
-//		other.shapeOpenness = Openness::Closed;
-//	}
-//	return *this;
-//
-//}
-//
-//void VG::VectorGraphic::addPoint(const Point& p)
-//{
-//	myPath.push_back(p);
-//}
-//
-////TEST THIS!!
-//void VG::VectorGraphic::addPoint(VG::Point&& p)
-//{
-//	myPath.emplace_back(std::forward<VG::Point>(p));
-//}
-//
 ////TEST THROW!!
 //void VG::VectorGraphic::removePoint(const Point& p)
 //{
@@ -108,12 +76,12 @@ bool VG::VectorGraphic::isOpen() const
 //		return *result.second - *result.first;
 //	}
 //}
-//
-//int VG::VectorGraphic::getPointCount() const
-//{
-//	return static_cast<int>(myPath.size());
-//}
-//
+
+size_t VG::VectorGraphic::getPointCount() const
+{
+	return myPath.size();
+}
+
 //const VG::Point& VG::VectorGraphic::getPoint(int index) const
 //{
 //	return myPath.at(index);
@@ -121,12 +89,7 @@ bool VG::VectorGraphic::isOpen() const
 
 bool VG::operator==(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs)
 {
-	if (lhs.isOpen() != rhs.isOpen())
-		return false;
-	//else if (lhs.myPath != rhs.myPath)
-	//	return false;
-	else
-		return true;
+	return (lhs.isOpen() == rhs.isOpen()) && (lhs.myPath == rhs.myPath);
 }
 
 bool VG::operator!=(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs)
