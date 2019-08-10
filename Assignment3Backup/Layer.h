@@ -27,8 +27,8 @@ namespace Framework
 		//void pushBack(PlacedGraphic& pg);
 //		void remove(const PlacedGraphic& pg);
 
-//		PlacedGraphicIterator begin() const;
-//		PlacedGraphicIterator end() const;
+		PlacedGraphicIterator begin() const;
+		PlacedGraphicIterator end() const;
 
 		PlacedGraphic const& getGraphic(size_t index); //REMOVE??
 

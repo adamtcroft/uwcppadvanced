@@ -42,11 +42,11 @@ namespace VG
 //
 //		friend bool operator==(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs);
 //		friend bool operator!=(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs);
-//		friend std::ostream& operator<<(std::ostream& output, VG::VectorGraphic& vg);
-//
-//	private:
-//		Points myPath;
-//		enum class Openness { Open, Closed } shapeOpenness = Openness::Closed;
+		friend std::ostream& operator<<(std::ostream& output, VG::VectorGraphic& vg);
+
+	private:
+		Points myPath;
+		enum class Openness { Open, Closed } shapeOpenness = Openness::Closed;
 	};
 
 }

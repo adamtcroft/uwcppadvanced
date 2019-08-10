@@ -1,36 +1,36 @@
 #include "Layer.h"
-//#include "PlacedGraphic.h"
 
 Framework::Layer::Layer(std::string const& initialAlias) :
 	alias(initialAlias)
 {
 }
 
-template<class C> void Framework::Layer::pushBack(C&& placedGraphic)
+template<class C>
+void Framework::Layer::pushBack(C&& placedGraphic)
 {
 	graphics.push_back(std::forward<C>(placedGraphic));
 }
 
-////void Framework::Layer::pushBack(PlacedGraphic& pg)
-////{
-////	graphics.push_back(pg);
-////}
-//
+//void Framework::Layer::pushBack(PlacedGraphic& pg)
+//{
+//	graphics.push_back(pg);
+//}
+
 //void Framework::Layer::remove(const PlacedGraphic& pg)
 //{
 //	graphics.remove(pg);
 //}
-//
-//Framework::Layer::PlacedGraphicIterator Framework::Layer::begin() const
-//{
-//	return graphics.begin();
-//}
-//
-//Framework::Layer::PlacedGraphicIterator Framework::Layer::end() const
-//{
-//	return graphics.end();
-//}
-//
+
+Framework::Layer::PlacedGraphicIterator Framework::Layer::begin() const
+{
+	return graphics.begin();
+}
+
+Framework::Layer::PlacedGraphicIterator Framework::Layer::end() const
+{
+	return graphics.end();
+}
+
 Framework::PlacedGraphic const& Framework::Layer::getGraphic(size_t index)
 {
 	if (index >= graphics.size())

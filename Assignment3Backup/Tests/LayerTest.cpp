@@ -10,14 +10,34 @@ TEST(ctor, Layer)
 	CHECK_EQUAL("Test Alias", myLayer.getAlias());
 }
 
+TEST(pushBack, Layer)
+{
+	Framework::Layer layer{ "Mountains" };
+
+	Framework::PlacedGraphic pg({ 11, 11 }, VG::VectorGraphic());
+
+	layer.pushBack(pg);
+	layer.pushBack(Framework::PlacedGraphic(VG::Point(22, 22), VG::VectorGraphic()));
+	layer.pushBack(Framework::PlacedGraphic(VG::Point(33, 33), VG::VectorGraphic()));
+
+	int numberOfGraphics{ 0 };
+	for (auto pos = layer.begin(); pos != layer.end(); ++pos)
+	{
+		++numberOfGraphics;
+	}
+
+	int expectedSize{ 3 };
+	CHECK_EQUAL(expectedSize, numberOfGraphics);
+}
+
 //TEST(getAndpushBack, Layer)
 //{
 //	VG::HVectorGraphic vg(std::make_shared<VG::VectorGraphic>());
 //	Framework::Layer myLayer("Test Alias");
-//	Framework::PlacedGraphic pg;
+//	Framework::PlacedGraphic pg();
 //	myLayer.pushBack(pg);
 //
-//	CHECK_EQUAL(pg, myLayer.getGraphic(0));
+//	//CHECK_EQUAL(pg, myLayer.getGraphic(0));
 //}
 
 //TEST(remove, Layer)

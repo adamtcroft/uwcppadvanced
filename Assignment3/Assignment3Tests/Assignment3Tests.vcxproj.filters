@@ -15,40 +15,28 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SceneWriterTest.cpp">
+    <ClCompile Include="..\..\..\Assignment2_solution2017\LayerTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VectorGraphicTest.cpp">
+    <ClCompile Include="..\..\..\Assignment2_solution2017\ParseTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="XmlReaderTest.cpp">
+    <ClCompile Include="..\..\..\Assignment2_solution2017\PlacedGraphicTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="XmlWriterTest.cpp">
+    <ClCompile Include="..\..\..\Assignment2_solution2017\SceneReaderTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AssignmentTests.cpp">
+    <ClCompile Include="..\..\..\Assignment2_solution2017\SceneWriterTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ElementTests.cpp">
+    <ClCompile Include="..\..\..\Assignment2_solution2017\VectorGraphicTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LayerTest.cpp">
+    <ClCompile Include="..\..\..\Assignment2_solution2017\XmlReaderTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ParseTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PlacedGraphicTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PointTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneReaderTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneTest.cpp">
+    <ClCompile Include="..\..\..\Assignment2_solution2017\XmlWriterTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

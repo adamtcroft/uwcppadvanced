@@ -123,36 +123,41 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Element.h" />
-    <ClInclude Include="Layer.h" />
-    <ClInclude Include="Parse.h" />
-    <ClInclude Include="PlacedGraphic.h" />
-    <ClInclude Include="Point.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="SceneReader.h" />
-    <ClInclude Include="SceneWriter.h" />
-    <ClInclude Include="VectorGraphic.h" />
-    <ClInclude Include="VectorGraphicStreamer.h" />
-    <ClInclude Include="XmlInterfaces.h" />
-    <ClInclude Include="XmlReader.h" />
-    <ClInclude Include="XmlWriter.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Element.cpp" />
-    <ClCompile Include="Layer.cpp" />
-    <ClCompile Include="Parse.cpp" />
-    <ClCompile Include="PlacedGraphic.cpp" />
-    <ClCompile Include="Point.cpp" />
-    <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="SceneReader.cpp" />
-    <ClCompile Include="SceneWriter.cpp" />
-    <ClCompile Include="VectorGraphic.cpp" />
-    <ClCompile Include="VectorGraphicStreamer.cpp" />
-    <ClCompile Include="XmlReader.cpp" />
-    <ClCompile Include="XmlWriter.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <Xml Include="VectorGraphic.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Assignment2_solution2017\Element.h" />
+    <ClInclude Include="..\..\..\Assignment2_solution2017\Layer.h" />
+    <ClInclude Include="..\..\..\Assignment2_solution2017\Parse.h" />
+    <ClInclude Include="..\..\..\Assignment2_solution2017\PlacedGraphic.h" />
+    <ClInclude Include="..\..\..\Assignment2_solution2017\Point.h" />
+    <ClInclude Include="..\..\..\Assignment2_solution2017\Scene.h" />
+    <ClInclude Include="..\..\..\Assignment2_solution2017\SceneReader.h" />
+    <ClInclude Include="..\..\..\Assignment2_solution2017\SceneWriter.h" />
+    <ClInclude Include="..\..\..\Assignment2_solution2017\tinyxml2.h" />
+    <ClInclude Include="..\..\..\Assignment2_solution2017\VectorGraphic.h" />
+    <ClInclude Include="..\..\..\Assignment2_solution2017\VectorGraphicStreamer.h" />
+    <ClInclude Include="..\..\..\Assignment2_solution2017\XmlFactories.h" />
+    <ClInclude Include="..\..\..\Assignment2_solution2017\XmlInterfaces.h" />
+    <ClInclude Include="..\..\..\Assignment2_solution2017\XmlReader.h" />
+    <ClInclude Include="..\..\..\Assignment2_solution2017\XmlWriter.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Assignment2_solution2017\Element.cpp" />
+    <ClCompile Include="..\..\..\Assignment2_solution2017\Layer.cpp" />
+    <ClCompile Include="..\..\..\Assignment2_solution2017\Main.cpp" />
+    <ClCompile Include="..\..\..\Assignment2_solution2017\Parse.cpp" />
+    <ClCompile Include="..\..\..\Assignment2_solution2017\PlacedGraphic.cpp" />
+    <ClCompile Include="..\..\..\Assignment2_solution2017\Point.cpp" />
+    <ClCompile Include="..\..\..\Assignment2_solution2017\Scene.cpp" />
+    <ClCompile Include="..\..\..\Assignment2_solution2017\SceneReader.cpp" />
+    <ClCompile Include="..\..\..\Assignment2_solution2017\SceneWriter.cpp" />
+    <ClCompile Include="..\..\..\Assignment2_solution2017\tinyxml2.cpp" />
+    <ClCompile Include="..\..\..\Assignment2_solution2017\VectorGraphic.cpp" />
+    <ClCompile Include="..\..\..\Assignment2_solution2017\VectorGraphicStreamer.cpp" />
+    <ClCompile Include="..\..\..\Assignment2_solution2017\XmlFactories.cpp" />
+    <ClCompile Include="..\..\..\Assignment2_solution2017\XmlReader.cpp" />
+    <ClCompile Include="..\..\..\Assignment2_solution2017\XmlWriter.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

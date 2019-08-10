@@ -133,19 +133,19 @@
 //{
 //	return !VG::operator==(lhs, rhs);
 //}
-//
-//std::ostream& VG::operator<<(std::ostream& output, VG::VectorGraphic& vg)
-//{
+
+std::ostream& VG::operator<<(std::ostream& output, VG::VectorGraphic& vg)
+{
 //	output << "VectorGraphic Openness: " << (vg.isOpen() ? "open" : "closed") << std::endl;
 //	output << "VectorGraphic Point Count: " << vg.getPointCount() << std::endl;
 //	output << "VectorGraphic Width: " << vg.getWidth() << std::endl;
 //	output << "VectorGraphic Height: " << vg.getHeight() << std::endl;
-//
-//	for (auto point : vg.myPath)
-//	{
-//		output << "Point: " << point.getX() << ", " << point.getY() << std::endl;
-//	}
-//	output.flush();
-//
-//	return output;
-//}
+
+	for (auto point : vg.myPath)
+	{
+		output << "Point: " << point.getX() << ", " << point.getY() << std::endl;
+	}
+	output.flush();
+
+	return output;
+}
