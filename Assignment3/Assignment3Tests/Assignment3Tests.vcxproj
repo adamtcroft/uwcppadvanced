@@ -117,22 +117,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AssignmentTests.cpp" />
+    <ClCompile Include="ElementTests.cpp" />
+    <ClCompile Include="LayerTest.cpp" />
+    <ClCompile Include="ParseTest.cpp" />
+    <ClCompile Include="PlacedGraphicTest.cpp" />
+    <ClCompile Include="PointTest.cpp" />
+    <ClCompile Include="SceneReaderTest.cpp" />
+    <ClCompile Include="SceneTest.cpp" />
+    <ClCompile Include="SceneWriterTest.cpp" />
+    <ClCompile Include="VectorGraphicTest.cpp" />
+    <ClCompile Include="XmlReaderTest.cpp" />
+    <ClCompile Include="XmlWriterTest.cpp" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Assignment3Source\Assignment3Source.vcxproj">
       <Project>{86565ae0-1e8b-4f0c-b0d4-90f107f6c56d}</Project>
     </ProjectReference>
     <ProjectReference Include="..\CppUnitLite\CppUnitLite.vcxproj">
       <Project>{d8a7b324-826b-4ae8-86b5-475751549e14}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\Assignment2_solution2017\LayerTest.cpp" />
-    <ClCompile Include="..\..\..\Assignment2_solution2017\ParseTest.cpp" />
-    <ClCompile Include="..\..\..\Assignment2_solution2017\PlacedGraphicTest.cpp" />
-    <ClCompile Include="..\..\..\Assignment2_solution2017\SceneReaderTest.cpp" />
-    <ClCompile Include="..\..\..\Assignment2_solution2017\SceneWriterTest.cpp" />
-    <ClCompile Include="..\..\..\Assignment2_solution2017\VectorGraphicTest.cpp" />
-    <ClCompile Include="..\..\..\Assignment2_solution2017\XmlReaderTest.cpp" />
-    <ClCompile Include="..\..\..\Assignment2_solution2017\XmlWriterTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

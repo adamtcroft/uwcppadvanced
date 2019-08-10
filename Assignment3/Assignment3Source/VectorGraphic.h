@@ -31,7 +31,7 @@ namespace VG
 //		void openShape();
 //		void closeShape();
 //
-//		bool isOpen() const;
+		bool isOpen() const;
 //		bool isClosed() const;
 //
 //		int getWidth() const;
@@ -40,11 +40,11 @@ namespace VG
 //		int getPointCount() const;
 //		const Point& getPoint(int index) const;
 //
-//		friend bool operator==(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs);
-//		friend bool operator!=(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs);
+		friend bool operator==(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs);
+		friend bool operator!=(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs);
 		friend std::ostream& operator<<(std::ostream& output, VG::VectorGraphic& vg);
-
-	private:
+//
+//	private:
 		Points myPath;
 		enum class Openness { Open, Closed } shapeOpenness = Openness::Closed;
 	};

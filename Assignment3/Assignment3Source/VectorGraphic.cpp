@@ -62,12 +62,12 @@
 //{
 //	shapeOpenness = Openness::Closed;
 //}
-//
-//bool VG::VectorGraphic::isOpen() const
-//{
-//	return shapeOpenness == Openness::Open;
-//}
-//
+
+bool VG::VectorGraphic::isOpen() const
+{
+	return shapeOpenness == Openness::Open;
+}
+
 //bool VG::VectorGraphic::isClosed() const
 //{
 //	return shapeOpenness == Openness::Closed;
@@ -118,33 +118,34 @@
 //{
 //	return myPath.at(index);
 //}
-//
-//bool VG::operator==(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs)
-//{
-//	if (lhs.isOpen() != rhs.isOpen())
-//		return false;
-//	else if (lhs.myPath != rhs.myPath)
-//		return false;
-//	else
-//		return true;
-//}
-//
-//bool VG::operator!=(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs)
-//{
-//	return !VG::operator==(lhs, rhs);
-//}
+
+bool VG::operator==(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs)
+{
+	if (lhs.isOpen() != rhs.isOpen())
+		return false;
+	//else if (lhs.myPath != rhs.myPath)
+	//	return false;
+	else
+		return true;
+}
+
+bool VG::operator!=(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs)
+{
+	return !VG::operator==(lhs, rhs);
+}
 
 std::ostream& VG::operator<<(std::ostream& output, VG::VectorGraphic& vg)
 {
-//	output << "VectorGraphic Openness: " << (vg.isOpen() ? "open" : "closed") << std::endl;
-//	output << "VectorGraphic Point Count: " << vg.getPointCount() << std::endl;
-//	output << "VectorGraphic Width: " << vg.getWidth() << std::endl;
-//	output << "VectorGraphic Height: " << vg.getHeight() << std::endl;
+	//output << "VectorGraphic Openness: " << (vg.isOpen() ? "open" : "closed") << std::endl;
+	//output << "VectorGraphic Point Count: " << vg.getPointCount() << std::endl;
+	//output << "VectorGraphic Width: " << vg.getWidth() << std::endl;
+	//output << "VectorGraphic Height: " << vg.getHeight() << std::endl;
 
-	for (auto point : vg.myPath)
-	{
-		output << "Point: " << point.getX() << ", " << point.getY() << std::endl;
-	}
+	//for (auto point : vg.myPath)
+	//{
+	//	output << "Point: " << point.getX() << ", " << point.getY() << std::endl;
+	//}
+	output << "VECTORGRAPHIC";
 	output.flush();
 
 	return output;
