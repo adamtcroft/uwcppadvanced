@@ -28,27 +28,27 @@ namespace VG
 			myPath.emplace_back(std::forward<C>(p));
 		}
 
-		//		void removePoint(const VG::Point& p);
-		//		void erasePoint(int index);
-		//
-		//		void openShape();
-		//		void closeShape();
-		//
+		void removePoint(const VG::Point& p);
+		void erasePoint(int index);
+
+		void openShape();
+		void closeShape();
+
 		bool isOpen() const;
-		//		bool isClosed() const;
-		//
-		//		int getWidth() const;
-		//		int getHeight() const;
-		//
+		bool isClosed() const;
+
+		int getWidth() const;
+		int getHeight() const;
+
 		size_t getPointCount() const;
-		//		const Point& getPoint(int index) const;
-		//
+		const Point& getPoint(int index) const;
+
+		bool operator==(const VG::VectorGraphic& rhs) const;
+		bool operator!=(const VG::VectorGraphic& rhs) const;
 		friend std::ostream& operator<<(std::ostream& output, VG::VectorGraphic& vg);
-		//
-		//	private:
+
+	private:
 		Points myPath;
 		enum class Openness { Open, Closed } shapeOpenness = Openness::Closed;
 	};
-	bool operator==(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs);
-	bool operator!=(const VG::VectorGraphic& lhs, const VG::VectorGraphic& rhs);
 }
