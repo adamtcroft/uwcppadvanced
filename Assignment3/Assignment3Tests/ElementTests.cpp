@@ -1,6 +1,13 @@
 #include "TestHarness.h"
 #include "Element.cpp"
-#include "XmlReader.h"
+
+//TEST(ctor, Element)
+//{
+//	Xml::Element element;
+//	Xml::Element expected;
+//
+//	CHECK(expected == element);
+//}
 
 //TEST(getSetName, Element)
 //{
