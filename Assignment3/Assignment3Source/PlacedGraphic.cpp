@@ -41,26 +41,11 @@ Framework::PlacedGraphic::PlacedGraphic(const VG::Point& p, const VG::VectorGrap
 ////	}
 ////	return *this;
 ////}
-//
-////void Framework::PlacedGraphic::setPlacementPoint(VG::Point const& placement)
-////{
-////	placementPoint = placement;
-////}
-//
-//template<class P> void Framework::PlacedGraphic::setPlacementPoint(P&& p)
-//{
-//	placementPoint = std::forward<P>(p);
-//}
 
 VG::Point const& Framework::PlacedGraphic::getPlacementPoint() const
 {
 	return placementPoint;
 }
-
-////void Framework::PlacedGraphic::setGraphic(VG::HVectorGraphic const& referenceGraphic)
-////{
-////	graphic = referenceGraphic;
-////}
 
 VG::VectorGraphic const& Framework::PlacedGraphic::getGraphic() const
 {

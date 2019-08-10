@@ -61,97 +61,67 @@ TEST(moveAssignment, PlacedGraphic)
 	CHECK_EQUAL(1, pg.getGraphic().getPointCount());
 }
 
-//TEST(setPlacementPoint, PlacedGraphic)
-//{
-//    Framework::PlacedGraphic graphic;
-//    graphic.setPlacementPoint(VG::Point(44, 55));
-//
-//    constexpr VG::Point expected(44, 55);
-//    CHECK_EQUAL(expected, graphic.getPlacementPoint());
-//}
-//
-//TEST(setGraphic, PlacedGraphic)
-//{
-//    Framework::PlacedGraphic pg;
-//    VG::HVectorGraphic vg(new VG::VectorGraphic);
-//    pg.setGraphic(vg);
-//
-//	CHECK_EQUAL(vg, pg.getGraphic());
-//}
-//
-//TEST(getPlacementPoint, PlacedGraphic)
-//{
-//    Framework::PlacedGraphic pg(VG::Point(44,55), VG::HVectorGraphic(new VG::VectorGraphic));
-//
-//    CHECK_EQUAL(VG::Point(44,55), pg.getPlacementPoint());
-//}
-//
-//TEST(getGraphic, PlacedGraphic)
-//{
-//	VG::HVectorGraphic vg(new VG::VectorGraphic);
-//    Framework::PlacedGraphic pg(VG::Point(44,55), vg);
-//
-//    CHECK_EQUAL(vg, pg.getGraphic());
-//}
-//
-//TEST(equality, PlacedGraphic)
-//{
-//    Framework::PlacedGraphic pg;
-//    VG::HVectorGraphic vg(new VG::VectorGraphic);
-//    pg.setGraphic(vg);
-//
-//    Framework::PlacedGraphic pg2;
-//    pg2.setGraphic(vg);
-//
-//	CHECK_EQUAL(pg, pg2);
-//}
-//
-//TEST(inequality, PlacedGraphic)
-//{
-//    Framework::PlacedGraphic pg;
-//    VG::HVectorGraphic vg(new VG::VectorGraphic);
-//    pg.setGraphic(vg);
-//
-//    Framework::PlacedGraphic pg2;
-//    VG::HVectorGraphic vg2(new VG::VectorGraphic);
-//    pg2.setGraphic(vg2);
-//
-//	CHECK(pg != pg2);
-//}
-//
-//TEST(oStream, PlacedGraphic)
-//{
-//	Framework::PlacedGraphic pg;
-//	std::ostringstream oss;
-//	oss << pg;
-//
-//	std::ostringstream expected;
-//	expected << "Placement Point: " << pg.getPlacementPoint() << std::endl;
-//	expected << *pg.getGraphic();
-//
-//	CHECK_EQUAL(expected.str(), oss.str());
-//}
-//
-//TEST(sharedPtr, PlacedGraphic)
-//{
-//    Framework::PlacedGraphic pg;
-//    VG::HVectorGraphic vg(new VG::VectorGraphic);
-//    pg.setGraphic(vg);
-//
-//    Framework::PlacedGraphic pg2;
-//    pg2.setGraphic(vg);
-//
-//	CHECK_EQUAL(pg.getGraphic(), pg2.getGraphic());
-//}
-//
-//TEST(validateCoord, PlacedGraphic)
-//{
-//    Framework::PlacedGraphic pg;
-//    VG::HVectorGraphic vg(new VG::VectorGraphic);
-//    pg.setGraphic(vg);
-//
-//    Framework::PlacedGraphic pg2;
-//    pg2.setGraphic(vg);
-//
-//	CHECK_EQUAL(pg.getGraphic(), pg2.getGraphic());
-//}
+TEST(setPlacementPoint, PlacedGraphic)
+{
+    Framework::PlacedGraphic graphic;
+    graphic.setPlacementPoint(VG::Point(44, 55));
+
+    constexpr VG::Point expected(44, 55);
+    CHECK_EQUAL(expected, graphic.getPlacementPoint());
+}
+
+TEST(setGraphic, PlacedGraphic)
+{
+    Framework::PlacedGraphic pg;
+    VG::VectorGraphic vg;
+	vg.addPoint(VG::Point{ 5,6 });
+    pg.setGraphic(vg);
+
+	CHECK_EQUAL(vg, pg.getGraphic());
+}
+
+TEST(getPlacementPoint, PlacedGraphic)
+{
+	VG::VectorGraphic vg;
+	vg.addPoint(VG::Point{ 8,12 });
+	Framework::PlacedGraphic pg({ 44,55 }, vg);
+
+    CHECK_EQUAL(VG::Point(44,55), pg.getPlacementPoint());
+}
+
+TEST(getGraphic, PlacedGraphic)
+{
+	VG::VectorGraphic vg;
+	vg.addPoint(VG::Point{ 8,12 });
+    Framework::PlacedGraphic pg(VG::Point(44,55), vg);
+
+    CHECK_EQUAL(vg, pg.getGraphic());
+}
+
+TEST(equality, PlacedGraphic)
+{
+    Framework::PlacedGraphic pg;
+    VG::VectorGraphic vg;
+	vg.addPoint(VG::Point{ 76,83 });
+    pg.setGraphic(vg);
+
+    Framework::PlacedGraphic pg2;
+    pg2.setGraphic(vg);
+
+	CHECK(pg == pg2);
+}
+
+TEST(inequality, PlacedGraphic)
+{
+    Framework::PlacedGraphic pg;
+    VG::VectorGraphic vg;
+	vg.addPoint(VG::Point{ 12, 13 });
+    pg.setGraphic(vg);
+
+    Framework::PlacedGraphic pg2;
+    VG::VectorGraphic vg2;
+	vg2.addPoint(VG::Point{ 12, 14 });
+    pg2.setGraphic(vg2);
+
+	CHECK(pg != pg2);
+}
