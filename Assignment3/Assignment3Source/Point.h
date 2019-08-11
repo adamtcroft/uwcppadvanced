@@ -29,8 +29,8 @@ namespace VG
 		//friend std::ostream& operator<<(std::ostream& output, VG::Point& p);
 
 	private:
-		unsigned int x{ 0 };
-		unsigned int y{ 0 };
+		int x{ 0 };
+		int y{ 0 };
 	};
 
 		bool operator==(const VG::Point& lhs, const VG::Point& rhs);
