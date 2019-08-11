@@ -39,7 +39,7 @@ TEST(writeXml, XmlWriter)
 {
     std::stringstream xmlStream(SceneXml);
     Xml::HElement root = Xml::Reader::loadXml(xmlStream);
-    Xml::Writer::writeXml(root, std::cout);
+    //Xml::Writer::writeXml(root, std::cout);
 /*
     
     // TODO: find a good automated way to verify instead of looking at cout.

@@ -118,7 +118,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssignmentTests.cpp" />
-    <ClCompile Include="ElementTests.cpp" />
+    <ClCompile Include="BinaryTest.cpp" />
+    <ClCompile Include="BitmapTest.cpp" />
+    <ClCompile Include="ColorTest.cpp" />
     <ClCompile Include="LayerTest.cpp" />
     <ClCompile Include="ParseTest.cpp" />
     <ClCompile Include="PlacedGraphicTest.cpp" />
@@ -127,6 +129,8 @@
     <ClCompile Include="SceneTest.cpp" />
     <ClCompile Include="SceneWriterTest.cpp" />
     <ClCompile Include="VectorGraphicTest.cpp" />
+    <ClCompile Include="VerifyEqualityTest.cpp" />
+    <ClCompile Include="WindowsBitmapHeaderTest.cpp" />
     <ClCompile Include="XmlReaderTest.cpp" />
     <ClCompile Include="XmlWriterTest.cpp" />
   </ItemGroup>
