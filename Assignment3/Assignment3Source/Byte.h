@@ -7,8 +7,8 @@ namespace Binary
 	class Byte
 	{
 	public:
-		Byte();
-		Byte(uint8_t c);
+		Byte() = default;
+		Byte(uint8_t input);
 
 		Byte(const Byte& other) = default;
 		Byte(Byte&& other) = default;
@@ -16,15 +16,15 @@ namespace Binary
 		Byte& operator=(const Byte& other) = default;
 		Byte& operator=(Byte&& other) = default;
 
-		operator uint8_t() const { return character; }
+		operator uint8_t() const { return value; }
 
-		~Byte();
+		~Byte() = default;
 
-		static uint8_t read(std::stringstream& ss);
+		static unsigned char read(std::stringstream& ss);
 		void write(std::stringstream& ss);
 
 	private:
-		uint8_t character;
+		uint8_t value;
 	};
 }
 

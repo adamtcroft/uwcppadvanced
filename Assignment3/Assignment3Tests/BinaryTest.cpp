@@ -1,7 +1,7 @@
 #include "TestHarness.h"
 //#include "DoubleWord.h"
 #include "Byte.h"
-//#include "Word.h"
+#include "Word.h"
 #include <sstream>
 
 TEST(readByte, Byte)
@@ -56,28 +56,30 @@ TEST(assign, Byte)
     CHECK_EQUAL('a', byte5);
 }
 
-//TEST(readWordLittleEndian, Binary)
-//{
-//    unsigned char carray[]{ 0xb1, 0xb2, 0 };
-//    std::stringstream ss{reinterpret_cast<char*>(carray)};
-//    
-//    const Binary::Word expected{0xb2b1};
-//    Binary::Word actual = Binary::Word::readLittleEndian(ss);
-//    
-//    CHECK_EQUAL(expected, actual);
-//}
-//
-//TEST(readWordBigEndian, Binary)
-//{
-//    unsigned char carray[]{ 0xb1, 0xb2, 0 };
-//    std::stringstream ss{reinterpret_cast<char*>(carray)};
-//    
-//    const Binary::Word expected{0xb1b2};
-//    Binary::Word actual = Binary::Word::readBigEndian(ss);
-//    
-//    CHECK_EQUAL(expected, actual);
-//}
-//
+TEST(readWordLittleEndian, Binary)
+{
+    unsigned char carray[]{ 0xb1, 0xb2, 0 };
+    std::stringstream ss{reinterpret_cast<char*>(carray)};
+    
+    const Binary::Word expected{0xb2b1};
+    Binary::Word actual = Binary::Word::readLittleEndian(ss);
+    
+	CHECK(expected == actual);
+    //CHECK_EQUAL(expected, actual);
+}
+
+TEST(readWordBigEndian, Binary)
+{
+    unsigned char carray[]{ 0xb1, 0xb2, 0 };
+    std::stringstream ss{reinterpret_cast<char*>(carray)};
+    
+    const Binary::Word expected{0xb1b2};
+    Binary::Word actual = Binary::Word::readBigEndian(ss);
+    
+	CHECK(expected == actual);
+    //CHECK_EQUAL(expected, actual);
+}
+
 //TEST(readDoubleWordLittleEndian, Binary)
 //{
 //    unsigned char carray[]{ 0xb1, 0xb2, 0xb3, 0xb4, 0 };

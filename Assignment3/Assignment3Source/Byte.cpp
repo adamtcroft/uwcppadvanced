@@ -1,20 +1,12 @@
 #include "Byte.h"
 
-Binary::Byte::Byte()
-{
-}
-
-Binary::Byte::Byte(uint8_t c) :
-	character(c)
+Binary::Byte::Byte(uint8_t input) :
+	value(input)
 {
 
 }
 
-Binary::Byte::~Byte()
-{
-}
-
-uint8_t Binary::Byte::read(std::stringstream& ss)
+unsigned char Binary::Byte::read(std::stringstream& ss)
 {
 	char c;
 	ss.get(c);
@@ -23,5 +15,5 @@ uint8_t Binary::Byte::read(std::stringstream& ss)
 
 void Binary::Byte::write(std::stringstream& ss)
 {
-	ss << character;
+	ss << value;
 }
