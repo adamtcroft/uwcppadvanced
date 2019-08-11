@@ -15,19 +15,19 @@ namespace Xml
 	public:
 		virtual void createFromXml(std::string& xmlStr) = 0;
 
-		virtual std::string const& getName() const noexcept = 0;
+		virtual std::string getName() const noexcept = 0;
 		virtual void setAttribute(const std::string& name, const std::string& value) = 0;
-		virtual std::string const& getAttribute(const std::string& key) noexcept = 0; //REMOVE THIS??
-		virtual AttributeMap const& getAttributes() const noexcept = 0;
-		
-		virtual ElementCollection const& getChildElements() const noexcept = 0;
-		
+		virtual std::string getAttribute(const std::string& key) noexcept = 0;
+		virtual AttributeMap getAttributes() const noexcept = 0;
+
+		virtual ElementCollection getChildElements() const noexcept = 0;
+
 		virtual HElement appendChild(const std::string& name) noexcept = 0;
 	};
 
-	//	class IXmlReader
-	//	{
-	//	public:
-	//		virtual HElement loadXml(std::istream& in) const = 0;
-	//	};
+	class IXmlReader
+	{
+	public:
+		virtual HElement loadXml(std::istream& in) const = 0;
+	};
 }

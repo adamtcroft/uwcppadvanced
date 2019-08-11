@@ -1,42 +1,42 @@
-//#include "XmlReader.h"
-//#include "Element.h"
-//#include "Scene.h"
-//#include "SceneReader.h"
-//#include "TestHarness.h"
-//#include "Layer.h"
-//
-//const std::string TestXml = R"(
-//<Scene width="800" height="600">
-//  <Layer alias="sky">
-//    <PlacedGraphic x="0" y="0">
-//      <VectorGraphic closed="true">
-//        <Point x="1" y="2" />
-//        <!-- Comment -->
-//        <Point x="3" y="4" />
-//        <Point x="5" y="6" />
-//      </VectorGraphic>
-//    </PlacedGraphic>
-//    <!-- Comment -->
-//    <PlacedGraphic x="700" y="0">
-//      <VectorGraphic closed="false">
-//        <Point x="7" y="8" />
-//        <Point x="9" y="10" />
-//        <Point x="11" y="12" />
-//      </VectorGraphic>
-//    </PlacedGraphic>
-//  </Layer>
-//  <Layer alias="mountains">
-//    <PlacedGraphic x="250" y="250">
-//      <VectorGraphic closed="false">
-//        <Point x="13" y="14" />
-//        <Point x="15" y="19" />
-//        <Point x="17" y="18" />
-//        <!-- etc... -->
-//      </VectorGraphic>
-//    </PlacedGraphic>
-//  </Layer>
-//</Scene>)";
-//
+#include "XmlReader.h"
+#include "Element.h"
+#include "Scene.h"
+#include "SceneReader.h"
+#include "TestHarness.h"
+#include "Layer.h"
+
+const std::string TestXml = R"(
+<Scene width="800" height="600">
+  <Layer alias="sky">
+    <PlacedGraphic x="0" y="0">
+      <VectorGraphic closed="true">
+        <Point x="1" y="2" />
+        <!-- Comment -->
+        <Point x="3" y="4" />
+        <Point x="5" y="6" />
+      </VectorGraphic>
+    </PlacedGraphic>
+    <!-- Comment -->
+    <PlacedGraphic x="700" y="0">
+      <VectorGraphic closed="false">
+        <Point x="7" y="8" />
+        <Point x="9" y="10" />
+        <Point x="11" y="12" />
+      </VectorGraphic>
+    </PlacedGraphic>
+  </Layer>
+  <Layer alias="mountains">
+    <PlacedGraphic x="250" y="250">
+      <VectorGraphic closed="false">
+        <Point x="13" y="14" />
+        <Point x="15" y="19" />
+        <Point x="17" y="18" />
+        <!-- etc... -->
+      </VectorGraphic>
+    </PlacedGraphic>
+  </Layer>
+</Scene>)";
+
 //TEST(ReadScene, SceneReader)
 //{
 //    std::stringstream xmlStream(TestXml);

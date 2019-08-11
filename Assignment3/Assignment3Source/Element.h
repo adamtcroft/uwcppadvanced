@@ -22,15 +22,15 @@ namespace Xml
 		~Element() = default;
 
 		void createFromXml(std::string& xmlStr) override;
-		std::string const& getName() const noexcept override;
+		std::string getName() const noexcept override;
 
 		void setAttribute(const std::string& name, const std::string& value);
 
-		std::string const& getAttribute(const std::string& name) noexcept override;
-		AttributeMap const& getAttributes() const noexcept override;
+		std::string getAttribute(const std::string& name) noexcept override;
+		AttributeMap getAttributes() const noexcept override;
 		HElement appendChild(const std::string& name) noexcept override;
 
-		ElementCollection const& getChildElements() const noexcept override;
+		ElementCollection getChildElements() const noexcept override;
 
 
 	private:

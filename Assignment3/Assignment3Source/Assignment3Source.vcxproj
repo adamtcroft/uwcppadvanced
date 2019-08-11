@@ -133,6 +133,7 @@
     <ClInclude Include="SceneWriter.h" />
     <ClInclude Include="VectorGraphic.h" />
     <ClInclude Include="VectorGraphicStreamer.h" />
+    <ClInclude Include="XmlFactories.h" />
     <ClInclude Include="XmlInterfaces.h" />
     <ClInclude Include="XmlReader.h" />
     <ClInclude Include="XmlWriter.h" />
@@ -148,6 +149,7 @@
     <ClCompile Include="SceneWriter.cpp" />
     <ClCompile Include="VectorGraphic.cpp" />
     <ClCompile Include="VectorGraphicStreamer.cpp" />
+    <ClCompile Include="XmlFactories.cpp" />
     <ClCompile Include="XmlReader.cpp" />
     <ClCompile Include="XmlWriter.cpp" />
   </ItemGroup>

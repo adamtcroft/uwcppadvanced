@@ -1,4 +1,5 @@
 #include "Element.h"
+#include <iostream>
 
 namespace Xml
 {
@@ -32,18 +33,18 @@ namespace Xml
 		myElement = myXMLDocument->RootElement();
 	}
 
-	std::string const& Element::getName() const noexcept
+	std::string Element::getName() const noexcept
 	{
 		return std::move(std::string(myElement->Name()));
 	}
 
-	std::string const& Element::getAttribute(const std::string& name) noexcept
+	std::string Element::getAttribute(const std::string& name) noexcept
 	{
 		auto result = myElement->Attribute(name.c_str());
 		return (result == nullptr) ? "" : result;
 	}
 
-	AttributeMap const& Element::getAttributes() const noexcept
+	AttributeMap Element::getAttributes() const noexcept
 	{
 		AttributeMap attributes;
 
@@ -63,16 +64,18 @@ namespace Xml
 		myElement->SetAttribute(name.c_str(), value.c_str());
 	}
 
-	ElementCollection const& Element::getChildElements() const noexcept
+	ElementCollection Element::getChildElements() const noexcept
 	{
 		ElementCollection elements;
 
 		if (!myElement->NoChildren())
 		{
-			for (tinyxml2::XMLElement* node = myElement->FirstChildElement(); node != nullptr; node->NextSiblingElement())
+			auto node = myElement->FirstChildElement();
+			while (node != nullptr)
 			{
 				auto element = new Element(node);
-				elements.emplace_back(dynamic_cast<IElement*>(element));
+				elements.emplace_back(element);
+				node = node->NextSiblingElement();
 			}
 		}
 

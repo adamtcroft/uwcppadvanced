@@ -1,5 +1,16 @@
-//#include "XmlReader.h"
-//
+#include "XmlReader.h"
+#include <iostream>
+
+Xml::HElement Xml::Reader::loadXml(std::stringstream& xmlStream)
+{
+	std::string xmlStr = xmlStream.str();
+	HElement hElement = std::make_shared<Element>();
+
+	hElement->createFromXml(xmlStr);
+
+	return hElement;
+}
+
 //Xml::HElement Xml::Reader::loadXml(std::stringstream& xmlStream)
 //{
 //	tinyxml2::XMLDocument document;
