@@ -5,13 +5,15 @@
 
 namespace Framework
 {
-
 	class Layer
 	{
+	private:
 		using PlacedGraphicCollection = std::list<PlacedGraphic>;
-		using PlacedGraphicIterator = PlacedGraphicCollection::const_iterator;
+		PlacedGraphicCollection graphics;
+		std::string alias;
 
 	public:
+		using PlacedGraphicIterator = PlacedGraphicCollection::const_iterator;
 		Layer() = delete;
 		Layer(std::string const& initialAlias);
 
@@ -39,9 +41,5 @@ namespace Framework
 
 		bool operator==(const Layer& rhs) const;
 		bool operator!=(const Layer& rhs) const;
-
-	private:
-		PlacedGraphicCollection graphics;
-		std::string alias;
 	};
 }
