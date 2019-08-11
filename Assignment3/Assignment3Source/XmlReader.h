@@ -1,16 +1,9 @@
 #pragma once
-//#include <memory>
 #include <sstream>
-//#include <memory>
-#include <iostream>
-//#include <vector>
 #include "Element.h"
-//#include "../tinyxml2-master/tinyxml2.h"
 
 namespace Xml
 {
-//	using ElementList = std::vector<HElement>;
-
 	class Reader : public IXmlReader
 	{
 	public:
@@ -25,9 +18,6 @@ namespace Xml
 		~Reader() = delete;
 
 		static HElement loadXml(std::stringstream& xmlStream);
-
-//	private:
-//		static void loadElements(tinyxml2::XMLElement& tinyXMLElement, HElement& currentElement, HElement parentElement = nullptr);
 	};
 }
 
