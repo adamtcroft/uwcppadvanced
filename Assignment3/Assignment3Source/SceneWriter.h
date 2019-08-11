@@ -20,10 +20,6 @@ namespace Framework
 		~SceneWriter() = delete;
 
 		static Xml::HElement writeScene(const Scene& scene);
-
-//	private:
-//		static void writeLayers(LayerIterator iterator, Xml::HElement result);
-//		static void writePlacedGraphics(PlacedGraphicIterator iterator, Xml::HElement layer);
 	};
 }
 
