@@ -6,7 +6,6 @@
 namespace Framework
 {
 	using LayerCollection = std::list<Layer>;
-	using LayerIterator = LayerCollection::iterator;
 
 	class Scene
 	{
@@ -28,8 +27,9 @@ namespace Framework
 		}
 		void remove(const Layer&& layer);
 
-		LayerIterator begin();
-		LayerIterator end();
+		using LayerIterator = LayerCollection::const_iterator;
+		LayerIterator begin() const;
+		LayerIterator end() const;
 
 		void setWidth(size_t w);
 		void setHeight(size_t h);

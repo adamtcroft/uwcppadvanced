@@ -10,12 +10,12 @@ void Framework::Scene::remove(const Layer&& layer)
 	layers.remove(layer);
 }
 
-Framework::LayerIterator Framework::Scene::begin()
+Framework::Scene::LayerIterator Framework::Scene::begin() const
 {
 	return layers.begin();
 }
 
-Framework::LayerIterator  Framework::Scene::end()
+Framework::Scene::LayerIterator  Framework::Scene::end() const
 {
 	return layers.end();
 }
