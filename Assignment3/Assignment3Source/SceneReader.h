@@ -23,8 +23,6 @@ namespace Framework
 		static void readLayer(Framework::Scene& scene, const Xml::HElement layerElement);
 		static void readGraphic(Framework::Scene& scene, Framework::Layer& layer, const Xml::HElement graphicElement);
 		static VG::VectorGraphic readVectorGraphic(const Xml::HElement vgElement);
-		//static void buildLayer(Scene& parent, Xml::HElement& element);
-//		static void buildPlacedGraphic(Layer& parent, Xml::HElement& element);
 	};
 }
 
