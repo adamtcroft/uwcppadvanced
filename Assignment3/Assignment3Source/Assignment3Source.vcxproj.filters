@@ -66,6 +66,9 @@
     <ClInclude Include="Word.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DoubleWord.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SceneReader.cpp">
@@ -114,6 +117,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Word.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DoubleWord.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

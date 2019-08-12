@@ -1,5 +1,6 @@
 #include "Word.h"
 
+
 Binary::Word::Word()
 {
 }
@@ -15,13 +16,13 @@ Binary::Word::~Word()
 
 Binary::Word Binary::Word::readLittleEndian(std::stringstream& ss)
 {
-	auto word = readBigEndian(ss);
-	return _byteswap_ushort(word);
+	return _byteswap_ushort(readBigEndian(ss));
 }
 
+const auto readByte = Binary::Byte::read;
 Binary::Word Binary::Word::readBigEndian(std::stringstream& ss)
 {
-	return ss.get() << 8 | ss.get();
+	return readByte(ss) << 8 | readByte(ss);
 }
 
 bool Binary::Word::operator==(const Word& rhs) const

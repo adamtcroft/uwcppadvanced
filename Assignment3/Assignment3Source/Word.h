@@ -10,6 +10,13 @@ namespace Binary
 	public:
 		Word();
 		Word(uint16_t input);
+
+		Word(const Word& other) = default;
+		Word(Word&& other) = default;
+
+		Word& operator=(const Word& other) = default;
+		Word& operator=(Word&& other) = default;
+
 		~Word();
 
 		static Word readLittleEndian(std::stringstream& ss);
