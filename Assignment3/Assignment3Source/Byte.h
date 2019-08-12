@@ -20,7 +20,7 @@ namespace Binary
 
 		~Byte() = default;
 
-		static unsigned char read(std::stringstream& ss);
+		static unsigned char read(std::istream& ss);
 		void write(std::stringstream& ss);
 
 	private:

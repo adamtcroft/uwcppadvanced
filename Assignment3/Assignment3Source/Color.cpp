@@ -7,13 +7,12 @@ BitmapGraphics::Color::Color(uint8_t redInput, uint8_t greenInput, uint8_t blueI
 }
 
 const auto readByte = Binary::Byte::read;
-BitmapGraphics::Color BitmapGraphics::Color::read(const std::istringstream& iss)
+BitmapGraphics::Color BitmapGraphics::Color::read(std::istream& iss)
 {
-	std::stringstream ss(iss.str());
 	Color myColor;
-	myColor.blue = readByte(ss);
-	myColor.green = readByte(ss);
-	myColor.red = readByte(ss);
+	myColor.blue = readByte(iss);
+	myColor.green = readByte(iss);
+	myColor.red = readByte(iss);
 	return myColor;
 }
 
@@ -30,4 +29,14 @@ uint8_t const& BitmapGraphics::Color::getGreen() const
 uint8_t const& BitmapGraphics::Color::getBlue() const
 {
 	return blue;
+}
+
+bool BitmapGraphics::Color::operator==(const Color& rhs) const
+{
+	return (red == rhs.red) && (green == rhs.green) && (blue == rhs.blue);
+}
+
+bool BitmapGraphics::Color::operator!=(const Color& rhs) const
+{
+	return !(*this == rhs);
 }
