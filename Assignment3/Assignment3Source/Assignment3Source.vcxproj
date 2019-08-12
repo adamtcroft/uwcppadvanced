@@ -124,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Byte.h" />
+    <ClInclude Include="Color.h" />
     <ClInclude Include="DoubleWord.h" />
     <ClInclude Include="Element.h" />
     <ClInclude Include="Layer.h" />
@@ -144,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Byte.cpp" />
+    <ClCompile Include="Color.cpp" />
     <ClCompile Include="DoubleWord.cpp" />
     <ClCompile Include="Element.cpp" />
     <ClCompile Include="Layer.cpp" />

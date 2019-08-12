@@ -6,34 +6,34 @@
 //  Copyright (c) 2014 Chris Elderkin. All rights reserved.
 //
 
-//#include "TestHarness.h"
-//#include "Color.h"
-//#include <vector>
-//#include <sstream>
-//
-//using namespace BitmapGraphics;
-//
-//TEST(createColor, Color)
-//{
-//    Color color{0xAA, 0xBB, 0xCC};
-//    
-//    CHECK_EQUAL(0xAA, color.getRed());
-//    CHECK_EQUAL(0xBB, color.getGreen());
-//    CHECK_EQUAL(0xCC, color.getBlue());
-//}
-//
-//TEST(readColor, Color)
-//{
-//    unsigned char colorData[]{ 0x23, 0x24, 0x25, 0 };
-//    std::istringstream colorStream{reinterpret_cast<char*>(colorData)};
-//    
-//    Color color{Color::read(colorStream)};
-//    
-//    CHECK_EQUAL(0x23, color.getBlue());
-//    CHECK_EQUAL(0x24, color.getGreen());
-//    CHECK_EQUAL(0x25, color.getRed());
-//}
-//
+#include "TestHarness.h"
+#include "Color.h"
+#include <vector>
+#include <sstream>
+
+using namespace BitmapGraphics;
+
+TEST(createColor, Color)
+{
+    Color color{0xAA, 0xBB, 0xCC};
+    
+    CHECK_EQUAL(0xAA, color.getRed());
+    CHECK_EQUAL(0xBB, color.getGreen());
+    CHECK_EQUAL(0xCC, color.getBlue());
+}
+
+TEST(readColor, Color)
+{
+    unsigned char colorData[]{ 0x23, 0x24, 0x25, 0 };
+    std::istringstream colorStream{reinterpret_cast<char*>(colorData)};
+    
+    Color color{Color::read(colorStream)};
+    
+    CHECK_EQUAL(0x23, color.getBlue());
+    CHECK_EQUAL(0x24, color.getGreen());
+    CHECK_EQUAL(0x25, color.getRed());
+}
+
 //TEST(readScanLines, Color)
 //{
 //    unsigned char colorData[]{
