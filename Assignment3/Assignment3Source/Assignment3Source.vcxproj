@@ -136,6 +136,7 @@
     <ClInclude Include="SceneWriter.h" />
     <ClInclude Include="VectorGraphic.h" />
     <ClInclude Include="VectorGraphicStreamer.h" />
+    <ClInclude Include="VerifyEquality.h" />
     <ClInclude Include="WindowsBitmapHeader.h" />
     <ClInclude Include="Word.h" />
     <ClInclude Include="XmlFactories.h" />
@@ -157,6 +158,7 @@
     <ClCompile Include="SceneWriter.cpp" />
     <ClCompile Include="VectorGraphic.cpp" />
     <ClCompile Include="VectorGraphicStreamer.cpp" />
+    <ClCompile Include="VerifyEquality.cpp" />
     <ClCompile Include="WindowsBitmapHeader.cpp" />
     <ClCompile Include="Word.cpp" />
     <ClCompile Include="XmlFactories.cpp" />

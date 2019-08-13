@@ -17,3 +17,13 @@ void Binary::Byte::write(std::stringstream& ss)
 {
 	ss << value;
 }
+
+bool Binary::Byte::operator==(const char& rhs)
+{
+	return value == rhs;
+}
+
+bool Binary::Byte::operator!=(const char& rhs)
+{
+	return !(value == rhs);
+}

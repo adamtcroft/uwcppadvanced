@@ -1,7 +1,7 @@
 #pragma once
 #include <cstdint>
 #include <sstream>
-#include "Byte.h";
+#include "Byte.h"
 
 namespace BitmapGraphics
 {

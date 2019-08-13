@@ -16,15 +16,19 @@ namespace Binary
 		Byte& operator=(const Byte& other) = default;
 		Byte& operator=(Byte&& other) = default;
 
-		operator uint8_t() const { return value; }
+		explicit operator uint8_t() const { return value; }
 
 		~Byte() = default;
 
 		static unsigned char read(std::istream& ss);
 		void write(std::stringstream& ss);
 
+		bool operator==(const char& rhs);
+		bool operator!=(const char& rhs);
+
 	private:
 		uint8_t value;
 	};
+
 }
 

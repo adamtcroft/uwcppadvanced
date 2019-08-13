@@ -33,27 +33,27 @@ TEST(assign, Byte)
     unsigned char c1{'a'};
     Binary::Byte byte1;
     byte1 = c1;
-    CHECK_EQUAL('a', byte1);
+	CHECK(byte1 == 'a');
     
     Binary::Byte byte2{'b'};
-    CHECK_EQUAL('b', byte2);
+	CHECK(byte2 == 'b');
     
     unsigned char c3{};
-    c3 = byte2;
-    CHECK_EQUAL('b', c3);
+    c3 = static_cast<uint8_t>(byte2);
+	CHECK(c3 == 'b');
     
     unsigned char c4{byte1};
-    CHECK_EQUAL('a', c4);
+	CHECK(c4 == 'a');
     
     Binary::Byte byte3{c4};
-    CHECK_EQUAL('a', byte3);
+	CHECK(byte3 == 'a');
     
     Binary::Byte byte4{byte3};
-    CHECK_EQUAL('a', byte4);
+	CHECK(byte4 == 'a');
     
     Binary::Byte byte5{};
     byte5 = byte4;
-    CHECK_EQUAL('a', byte5);
+	CHECK(byte5 == 'a');
 }
 
 TEST(readWordLittleEndian, Binary)
