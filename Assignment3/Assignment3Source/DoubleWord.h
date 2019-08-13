@@ -19,12 +19,12 @@ namespace Binary
 
 		~DoubleWord() = default;
 
-		static DoubleWord readLittleEndian(std::stringstream& ss);
-		static DoubleWord readBigEndian(std::stringstream& ss);
+		static DoubleWord readLittleEndian(std::istream& ss);
+		static DoubleWord readBigEndian(std::istream& ss);
 		bool operator==(const DoubleWord& rhs) const;
 		bool operator!=(const DoubleWord& rhs) const;
 
-		operator uint32_t() const { return value; }
+		explicit operator uint32_t() const { return value; }
 
 	private:
 		uint32_t value;

@@ -14,13 +14,13 @@ Binary::Word::~Word()
 {
 }
 
-Binary::Word Binary::Word::readLittleEndian(std::stringstream& ss)
+Binary::Word Binary::Word::readLittleEndian(std::istream& ss)
 {
-	return _byteswap_ushort(readBigEndian(ss));
+	return _byteswap_ushort(static_cast<uint16_t>(readBigEndian(ss)));
 }
 
 const auto readByte = Binary::Byte::read;
-Binary::Word Binary::Word::readBigEndian(std::stringstream& ss)
+Binary::Word Binary::Word::readBigEndian(std::istream& ss)
 {
 	return readByte(ss) << 8 | readByte(ss);
 }

@@ -1,5 +1,8 @@
 #pragma once
 #include <fstream>
+#include "Byte.h"
+#include "Word.h"
+#include "DoubleWord.h"
 
 namespace BitmapGraphics
 {
@@ -19,9 +22,26 @@ namespace BitmapGraphics
 
 		void readFileHeader(std::ifstream& bitmapStream);
 		void readInfoHeader(std::ifstream& bitmapStream);
-		size_t getFileSize() const;
+		Binary::DoubleWord const& getFileSize() const;
 		size_t getBitmapWidth() const;
 		size_t getBitmapHeight() const;
+
+	private:
+		Binary::Byte firstIdentifier;
+		Binary::Byte secondIdentifier;
+		Binary::DoubleWord fileSize;
+		Binary::DoubleWord reserved = 0;
+		Binary::DoubleWord rawImageByteOffset;
+		Binary::DoubleWord infoHeaderBytes = 40;
+		Binary::DoubleWord bitmapWidth;
+		Binary::DoubleWord bitmapHeight;
+		Binary::Word numberOfPlanes = 1;
+		Binary::Word bitsPerPixel;
+		Binary::DoubleWord compressionType;
+		Binary::DoubleWord compressedImageSize;
+		Binary::DoubleWord horizontalPixelsPerMeter;
+		Binary::DoubleWord numberOfColors;
+		Binary::DoubleWord numberOfImportantColors;
 	};
 }
 

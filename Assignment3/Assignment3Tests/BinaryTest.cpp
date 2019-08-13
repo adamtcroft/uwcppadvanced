@@ -86,7 +86,7 @@ TEST(readDoubleWordLittleEndian, Binary)
     const Binary::DoubleWord expected(0xb4b3b2b1);
     Binary::DoubleWord actual = Binary::DoubleWord::readLittleEndian(ss);
     
-    CHECK_EQUAL(expected, actual);
+	CHECK(expected == actual);
 }
 
 TEST(readDoubleWordBigEndian, Binary)
