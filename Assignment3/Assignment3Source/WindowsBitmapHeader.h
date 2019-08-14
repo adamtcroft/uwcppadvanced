@@ -20,18 +20,19 @@ namespace BitmapGraphics
 
 		~WindowsBitmapHeader();
 
-		void readFileHeader(std::ifstream& bitmapStream);
+		void readFileHeader(const std::ifstream& bitmapStream);
 		void readInfoHeader(std::ifstream& bitmapStream);
 		Binary::DoubleWord const& getFileSize() const;
 		size_t getBitmapWidth() const;
 		size_t getBitmapHeight() const;
 
 	private:
-		Binary::Byte firstIdentifier;
+		const static Binary::Byte firstIdentifier;
 		Binary::Byte secondIdentifier;
 		Binary::DoubleWord fileSize;
 		Binary::DoubleWord reserved = 0;
 		Binary::DoubleWord rawImageByteOffset;
+
 		Binary::DoubleWord infoHeaderBytes = 40;
 		Binary::DoubleWord bitmapWidth;
 		Binary::DoubleWord bitmapHeight;

@@ -17,23 +17,8 @@ BitmapGraphics::WindowsBitmapHeader::~WindowsBitmapHeader()
 const auto readByte = Binary::Byte::read;
 const auto readWord = Binary::Word::readLittleEndian;
 const auto readDoubleWord = Binary::DoubleWord::readLittleEndian;
-void BitmapGraphics::WindowsBitmapHeader::readFileHeader(std::ifstream& bitmapStream)
+void BitmapGraphics::WindowsBitmapHeader::readFileHeader(const std::ifstream& bitmapStream)
 {
-	firstIdentifier = readByte(bitmapStream);
-	secondIdentifier = readByte(bitmapStream);
-	fileSize = readDoubleWord(bitmapStream);
-	auto temp_reserved = readDoubleWord(bitmapStream);
-	rawImageByteOffset = readDoubleWord(bitmapStream);
-	auto temp_infoHeaderBytes = readDoubleWord(bitmapStream);
-	bitmapWidth = readDoubleWord(bitmapStream);
-	bitmapHeight = readDoubleWord(bitmapStream);
-	auto temp_numberOfPlanes = readWord(bitmapStream);
-	bitsPerPixel = readWord(bitmapStream);
-	compressionType = readDoubleWord(bitmapStream);
-	compressedImageSize = readDoubleWord(bitmapStream);
-	horizontalPixelsPerMeter = readDoubleWord(bitmapStream);
-	numberOfColors = readDoubleWord(bitmapStream);
-	numberOfImportantColors = readDoubleWord(bitmapStream);
 }
 
 void BitmapGraphics::WindowsBitmapHeader::readInfoHeader(std::ifstream& bitmapStream)

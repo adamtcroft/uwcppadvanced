@@ -1,16 +1,7 @@
 #include "Word.h"
 
-
-Binary::Word::Word()
-{
-}
-
 Binary::Word::Word(uint16_t input) :
 	value(input)
-{
-}
-
-Binary::Word::~Word()
 {
 }
 

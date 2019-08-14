@@ -6,7 +6,7 @@ Binary::Byte::Byte(uint8_t input) :
 
 }
 
-unsigned char Binary::Byte::read(std::istream& ss)
+uint8_t Binary::Byte::read(std::istream& ss)
 {
 	char c;
 	ss.get(c);

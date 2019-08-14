@@ -1,6 +1,5 @@
 #include "Color.h"
 
-
 BitmapGraphics::Color::Color(uint8_t redInput, uint8_t greenInput, uint8_t blueInput) :
 	red(redInput), green(greenInput), blue(blueInput)
 {
@@ -10,6 +9,7 @@ const auto readByte = Binary::Byte::read;
 BitmapGraphics::Color BitmapGraphics::Color::read(std::istream& iss)
 {
 	Color myColor;
+
 	myColor.blue = readByte(iss);
 	myColor.green = readByte(iss);
 	myColor.red = readByte(iss);

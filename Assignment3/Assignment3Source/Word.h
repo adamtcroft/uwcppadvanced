@@ -8,7 +8,7 @@ namespace Binary
 	class Word
 	{
 	public:
-		Word();
+		Word() = default;
 		Word(uint16_t input);
 
 		Word(const Word& other) = default;
@@ -17,7 +17,7 @@ namespace Binary
 		Word& operator=(const Word& other) = default;
 		Word& operator=(Word&& other) = default;
 
-		~Word();
+		~Word() = default;
 
 		static Word readLittleEndian(std::istream& ss);
 		static Word readBigEndian(std::istream& ss);

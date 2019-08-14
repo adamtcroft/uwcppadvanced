@@ -20,7 +20,7 @@ namespace Binary
 
 		~Byte() = default;
 
-		static unsigned char read(std::istream& ss);
+		static uint8_t read(std::istream& ss);
 		void write(std::stringstream& ss);
 
 		bool operator==(const char& rhs);
