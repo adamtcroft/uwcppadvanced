@@ -134,6 +134,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneReader.h" />
     <ClInclude Include="SceneWriter.h" />
+    <ClInclude Include="SizedWord.h" />
     <ClInclude Include="VectorGraphic.h" />
     <ClInclude Include="VectorGraphicStreamer.h" />
     <ClInclude Include="VerifyEquality.h" />
@@ -156,6 +157,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneReader.cpp" />
     <ClCompile Include="SceneWriter.cpp" />
+    <ClCompile Include="SizedWord.cpp" />
     <ClCompile Include="VectorGraphic.cpp" />
     <ClCompile Include="VectorGraphicStreamer.cpp" />
     <ClCompile Include="VerifyEquality.cpp" />

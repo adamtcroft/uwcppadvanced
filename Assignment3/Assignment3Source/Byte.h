@@ -13,14 +13,22 @@ namespace Binary
 		Byte(const Byte& other) = default;
 		Byte(Byte&& other) = default;
 
-		Byte& operator=(const Byte& other) = default;
-		Byte& operator=(Byte&& other) = default;
+		Byte& operator=(const Byte& other)
+		{
+			this->value = other.value;
+			return *this;
+		}
+		Byte& operator=(Byte&& other)
+		{
+			this->value = value;
+			return *this;
+		}
 
 		explicit operator uint8_t() const { return value; }
 
 		~Byte() = default;
 
-		static uint8_t read(std::istream& ss);
+		static Byte read(std::istream& ss);
 		void write(std::stringstream& ss);
 
 		bool operator==(const char& rhs);
