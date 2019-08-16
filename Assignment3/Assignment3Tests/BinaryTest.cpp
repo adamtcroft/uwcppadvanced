@@ -70,35 +70,35 @@ TEST(readWordLittleEndian, Binary)
 	CHECK(expected == actual);
 }
 
-//TEST(readWordBigEndian, Binary)
-//{
-//    unsigned char carray[]{ 0xb1, 0xb2, 0 };
-//    std::stringstream ss{reinterpret_cast<char*>(carray)};
-//    
-//    const Binary::Word expected{0xb1b2};
-//    Binary::Word actual = Binary::Word::readBigEndian(ss);
-//    
-//	CHECK(expected == actual);
-//}
-//
-//TEST(readDoubleWordLittleEndian, Binary)
-//{
-//    unsigned char carray[]{ 0xb1, 0xb2, 0xb3, 0xb4, 0 };
-//    std::stringstream ss{reinterpret_cast<char*>(carray)};
-//    
-//    const Binary::DoubleWord expected(0xb4b3b2b1);
-//    Binary::DoubleWord actual = Binary::DoubleWord::readLittleEndian(ss);
-//    
-//	CHECK(expected == actual);
-//}
-//
-//TEST(readDoubleWordBigEndian, Binary)
-//{
-//    unsigned char carray[]{ 0xb1, 0xb2, 0xb3, 0xb4, 0 };
-//    std::stringstream ss{reinterpret_cast<char*>(carray)};
-//    
-//    const Binary::DoubleWord expected{0xb1b2b3b4};
-//    Binary::DoubleWord actual = Binary::DoubleWord::readBigEndian(ss);
-//    
-//	CHECK(expected == actual);
-//}
+TEST(readWordBigEndian, Binary)
+{
+    unsigned char carray[]{ 0xb1, 0xb2, 0 };
+    std::stringstream ss{reinterpret_cast<char*>(carray)};
+    
+    const Binary::Word expected{0xb1b2};
+    Binary::Word actual = Binary::Word::readBigEndian(ss);
+    
+	CHECK(expected == actual);
+}
+
+TEST(readDoubleWordLittleEndian, Binary)
+{
+    unsigned char carray[]{ 0xb1, 0xb2, 0xb3, 0xb4, 0 };
+    std::stringstream ss{reinterpret_cast<char*>(carray)};
+    
+    const Binary::DoubleWord expected(0xb4b3b2b1);
+    Binary::DoubleWord actual = Binary::DoubleWord::readLittleEndian(ss);
+    
+	CHECK(expected == actual);
+}
+
+TEST(readDoubleWordBigEndian, Binary)
+{
+    unsigned char carray[]{ 0xb1, 0xb2, 0xb3, 0xb4, 0 };
+    std::stringstream ss{reinterpret_cast<char*>(carray)};
+    
+    const Binary::DoubleWord expected{0xb1b2b3b4};
+    Binary::DoubleWord actual = Binary::DoubleWord::readBigEndian(ss);
+    
+	CHECK(expected == actual);
+}

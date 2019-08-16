@@ -9,13 +9,13 @@ namespace BitmapGraphics
 	{
 	public:
 		Color() = default;
-		Color(Binary::Byte& redInput, Binary::Byte& greenInput, Binary::Byte& blueInput);
+		Color(uint8_t redInput, uint8_t greenInput, uint8_t blueInput);
 		~Color() = default;
 
 		static Color read(std::istream& ss);
-		Binary::Byte const& getRed() const;
-		Binary::Byte const& getGreen() const;
-		Binary::Byte const& getBlue() const;
+		const uint8_t& getRed() const;
+		const uint8_t& getGreen() const;
+		const uint8_t& getBlue() const;
 
 		bool operator==(const Color& rhs) const;
 		bool operator!=(const Color& rhs) const;
@@ -24,4 +24,3 @@ namespace BitmapGraphics
 		Binary::Byte red, green, blue;
 	};
 }
-

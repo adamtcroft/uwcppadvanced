@@ -22,12 +22,19 @@ namespace Binary
 
 		const static Byte read(std::istream& ss);
 		void write(std::stringstream& ss);
+		const uint8_t& getValue() const
+		{
+			return value;
+		}
 
-		bool operator==(const char& rhs);
-		bool operator!=(const char& rhs);
+		//bool operator==(const char& rhs);
+		//bool operator!=(const char& rhs);
 
 	private:
 		uint8_t value;
 	};
+
+	bool operator==(const Byte& lhs, const Byte& rhs);
+	bool operator!=(const Byte& lhs, const Byte& rhs);
 }
 

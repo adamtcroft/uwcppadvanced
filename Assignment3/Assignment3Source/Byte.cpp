@@ -19,12 +19,22 @@ void Binary::Byte::write(std::stringstream& ss)
 	ss << value;
 }
 
-bool Binary::Byte::operator==(const char& rhs)
+bool Binary::operator==(const Byte& lhs, const Byte& rhs)
 {
-	return value == rhs;
+	return lhs.getValue() == rhs.getValue();
 }
 
-bool Binary::Byte::operator!=(const char& rhs)
+bool Binary::operator!=(const Byte& lhs, const Byte& rhs)
 {
-	return !(value == rhs);
+	return !(lhs == rhs);
 }
+
+//bool Binary::Byte::operator==(const char& rhs)
+//{
+//	return value == rhs;
+//}
+//
+//bool Binary::Byte::operator!=(const char& rhs)
+//{
+//	return !(value == rhs);
+//}
