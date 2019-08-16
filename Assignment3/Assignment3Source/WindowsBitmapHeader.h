@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <fstream>
 #include "Byte.h"
 #include "Word.h"
@@ -27,22 +28,22 @@ namespace BitmapGraphics
 		size_t getBitmapHeight() const;
 
 	private:
-		static Binary::Byte firstIdentifier;
-		static Binary::Byte secondIdentifier;
-		//Binary::DoubleWord fileSize;
-		//Binary::DoubleWord reserved = 0;
-		//Binary::DoubleWord rawImageByteOffset;
+		const static Binary::Byte firstIdentifier;
+		const static Binary::Byte secondIdentifier;
+		Binary::DoubleWord fileSize;
+		const static Binary::DoubleWord reserved;
+		const static Binary::DoubleWord rawImageByteOffset;
 
-		//Binary::DoubleWord infoHeaderBytes = 40;
-		//Binary::DoubleWord bitmapWidth;
-		//Binary::DoubleWord bitmapHeight;
-		//Binary::Word numberOfPlanes = 1;
-		//Binary::Word bitsPerPixel;
-		//Binary::DoubleWord compressionType;
-		//Binary::DoubleWord compressedImageSize;
-		//Binary::DoubleWord horizontalPixelsPerMeter;
-		//Binary::DoubleWord numberOfColors;
-		//Binary::DoubleWord numberOfImportantColors;
+		const static Binary::DoubleWord infoHeaderBytes;
+		Binary::DoubleWord bitmapWidth;
+		Binary::DoubleWord bitmapHeight;
+		const static Binary::Word numberOfPlanes;
+		const static Binary::Word bitsPerPixel;
+		const static Binary::DoubleWord compressionType;
+		const static Binary::DoubleWord compressedImageSize;
+		const static Binary::DoubleWord horizontalPixelsPerMeter;
+		const static Binary::DoubleWord numberOfColors;
+		const static Binary::DoubleWord numberOfImportantColors;
 	};
 }
 

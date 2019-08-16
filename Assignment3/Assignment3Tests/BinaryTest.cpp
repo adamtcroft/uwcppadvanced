@@ -59,16 +59,16 @@ TEST(assign, Byte)
 	CHECK(byte5 == 'a');
 }
 
-//TEST(readWordLittleEndian, Binary)
-//{
-//    unsigned char carray[]{ 0xb1, 0xb2, 0 };
-//    std::stringstream ss{reinterpret_cast<char*>(carray)};
-//    
-//    const Binary::Word expected{0xb2b1};
-//    Binary::Word actual = Binary::Word::readLittleEndian(ss);
-//    
-//	CHECK(expected == actual);
-//}
+TEST(readWordLittleEndian, Binary)
+{
+    unsigned char carray[]{ 0xb1, 0xb2, 0 };
+    std::stringstream ss{reinterpret_cast<char*>(carray)};
+    
+    const Binary::Word expected{0xb2b1};
+    Binary::Word actual = Binary::Word::readLittleEndian(ss);
+    
+	CHECK(expected == actual);
+}
 
 //TEST(readWordBigEndian, Binary)
 //{

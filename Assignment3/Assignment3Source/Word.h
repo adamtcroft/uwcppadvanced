@@ -23,6 +23,8 @@ namespace Binary
 		static Word readBigEndian(std::istream& ss);
 		bool operator==(const Word& rhs) const;
 		bool operator!=(const Word& rhs) const;
+		Word& operator<<(const int& rhs);
+		Word & operator|=(const Word& rhs):
 
 		explicit operator uint16_t() const { return value; }
 

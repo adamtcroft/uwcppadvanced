@@ -2,14 +2,14 @@
 #include "WindowsBitmapHeader.h"
 #include <fstream>
 
-using namespace BitmapGraphics;
-
-TEST(FileHeaderTest, WindowsBitmapHeader)
-{
-    std::ifstream bitmapStream{"../basic.bmp", std::ios::binary};
-    CHECK(bitmapStream.is_open());
-    
-    WindowsBitmapHeader bitmapHeader{bitmapStream};
+//using namespace BitmapGraphics;
+//
+//TEST(FileHeaderTest, WindowsBitmapHeader)
+//{
+//    std::ifstream bitmapStream{"../basic.bmp", std::ios::binary};
+//    CHECK(bitmapStream.is_open());
+//    
+//    WindowsBitmapHeader bitmapHeader{bitmapStream};
 //
 //    // The "basic.bmp" image is 100x100 = 10000 pixels.
 //    // Each pixel is 3 bytes (1 red, 1 green, 1 blue),
@@ -25,7 +25,7 @@ TEST(FileHeaderTest, WindowsBitmapHeader)
 //    bitmapStream.seekg(0, std::ifstream::end);
 //	CHECK(bitmapHeader.getFileSize() == int(bitmapStream.tellg()))
 //	//CHECK_EQUAL(int(bitmapStream.tellg()), bitmapHeader.getFileSize());
-}
+//}
 
 //TEST(InfoHeaderTest, WindowBitmapHeader)
 //{

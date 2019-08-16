@@ -75,9 +75,6 @@
     <ClInclude Include="VerifyEquality.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SizedWord.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SceneReader.cpp">
@@ -135,9 +132,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VerifyEquality.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SizedWord.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
