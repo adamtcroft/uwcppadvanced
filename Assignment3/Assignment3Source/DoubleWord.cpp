@@ -25,3 +25,9 @@ bool Binary::DoubleWord::operator!=(const DoubleWord& rhs) const
 {
 	return !(*this == rhs);
 }
+
+std::ostream& Binary::operator<<(std::ostream& output, const DoubleWord& rhs)
+{
+	output << rhs.getValue();
+	return output;
+}

@@ -36,5 +36,6 @@ namespace Binary
 
 	bool operator==(const Byte& lhs, const Byte& rhs);
 	bool operator!=(const Byte& lhs, const Byte& rhs);
+	std::ostream& operator<<(std::ostream& output, const Byte& rhs);
 }
 

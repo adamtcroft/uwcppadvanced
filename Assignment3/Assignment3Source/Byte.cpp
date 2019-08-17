@@ -29,6 +29,12 @@ bool Binary::operator!=(const Byte& lhs, const Byte& rhs)
 	return !(lhs == rhs);
 }
 
+std::ostream& Binary::operator<<(std::ostream& output, const Byte& rhs)
+{
+	output << rhs.getValue();
+	return output;
+}
+
 //bool Binary::Byte::operator==(const char& rhs)
 //{
 //	return value == rhs;

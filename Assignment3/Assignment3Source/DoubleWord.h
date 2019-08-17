@@ -24,10 +24,17 @@ namespace Binary
 		bool operator==(const DoubleWord& rhs) const;
 		bool operator!=(const DoubleWord& rhs) const;
 
+		const uint32_t& getValue() const
+		{
+			return value;
+		}
+
 		explicit operator uint32_t() const { return value; }
 
 	private:
 		uint32_t value;
 	};
+
+	std::ostream& operator<<(std::ostream& output, const DoubleWord& rhs);
 }
 
