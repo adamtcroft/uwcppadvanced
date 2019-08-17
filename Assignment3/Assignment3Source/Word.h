@@ -24,10 +24,17 @@ namespace Binary
 		bool operator==(const Word& rhs) const;
 		bool operator!=(const Word& rhs) const;
 
+		const uint16_t& getValue() const
+		{
+			return value;
+		}
+
 		explicit operator uint16_t() const { return value; }
 
 	private:
 		uint16_t value;
 	};
+
+	std::ostream& operator<<(std::ostream& output, const Word& rhs);
 }
 

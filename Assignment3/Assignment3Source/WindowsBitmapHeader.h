@@ -10,7 +10,7 @@ namespace BitmapGraphics
 	class WindowsBitmapHeader
 	{
 	public:
-		WindowsBitmapHeader() = delete;
+		WindowsBitmapHeader() = default;
 		WindowsBitmapHeader(std::ifstream& bitmapStream);
 
 		WindowsBitmapHeader(const WindowsBitmapHeader& other) = default;
@@ -24,8 +24,8 @@ namespace BitmapGraphics
 		void readFileHeader(std::istream& bitmapStream);
 		void readInfoHeader(std::ifstream& bitmapStream);
 		Binary::DoubleWord const& getFileSize() const;
-		size_t getBitmapWidth() const;
-		size_t getBitmapHeight() const;
+		uint32_t getBitmapWidth() const;
+		uint32_t getBitmapHeight() const;
 
 	private:
 		const static Binary::Byte firstIdentifier;
@@ -40,8 +40,9 @@ namespace BitmapGraphics
 		const static Binary::Word numberOfPlanes;
 		const static Binary::Word bitsPerPixel;
 		const static Binary::DoubleWord compressionType;
-		const static Binary::DoubleWord compressedImageSize;
+		Binary::DoubleWord compressedImageSize;
 		const static Binary::DoubleWord horizontalPixelsPerMeter;
+		const static Binary::DoubleWord verticalPixelsPerMeter;
 		const static Binary::DoubleWord numberOfColors;
 		const static Binary::DoubleWord numberOfImportantColors;
 	};

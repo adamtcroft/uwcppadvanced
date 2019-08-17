@@ -39,3 +39,9 @@ bool Binary::Word::operator!=(const Word& rhs) const
 {
 	return !(*this == rhs);
 }
+
+std::ostream& Binary::operator<<(std::ostream& output, const Word& rhs)
+{
+	output << rhs.getValue();
+	return output;
+}
