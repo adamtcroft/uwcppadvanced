@@ -123,6 +123,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bitmap.h" />
     <ClInclude Include="Byte.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="DoubleWord.h" />
@@ -145,6 +146,7 @@
     <ClInclude Include="XmlWriter.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="Byte.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="DoubleWord.cpp" />

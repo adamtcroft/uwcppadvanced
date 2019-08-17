@@ -1,34 +1,34 @@
-//#include "TestHarness.h"
-//#include "Bitmap.h"
-//#include "WindowsBitmapHeader.h"
+#include "TestHarness.h"
+#include "Bitmap.h"
+#include "WindowsBitmapHeader.h"
 //#include "binary_ostream_iterator.h"
-//#include <fstream>
-//
-//using namespace BitmapGraphics;
-//
-//TEST(BitmapSizeTest, Bitmap)
-//{
-//    std::ifstream bitmapStream{"basic.bmp", std::ios::binary};
-//    CHECK(bitmapStream.is_open());
-//    
-//    WindowsBitmapHeader bitmapHeader{bitmapStream};
-//    Bitmap bitmap{bitmapHeader.getBitmapWidth(), bitmapHeader.getBitmapHeight(), bitmapStream};
-//
-//    CHECK_EQUAL(100, bitmap.getWidth());
-//    CHECK_EQUAL(100, bitmap.getHeight());
-//}
-//
-//TEST(BitmapScanLinesTest, Bitmap)
-//{
-//    std::ifstream bitmapStream{"basic.bmp", std::ios::binary};
-//    CHECK(bitmapStream.is_open());
-//    
-//    WindowsBitmapHeader bitmapHeader{bitmapStream};
-//    Bitmap bitmap{bitmapHeader.getBitmapWidth(), bitmapHeader.getBitmapHeight(), bitmapStream};
-//
-//    // Before C++11 the loop below looked like this:
-//    //    for (Bitmap::ScanLineIterator scanLine = bitmap.begin(); scanLine != bitmap.end(); ++scanLine)
-//    
+#include <fstream>
+
+using namespace BitmapGraphics;
+
+TEST(BitmapSizeTest, Bitmap)
+{
+    std::ifstream bitmapStream{"../basic.bmp", std::ios::binary};
+    CHECK(bitmapStream.is_open());
+    
+    WindowsBitmapHeader bitmapHeader{bitmapStream};
+    Bitmap bitmap{bitmapHeader.getBitmapWidth(), bitmapHeader.getBitmapHeight(), bitmapStream};
+
+    CHECK_EQUAL(100, bitmap.getWidth());
+    CHECK_EQUAL(100, bitmap.getHeight());
+}
+
+TEST(BitmapScanLinesTest, Bitmap)
+{
+    std::ifstream bitmapStream{"../basic.bmp", std::ios::binary};
+    CHECK(bitmapStream.is_open());
+    
+    WindowsBitmapHeader bitmapHeader{bitmapStream};
+    Bitmap bitmap{bitmapHeader.getBitmapWidth(), bitmapHeader.getBitmapHeight(), bitmapStream};
+
+    // Before C++11 the loop below looked like this:
+    //    for (Bitmap::ScanLineIterator scanLine = bitmap.begin(); scanLine != bitmap.end(); ++scanLine)
+    
 //    int numberOfScanLines{0};
 //    for (auto& scanLine : bitmap)
 //    {
@@ -36,8 +36,8 @@
 //        ++numberOfScanLines;
 //    }
 //    CHECK_EQUAL(100, numberOfScanLines);
-//}
-//
+}
+
 //TEST(BitmapReadWrite, Bitmap)
 //{
 //    // Read in the bitmap
