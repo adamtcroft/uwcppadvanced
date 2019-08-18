@@ -44,8 +44,8 @@ namespace BitmapGraphics
 		const static Binary::Word bitsPerPixel;
 		const static Binary::DoubleWord compressionType;
 		Binary::DoubleWord compressedImageSize;
-		const static Binary::DoubleWord horizontalPixelsPerMeter;
-		const static Binary::DoubleWord verticalPixelsPerMeter;
+		Binary::DoubleWord horizontalPixelsPerMeter;
+		Binary::DoubleWord verticalPixelsPerMeter;
 		const static Binary::DoubleWord numberOfColors;
 		const static Binary::DoubleWord numberOfImportantColors;
 	};

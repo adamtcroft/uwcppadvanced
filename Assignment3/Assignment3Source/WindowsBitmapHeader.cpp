@@ -11,8 +11,6 @@ namespace BitmapGraphics
 	const Binary::Word WindowsBitmapHeader::numberOfPlanes = 1;
 	const Binary::Word WindowsBitmapHeader::bitsPerPixel = 24;
 	const Binary::DoubleWord WindowsBitmapHeader::compressionType = 0;
-	const Binary::DoubleWord WindowsBitmapHeader::horizontalPixelsPerMeter = 2834;
-	const Binary::DoubleWord WindowsBitmapHeader::verticalPixelsPerMeter = 2834;
 	const Binary::DoubleWord WindowsBitmapHeader::numberOfColors = 0;
 	const Binary::DoubleWord WindowsBitmapHeader::numberOfImportantColors = 0;
 }
@@ -67,11 +65,11 @@ void BitmapGraphics::WindowsBitmapHeader::readInfoHeader(std::ifstream& bitmapSt
 	compressedImageSize = readDoubleWord(bitmapStream);
 	std::cout << "Compressed Image Size: " << compressedImageSize << std::endl;
 
-	auto temp_horizPPM = readDoubleWord(bitmapStream);
-	std::cout << "Horizontal PPM: " << temp_horizPPM << " : " << horizontalPixelsPerMeter << std::endl;
+	horizontalPixelsPerMeter = readDoubleWord(bitmapStream);
+	std::cout << "Horizontal PPM: " << horizontalPixelsPerMeter << std::endl;
 
-	auto temp_vertPPM = readDoubleWord(bitmapStream);
-	std::cout << "Vertical PPM: " << temp_vertPPM << " : " << verticalPixelsPerMeter << std::endl;
+	verticalPixelsPerMeter = readDoubleWord(bitmapStream);
+	std::cout << "Vertical PPM: " << verticalPixelsPerMeter << std::endl;
 
 	auto temp_numColors = readDoubleWord(bitmapStream);
 	std::cout << "Number of Colors: " << temp_numColors << " : " << numberOfColors << std::endl;

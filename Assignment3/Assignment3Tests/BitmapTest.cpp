@@ -116,73 +116,73 @@ TEST(BitmapReadWrite, Bitmap)
 //    CHECK_EQUAL(100, numberOfScanLines);
 //}
 
-//// --- Repeat the tests with a bitmap that requires pad bytes (101x101)
-//
-//TEST(BitmapSizeTest_101, Bitmap)
-//{
-//    std::ifstream bitmapStream{"basic_101.bmp", std::ios::binary};
-//    CHECK(bitmapStream.is_open());
-//    
-//    WindowsBitmapHeader bitmapHeader{bitmapStream};
-//    Bitmap bitmap{bitmapHeader.getBitmapWidth(), bitmapHeader.getBitmapHeight(), bitmapStream};
-//    
-//    CHECK_EQUAL(101, bitmap.getWidth());
-//    CHECK_EQUAL(101, bitmap.getHeight());
-//}
-//
-//TEST(BitmapScanLinesTest_101, Bitmap)
-//{
-//    std::ifstream bitmapStream{"basic_101.bmp", std::ios::binary};
-//    CHECK(bitmapStream.is_open());
-//    
-//    WindowsBitmapHeader bitmapHeader{bitmapStream};
-//    Bitmap bitmap{bitmapHeader.getBitmapWidth(), bitmapHeader.getBitmapHeight(), bitmapStream};
-//    
-//    int numberOfScanLines{0};
-//    for (auto scanLine : bitmap)
-//    {
-//        CHECK_EQUAL(101, scanLine.size());
-//        ++numberOfScanLines;
-//    }
-//    CHECK_EQUAL(101, numberOfScanLines);
-//}
-//
-//TEST(BitmapReadWrite_101, Bitmap)
-//{
-//    // Read in the bitmap
-//    
-//    std::ifstream bitmapStream{"basic_101.bmp", std::ios::binary};
-//    CHECK(bitmapStream.is_open());
-//    
-//    WindowsBitmapHeader bitmapHeader{bitmapStream};
-//    Bitmap bitmap{bitmapHeader.getBitmapWidth(), bitmapHeader.getBitmapHeight(), bitmapStream};
-//    
-//    // Write out the bitmap to a different file with its write() method
-//    
-//    std::ofstream outputStream{"output_101.bmp", std::ios::binary};
-//    CHECK(outputStream.is_open());
-//    
-//    bitmapHeader.write(outputStream);
-//    bitmap.write(outputStream);
-//    outputStream.close();
-//    
-//    // Read that one back in and check sizes
-//    
-//    std::ifstream bitmapStream2{"output_101.bmp", std::ios::binary};
-//    CHECK(bitmapStream2.is_open());
-//    
-//    WindowsBitmapHeader bitmapHeader2{bitmapStream2};
-//    Bitmap bitmap2{bitmapHeader2.getBitmapWidth(), bitmapHeader2.getBitmapHeight(), bitmapStream2};
-//    
-//    int numberOfScanLines{0};
-//    for (auto& scanLine : bitmap2)
-//    {
-//        CHECK_EQUAL(101, scanLine.size());
-//        ++numberOfScanLines;
-//    }
-//    CHECK_EQUAL(101, numberOfScanLines);
-//}
-//
+// --- Repeat the tests with a bitmap that requires pad bytes (101x101)
+
+TEST(BitmapSizeTest_101, Bitmap)
+{
+    std::ifstream bitmapStream{"../basic_101.bmp", std::ios::binary};
+    CHECK(bitmapStream.is_open());
+    
+    WindowsBitmapHeader bitmapHeader{bitmapStream};
+    Bitmap bitmap{bitmapHeader.getBitmapWidth(), bitmapHeader.getBitmapHeight(), bitmapStream};
+    
+    CHECK_EQUAL(101, bitmap.getWidth());
+    CHECK_EQUAL(101, bitmap.getHeight());
+}
+
+TEST(BitmapScanLinesTest_101, Bitmap)
+{
+    std::ifstream bitmapStream{"../basic_101.bmp", std::ios::binary};
+    CHECK(bitmapStream.is_open());
+    
+    WindowsBitmapHeader bitmapHeader{bitmapStream};
+    Bitmap bitmap{bitmapHeader.getBitmapWidth(), bitmapHeader.getBitmapHeight(), bitmapStream};
+    
+    int numberOfScanLines{0};
+    for (auto scanLine : bitmap)
+    {
+        CHECK_EQUAL(101, scanLine.size());
+        ++numberOfScanLines;
+    }
+    CHECK_EQUAL(101, numberOfScanLines);
+}
+
+TEST(BitmapReadWrite_101, Bitmap)
+{
+    // Read in the bitmap
+    
+    std::ifstream bitmapStream{"../basic_101.bmp", std::ios::binary};
+    CHECK(bitmapStream.is_open());
+    
+    WindowsBitmapHeader bitmapHeader{bitmapStream};
+    Bitmap bitmap{bitmapHeader.getBitmapWidth(), bitmapHeader.getBitmapHeight(), bitmapStream};
+    
+    // Write out the bitmap to a different file with its write() method
+    
+    std::ofstream outputStream{"output_101.bmp", std::ios::binary};
+    CHECK(outputStream.is_open());
+    
+    bitmapHeader.write(outputStream);
+    bitmap.write(outputStream);
+    outputStream.close();
+    
+    // Read that one back in and check sizes
+    
+    std::ifstream bitmapStream2{"output_101.bmp", std::ios::binary};
+    CHECK(bitmapStream2.is_open());
+    
+    WindowsBitmapHeader bitmapHeader2{bitmapStream2};
+    Bitmap bitmap2{bitmapHeader2.getBitmapWidth(), bitmapHeader2.getBitmapHeight(), bitmapStream2};
+    
+    int numberOfScanLines{0};
+    for (auto& scanLine : bitmap2)
+    {
+        CHECK_EQUAL(101, scanLine.size());
+        ++numberOfScanLines;
+    }
+    CHECK_EQUAL(101, numberOfScanLines);
+}
+
 //TEST(BinaryOstreamIterator_101, Bitmap)
 //{
 //    // Read in the bitmap

@@ -9,8 +9,7 @@ const Binary::Byte Binary::Byte::read(std::istream& ss)
 {
 	char c;
 	ss.get(c);
-	Binary::Byte b;
-	b = c;
+	Binary::Byte b{ static_cast<uint8_t>(c) };
 	return b;
 }
 
