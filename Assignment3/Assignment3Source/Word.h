@@ -1,6 +1,8 @@
 #pragma once
 #include <cstdint>
 #include <sstream>
+#include <algorithm>
+#include <iterator>
 #include "Byte.h"
 
 namespace Binary

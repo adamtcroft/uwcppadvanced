@@ -1,4 +1,5 @@
 #pragma once
+#include <fstream>
 
 namespace Binary
 {
@@ -16,8 +17,21 @@ namespace Binary
 
 		~SizedWord() = default;
 
-		static SizedWord readLittleEndian(std::istream& ss);
-		static SizedWord readBigEndian(std::istream& ss);
+		static SizedWord readLittleEndian(std::istream& is);
+		static SizedWord readBigEndian(std::istream& is);
+
+		static SizedWord writeLittleEndian(std::ostream& os);
+		static SizedWord writeBigEndian(std::ostream& os);
+
+		bool operator==(const SizedWord& rhs) const;
+		bool operator!=(const SizedWord& rhs) const;
+
+		const type& getValue() const
+		{
+			return value;
+		}
+
+		explicit operator type() const { return value; }
 
 	private:
 		type value;

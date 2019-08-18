@@ -1,12 +1,9 @@
 #include "VerifyEquality.h"
 
-
-
-VerifyEquality::VerifyEquality()
+void VerifyEquality::verifyEquality(const Binary::Word& expected, const Binary::Word& actual, const std::string& error)
 {
-}
-
-
-VerifyEquality::~VerifyEquality()
-{
+	if (expected != actual)
+	{
+		throw std::runtime_error(error);
+	}
 }
