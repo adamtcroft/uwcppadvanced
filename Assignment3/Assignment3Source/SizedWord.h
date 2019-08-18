@@ -1,40 +1,33 @@
 #pragma once
 #include <fstream>
+#include "Byte.h"
 
 namespace Binary
 {
-	template<class type> class SizedWord
+	template<class WordClass> class SizedWord
 	{
 	public:
-		SizedWord() = default;
-		SizedWord(type input);
-		
-		SizedWord(const SizedWord& other) = default;
-		SizedWord(SizedWord&& other) = default;
-
-		SizedWord& operator=(const SizedWord& other) = default;
-		SizedWord& operator=(SizedWord&& other) = default;
-
-		~SizedWord() = default;
-
-		static SizedWord readLittleEndian(std::istream& is);
+//		SizedWord(const SizedWord& other) = default;
+//		SizedWord(SizedWord&& other) = default;
+//
+//		SizedWord& operator=(const SizedWord& other) = default;
+//		SizedWord& operator=(SizedWord&& other) = default;
+//
+//		static SizedWord readLittleEndian(std::istream& is);
 		static SizedWord readBigEndian(std::istream& is);
-
-		static SizedWord writeLittleEndian(std::ostream& os);
-		static SizedWord writeBigEndian(std::ostream& os);
-
-		bool operator==(const SizedWord& rhs) const;
-		bool operator!=(const SizedWord& rhs) const;
-
-		const type& getValue() const
-		{
-			return value;
-		}
-
-		explicit operator type() const { return value; }
-
-	private:
-		type value;
+//
+//		static SizedWord writeLittleEndian(std::ostream& os);
+//		static SizedWord writeBigEndian(std::ostream& os);
+//
+//		bool operator==(const SizedWord& rhs) const;
+//		bool operator!=(const SizedWord& rhs) const;
+//
+//		const WordClass& getValue() const
+//		{
+//			return value;
+//		}
+//
+//		explicit operator WordClass() const { return value; }
 	};
 }
 

@@ -4,12 +4,14 @@
 #include <algorithm>
 #include <iterator>
 #include "Byte.h"
+#include "SizedWord.h"
 
 namespace Binary
 {
-	class Word
+	class Word : public SizedWord<Word>
 	{
 	public:
+		friend class SizedWord<Word>;
 		Word() = default;
 		Word(uint16_t input);
 
@@ -22,7 +24,7 @@ namespace Binary
 		~Word() = default;
 
 		static Word readLittleEndian(std::istream& ss);
-		static Word readBigEndian(std::istream& ss);
+		//static Word readBigEndian(std::istream& ss);
 
 		void write(std::ostream& ss) const;
 

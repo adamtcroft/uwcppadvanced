@@ -1,20 +1,15 @@
 #include "SizedWord.h"
 
 //template<typename type>
-//Binary::SizedWord<type>::SizedWord(type input) :
-//	value(input)
-//{
-//}
-//
-//template<typename type>
 //Binary::SizedWord<type> Binary::SizedWord<type>::SizedWord::readLittleEndian(std::istream& is)
 //{
 //	return _byteswap_ushort(static_cast<type>(readBigEndian(is)));
 //}
 //
-//template<typename type>
-//Binary::SizedWord<type> Binary::SizedWord<type>::SizedWord::readBigEndian(std::istream& is)
-//{
+const auto readByte = Binary::Byte::read;
+template<typename WordClass>
+Binary::SizedWord<WordClass> Binary::SizedWord<WordClass>::SizedWord::readBigEndian(std::istream& is)
+{
 //	Binary::Word word;
 //
 //	for (auto byte = 0; byte != sizeof(Binary::Word); ++byte) {
@@ -26,8 +21,9 @@
 //		typename Binary::Word tmp = static_cast<unsigned char>(c); // Otherwise sign extension occurs.
 //		word |= tmp << (8 * byte);
 //	}
-//}
-//
+	return static_cast<uint8_t>(readByte(is)) << 8 | static_cast<uint8_t>(readByte(is));
+}
+
 //template<typename type>
 //Binary::SizedWord<type> Binary::SizedWord<type>::SizedWord::writeLittleEndian(std::ostream& os)
 //{
