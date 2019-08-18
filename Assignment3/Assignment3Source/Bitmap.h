@@ -19,6 +19,13 @@ namespace BitmapGraphics
 
 		Bitmap() = default;
 		Bitmap(const uint32_t& width, const uint32_t& height, std::ifstream& bitmapStream);
+
+		Bitmap(const Bitmap& other) = default;
+		Bitmap(Bitmap&& other) = default;
+
+		Bitmap& operator=(const Bitmap& other) = default;
+		Bitmap& operator=(Bitmap&& other) = default;
+
 		~Bitmap() = default;
 
 		ScanLineIterator begin();
