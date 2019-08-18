@@ -21,6 +21,9 @@ namespace Binary
 
 		static Word readLittleEndian(std::istream& ss);
 		static Word readBigEndian(std::istream& ss);
+
+		void write(std::ostream& ss) const;
+
 		bool operator==(const Word& rhs) const;
 		bool operator!=(const Word& rhs) const;
 

@@ -30,6 +30,13 @@ Binary::Word Binary::Word::readBigEndian(std::istream& ss)
 	return static_cast<uint8_t>(readByte(ss)) << 8 | static_cast<uint8_t>(readByte(ss));
 }
 
+void Binary::Word::write(std::ostream& ss) const
+{
+	auto nonConst = const_cast<uint16_t*>(&value);
+	auto valuePtr = reinterpret_cast<char*>(nonConst);
+	ss.write((char*)(&value), sizeof(uint16_t));
+}
+
 bool Binary::Word::operator==(const Word& rhs) const
 {
 	return (value == rhs.value);

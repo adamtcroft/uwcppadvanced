@@ -18,7 +18,9 @@ Binary::DoubleWord Binary::DoubleWord::readBigEndian(std::istream& ss)
 
 void Binary::DoubleWord::write(std::ostream& ss) const
 {
-	ss << value;
+	auto nonConst = const_cast<uint32_t*>(&value);
+	auto valuePtr = reinterpret_cast<char*>(nonConst);
+	ss.write(valuePtr, sizeof(uint32_t));
 }
 
 bool Binary::DoubleWord::operator==(const DoubleWord& rhs) const

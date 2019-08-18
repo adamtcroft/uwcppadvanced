@@ -87,25 +87,19 @@ void BitmapGraphics::WindowsBitmapHeader::write(std::ofstream& bitmapStream)
 	firstIdentifier.write(bitmapStream);
 	secondIdentifier.write(bitmapStream);
 	fileSize.write(bitmapStream);
-
-
-	//bitmapStream << static_cast<uint8_t>(102);
-	//bitmapStream << static_cast<uint8_t>(117);
-	//bitmapStream << static_cast<uint8_t>(0);
-	//bitmapStream << static_cast<uint16_t>(30054);
-	bitmapStream << reserved;
-	bitmapStream << rawImageByteOffset;
-	bitmapStream << infoHeaderBytes;
-	bitmapStream << bitmapWidth;
-	bitmapStream << bitmapHeight;
-	bitmapStream << numberOfPlanes;
-	bitmapStream << bitsPerPixel;
-	bitmapStream << compressionType;
-	bitmapStream << compressedImageSize;
-	bitmapStream << horizontalPixelsPerMeter;
-	bitmapStream << verticalPixelsPerMeter;
-	bitmapStream << numberOfColors;
-	bitmapStream << numberOfImportantColors;
+	reserved.write(bitmapStream);
+	rawImageByteOffset.write(bitmapStream);
+	infoHeaderBytes.write(bitmapStream);
+	bitmapWidth.write(bitmapStream);
+	bitmapHeight.write(bitmapStream);
+	numberOfPlanes.write(bitmapStream);
+	bitsPerPixel.write(bitmapStream);
+	compressionType.write(bitmapStream);
+	compressedImageSize.write(bitmapStream);
+	horizontalPixelsPerMeter.write(bitmapStream);
+	verticalPixelsPerMeter.write(bitmapStream);
+	numberOfColors.write(bitmapStream);
+	numberOfImportantColors.write(bitmapStream);
 }
 
 Binary::DoubleWord const& BitmapGraphics::WindowsBitmapHeader::getFileSize() const
