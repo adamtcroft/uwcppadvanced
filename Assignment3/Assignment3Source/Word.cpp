@@ -26,8 +26,8 @@ Binary::Word Binary::Word::readBigEndian(std::istream& ss)
 //		// word |= static_cast<uint8_t>(c) << (8 * byte);
 //	}
 
-	Binary::Word word{ static_cast<uint16_t>(readByte(ss).getValue() << 8 | readByte(ss).getValue()) };
-	return word;
+	//Binary::Word word{ static_cast<uint16_t>(readByte(ss).getValue() << 8 | readByte(ss).getValue()) };
+	return static_cast<uint8_t>(readByte(ss)) << 8 | static_cast<uint8_t>(readByte(ss));
 }
 
 bool Binary::Word::operator==(const Word& rhs) const

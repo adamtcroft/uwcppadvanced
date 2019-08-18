@@ -21,7 +21,7 @@ namespace Binary
 		~Byte() = default;
 
 		const static Byte read(std::istream& ss);
-		void write(std::stringstream& ss);
+		void write(std::ostream& ss) const;
 		const uint8_t& getValue() const
 		{
 			return value;

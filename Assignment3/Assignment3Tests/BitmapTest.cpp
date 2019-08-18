@@ -29,34 +29,34 @@ TEST(BitmapScanLinesTest, Bitmap)
     // Before C++11 the loop below looked like this:
     //    for (Bitmap::ScanLineIterator scanLine = bitmap.begin(); scanLine != bitmap.end(); ++scanLine)
     
-//    int numberOfScanLines{0};
-//    for (auto& scanLine : bitmap)
-//    {
-//        CHECK_EQUAL(100, scanLine.size());
-//        ++numberOfScanLines;
-//    }
-//    CHECK_EQUAL(100, numberOfScanLines);
+    int numberOfScanLines{0};
+    for (auto& scanLine : bitmap)
+    {
+        CHECK_EQUAL(100, scanLine.size());
+        ++numberOfScanLines;
+    }
+    CHECK_EQUAL(100, numberOfScanLines);
 }
 
-//TEST(BitmapReadWrite, Bitmap)
-//{
-//    // Read in the bitmap
-//    
-//    std::ifstream bitmapStream{"basic.bmp", std::ios::binary};
-//    CHECK(bitmapStream.is_open());
-//    
-//    WindowsBitmapHeader bitmapHeader{bitmapStream};
-//    
-//    Bitmap bitmap{bitmapHeader.getBitmapWidth(), bitmapHeader.getBitmapHeight(), bitmapStream};
-//
-//    // Write out the bitmap to a different file with its write() method
-//    
-//    std::ofstream outputStream{"output.bmp", std::ios::binary};
-//    CHECK(outputStream.is_open());
-//    
-//    bitmapHeader.write(outputStream);
-//    bitmap.write(outputStream);
-//    outputStream.close();
+TEST(BitmapReadWrite, Bitmap)
+{
+    // Read in the bitmap
+    
+    std::ifstream bitmapStream{"../basic.bmp", std::ios::binary};
+    CHECK(bitmapStream.is_open());
+   
+    WindowsBitmapHeader bitmapHeader{bitmapStream};
+    
+    Bitmap bitmap{bitmapHeader.getBitmapWidth(), bitmapHeader.getBitmapHeight(), bitmapStream};
+
+    // Write out the bitmap to a different file with its write() method
+    
+    std::ofstream outputStream{"output.bmp", std::ios::binary};
+    CHECK(outputStream.is_open());
+    
+    bitmapHeader.write(outputStream);
+    bitmap.write(outputStream);
+    outputStream.close();
 //
 //    // Read that one back in and check sizes
 //    
@@ -73,8 +73,8 @@ TEST(BitmapScanLinesTest, Bitmap)
 //        ++numberOfScanLines;
 //    }
 //    CHECK_EQUAL(100, numberOfScanLines);
-//}
-//
+}
+
 //TEST(BinaryOstreamIterator, Bitmap)
 //{
 //    // Read in the bitmap

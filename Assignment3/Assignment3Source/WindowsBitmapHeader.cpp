@@ -35,7 +35,7 @@ void BitmapGraphics::WindowsBitmapHeader::readFileHeader(std::istream& bitmapStr
 	std::cout << secondID << " : " << secondIdentifier << std::endl;
 
 	fileSize = readDoubleWord(bitmapStream);
-	std::cout << fileSize << std::endl;
+	std::cout << fileSize.getValue() << std::endl;
 
 	auto temp_reserved = readDoubleWord(bitmapStream);
 	std::cout << temp_reserved << " : " << reserved << std::endl;
@@ -80,6 +80,32 @@ void BitmapGraphics::WindowsBitmapHeader::readInfoHeader(std::ifstream& bitmapSt
 	std::cout << "Number of Important Colors: " << temp_numImpColors << " : " << numberOfImportantColors << std::endl;
 
 	std::cout << std::endl;
+}
+
+void BitmapGraphics::WindowsBitmapHeader::write(std::ofstream& bitmapStream)
+{
+	firstIdentifier.write(bitmapStream);
+	secondIdentifier.write(bitmapStream);
+	fileSize.write(bitmapStream);
+
+
+	//bitmapStream << static_cast<uint8_t>(102);
+	//bitmapStream << static_cast<uint8_t>(117);
+	//bitmapStream << static_cast<uint8_t>(0);
+	//bitmapStream << static_cast<uint16_t>(30054);
+	bitmapStream << reserved;
+	bitmapStream << rawImageByteOffset;
+	bitmapStream << infoHeaderBytes;
+	bitmapStream << bitmapWidth;
+	bitmapStream << bitmapHeight;
+	bitmapStream << numberOfPlanes;
+	bitmapStream << bitsPerPixel;
+	bitmapStream << compressionType;
+	bitmapStream << compressedImageSize;
+	bitmapStream << horizontalPixelsPerMeter;
+	bitmapStream << verticalPixelsPerMeter;
+	bitmapStream << numberOfColors;
+	bitmapStream << numberOfImportantColors;
 }
 
 Binary::DoubleWord const& BitmapGraphics::WindowsBitmapHeader::getFileSize() const

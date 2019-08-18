@@ -14,7 +14,7 @@ const Binary::Byte Binary::Byte::read(std::istream& ss)
 	return b;
 }
 
-void Binary::Byte::write(std::stringstream& ss)
+void Binary::Byte::write(std::ostream& ss) const
 {
 	ss << value;
 }

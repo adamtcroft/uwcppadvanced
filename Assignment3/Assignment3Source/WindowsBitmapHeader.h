@@ -23,7 +23,10 @@ namespace BitmapGraphics
 
 		void readFileHeader(std::istream& bitmapStream);
 		void readInfoHeader(std::ifstream& bitmapStream);
+		void write(std::ofstream& bitmapStream);
+
 		Binary::DoubleWord const& getFileSize() const;
+
 		uint32_t getBitmapWidth() const;
 		uint32_t getBitmapHeight() const;
 

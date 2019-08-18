@@ -21,10 +21,13 @@ namespace Binary
 
 		static DoubleWord readLittleEndian(std::istream& ss);
 		static DoubleWord readBigEndian(std::istream& ss);
+		void write(std::ostream& ss) const;
+
+
 		bool operator==(const DoubleWord& rhs) const;
 		bool operator!=(const DoubleWord& rhs) const;
 
-		const uint32_t& getValue() const
+		const unsigned long& getValue() const
 		{
 			return value;
 		}
