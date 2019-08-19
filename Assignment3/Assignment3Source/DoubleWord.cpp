@@ -1,20 +1,9 @@
 #include "DoubleWord.h"
 
-//const auto readWordBigEndian = Binary::Word::readBigEndian;
-Binary::DoubleWord::DoubleWord(uint32_t input) :
+Binary::DoubleWord::DoubleWord(datatype input) :
 	value(input)
 {
 }
-
-//Binary::DoubleWord Binary::DoubleWord::readLittleEndian(std::istream& ss)
-//{
-//	return _byteswap_ulong(static_cast<uint32_t>(readBigEndian(ss)));
-//}
-
-//Binary::DoubleWord Binary::DoubleWord::readBigEndian(std::istream& ss)
-//{
-//	return static_cast<uint16_t>(readWordBigEndian(ss)) << 16 | static_cast<uint16_t>(readWordBigEndian(ss));
-//}
 
 void Binary::DoubleWord::write(std::ostream& ss) const
 {

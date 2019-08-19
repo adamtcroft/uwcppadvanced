@@ -12,8 +12,10 @@ namespace Binary
 	{
 	public:
 		friend class SizedWord<Word>;
+		using datatype = uint16_t;
+
 		Word() = default;
-		Word(uint16_t input);
+		Word(datatype input);
 
 		Word(const Word& other) = default;
 		Word(Word&& other) = default;
@@ -28,14 +30,12 @@ namespace Binary
 		bool operator==(const Word& rhs) const;
 		bool operator!=(const Word& rhs) const;
 
-		const uint16_t& getValue() const
+		const datatype& getValue() const
 		{
 			return value;
 		}
 
-		explicit operator uint16_t() const { return value; }
-
-		using datatype = uint16_t;
+		explicit operator datatype() const { return value; }
 
 	private:
 		datatype value = 0;
