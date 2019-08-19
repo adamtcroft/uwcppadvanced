@@ -8,9 +8,10 @@
 
 namespace Binary
 {
-	class Word
+	class Word : public SizedWord<Word>
 	{
 	public:
+		friend class SizedWord<Word>;
 		Word() = default;
 		Word(uint16_t input);
 
@@ -21,9 +22,6 @@ namespace Binary
 		Word& operator=(Word&& other) = default;
 
 		~Word() = default;
-
-		static Word readLittleEndian(std::istream& ss);
-		static Word readBigEndian(std::istream& ss);
 
 		void write(std::ostream& ss) const;
 
@@ -37,8 +35,10 @@ namespace Binary
 
 		explicit operator uint16_t() const { return value; }
 
+		using datatype = uint16_t;
+
 	private:
-		uint16_t value;
+		datatype value = 0;
 	};
 
 	std::ostream& operator<<(std::ostream& output, const Word& rhs);

@@ -39,8 +39,8 @@ TEST(InfoHeaderTest, WindowBitmapHeader)
     CHECK_EQUAL(100, bitmapHeader.getBitmapWidth());
 }
 
-// --- Repeat similar tests for 101x101 bitmap
-
+//// --- Repeat similar tests for 101x101 bitmap
+//
 TEST(FileHeaderTest_101, WindowsBitmapHeader)
 {
     std::ifstream bitmapStream{"../basic_101.bmp", std::ios::binary};

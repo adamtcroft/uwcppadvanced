@@ -6,13 +6,13 @@ Binary::Word::Word(uint16_t input) :
 {
 }
 
-Binary::Word Binary::Word::readLittleEndian(std::istream& ss)
-{
-	return _byteswap_ushort(static_cast<uint16_t>(readBigEndian(ss)));
-}
+//Binary::Word Binary::Word::readLittleEndian(std::istream& ss)
+//{
+//	return _byteswap_ushort(static_cast<uint16_t>(readBigEndian(ss)));
+//}
 
-Binary::Word Binary::Word::readBigEndian(std::istream& ss)
-{
+//Binary::Word Binary::Word::readBigEndian(std::istream& ss)
+//{
 //	Binary::Word word;
 //
 //	for (auto byte = 0; byte != sizeof(Binary::Word); ++byte) {
@@ -25,11 +25,8 @@ Binary::Word Binary::Word::readBigEndian(std::istream& ss)
 //		word |= tmp << (8 * byte);
 //		// word |= static_cast<uint8_t>(c) << (8 * byte);
 //	}
-
-	//Binary::Word word{ static_cast<uint16_t>(readByte(ss).getValue() << 8 | readByte(ss).getValue()) };
-	//ss.read(ss.rdbuf(), sizeof(Word));
-	return static_cast<uint8_t>(readByte(ss)) << 8 | static_cast<uint8_t>(readByte(ss));
-}
+//	//return static_cast<uint8_t>(readByte(ss)) << 8 | static_cast<uint8_t>(readByte(ss));
+//}
 
 void Binary::Word::write(std::ostream& ss) const
 {

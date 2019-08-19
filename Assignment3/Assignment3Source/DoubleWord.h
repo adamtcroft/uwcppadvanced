@@ -5,9 +5,10 @@
 
 namespace Binary
 {
-	class DoubleWord
+	class DoubleWord : public SizedWord<DoubleWord>
 	{
 	public:
+		friend class SizedWord<DoubleWord>;
 		DoubleWord() = default;
 		DoubleWord(uint32_t input);
 
@@ -19,8 +20,8 @@ namespace Binary
 
 		~DoubleWord() = default;
 
-		static DoubleWord readLittleEndian(std::istream& ss);
-		static DoubleWord readBigEndian(std::istream& ss);
+		//static DoubleWord readLittleEndian(std::istream& ss);
+		//static DoubleWord readBigEndian(std::istream& ss);
 		void write(std::ostream& ss) const;
 
 
@@ -34,8 +35,10 @@ namespace Binary
 
 		explicit operator uint32_t() const { return value; }
 
+		using datatype = uint32_t;
+
 	private:
-		uint32_t value;
+		datatype value = 0;
 	};
 
 	std::ostream& operator<<(std::ostream& output, const DoubleWord& rhs);
