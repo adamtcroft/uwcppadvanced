@@ -159,7 +159,6 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneReader.cpp" />
     <ClCompile Include="SceneWriter.cpp" />
-    <ClCompile Include="SizedWord.cpp" />
     <ClCompile Include="VectorGraphic.cpp" />
     <ClCompile Include="VectorGraphicStreamer.cpp" />
     <ClCompile Include="VerifyEquality.cpp" />

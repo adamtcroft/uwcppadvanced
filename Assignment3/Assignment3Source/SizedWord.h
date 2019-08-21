@@ -1,5 +1,6 @@
 #pragma once
 #include <fstream>
+#include <algorithm>
 #include "Byte.h"
 
 namespace Binary
@@ -36,13 +37,6 @@ namespace Binary
 
 			return word;
 		}
-
-		//static void write(std::ostream& ss) const
-		//{
-		//	auto nonConst = const_cast<uint32_t*>(&value);
-		//	auto valuePtr = reinterpret_cast<char*>(nonConst);
-		//	ss.write(valuePtr, sizeof(uint32_t));
-		//}
 	};
 }
 
