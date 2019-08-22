@@ -1,6 +1,7 @@
 #pragma once
-#include "Byte.h"
-#include "DoubleWord.h"
+#include "SizedWord.h"
+//#include "Byte.h"
+//#include "DoubleWord.h"
 #include "Color.h"
 #include <fstream>
 #include <vector>

@@ -1,42 +1,116 @@
 #pragma once
-#include <fstream>
+#include <cstdint> 
+#include <type_traits>
+#include <iostream>
 #include <algorithm>
-#include "Byte.h"
+#include <iterator>
 
 namespace Binary
 {
-	template<class WordClass> class SizedWord
+	template<typename WordSize> class SizedWord
 	{
 	public:
-		static WordClass readBigEndian(std::istream& sourceStream)
+		using data_type = WordSize;
+
+		explicit SizedWord(WordSize value) : myData{ value } {};
+		SizedWord() = default;
+		SizedWord(const SizedWord& other) = default;
+		SizedWord(SizedWord&& other) = default;
+		SizedWord& operator =(const SizedWord& other) = default;
+		SizedWord& operator =(SizedWord&& other) = default;
+
+		// Will only compile if WordSize is 1 byte, otherwise gives an error at the caller site.  
+		template<typename U = WordSize, typename T = std::enable_if_t<sizeof(U) == 1>>
+		T write(std::ostream& destinationStream) const
 		{
-			auto word = readLittleEndian(sourceStream);
-
-			if (std::is_same<typename WordClass::datatype, uint16_t>::value)
-				word.value = _byteswap_ushort(word.value);
-
-			if (std::is_same<typename WordClass::datatype, uint32_t>::value)
-				word.value = _byteswap_ulong(word.value);
-
-			return word;
+			destinationStream.exceptions(std::ios::failbit | std::ios::badbit);
+			destinationStream.put(static_cast<char>(myData));
 		}
 
-		static WordClass readLittleEndian(std::istream& sourceStream)
+
+		template<typename U = WordSize, typename T = std::enable_if_t<sizeof(U) != 1>>
+		T writeLittleEndian(std::ostream& destinationStream) const
 		{
-			typename WordClass::datatype word = 0;
+			//my stream will now throw an error of std::ios::failure if it can't read / write for some reason.
+			destinationStream.exceptions(std::ios::failbit | std::ios::badbit);
 
-			for (auto byte = 0; byte != sizeof(WordClass::datatype); ++byte) {
+			for (size_t byte = 0; byte != sizeof(WordSize); ++byte)
+			{
+				unsigned char c = static_cast<unsigned char>((myData >> (8 * byte)));
+				destinationStream.put(c);
+			}
+		}
+
+		template<typename U = WordSize, typename T = std::enable_if_t<sizeof(U) != 1>>
+		T writeBigEndian(std::ostream& destinationStream) const
+		{
+			destinationStream.exceptions(std::ios::failbit | std::ios::badbit);
+
+			for (size_t byte = sizeof(WordSize); byte != 0; --byte)
+			{
+				unsigned char c = static_cast<unsigned char>((myData >> (8 * (byte - 1))));
+				destinationStream.put(c);
+			}
+		}
+
+		template<typename U = WordSize, typename = std::enable_if_t<sizeof(U) == 1>>
+		static SizedWord read(std::istream& sourceStream)
+		{
+			sourceStream.exceptions(std::ios::failbit | std::ios::badbit);
+			return SizedWord{ static_cast<WordSize>(sourceStream.get()) };
+		}
+
+		template<typename U = WordSize, typename = std::enable_if_t<sizeof(U) != 1>>
+		static SizedWord readLittleEndian(std::istream& sourceStream)
+		{
+			sourceStream.exceptions(std::ios::failbit | std::ios::badbit);
+			SizedWord word{ 0 };
+
+			for (size_t byte = 0; byte != sizeof(U); ++byte)
+			{
 				char c = 0;
-				if (!sourceStream.get(c)) {
-					throw(std::runtime_error("Attempt to read failed."));
-				}
-
-				typename WordClass::datatype tmp = static_cast<unsigned char>(c); // Otherwise sign extension occurs.
-				word |= tmp << (8 * byte);
+				sourceStream.get(c);
+				word.myData |= static_cast<unsigned char>(c) << (8 * byte);
 			}
 
 			return word;
 		}
-	};
-}
 
+		template<typename U = WordSize, typename = std::enable_if_t<sizeof(U) != 1>>
+		static SizedWord readBigEndian(std::istream& sourceStream)
+		{
+			sourceStream.exceptions(std::ios::failbit | std::ios::badbit);
+			SizedWord word{ 0 };
+
+			for (size_t byte = sizeof(U); byte != 0; --byte)
+			{
+				char c = 0;
+				sourceStream.get(c);
+				word.myData |= static_cast<unsigned char>(c) << (8 * (byte - 1));
+			}
+
+			return word;
+		}
+
+		bool operator==(const SizedWord& rhs) const noexcept { return myData == rhs.myData; }
+		bool operator!=(const SizedWord& rhs) const noexcept { return !(operator==(rhs)); }
+
+		explicit operator WordSize() const { return myData; }
+
+		friend std::ostream& operator<<(std::ostream& os, const SizedWord& word)
+		{
+			os << word.myData;
+			return os;
+		}
+
+	private:
+		static_assert(std::is_integral_v<WordSize> && std::is_unsigned_v<WordSize>, "Unsigned Integral Type required for template creation of base type");
+
+		WordSize myData{ static_cast<WordSize>('0') };
+
+	};
+
+	using Byte = SizedWord<std::uint8_t>;
+	using Word = SizedWord<std::uint16_t>;
+	using DoubleWord = SizedWord<std::uint32_t>;
+}

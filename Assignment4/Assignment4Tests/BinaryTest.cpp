@@ -1,24 +1,31 @@
 #include "TestHarness.h"
-#include "DoubleWord.h"
-#include "Byte.h"
-#include "Word.h"
+#include "SizedWord.h"
+//#include "DoubleWord.h"
+//#include "Byte.h"
+//#include "Word.h"
 #include <sstream>
+
+TEST(move, Byte)
+{
+	const Binary::Byte b1{ 'a' };
+	CHECK_EQUAL(Binary::Byte{ 'a' }, b1);
+
+	const Binary::Byte b2 = Binary::Byte{ 'b' };
+	CHECK_EQUAL(Binary::Byte{ 'b' }, b2);
+}
 
 TEST(readByte, Byte)
 {
     std::stringstream ss{"abc"};
     
     auto b = Binary::Byte::read(ss);
-	CHECK(b == 'a');
-    //CHECK_EQUAL('a', b);
-    
-    b = Binary::Byte::read(ss);
-	CHECK(b == 'b');
-//  CHECK_EQUAL('b', b);
-    
+	CHECK_EQUAL(Binary::Byte('a'), b);
+
 	b = Binary::Byte::read(ss);
-	CHECK(b == 'c');
-//  CHECK_EQUAL('c', b);
+	CHECK_EQUAL(Binary::Byte('b'), b);
+
+	b = Binary::Byte::read(ss);
+	CHECK_EQUAL(Binary::Byte('c'), b);
 }
 
 TEST(writeByte, Byte)
@@ -33,30 +40,27 @@ TEST(writeByte, Byte)
 
 TEST(assign, Byte)
 {
-    unsigned char c1{'a'};
-    Binary::Byte byte1;
-    byte1 = c1;
-	CHECK(byte1 == 'a');
-    
-    Binary::Byte byte2{'b'};
-	CHECK(byte2 == 'b');
-    
-    unsigned char c3{};
-    c3 = static_cast<uint8_t>(byte2);
-	CHECK(c3 == 'b');
-    
-    unsigned char c4{byte1};
-	CHECK(c4 == 'a');
-    
-    Binary::Byte byte3{c4};
-	CHECK(byte3 == 'a');
-    
-    Binary::Byte byte4{byte3};
-	CHECK(byte4 == 'a');
-    
-    Binary::Byte byte5{};
-    byte5 = byte4;
-	CHECK(byte5 == 'a');
+	const unsigned char c1{ 'a' };
+	const auto byte1 = Binary::Byte(c1);
+	CHECK_EQUAL(Binary::Byte('a'), byte1);
+
+	const Binary::Byte byte2{ 'b' };
+	CHECK_EQUAL(Binary::Byte('b'), byte2);
+
+	const auto c3 = static_cast<uint8_t>(byte2);
+	CHECK_EQUAL('b', c3);
+
+	const unsigned char c4{ byte1 };
+	CHECK_EQUAL('a', c4);
+
+	const Binary::Byte byte3{ c4 };
+	CHECK_EQUAL(Binary::Byte('a'), byte3);
+
+	const auto byte4{ byte3 };
+	CHECK_EQUAL(Binary::Byte('a'), byte4);
+
+	const auto byte5 = byte4;
+	CHECK_EQUAL(Binary::Byte('a'), byte5);
 }
 
 TEST(readWordLittleEndian, Binary)

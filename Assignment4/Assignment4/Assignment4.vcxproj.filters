@@ -27,13 +27,7 @@
     <ClInclude Include="Bitmap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Byte.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Color.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DoubleWord.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Element.h">
@@ -75,17 +69,11 @@
     <ClInclude Include="WindowsBitmapHeader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Word.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="XmlFactories.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Word.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="XmlFactories.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -98,13 +86,7 @@
     <ClCompile Include="Bitmap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Byte.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Color.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DoubleWord.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Element.cpp">

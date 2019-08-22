@@ -1,42 +1,42 @@
 #include "Color.h"
 
-BitmapGraphics::Color::Color(uint8_t redInput, uint8_t greenInput, uint8_t blueInput) :
+BitmapGraphics::Color::Color(
+	const Binary::Byte & redInput,
+	const Binary::Byte & greenInput,
+	const Binary::Byte & blueInput) noexcept :
 	red(redInput), green(greenInput), blue(blueInput)
 {
 }
 
-const auto readByte = Binary::Byte::read;
-BitmapGraphics::Color BitmapGraphics::Color::read(std::istream& iss)
+BitmapGraphics::Color BitmapGraphics::Color::read(std::istream& sourceStream)
 {
 	Color myColor;
 
-	myColor.blue = readByte(iss);
-	myColor.green = readByte(iss);
-	myColor.red = readByte(iss);
+	myColor.blue = Binary::Byte::read(sourceStream);
+	myColor.green = Binary::Byte::read(sourceStream);
+	myColor.red = Binary::Byte::read(sourceStream);
 	return myColor;
 }
 
-const uint8_t& BitmapGraphics::Color::getRed() const
+void BitmapGraphics::Color::write(std::ostream& destinationStream) const
 {
-	return red.getValue();
-}
-
-const uint8_t& BitmapGraphics::Color::getGreen() const
-{
-	return green.getValue();
-}
-
-const uint8_t& BitmapGraphics::Color::getBlue() const
-{
-	return blue.getValue();
+	blue.write(destinationStream);
+	green.write(destinationStream);
+	red.write(destinationStream);
 }
 
 bool BitmapGraphics::Color::operator==(const Color& rhs) const
 {
-	return (red == rhs.red) && (green == rhs.green) && (blue == rhs.blue);
+	return (getRed() == rhs.getRed()) && (getGreen() == rhs.getGreen()) && getBlue() == rhs.getBlue();
 }
 
 bool BitmapGraphics::Color::operator!=(const Color& rhs) const
 {
 	return !(*this == rhs);
+}
+
+std::ostream& operator<<(std::ostream& os, const BitmapGraphics::Color& color)
+{
+	color.write(os);
+	return os;
 }
