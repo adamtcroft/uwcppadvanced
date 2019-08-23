@@ -1,55 +1,53 @@
-//#include "Bitmap.h"
-//
-//BitmapGraphics::Bitmap::Bitmap(const uint32_t& width, const uint32_t& height, std::ifstream& bitmapStream) :
-//	bitmapWidth(Binary::DoubleWord{ width }), bitmapHeight(Binary::DoubleWord{ height })
-//{
-//	while (!(bitmapStream.eof()))
-//	{
-//		auto lineSize = width;
-//		ScanLine sLine;
-//		while (lineSize > 0)
-//		{
-//			auto blue = Binary::Byte::read(bitmapStream).getValue();
-//			auto green = Binary::Byte::read(bitmapStream).getValue();
-//			auto red = Binary::Byte::read(bitmapStream).getValue();
-//			Color pixel{ red, green, blue };
-//			sLine.push_back(pixel);
-//			lineSize--;
-//		}
-//		slCollection.push_back(sLine);
-//	}
-//	slCollection.erase(slCollection.end() - 1);
-//}
-//
-//BitmapGraphics::Bitmap::ScanLineIterator BitmapGraphics::Bitmap::begin()
-//{
-//	return slCollection.begin();
-//}
-//
-//BitmapGraphics::Bitmap::ScanLineIterator BitmapGraphics::Bitmap::end()
-//{
-//	return slCollection.end();
-//}
-//
-//void BitmapGraphics::Bitmap::write(std::ofstream& bitmapStream)
-//{
-//	for (auto& scanline : slCollection)
-//	{
-//		for (auto& color : scanline)
-//		{
-//			bitmapStream << color.getBlue();
-//			bitmapStream << color.getGreen();
-//			bitmapStream << color.getRed();
-//		}
-//	}
-//}
-//
-//const uint32_t& BitmapGraphics::Bitmap::getWidth() const
-//{
-//	return bitmapWidth.getValue();
-//}
-//
-//const uint32_t& BitmapGraphics::Bitmap::getHeight() const
-//{
-//	return bitmapHeight.getValue();
-//}
+#include "Bitmap.h"
+
+BitmapGraphics::Bitmap::Bitmap(const uint32_t& width, const uint32_t& height, std::istream& sourceStream) :
+	bitmapWidth(Binary::DoubleWord{ width }), bitmapHeight(Binary::DoubleWord{ height })
+{
+	read(sourceStream);
+}
+
+uint32_t BitmapGraphics::Bitmap::getNumberOfPadBytes() const
+{
+	const auto remainder = (bitmapWidth * 3) % 4;
+	return (remainder == 0) ? 0 : (4 - remainder);
+}
+
+void BitmapGraphics::Bitmap::read(std::istream& sourceStream)
+{
+	slCollection.clear();
+	
+	for (auto row = 0; row < bitmapHeight; ++row)
+	{
+		ScanLine scanline;
+
+		for (auto column = 0; column < bitmapWidth; ++column)
+		{
+			scanline.push_back(Color::read(sourceStream));
+		}
+
+		for (auto pad = 0; pad < getNumberOfPadBytes(); ++pad)
+		{
+			Binary::Byte::read(sourceStream);
+		}
+
+		slCollection.push_back(std::move(scanline));
+	}
+}
+
+void BitmapGraphics::Bitmap::write(std::ostream& destinationStream)
+{
+	for (auto& scanline : slCollection)
+	{
+		for (auto& color : scanline)
+		{
+			// Write row of pixels
+			std::copy(scanline.begin(), scanline.end(), binary_ostream_iterator<Color>(destinationStream));
+
+			// Write pad bytes
+			for (auto pad = 0; pad < getNumberOfPadBytes(); ++pad)
+			{
+				Binary::Byte(0).write(destinationStream);
+			}
+		}
+	}
+}

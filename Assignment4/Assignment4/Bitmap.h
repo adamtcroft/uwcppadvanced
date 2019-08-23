@@ -1,8 +1,7 @@
 #pragma once
 #include "SizedWord.h"
-//#include "Byte.h"
-//#include "DoubleWord.h"
 #include "Color.h"
+#include "binary_ostream_iterator.h"
 #include <fstream>
 #include <vector>
 #include <iostream>
@@ -18,28 +17,30 @@ namespace BitmapGraphics
 	public:
 		using ScanLineIterator = ScanLineCollection::iterator;
 
-		Bitmap() = default;
-		Bitmap(const uint32_t& width, const uint32_t& height, std::ifstream& bitmapStream);
+		Bitmap() = delete;
+		Bitmap(const uint32_t& width, const uint32_t& height, std::istream& bitmapStream);
 
 		Bitmap(const Bitmap& other) = default;
-		Bitmap(Bitmap&& other) = default;
+		Bitmap(Bitmap&& other) noexcept = default;
 
 		Bitmap& operator=(const Bitmap& other) = default;
 		Bitmap& operator=(Bitmap&& other) = default;
 
-		~Bitmap() = default;
+		~Bitmap() noexcept = default;
 
-		ScanLineIterator begin();
-		ScanLineIterator end();
+		ScanLineIterator begin() noexcept { return slCollection.begin(); }
+		ScanLineIterator end() noexcept { return slCollection.end(); }
 
-		void write(std::ofstream& bitmapStream);
+		uint32_t getWidth() const noexcept { return bitmapWidth; }
+		uint32_t getHeight() const noexcept { return bitmapHeight; }
+		uint32_t getNumberOfPadBytes() const;
 
-		const uint32_t& getWidth() const;
-		const uint32_t& getHeight() const;
+		void read(std::istream& sourceStream);
+		void write(std::ostream& destinationStream);
 
 	private:
-		Binary::DoubleWord bitmapWidth;
-		Binary::DoubleWord bitmapHeight;
+		uint32_t bitmapWidth{ 0 };
+		uint32_t bitmapHeight{ 0 };
 		ScanLineCollection slCollection;
 	};
 }

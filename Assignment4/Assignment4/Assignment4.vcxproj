@@ -116,6 +116,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="binary_ostream_iterator.h" />
     <ClInclude Include="Bitmap.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Element.h" />
