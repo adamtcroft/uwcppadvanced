@@ -162,12 +162,15 @@
   <ItemGroup>
     <ClCompile Include="AssignmentTests.cpp" />
     <ClCompile Include="BinaryTest.cpp" />
+    <ClCompile Include="BitmapEncodeDecodeTests.cpp" />
     <ClCompile Include="BitmapTest.cpp" />
+    <ClCompile Include="CodecLibraryTest.cpp" />
     <ClCompile Include="ColorTest.cpp" />
     <ClCompile Include="LayerTest.cpp" />
     <ClCompile Include="ParseTest.cpp" />
     <ClCompile Include="PlacedGraphicTest.cpp" />
     <ClCompile Include="PointTest.cpp" />
+    <ClCompile Include="ranged_numberTest.cpp" />
     <ClCompile Include="SceneReaderTest.cpp" />
     <ClCompile Include="SceneTest.cpp" />
     <ClCompile Include="SceneWriterTest.cpp" />

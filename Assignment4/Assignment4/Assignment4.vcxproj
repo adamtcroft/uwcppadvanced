@@ -118,6 +118,8 @@
   <ItemGroup>
     <ClInclude Include="binary_ostream_iterator.h" />
     <ClInclude Include="Bitmap.h" />
+    <ClInclude Include="CodecInterfaces.h" />
+    <ClInclude Include="CodecLibrary.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Element.h" />
     <ClInclude Include="Layer.h" />
@@ -131,6 +133,8 @@
     <ClInclude Include="VectorGraphic.h" />
     <ClInclude Include="VectorGraphicStreamer.h" />
     <ClInclude Include="VerifyEquality.h" />
+    <ClInclude Include="WindowsBitmapDecoder.h" />
+    <ClInclude Include="WindowsBitmapEncoder.h" />
     <ClInclude Include="WindowsBitmapHeader.h" />
     <ClInclude Include="XmlFactories.h" />
     <ClInclude Include="XmlInterfaces.h" />
@@ -139,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bitmap.cpp" />
+    <ClCompile Include="CodecLibrary.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Element.cpp" />
     <ClCompile Include="Layer.cpp" />
@@ -150,6 +155,8 @@
     <ClCompile Include="SceneWriter.cpp" />
     <ClCompile Include="VectorGraphic.cpp" />
     <ClCompile Include="VectorGraphicStreamer.cpp" />
+    <ClCompile Include="WindowsBitmapDecoder.cpp" />
+    <ClCompile Include="WindowsBitmapEncoder.cpp" />
     <ClCompile Include="WindowsBitmapHeader.cpp" />
     <ClCompile Include="XmlFactories.cpp" />
     <ClCompile Include="XmlReader.cpp" />

@@ -24,7 +24,7 @@ namespace Xml
 		void createFromXml(std::string& xmlStr) override;
 		std::string getName() const noexcept override;
 
-		void setAttribute(const std::string& name, const std::string& value);
+		void setAttribute(const std::string& name, const std::string& value) override;
 
 		std::string getAttribute(const std::string& name) noexcept override;
 		AttributeMap getAttributes() const noexcept override;
