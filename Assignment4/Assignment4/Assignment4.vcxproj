@@ -149,7 +149,6 @@
     <ClCompile Include="SceneWriter.cpp" />
     <ClCompile Include="VectorGraphic.cpp" />
     <ClCompile Include="VectorGraphicStreamer.cpp" />
-    <ClCompile Include="VerifyEquality.cpp" />
     <ClCompile Include="WindowsBitmapHeader.cpp" />
     <ClCompile Include="XmlFactories.cpp" />
     <ClCompile Include="XmlReader.cpp" />

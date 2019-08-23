@@ -119,9 +119,6 @@
     <ClCompile Include="VectorGraphicStreamer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VerifyEquality.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="WindowsBitmapHeader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
