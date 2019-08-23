@@ -6,10 +6,11 @@ using namespace BitmapGraphics;
 
 TEST(FileHeaderTest, WindowsBitmapHeader)
 {
-    std::ifstream bitmapStream{"../basic.bmp", std::ios::binary};
+    std::ifstream bitmapStream{"basic.bmp", std::ios::binary};
     CHECK(bitmapStream.is_open());
     
-    WindowsBitmapHeader bitmapHeader{bitmapStream};
+    WindowsBitmapHeader bitmapHeader;
+    bitmapHeader.readFileHeader(bitmapStream);
 
     // The "basic.bmp" image is 100x100 = 10000 pixels.
     // Each pixel is 3 bytes (1 red, 1 green, 1 blue),
@@ -20,13 +21,14 @@ TEST(FileHeaderTest, WindowsBitmapHeader)
     CHECK_EQUAL(30054, bitmapHeader.getFileSize());
     
     // We could also check the file size this way:
+    
     bitmapStream.seekg(0, std::ifstream::end);
 	CHECK_EQUAL(int(bitmapStream.tellg()), bitmapHeader.getFileSize());
 }
 
 TEST(InfoHeaderTest, WindowBitmapHeader)
 {
-    std::ifstream bitmapStream{"../basic.bmp", std::ios::binary};
+    std::ifstream bitmapStream{"basic.bmp", std::ios::binary};
     CHECK(bitmapStream.is_open());
     
     WindowsBitmapHeader bitmapHeader;
@@ -41,7 +43,7 @@ TEST(InfoHeaderTest, WindowBitmapHeader)
 
 TEST(FileHeaderTest_101, WindowsBitmapHeader)
 {
-    std::ifstream bitmapStream{"../basic_101.bmp", std::ios::binary};
+    std::ifstream bitmapStream{"basic_101.bmp", std::ios::binary};
     CHECK(bitmapStream.is_open());
     
     WindowsBitmapHeader bitmapHeader;
@@ -53,7 +55,7 @@ TEST(FileHeaderTest_101, WindowsBitmapHeader)
 
 TEST(InfoHeaderTest_101, WindowBitmapHeader)
 {
-    std::ifstream bitmapStream{"../basic_101.bmp", std::ios::binary};
+    std::ifstream bitmapStream{"basic_101.bmp", std::ios::binary};
     CHECK(bitmapStream.is_open());
     
     WindowsBitmapHeader bitmapHeader;
@@ -66,7 +68,7 @@ TEST(InfoHeaderTest_101, WindowBitmapHeader)
 
 TEST(constructHeaderFromStream, WindowsBitmapHeader)
 {
-    std::ifstream bitmapStream{"../basic.bmp", std::ios::binary};
+    std::ifstream bitmapStream{"basic.bmp", std::ios::binary};
     CHECK(bitmapStream.is_open());
     
     // I created a constructor that automatically reads the entire header from a stream
@@ -79,7 +81,7 @@ TEST(constructHeaderFromStream, WindowsBitmapHeader)
 
 TEST(constructHeaderFromStream_101, WindowsBitmapHeader)
 {
-    std::ifstream bitmapStream{"../basic_101.bmp", std::ios::binary};
+    std::ifstream bitmapStream{"basic_101.bmp", std::ios::binary};
     CHECK(bitmapStream.is_open());
     
     WindowsBitmapHeader bitmapHeader{bitmapStream};
