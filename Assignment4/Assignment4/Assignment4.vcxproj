@@ -118,6 +118,7 @@
   <ItemGroup>
     <ClInclude Include="binary_ostream_iterator.h" />
     <ClInclude Include="Bitmap.h" />
+    <ClInclude Include="BitmapIterator.h" />
     <ClInclude Include="CodecInterfaces.h" />
     <ClInclude Include="CodecLibrary.h" />
     <ClInclude Include="Color.h" />
@@ -143,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bitmap.cpp" />
+    <ClCompile Include="BitmapIterator.cpp" />
     <ClCompile Include="CodecLibrary.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Element.cpp" />

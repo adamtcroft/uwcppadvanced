@@ -2,7 +2,7 @@
 #include "Bitmap.h"
 #include "WindowsBitmapDecoder.h"
 #include "WindowsBitmapEncoder.h"
-//#include "BitmapIterator.h"
+#include "BitmapIterator.h"
 #include "binary_ostream_iterator.h"
 #include <fstream>
 
@@ -10,27 +10,45 @@ using namespace BitmapGraphics;
 
 TEST(createDecoder, WindowsBitmapDecoder)
 {
+	std::ifstream bitmapStream{ "../basic.bmp", std::ios::binary };
+	CHECK(bitmapStream.is_open());
+
+	WindowsBitmapDecoder decoderPrototype{};
+	HBitmapDecoder decoder{ decoderPrototype.clone(bitmapStream) };
+	CHECK_EQUAL("image/x-ms-bmp", decoder->getMimeType());
+}
+
+TEST(failCreateDecoder, WindowsBitmapDecoder)
+{
+	std::ifstream bitmapStream{ "../test.jpg", std::ios::binary };
+	CHECK(bitmapStream.is_open());
+
+	WindowsBitmapDecoder decoderPrototype{};
+	
+	// this should fail
+	try
+	{
+		HBitmapDecoder decoder{ decoderPrototype.clone(bitmapStream) };
+	}
+	catch (std::exception e)
+	{
+		CHECK_EQUAL("File Type Not Supported.", e.what())
+	}
+}
+
+TEST(BitmapSizeTest, BitmapIterator)
+{
     std::ifstream bitmapStream{"../basic.bmp", std::ios::binary};
     CHECK(bitmapStream.is_open());
     
-	WindowsBitmapDecoder decoderPrototype{};
-    HBitmapDecoder decoder{decoderPrototype.clone(bitmapStream)};
-    CHECK_EQUAL("image/x-ms-bmp", decoder->getMimeType());
+    WindowsBitmapDecoder decoderPrototype{};
+    HBitmapDecoder decoder {decoderPrototype.clone(bitmapStream)};
+    HBitmapIterator bitmapIter {decoder->createIterator()};
+    
+    CHECK_EQUAL(100, bitmapIter->getBitmapWidth());
+    CHECK_EQUAL(100, bitmapIter->getBitmapHeight());
 }
 
-//TEST(BitmapSizeTest, BitmapIterator)
-//{
-//    std::ifstream bitmapStream{"../basic.bmp", std::ios::binary};
-//    CHECK(bitmapStream.is_open());
-//    
-//    WindowsBitmapDecoder decoderPrototype{};
-//    HBitmapDecoder decoder {decoderPrototype.clone(bitmapStream)};
-//    HBitmapIterator bitmapIter {decoder->createIterator()};
-//    
-//    CHECK_EQUAL(100, bitmapIter->getBitmapWidth());
-//    CHECK_EQUAL(100, bitmapIter->getBitmapHeight());
-//}
-//
 //TEST(BitmapScanLinesTest, BitmapIterator)
 //{
 //    std::ifstream bitmapStream{"../basic.bmp", std::ios::binary};

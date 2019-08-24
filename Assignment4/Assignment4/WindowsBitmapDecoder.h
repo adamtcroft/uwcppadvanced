@@ -1,5 +1,7 @@
 #pragma once
+#include "WindowsBitmapHeader.h"
 #include "Bitmap.h"
+#include "BitmapIterator.h"
 #include "CodecInterfaces.h"
 
 namespace BitmapGraphics
@@ -21,9 +23,10 @@ namespace BitmapGraphics
 		HBitmapDecoder clone(std::istream& sourceStream) override;
 		HBitmapIterator createIterator() override;
 		std::string getMimeType() const noexcept override { return myMimeType; };
-		bool isSupported() override;
+		bool isSupported(std::istream& sourceStream) override;
 
 	private:
+		WindowsBitmapHeader myBitmapHeader;
 		Bitmap myBitmap;
 		std::string myMimeType;
 	};
