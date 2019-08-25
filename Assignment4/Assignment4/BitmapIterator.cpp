@@ -7,32 +7,34 @@ namespace BitmapGraphics
 	{
 		myWidth = myBitmap->getWidth();
 		myHeight = myBitmap->getHeight();
-		slIterator = myBitmap->begin();
+		rowIterator = myBitmap->begin();
+		columnIterator = rowIterator->begin();
 	}
 
 	void BitmapIterator::nextScanLine()
 	{
+		rowIterator++;
+		if (rowIterator != myBitmap->end())
+			columnIterator = rowIterator->begin();
 	}
 
-
-	bool BitmapIterator::isEndOfImage() const
+	bool BitmapIterator::isEndOfImage()
 	{
-		return false;
+		return (rowIterator == myBitmap->end());
 	}
 
 	void BitmapIterator::nextPixel()
 	{
-		slIterator++;
+		columnIterator++;
 	}
 
 	bool BitmapIterator::isEndOfScanLine()
 	{
-		return true;
+		return(columnIterator == rowIterator->end());
 	}
 
 	BitmapGraphics::Color BitmapIterator::getColor() const
 	{
-		BitmapGraphics::Color newColor;
-		return newColor;
+		return *columnIterator;
 	}
 }

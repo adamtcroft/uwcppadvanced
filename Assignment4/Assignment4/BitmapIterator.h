@@ -18,7 +18,7 @@ namespace BitmapGraphics
 		~BitmapIterator() = default;
 
 		void nextScanLine() override;
-		bool isEndOfImage() const override;
+		bool isEndOfImage() override;
 		void nextPixel() override;
 		bool isEndOfScanLine() override;
 		BitmapGraphics::Color getColor() const override;
@@ -29,7 +29,8 @@ namespace BitmapGraphics
 		uint32_t myWidth{ 0 };
 		uint32_t myHeight{ 0 };
 		Bitmap* myBitmap;
-		BitmapGraphics::Bitmap::ScanLineIterator slIterator;
+		BitmapGraphics::Bitmap::ScanLineCollectionIterator rowIterator;
+		BitmapGraphics::Bitmap::ScanLine::iterator columnIterator;
 	};
 }
 

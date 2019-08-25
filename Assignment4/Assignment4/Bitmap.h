@@ -16,7 +16,7 @@ namespace BitmapGraphics
 	private:
 		using ScanLineCollection = std::vector<ScanLine>;
 	public:
-		using ScanLineIterator = ScanLineCollection::iterator;
+		using ScanLineCollectionIterator = ScanLineCollection::iterator;
 
 		Bitmap() = default;
 		Bitmap(const uint32_t& width, const uint32_t& height);
@@ -29,8 +29,8 @@ namespace BitmapGraphics
 
 		~Bitmap() noexcept = default;
 
-		ScanLineIterator begin() noexcept { return slCollection.begin(); }
-		ScanLineIterator end() noexcept { return slCollection.end(); }
+		ScanLineCollectionIterator begin() noexcept { return slCollection.begin(); }
+		ScanLineCollectionIterator end() noexcept { return slCollection.end(); }
 		uint32_t getWidth() const noexcept { return bitmapWidth; }
 		uint32_t getHeight() const noexcept { return bitmapHeight; }
 		void push_back(const ScanLine& scanline) { slCollection.push_back(scanline); }

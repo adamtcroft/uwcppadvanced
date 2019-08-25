@@ -33,7 +33,7 @@ namespace BitmapGraphics
 	{
 	public:
 		virtual void nextScanLine() = 0;
-		virtual bool isEndOfImage() const = 0;
+		virtual bool isEndOfImage() = 0;
 		virtual void nextPixel() = 0;
 		virtual bool isEndOfScanLine() = 0;
 		virtual BitmapGraphics::Color getColor() const = 0;
