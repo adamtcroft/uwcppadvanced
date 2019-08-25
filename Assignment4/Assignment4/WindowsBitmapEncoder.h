@@ -26,6 +26,9 @@ namespace BitmapGraphics
 
 	private:
 		HBitmapIterator myIterator;
+
+		void writeHeader(std::ostream& destinationStream);
+		void writeScanlines(std::ostream& destinationStream);
 	};
 }
 

@@ -46,22 +46,22 @@ TEST(invalidDecoder, CodecLibrary)
     }
 }
 
-//TEST(invalidEncoder, CodecLibrary)
-//{
-//    HBitmapEncoder encoder{new WindowsBitmapEncoder};
-//
-//    try
-//    {
-//        std::ostringstream os{std::ios::binary};
-//        encoder->encodeToStream(os);
-//    }
-//    catch (const std::exception& exc)
-//    {
-//        std::cout << exc.what() << std::endl;
-//        CHECK(true);
-//    }
-//}
-//
+TEST(invalidEncoder, CodecLibrary)
+{
+    HBitmapEncoder encoder{new WindowsBitmapEncoder};
+
+    try
+    {
+        std::ostringstream os{std::ios::binary};
+        encoder->encodeToStream(os);
+    }
+    catch (const std::exception& exc)
+    {
+        std::cout << exc.what() << std::endl;
+        CHECK(true);
+    }
+}
+
 //TEST(createEncoderViaMimeType, CodecLibrary)
 //{
 //    setUp();

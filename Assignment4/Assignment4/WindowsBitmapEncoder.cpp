@@ -14,6 +14,28 @@ namespace BitmapGraphics
 
 	void WindowsBitmapEncoder::encodeToStream(std::ostream& destinationStream)
 	{
+		if (!myIterator)
+			throw std::runtime_error("Error: Cannot encode stream before creating bitmap.");
+		else
+		{
+			writeHeader(destinationStream);
+			writeScanlines(destinationStream);
+		}
+	}
+
+	std::string WindowsBitmapEncoder::getMimeType() const
+	{
+		return "Mime Type";
+	}
+
+	uint32_t WindowsBitmapEncoder::calculatePadBytes()
+	{
+		const auto remainder = (myIterator->getBitmapWidth() * 3) % 4;
+		return (remainder == 0) ? 0 : (4 - remainder);
+	}
+
+	void WindowsBitmapEncoder::writeHeader(std::ostream & destinationStream)
+	{
 		WindowsBitmapHeader header;
 
 		uint32_t fileSize = myIterator->getBitmapFileSize();
@@ -25,7 +47,10 @@ namespace BitmapGraphics
 
 		header.writeFileHeader(destinationStream);
 		header.writeInfoHeader(destinationStream);
-	
+	}
+
+	void WindowsBitmapEncoder::writeScanlines(std::ostream& destinationStream)
+	{
 		while (!myIterator->isEndOfImage())
 		{
 			while (!myIterator->isEndOfScanLine())
@@ -44,31 +69,5 @@ namespace BitmapGraphics
 
 			myIterator->nextScanLine();
 		}
-
-		//for (auto& scanline : slCollection)
-		//{
-		//	for (auto& color : scanline)
-		//	{
-		//		// Write row of pixels
-		//		std::copy(scanline.begin(), scanline.end(), binary_ostream_iterator<Color>(destinationStream));
-
-		//		// Write pad bytes
-		//		for (auto pad = 0; pad < getNumberOfPadBytes(); ++pad)
-		//		{
-		//			Binary::Byte(0).write(destinationStream);
-		//		}
-		//	}
-		//}
-	}
-
-	std::string WindowsBitmapEncoder::getMimeType() const
-	{
-		return "Mime Type";
-	}
-
-	uint32_t WindowsBitmapEncoder::calculatePadBytes()
-	{
-		const auto remainder = (myIterator->getBitmapWidth() * 3) % 4;
-		return (remainder == 0) ? 0 : (4 - remainder);
 	}
 }

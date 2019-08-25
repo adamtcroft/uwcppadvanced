@@ -43,7 +43,7 @@ namespace BitmapGraphics
 	{
 		if (myBitmap.getHeight() == 0 || myBitmap.getWidth() == 0 || myMimeType == "")
 		{
-			throw std::runtime_error("Error: Bitmap was not properly created.");
+			throw std::runtime_error("Error: Cannot return iterator if no bitmap has been decoded.");
 		}
 		else
 		{
