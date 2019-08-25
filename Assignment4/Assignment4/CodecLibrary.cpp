@@ -14,8 +14,18 @@ namespace BitmapGraphics
 
 	HBitmapDecoder CodecLibrary::createDecoder(std::istream& sourceStream)
 	{
-		// this should probably send a string to the decoder to see if it's the correct type or something
-		return myDecoders[0]->clone(sourceStream);
+		HBitmapDecoder decoder;
+
+		for (auto decoderProto : myDecoders)
+		{
+			if (decoderProto->isSupported(sourceStream))
+				decoder = decoderProto->clone(sourceStream);
+		}
+
+		if (!decoder)
+			throw std::runtime_error("Error: File type is unsupported.");
+		else
+			return decoder;
 	}
 
 	HBitmapDecoder CodecLibrary::createDecoder(std::string const& mimeType, std::istream& sourceStream)

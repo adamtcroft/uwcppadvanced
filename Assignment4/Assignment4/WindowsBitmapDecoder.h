@@ -27,6 +27,11 @@ namespace BitmapGraphics
 		bool isSupported(std::istream& sourceStream) override;
 		uint32_t calculatePadBytes() override;
 
+		bool deferDecode(std::istream& sourceStream);
+		Bitmap decodeHeader(std::istream& sourceStream);
+		void decodeScanlines(std::istream& sourceStream);
+
+
 	private:
 		Bitmap myBitmap;
 		const std::string myMimeType = "image/x-ms-bmp";

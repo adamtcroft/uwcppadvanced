@@ -4,42 +4,13 @@ namespace BitmapGraphics
 {
 	WindowsBitmapDecoder::WindowsBitmapDecoder(std::istream& sourceStream)
 	{
-		//if (!isSupported(sourceStream))
-		//	throw std::runtime_error("File Type Not Supported.");
-		//else
-		//{
-		sourceStream.seekg(0, std::ios_base::end);
-		if (sourceStream.tellg() == 0)
+		if (deferDecode(sourceStream))
 			return;
 		else
 		{
-			sourceStream.seekg(0);
-			WindowsBitmapHeader header;
-			header.read(sourceStream);
-			Bitmap localBitmap{ header.getBitmapWidth(), header.getBitmapHeight() };
-			myBitmap = localBitmap;
-
-			myBitmap.clearCollection();
-
-			for (auto row = 0; row < myBitmap.getHeight(); ++row)
-			{
-				std::vector<Color> scanline;
-
-				for (auto column = 0; column < myBitmap.getWidth(); ++column)
-				{
-					scanline.push_back(Color::read(sourceStream));
-				}
-
-				for (auto pad = 0; pad < calculatePadBytes(); ++pad)
-				{
-					Binary::Byte::read(sourceStream);
-				}
-
-				myBitmap.push_back(std::move(scanline));
-			}
+			myBitmap = decodeHeader(sourceStream);
+			decodeScanlines(sourceStream);
 		}
-
-		//}
 	}
 
 	HBitmapDecoder WindowsBitmapDecoder::clone(std::istream& sourceStream)
@@ -71,5 +42,44 @@ namespace BitmapGraphics
 	{
 		const auto remainder = (myBitmap.getWidth() * 3) % 4;
 		return (remainder == 0) ? 0 : (4 - remainder);
+	}
+
+	bool WindowsBitmapDecoder::deferDecode(std::istream& sourceStream)
+	{
+		sourceStream.seekg(0, std::ios_base::end);
+		if (sourceStream.tellg() == 0)
+			return true;
+		else
+			return false;
+	}
+
+	Bitmap WindowsBitmapDecoder::decodeHeader(std::istream& sourceStream)
+	{
+			sourceStream.seekg(0);
+			WindowsBitmapHeader header;
+			header.read(sourceStream);
+			return Bitmap { header.getBitmapWidth(), header.getBitmapHeight() };
+	}
+
+	void WindowsBitmapDecoder::decodeScanlines(std::istream& sourceStream)
+	{
+			myBitmap.clearCollection();
+
+			for (auto row = 0; row < myBitmap.getHeight(); ++row)
+			{
+				std::vector<Color> scanline;
+
+				for (auto column = 0; column < myBitmap.getWidth(); ++column)
+				{
+					scanline.push_back(Color::read(sourceStream));
+				}
+
+				for (auto pad = 0; pad < calculatePadBytes(); ++pad)
+				{
+					Binary::Byte::read(sourceStream);
+				}
+
+				myBitmap.push_back(std::move(scanline));
+			}
 	}
 }
