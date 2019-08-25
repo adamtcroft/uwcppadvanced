@@ -8,8 +8,9 @@ namespace BitmapGraphics
 			throw std::runtime_error("File Type Not Supported.");
 		else
 		{
-			myBitmapHeader.read(sourceStream);
-			Bitmap localBitmap{ myBitmapHeader.getBitmapWidth(), myBitmapHeader.getBitmapHeight() };
+			WindowsBitmapHeader header;
+			header.read(sourceStream);
+			Bitmap localBitmap{ header.getBitmapWidth(), header.getBitmapHeight() };
 			myBitmap = localBitmap;
 
 			myBitmap.clearCollection();

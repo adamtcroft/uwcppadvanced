@@ -24,8 +24,8 @@ namespace BitmapGraphics
 	class IBitmapEncoder
 	{
 	public: 
-		virtual HBitmapEncoder clone() = 0;
-		virtual void encodeToStream() = 0;
+		virtual HBitmapEncoder clone(HBitmapIterator& iterator) = 0;
+		virtual void encodeToStream(std::ostream& destinationStream) = 0;
 		virtual std::string getMimeType() const = 0;
 	};
 

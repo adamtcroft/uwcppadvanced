@@ -29,9 +29,18 @@ namespace BitmapGraphics
 		void read(std::istream& sourceStream);
 		void write(std::ostream& destinationStream) const;
 
+		void writeFileHeaderStart(std::ostream& destinationStream) const;
+		void writeFileHeaderEnd(std::ostream& destinationStream) const;
+		void writeInfoHeaderStart(std::ostream& destinationStream) const;
+		void writeInfoHeaderEnd(std::ostream& destinationStream) const;
+
 		Binary::DoubleWord::data_type getFileSize() const noexcept { return static_cast<uint32_t>(fileSize); }
 		Binary::DoubleWord::data_type getBitmapWidth() const noexcept { return static_cast<uint32_t>(bitmapWidth); }
 		Binary::DoubleWord::data_type getBitmapHeight() const noexcept { return static_cast<uint32_t>(bitmapHeight); }
+
+		void setFileSize(uint32_t& size) { fileSize = Binary::DoubleWord{ size }; }
+		void setBitmapWidth(uint32_t& width) { bitmapWidth = Binary::DoubleWord{ width }; }
+		void setBitmapHeight(uint32_t& height) { bitmapHeight = Binary::DoubleWord{ height }; }
 
 	private:
 		// File Header

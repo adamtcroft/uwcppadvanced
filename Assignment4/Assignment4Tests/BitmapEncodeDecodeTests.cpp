@@ -90,36 +90,36 @@ TEST(BitmapReadWrite, Bitmap)
 
     std::ofstream outputStream{"output.bmp", std::ios::binary};
     CHECK(outputStream.is_open());
-//    
-//    WindowsBitmapEncoder encoderPrototype{};
-//    HBitmapEncoder encoder {encoderPrototype.clone(bitmapIter)};
-//    
-//    encoder->encodeToStream(outputStream);
+    
+    WindowsBitmapEncoder encoderPrototype{};
+    HBitmapEncoder encoder {encoderPrototype.clone(bitmapIter)};
+    
+    encoder->encodeToStream(outputStream);
     outputStream.close();
-//
-//    // Read that one back in and check sizes
-//    
-//    std::ifstream bitmapStream2{"output.bmp", std::ios::binary};
-//    CHECK(bitmapStream2.is_open());
-//    
-//    HBitmapDecoder decoder2 {decoderPrototype.clone(bitmapStream2)};
-//    bitmapIter = decoder2->createIterator();
-//    
-//    int numberOfScanLines{0};
-//    while (! bitmapIter->isEndOfImage())
-//    {
-//        int numberOfPixelsInScanLine{0};
-//        while (! bitmapIter->isEndOfScanLine())
-//        {
-//            ++numberOfPixelsInScanLine;
-//            bitmapIter->nextPixel();
-//        }
-//        CHECK_EQUAL(100, numberOfPixelsInScanLine);
-//        ++numberOfScanLines;
-//        
-//        bitmapIter->nextScanLine();
-//    }
-//    CHECK_EQUAL(100, numberOfScanLines);
+
+    // Read that one back in and check sizes
+    
+    std::ifstream bitmapStream2{"output.bmp", std::ios::binary};
+    CHECK(bitmapStream2.is_open());
+    
+    HBitmapDecoder decoder2 {decoderPrototype.clone(bitmapStream2)};
+    bitmapIter = decoder2->createIterator();
+    
+    int numberOfScanLines{0};
+    while (! bitmapIter->isEndOfImage())
+    {
+        int numberOfPixelsInScanLine{0};
+        while (! bitmapIter->isEndOfScanLine())
+        {
+            ++numberOfPixelsInScanLine;
+            bitmapIter->nextPixel();
+        }
+        CHECK_EQUAL(100, numberOfPixelsInScanLine);
+        ++numberOfScanLines;
+        
+        bitmapIter->nextScanLine();
+    }
+    CHECK_EQUAL(100, numberOfScanLines);
 }
 
 
@@ -164,34 +164,34 @@ TEST(BitmapScanLinesTest_101, BitmapIterator)
     CHECK_EQUAL(101, numberOfScanLines);
 }
 
-//TEST(BitmapReadWrite_101, Bitmap)
-//{
-//    // Read in the bitmap
-//    
-//    std::ifstream bitmapStream{"../basic_101.bmp", std::ios::binary};
-//    CHECK(bitmapStream.is_open());
-//    
-//    WindowsBitmapDecoder decoderPrototype{};
-//    HBitmapDecoder decoder {decoderPrototype.clone(bitmapStream)};
-//    HBitmapIterator bitmapIter {decoder->createIterator()};
-//    
-//    // Write out the bitmap to a different file with its write() method
-//    
-//    std::ofstream outputStream{"output_101.bmp", std::ios::binary};
-//    CHECK(outputStream.is_open());
-//    
-//    WindowsBitmapEncoder encoderPrototype{};
-//    HBitmapEncoder encoder {encoderPrototype.clone(bitmapIter)};
-//
-//    encoder->encodeToStream(outputStream);
-//    outputStream.close();
-//    
-//    // Read that one back in and check sizes
-//    
-//    std::ifstream bitmapStream2{"output_101.bmp", std::ios::binary};
-//    CHECK(bitmapStream2.is_open());
-//    
-//    HBitmapDecoder decoder2 {decoderPrototype.clone(bitmapStream2)};
+TEST(BitmapReadWrite_101, Bitmap)
+{
+    // Read in the bitmap
+    
+    std::ifstream bitmapStream{"../basic_101.bmp", std::ios::binary};
+    CHECK(bitmapStream.is_open());
+    
+    WindowsBitmapDecoder decoderPrototype{};
+    HBitmapDecoder decoder {decoderPrototype.clone(bitmapStream)};
+    HBitmapIterator bitmapIter {decoder->createIterator()};
+    
+    // Write out the bitmap to a different file with its write() method
+    
+    std::ofstream outputStream{"output_101.bmp", std::ios::binary};
+    CHECK(outputStream.is_open());
+    
+    WindowsBitmapEncoder encoderPrototype{};
+    HBitmapEncoder encoder {encoderPrototype.clone(bitmapIter)};
+
+    encoder->encodeToStream(outputStream);
+    outputStream.close();
+    
+    // Read that one back in and check sizes
+    
+    std::ifstream bitmapStream2{"output_101.bmp", std::ios::binary};
+    CHECK(bitmapStream2.is_open());
+    
+    HBitmapDecoder decoder2 {decoderPrototype.clone(bitmapStream2)};
 //    bitmapIter = decoder2->createIterator();
 //    
 //    int numberOfScanLines {0};
@@ -209,4 +209,4 @@ TEST(BitmapScanLinesTest_101, BitmapIterator)
 //        bitmapIter->nextScanLine();
 //    }
 //    CHECK_EQUAL(101, numberOfScanLines);
-//}
+}

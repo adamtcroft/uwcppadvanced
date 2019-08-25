@@ -4,7 +4,7 @@
 namespace BitmapGraphics
 {
 	Bitmap::Bitmap(const uint32_t& width, const uint32_t& height) :
-		bitmapWidth(width), bitmapHeight(height)
+		bitmapWidth(width), bitmapHeight(height) 
 	{
 	}
 
@@ -13,13 +13,14 @@ namespace BitmapGraphics
 		auto pBitmapIterator = std::make_shared<BitmapIterator>(BitmapIterator(*this));
 		return pBitmapIterator;
 	}
+
+	uint32_t BitmapGraphics::Bitmap::getNumberOfPadBytes() const
+	{
+		const auto remainder = (bitmapWidth * 3) % 4;
+		return (remainder == 0) ? 0 : (4 - remainder);
+	}
 }
 
-uint32_t BitmapGraphics::Bitmap::getNumberOfPadBytes() const
-{
-	const auto remainder = (bitmapWidth * 3) % 4;
-	return (remainder == 0) ? 0 : (4 - remainder);
-}
 
 //BitmapGraphics::Bitmap::Bitmap(const uint32_t& width, const uint32_t& height, std::istream& sourceStream) :
 //	bitmapWidth(Binary::DoubleWord{ width }), bitmapHeight(Binary::DoubleWord{ height })

@@ -27,7 +27,6 @@ namespace BitmapGraphics
 		bool isSupported(std::istream& sourceStream) override;
 
 	private:
-		WindowsBitmapHeader myBitmapHeader;
 		Bitmap myBitmap;
 		std::string myMimeType;
 	};

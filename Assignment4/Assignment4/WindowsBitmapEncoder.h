@@ -1,4 +1,6 @@
 #pragma once
+#include "WindowsBitmapHeader.h"
+#include "Color.h"
 #include "CodecInterfaces.h"
 
 namespace BitmapGraphics
@@ -7,6 +9,7 @@ namespace BitmapGraphics
 	{
 	public:
 		WindowsBitmapEncoder() = default;
+		WindowsBitmapEncoder(HBitmapIterator& iterator);
 
 		WindowsBitmapEncoder(const WindowsBitmapEncoder& other) = default;
 		WindowsBitmapEncoder(WindowsBitmapEncoder&& other) = default;
@@ -16,12 +19,12 @@ namespace BitmapGraphics
 
 		~WindowsBitmapEncoder() noexcept = default;
 
-		HBitmapEncoder clone() override;
-		void encodeToStream() override;
-		std::string getMimeType();
+		HBitmapEncoder clone(HBitmapIterator& iterator) override;
+		void encodeToStream(std::ostream& destinationStream) override;
+		std::string getMimeType() const override;
 
 	private:
-		//IBitmapIterator myIterator;
+		HBitmapIterator myIterator;
 	};
 }
 

@@ -3,6 +3,7 @@
 #include "Color.h"
 #include "binary_ostream_iterator.h"
 #include "CodecInterfaces.h"
+#include "WindowsBitmapHeader.h"
 #include <fstream>
 #include <vector>
 #include <iostream>
