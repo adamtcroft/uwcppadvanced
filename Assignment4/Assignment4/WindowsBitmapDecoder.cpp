@@ -10,7 +10,7 @@ namespace BitmapGraphics
 		{
 			WindowsBitmapHeader header;
 			header.read(sourceStream);
-			Bitmap localBitmap{ header.getBitmapWidth(), header.getBitmapHeight(), header.getFileSize()};
+			Bitmap localBitmap{ header.getBitmapWidth(), header.getBitmapHeight(), header.getFileSize() };
 			myBitmap = localBitmap;
 
 			myBitmap.clearCollection();
@@ -41,7 +41,14 @@ namespace BitmapGraphics
 
 	HBitmapIterator WindowsBitmapDecoder::createIterator()
 	{
-		return myBitmap.createIterator();
+		if (myBitmap.getHeight() == 0 || myBitmap.getWidth() == 0 || myMimeType == "")
+		{
+			throw std::runtime_error("Error: Bitmap was not properly created.");
+		}
+		else
+		{
+			return myBitmap.createIterator();
+		}
 	}
 
 	bool WindowsBitmapDecoder::isSupported(std::istream& sourceStream)

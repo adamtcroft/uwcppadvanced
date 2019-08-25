@@ -1,51 +1,51 @@
-//#include "TestHarness.h"
-//
-//#include "CodecLibrary.h"
+#include "TestHarness.h"
+
+#include "CodecLibrary.h"
 //#include "BrightnessDecorator.h"
 //#include "ColorInversionDecorator.h"
-//#include "WindowsBitmapDecoder.h"
-//#include "WindowsBitmapEncoder.h"
-//#include "BitmapIterator.h"
-//#include <fstream>
-//#include <memory>
-//
-//using namespace BitmapGraphics;
-//
-//namespace
-//{
-//    const std::string msBmp{"image/x-ms-bmp"};
-//    
-//    std::shared_ptr<CodecLibrary> theCodecLibrary {};
-//
-//    void setUp()
-//    {
-//        theCodecLibrary.reset(new CodecLibrary);
-//        theCodecLibrary->registerEncoder(HBitmapEncoder(new WindowsBitmapEncoder));
-//        theCodecLibrary->registerDecoder(HBitmapDecoder(new WindowsBitmapDecoder));
-//    }
-//
-//    void tearDown()
-//    {
-//        theCodecLibrary.reset();
-//    }
-//}
-//
-//TEST(invalidDecoder, CodecLibrary)
-//{
-//    HBitmapDecoder decoder{new WindowsBitmapDecoder};
-//
-//    try
-//    {
-//        decoder->createIterator();
-//        CHECK(false);
-//    }
-//    catch (const std::exception& exc)
-//    {
-//        std::cout << exc.what() << std::endl;
-//        CHECK(true);
-//    }
-//}
-//
+#include "WindowsBitmapDecoder.h"
+#include "WindowsBitmapEncoder.h"
+#include "BitmapIterator.h"
+#include <fstream>
+#include <memory>
+
+using namespace BitmapGraphics;
+
+namespace
+{
+    const std::string msBmp{"image/x-ms-bmp"};
+    
+    std::shared_ptr<CodecLibrary> theCodecLibrary {};
+
+    void setUp()
+    {
+        theCodecLibrary.reset(new CodecLibrary);
+        theCodecLibrary->registerEncoder(HBitmapEncoder(new WindowsBitmapEncoder));
+        theCodecLibrary->registerDecoder(HBitmapDecoder(new WindowsBitmapDecoder));
+    }
+
+    void tearDown()
+    {
+        theCodecLibrary.reset();
+    }
+}
+
+TEST(invalidDecoder, CodecLibrary)
+{
+    HBitmapDecoder decoder{new WindowsBitmapDecoder};
+
+    try
+    {
+        decoder->createIterator();
+        CHECK(false);
+    }
+    catch (const std::exception& exc)
+    {
+        std::cout << exc.what() << std::endl;
+        CHECK(true);
+    }
+}
+
 //TEST(invalidEncoder, CodecLibrary)
 //{
 //    HBitmapEncoder encoder{new WindowsBitmapEncoder};

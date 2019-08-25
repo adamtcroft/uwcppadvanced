@@ -8,8 +8,8 @@ namespace BitmapGraphics
 	class IBitmapEncoder;
 	class IBitmapIterator;
 
-	using HBitmapDecoder = std::unique_ptr<IBitmapDecoder>;
-	using HBitmapEncoder = std::unique_ptr<IBitmapEncoder>;
+	using HBitmapDecoder = std::shared_ptr<IBitmapDecoder>;
+	using HBitmapEncoder = std::shared_ptr<IBitmapEncoder>;
 	using HBitmapIterator = std::shared_ptr<IBitmapIterator>;
 
 	class IBitmapDecoder

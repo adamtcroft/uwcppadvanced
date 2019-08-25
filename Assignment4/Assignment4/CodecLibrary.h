@@ -1,6 +1,9 @@
 #pragma once
 #include "CodecInterfaces.h"
+#include "WindowsBitmapDecoder.h"
+#include "WindowsBitmapEncoder.h"
 #include <fstream>
+#include <list>
 
 namespace BitmapGraphics
 {
@@ -24,6 +27,11 @@ namespace BitmapGraphics
 		HBitmapDecoder createDecoder(std::string const& mimeType, std::istream& sourceStream);
 
 		HBitmapEncoder createEncoder(std::string const& mimeType, HBitmapIterator const& bitmapIterator);
+
+	private:
+		std::vector<HBitmapDecoder> myDecoders;
+		std::vector<HBitmapEncoder> myEncoders;
 	};
+
 }
 
