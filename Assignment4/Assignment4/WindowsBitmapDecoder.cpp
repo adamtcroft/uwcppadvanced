@@ -4,13 +4,19 @@ namespace BitmapGraphics
 {
 	WindowsBitmapDecoder::WindowsBitmapDecoder(std::istream& sourceStream)
 	{
-		if (!isSupported(sourceStream))
-			throw std::runtime_error("File Type Not Supported.");
+		//if (!isSupported(sourceStream))
+		//	throw std::runtime_error("File Type Not Supported.");
+		//else
+		//{
+		sourceStream.seekg(0, std::ios_base::end);
+		if (sourceStream.tellg() == 0)
+			return;
 		else
 		{
+			sourceStream.seekg(0);
 			WindowsBitmapHeader header;
 			header.read(sourceStream);
-			Bitmap localBitmap{ header.getBitmapWidth(), header.getBitmapHeight(), header.getFileSize() };
+			Bitmap localBitmap{ header.getBitmapWidth(), header.getBitmapHeight() };
 			myBitmap = localBitmap;
 
 			myBitmap.clearCollection();
@@ -32,6 +38,8 @@ namespace BitmapGraphics
 				myBitmap.push_back(std::move(scanline));
 			}
 		}
+
+		//}
 	}
 
 	HBitmapDecoder WindowsBitmapDecoder::clone(std::istream& sourceStream)
@@ -42,13 +50,9 @@ namespace BitmapGraphics
 	HBitmapIterator WindowsBitmapDecoder::createIterator()
 	{
 		if (myBitmap.getHeight() == 0 || myBitmap.getWidth() == 0 || myMimeType == "")
-		{
 			throw std::runtime_error("Error: Cannot return iterator if no bitmap has been decoded.");
-		}
 		else
-		{
 			return myBitmap.createIterator();
-		}
 	}
 
 	bool WindowsBitmapDecoder::isSupported(std::istream& sourceStream)
@@ -58,15 +62,9 @@ namespace BitmapGraphics
 		sourceStream.seekg(0);
 
 		if (first100.substr(0, 2) == "BM")
-		{
-			myMimeType = "image/x-ms-bmp";
 			return true;
-		}
 		else
-		{
 			return false;
-		}
-
 	}
 
 	uint32_t WindowsBitmapDecoder::calculatePadBytes()

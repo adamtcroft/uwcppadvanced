@@ -7,9 +7,9 @@ namespace BitmapGraphics
 	{
 		myWidth = myBitmap->getWidth();
 		myHeight = myBitmap->getHeight();
-		myFileSize = myBitmap->getFileSize();
 		rowIterator = myBitmap->begin();
-		columnIterator = rowIterator->begin();
+		if (!(rowIterator == myBitmap->end()))
+			columnIterator = rowIterator->begin();
 	}
 
 	void BitmapIterator::nextScanLine()

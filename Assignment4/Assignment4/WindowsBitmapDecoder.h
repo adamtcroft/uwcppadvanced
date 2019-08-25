@@ -29,6 +29,6 @@ namespace BitmapGraphics
 
 	private:
 		Bitmap myBitmap;
-		std::string myMimeType;
+		const std::string myMimeType = "image/x-ms-bmp";
 	};
 }

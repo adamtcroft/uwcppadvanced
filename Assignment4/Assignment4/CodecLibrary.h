@@ -26,7 +26,7 @@ namespace BitmapGraphics
 		HBitmapDecoder createDecoder(std::istream& sourceStream);
 		HBitmapDecoder createDecoder(std::string const& mimeType, std::istream& sourceStream);
 
-		HBitmapEncoder createEncoder(std::string const& mimeType, HBitmapIterator const& bitmapIterator);
+		HBitmapEncoder createEncoder(std::string const& mimeType, HBitmapIterator& bitmapIterator);
 
 	private:
 		std::vector<HBitmapDecoder> myDecoders;

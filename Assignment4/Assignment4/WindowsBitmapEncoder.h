@@ -26,6 +26,7 @@ namespace BitmapGraphics
 
 	private:
 		HBitmapIterator myIterator;
+		const std::string myMimeType = "image/x-ms-bmp";
 
 		void writeHeader(std::ostream& destinationStream);
 		void writeScanlines(std::ostream& destinationStream);

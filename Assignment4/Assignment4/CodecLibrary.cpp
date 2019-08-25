@@ -14,20 +14,39 @@ namespace BitmapGraphics
 
 	HBitmapDecoder CodecLibrary::createDecoder(std::istream& sourceStream)
 	{
+		// this should probably send a string to the decoder to see if it's the correct type or something
 		return myDecoders[0]->clone(sourceStream);
-		//HBitmapDecoder temp;
-		//return temp;
-	}
-	
-	HBitmapDecoder CodecLibrary::createDecoder(std::string const& mimeType, std::istream& sourceStream)
-	{
-		HBitmapDecoder temp;
-		return temp;
 	}
 
-	HBitmapEncoder CodecLibrary::createEncoder(std::string const& mimeType, HBitmapIterator const& bitmapIterator)
+	HBitmapDecoder CodecLibrary::createDecoder(std::string const& mimeType, std::istream& sourceStream)
 	{
-		HBitmapEncoder temp;
-		return temp;
+		HBitmapDecoder decoder;
+
+		for (auto decoderProto : myDecoders)
+		{
+			if (decoderProto->getMimeType() == mimeType)
+				decoder = decoderProto->clone(sourceStream);
+		}
+
+		if (!decoder)
+			throw std::runtime_error("Error: Mime type is unsupported.");
+		else
+			return decoder;
+	}
+
+	HBitmapEncoder CodecLibrary::createEncoder(std::string const& mimeType, HBitmapIterator& bitmapIterator)
+	{
+		HBitmapEncoder encoder;
+
+		for (auto encoderProto : myEncoders)
+		{
+			if (encoderProto->getMimeType() == mimeType)
+				encoder = encoderProto->clone(bitmapIterator);
+		}
+
+		if (!encoder)
+			throw std::runtime_error("Error: Mime type is unsupported.");
+		else
+			return encoder;
 	}
 }

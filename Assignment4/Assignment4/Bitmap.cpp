@@ -3,8 +3,8 @@
 
 namespace BitmapGraphics
 {
-	Bitmap::Bitmap(const uint32_t& width, const uint32_t& height, const uint32_t& fileSize) :
-		bitmapWidth(width), bitmapHeight(height), bitmapFileSize(fileSize)
+	Bitmap::Bitmap(const uint32_t& width, const uint32_t& height) :
+		bitmapWidth(width), bitmapHeight(height)
 	{
 	}
 

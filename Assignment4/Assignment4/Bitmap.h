@@ -20,7 +20,7 @@ namespace BitmapGraphics
 		using ScanLineCollectionIterator = ScanLineCollection::iterator;
 
 		Bitmap() = default;
-		Bitmap(const uint32_t& width, const uint32_t& height, const uint32_t& fileSize);
+		Bitmap(const uint32_t& width, const uint32_t& height);
 		
 		Bitmap(const Bitmap& other) = default;
 		Bitmap(Bitmap&& other) = default;
@@ -34,7 +34,6 @@ namespace BitmapGraphics
 		ScanLineCollectionIterator end() noexcept { return slCollection.end(); }
 		uint32_t getWidth() const noexcept { return bitmapWidth; }
 		uint32_t getHeight() const noexcept { return bitmapHeight; }
-		uint32_t getFileSize() const noexcept { return bitmapFileSize; }
 		void push_back(const ScanLine& scanline) { slCollection.push_back(scanline); }
 		void clearCollection() { slCollection.clear(); }
 
@@ -43,7 +42,6 @@ namespace BitmapGraphics
 	private:
 		uint32_t bitmapWidth{ 0 };
 		uint32_t bitmapHeight{ 0 };
-		uint32_t bitmapFileSize{ 0 };
 		ScanLineCollection slCollection;
 	};
 

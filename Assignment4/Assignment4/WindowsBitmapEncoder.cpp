@@ -25,7 +25,7 @@ namespace BitmapGraphics
 
 	std::string WindowsBitmapEncoder::getMimeType() const
 	{
-		return "Mime Type";
+		return myMimeType;
 	}
 
 	uint32_t WindowsBitmapEncoder::calculatePadBytes()
@@ -38,7 +38,7 @@ namespace BitmapGraphics
 	{
 		WindowsBitmapHeader header;
 
-		uint32_t fileSize = myIterator->getBitmapFileSize();
+		uint32_t fileSize = ((myIterator->getBitmapWidth() * 3) + 31) / 32 * 4;
 		header.setFileSize(fileSize);
 		uint32_t width = myIterator->getBitmapWidth();
 		header.setBitmapWidth(width);
