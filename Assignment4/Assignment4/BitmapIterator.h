@@ -24,10 +24,12 @@ namespace BitmapGraphics
 		BitmapGraphics::Color getColor() const override;
 		int getBitmapWidth() const noexcept override { return myWidth; }
 		int getBitmapHeight() const noexcept override { return myHeight; }
+		int getBitmapFileSize() const noexcept override { return myFileSize; }
 
 	private:
 		uint32_t myWidth{ 0 };
 		uint32_t myHeight{ 0 };
+		uint32_t myFileSize{ 0 };
 		Bitmap* myBitmap;
 		BitmapGraphics::Bitmap::ScanLineCollectionIterator rowIterator;
 		BitmapGraphics::Bitmap::ScanLine::iterator columnIterator;

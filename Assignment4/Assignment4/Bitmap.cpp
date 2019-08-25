@@ -3,8 +3,8 @@
 
 namespace BitmapGraphics
 {
-	Bitmap::Bitmap(const uint32_t& width, const uint32_t& height) :
-		bitmapWidth(width), bitmapHeight(height) 
+	Bitmap::Bitmap(const uint32_t& width, const uint32_t& height, const uint32_t& fileSize) :
+		bitmapWidth(width), bitmapHeight(height), bitmapFileSize(fileSize)
 	{
 	}
 
@@ -12,12 +12,6 @@ namespace BitmapGraphics
 	{
 		auto pBitmapIterator = std::make_shared<BitmapIterator>(BitmapIterator(*this));
 		return pBitmapIterator;
-	}
-
-	uint32_t BitmapGraphics::Bitmap::getNumberOfPadBytes() const
-	{
-		const auto remainder = (bitmapWidth * 3) % 4;
-		return (remainder == 0) ? 0 : (4 - remainder);
 	}
 }
 
@@ -50,6 +44,12 @@ namespace BitmapGraphics
 //		slCollection.push_back(std::move(scanline));
 //	}
 //}
+//
+//	uint32_t BitmapGraphics::Bitmap::getNumberOfPadBytes() const
+//	{
+//		const auto remainder = (bitmapWidth * 3) % 4;
+//		return (remainder == 0) ? 0 : (4 - remainder);
+//	}
 //
 //void BitmapGraphics::Bitmap::write(std::ostream& destinationStream)
 //{

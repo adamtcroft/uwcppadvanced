@@ -7,6 +7,7 @@ namespace BitmapGraphics
 	{
 		myWidth = myBitmap->getWidth();
 		myHeight = myBitmap->getHeight();
+		myFileSize = myBitmap->getFileSize();
 		rowIterator = myBitmap->begin();
 		columnIterator = rowIterator->begin();
 	}

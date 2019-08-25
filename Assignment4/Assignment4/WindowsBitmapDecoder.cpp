@@ -10,7 +10,7 @@ namespace BitmapGraphics
 		{
 			WindowsBitmapHeader header;
 			header.read(sourceStream);
-			Bitmap localBitmap{ header.getBitmapWidth(), header.getBitmapHeight() };
+			Bitmap localBitmap{ header.getBitmapWidth(), header.getBitmapHeight(), header.getFileSize()};
 			myBitmap = localBitmap;
 
 			myBitmap.clearCollection();
@@ -24,7 +24,7 @@ namespace BitmapGraphics
 					scanline.push_back(Color::read(sourceStream));
 				}
 
-				for (auto pad = 0; pad < myBitmap.getNumberOfPadBytes(); ++pad)
+				for (auto pad = 0; pad < calculatePadBytes(); ++pad)
 				{
 					Binary::Byte::read(sourceStream);
 				}
@@ -60,5 +60,11 @@ namespace BitmapGraphics
 			return false;
 		}
 
+	}
+
+	uint32_t WindowsBitmapDecoder::calculatePadBytes()
+	{
+		const auto remainder = (myBitmap.getWidth() * 3) % 4;
+		return (remainder == 0) ? 0 : (4 - remainder);
 	}
 }

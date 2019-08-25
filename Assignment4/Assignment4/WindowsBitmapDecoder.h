@@ -25,6 +25,7 @@ namespace BitmapGraphics
 		HBitmapIterator createIterator() override;
 		std::string getMimeType() const noexcept override { return myMimeType; };
 		bool isSupported(std::istream& sourceStream) override;
+		uint32_t calculatePadBytes() override;
 
 	private:
 		Bitmap myBitmap;

@@ -16,7 +16,7 @@ namespace BitmapGraphics
 	{
 		WindowsBitmapHeader header;
 
-		uint32_t fileSize = (myIterator->getBitmapHeight() * myIterator->getBitmapWidth()) * 3 + 54;
+		uint32_t fileSize = myIterator->getBitmapFileSize();
 		header.setFileSize(fileSize);
 		uint32_t width = myIterator->getBitmapWidth();
 		header.setBitmapWidth(width);
@@ -36,6 +36,12 @@ namespace BitmapGraphics
 				destinationStream << color.getRed();
 				myIterator->nextPixel();
 			}
+
+			for (auto pad = 0; pad < calculatePadBytes(); ++pad)
+			{
+				Binary::Byte(0).write(destinationStream);
+			}
+
 			myIterator->nextScanLine();
 		}
 
@@ -58,5 +64,11 @@ namespace BitmapGraphics
 	std::string WindowsBitmapEncoder::getMimeType() const
 	{
 		return "Mime Type";
+	}
+
+	uint32_t WindowsBitmapEncoder::calculatePadBytes()
+	{
+		const auto remainder = (myIterator->getBitmapWidth() * 3) % 4;
+		return (remainder == 0) ? 0 : (4 - remainder);
 	}
 }

@@ -19,6 +19,7 @@ namespace BitmapGraphics
 		virtual HBitmapIterator createIterator() = 0;
 		virtual std::string getMimeType() const noexcept = 0;
 		virtual bool isSupported(std::istream& sourceStream) = 0;
+		virtual uint32_t calculatePadBytes() = 0;
 	};
 
 	class IBitmapEncoder
@@ -27,6 +28,7 @@ namespace BitmapGraphics
 		virtual HBitmapEncoder clone(HBitmapIterator& iterator) = 0;
 		virtual void encodeToStream(std::ostream& destinationStream) = 0;
 		virtual std::string getMimeType() const = 0;
+		virtual uint32_t calculatePadBytes() = 0;
 	};
 
 	class IBitmapIterator
@@ -39,5 +41,6 @@ namespace BitmapGraphics
 		virtual BitmapGraphics::Color getColor() const = 0;
 		virtual int getBitmapWidth() const = 0;
 		virtual int getBitmapHeight() const = 0;
+		virtual int getBitmapFileSize() const = 0;
 	};
 }

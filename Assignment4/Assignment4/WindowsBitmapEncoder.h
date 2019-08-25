@@ -22,6 +22,7 @@ namespace BitmapGraphics
 		HBitmapEncoder clone(HBitmapIterator& iterator) override;
 		void encodeToStream(std::ostream& destinationStream) override;
 		std::string getMimeType() const override;
+		uint32_t calculatePadBytes() override;
 
 	private:
 		HBitmapIterator myIterator;
