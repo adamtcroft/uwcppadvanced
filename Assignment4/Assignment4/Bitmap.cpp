@@ -1,12 +1,24 @@
 #include "Bitmap.h"
+#include "BitmapIterator.h"
 
 namespace BitmapGraphics
 {
+	Bitmap::Bitmap(const uint32_t& width, const uint32_t& height) :
+		bitmapWidth(width), bitmapHeight(height)
+	{
+	}
+
 	HBitmapIterator Bitmap::createIterator()
 	{
-		HBitmapIterator temp;
-		return temp;
+		auto pBitmapIterator = std::make_shared<BitmapIterator>(BitmapIterator(*this));
+		return pBitmapIterator;
 	}
+}
+
+uint32_t BitmapGraphics::Bitmap::getNumberOfPadBytes() const
+{
+	const auto remainder = (bitmapWidth * 3) % 4;
+	return (remainder == 0) ? 0 : (4 - remainder);
 }
 
 //BitmapGraphics::Bitmap::Bitmap(const uint32_t& width, const uint32_t& height, std::istream& sourceStream) :
@@ -15,11 +27,6 @@ namespace BitmapGraphics
 //	read(sourceStream);
 //}
 //
-//uint32_t BitmapGraphics::Bitmap::getNumberOfPadBytes() const
-//{
-//	const auto remainder = (bitmapWidth * 3) % 4;
-//	return (remainder == 0) ? 0 : (4 - remainder);
-//}
 //
 //void BitmapGraphics::Bitmap::read(std::istream& sourceStream)
 //{

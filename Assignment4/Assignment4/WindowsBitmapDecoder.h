@@ -2,6 +2,7 @@
 #include "WindowsBitmapHeader.h"
 #include "Bitmap.h"
 #include "BitmapIterator.h"
+#include "Color.h"
 #include "CodecInterfaces.h"
 
 namespace BitmapGraphics

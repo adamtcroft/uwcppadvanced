@@ -10,7 +10,7 @@ namespace BitmapGraphics
 
 	using HBitmapDecoder = std::unique_ptr<IBitmapDecoder>;
 	using HBitmapEncoder = std::unique_ptr<IBitmapEncoder>;
-	using HBitmapIterator = std::unique_ptr<IBitmapIterator>;
+	using HBitmapIterator = std::shared_ptr<IBitmapIterator>;
 
 	class IBitmapDecoder
 	{

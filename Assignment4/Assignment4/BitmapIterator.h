@@ -1,4 +1,5 @@
 #pragma once
+#include "Bitmap.h"
 #include "CodecInterfaces.h"
 
 namespace BitmapGraphics
@@ -6,16 +7,15 @@ namespace BitmapGraphics
 	class BitmapIterator : public IBitmapIterator
 	{
 	public:
-		BitmapIterator() = delete;
-		BitmapIterator(uint32_t width, uint32_t height);
+		BitmapIterator(Bitmap& bitmap);
 
 		BitmapIterator(const BitmapIterator& other) = default;
-		BitmapIterator(BitmapIterator&& other) noexcept = default;
+		BitmapIterator(BitmapIterator&& other) = default;
 
 		BitmapIterator& operator=(const BitmapIterator& other) = default;
 		BitmapIterator& operator=(BitmapIterator&& other) = default;
 
-		~BitmapIterator() noexcept = default;
+		~BitmapIterator() = default;
 
 		void nextScanLine() override;
 		bool isEndOfImage() const override;
@@ -28,6 +28,8 @@ namespace BitmapGraphics
 	private:
 		uint32_t myWidth{ 0 };
 		uint32_t myHeight{ 0 };
+		Bitmap* myBitmap;
+		BitmapGraphics::Bitmap::ScanLineIterator slIterator;
 	};
 }
 

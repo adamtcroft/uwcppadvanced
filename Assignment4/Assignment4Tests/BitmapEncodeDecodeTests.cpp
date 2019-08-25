@@ -49,32 +49,33 @@ TEST(BitmapSizeTest, BitmapIterator)
     CHECK_EQUAL(100, bitmapIter->getBitmapHeight());
 }
 
-//TEST(BitmapScanLinesTest, BitmapIterator)
-//{
-//    std::ifstream bitmapStream{"../basic.bmp", std::ios::binary};
-//    CHECK(bitmapStream.is_open());
-//    
-//    WindowsBitmapDecoder decoderPrototype{};
-//    HBitmapDecoder decoder {decoderPrototype.clone(bitmapStream)};
-//    HBitmapIterator bitmapIter {decoder->createIterator()};
-//
-//    int numberOfScanLines{0};
-//    while (! bitmapIter->isEndOfImage())
-//    {
-//        int numberOfPixelsInScanLine{0};
-//        while (! bitmapIter->isEndOfScanLine())
-//        {
-//            ++numberOfPixelsInScanLine;
-//            bitmapIter->nextPixel();
-//        }
-//        CHECK_EQUAL(100, numberOfPixelsInScanLine);
-//        ++numberOfScanLines;
-//        
-//        bitmapIter->nextScanLine();
-//    }
-//    CHECK_EQUAL(100, numberOfScanLines);
-//}
-//
+TEST(BitmapScanLinesTest, BitmapIterator)
+{
+    std::ifstream bitmapStream{"../basic.bmp", std::ios::binary};
+    CHECK(bitmapStream.is_open());
+    
+    WindowsBitmapDecoder decoderPrototype{};
+    HBitmapDecoder decoder {decoderPrototype.clone(bitmapStream)};
+    HBitmapIterator bitmapIter {decoder->createIterator()};
+
+    int numberOfScanLines{0};
+	auto test = bitmapIter->isEndOfImage();
+    while (!bitmapIter->isEndOfImage())
+    {
+        int numberOfPixelsInScanLine{0};
+        while (! bitmapIter->isEndOfScanLine())
+        {
+            ++numberOfPixelsInScanLine;
+            bitmapIter->nextPixel();
+        }
+        CHECK_EQUAL(100, numberOfPixelsInScanLine);
+        ++numberOfScanLines;
+        
+        bitmapIter->nextScanLine();
+    }
+    CHECK_EQUAL(100, numberOfScanLines);
+}
+
 //TEST(BitmapReadWrite, Bitmap)
 //{
 //    // Read in the bitmap
@@ -121,23 +122,23 @@ TEST(BitmapSizeTest, BitmapIterator)
 //    }
 //    CHECK_EQUAL(100, numberOfScanLines);
 //}
-//
-//
-////// --- Repeat the tests with a bitmap that requires pad bytes (101x101)
-//
-//TEST(BitmapSizeTest_101, BitmapIterator)
-//{
-//    std::ifstream bitmapStream{"../basic_101.bmp", std::ios::binary};
-//    CHECK(bitmapStream.is_open());
-//    
-//    WindowsBitmapDecoder decoderPrototype{};
-//    HBitmapDecoder decoder {decoderPrototype.clone(bitmapStream)};
-//    HBitmapIterator bitmapIter {decoder->createIterator()};
-//    
-//    CHECK_EQUAL(101, bitmapIter->getBitmapWidth());
-//    CHECK_EQUAL(101, bitmapIter->getBitmapHeight());
-//}
-//
+
+
+// --- Repeat the tests with a bitmap that requires pad bytes (101x101)
+
+TEST(BitmapSizeTest_101, BitmapIterator)
+{
+    std::ifstream bitmapStream{"../basic_101.bmp", std::ios::binary};
+    CHECK(bitmapStream.is_open());
+    
+    WindowsBitmapDecoder decoderPrototype{};
+    HBitmapDecoder decoder {decoderPrototype.clone(bitmapStream)};
+    HBitmapIterator bitmapIter {decoder->createIterator()};
+    
+    CHECK_EQUAL(101, bitmapIter->getBitmapWidth());
+    CHECK_EQUAL(101, bitmapIter->getBitmapHeight());
+}
+
 //TEST(BitmapScanLinesTest_101, BitmapIterator)
 //{
 //    std::ifstream bitmapStream{"../basic_101.bmp", std::ios::binary};

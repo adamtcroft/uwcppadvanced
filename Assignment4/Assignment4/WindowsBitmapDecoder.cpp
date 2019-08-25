@@ -9,6 +9,27 @@ namespace BitmapGraphics
 		else
 		{
 			myBitmapHeader.read(sourceStream);
+			Bitmap localBitmap{ myBitmapHeader.getBitmapWidth(), myBitmapHeader.getBitmapHeight() };
+			myBitmap = localBitmap;
+
+			myBitmap.clearCollection();
+
+			for (auto row = 0; row < myBitmap.getHeight(); ++row)
+			{
+				std::vector<Color> scanline;
+
+				for (auto column = 0; column < myBitmap.getWidth(); ++column)
+				{
+					scanline.push_back(Color::read(sourceStream));
+				}
+
+				for (auto pad = 0; pad < myBitmap.getNumberOfPadBytes(); ++pad)
+				{
+					Binary::Byte::read(sourceStream);
+				}
+
+				myBitmap.push_back(std::move(scanline));
+			}
 		}
 	}
 
@@ -19,7 +40,7 @@ namespace BitmapGraphics
 
 	HBitmapIterator WindowsBitmapDecoder::createIterator()
 	{
-		return std::make_unique<BitmapIterator>(myBitmapHeader.getBitmapWidth(), myBitmapHeader.getBitmapHeight());
+		return myBitmap.createIterator();
 	}
 
 	bool WindowsBitmapDecoder::isSupported(std::istream& sourceStream)

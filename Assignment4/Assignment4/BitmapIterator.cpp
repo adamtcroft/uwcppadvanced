@@ -2,26 +2,27 @@
 
 namespace BitmapGraphics
 {
-
-	BitmapIterator::BitmapIterator(uint32_t width, uint32_t height) :
-		myWidth(width), myHeight(height)
+	BitmapIterator::BitmapIterator(Bitmap& bitmap) :
+		myBitmap(&bitmap)
 	{
-
+		myWidth = myBitmap->getWidth();
+		myHeight = myBitmap->getHeight();
+		slIterator = myBitmap->begin();
 	}
+
 	void BitmapIterator::nextScanLine()
 	{
-
 	}
 
 
 	bool BitmapIterator::isEndOfImage() const
 	{
-		return true;
+		return false;
 	}
 
 	void BitmapIterator::nextPixel()
 	{
-
+		slIterator++;
 	}
 
 	bool BitmapIterator::isEndOfScanLine()
