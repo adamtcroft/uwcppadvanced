@@ -20,8 +20,8 @@ namespace
     void setUp()
     {
         theCodecLibrary.reset(new CodecLibrary);
-        theCodecLibrary->registerEncoder(HBitmapEncoder(new WindowsBitmapEncoder));
-        theCodecLibrary->registerDecoder(HBitmapDecoder(new WindowsBitmapDecoder));
+        theCodecLibrary->registerEncoder(HBitmapEncoder(std::make_shared<WindowsBitmapEncoder>()));
+        theCodecLibrary->registerDecoder(HBitmapDecoder(std::make_shared<WindowsBitmapDecoder>()));
     }
 
     void tearDown()
@@ -32,7 +32,7 @@ namespace
 
 TEST(invalidDecoder, CodecLibrary)
 {
-    HBitmapDecoder decoder{new WindowsBitmapDecoder};
+    HBitmapDecoder decoder{std::make_shared<WindowsBitmapDecoder>()};
 
     try
     {
@@ -48,7 +48,7 @@ TEST(invalidDecoder, CodecLibrary)
 
 TEST(invalidEncoder, CodecLibrary)
 {
-    HBitmapEncoder encoder{new WindowsBitmapEncoder};
+    HBitmapEncoder encoder{std::make_shared<WindowsBitmapEncoder>());
 
     try
     {
