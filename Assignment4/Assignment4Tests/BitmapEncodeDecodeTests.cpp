@@ -18,7 +18,6 @@ TEST(createDecoder, WindowsBitmapDecoder)
 	CHECK_EQUAL("image/x-ms-bmp", decoder->getMimeType());
 }
 
-/*
 TEST(failCreateDecoder, WindowsBitmapDecoder)
 {
 	std::ifstream bitmapStream{ "../test.jpg", std::ios::binary };
@@ -36,7 +35,6 @@ TEST(failCreateDecoder, WindowsBitmapDecoder)
 		CHECK_EQUAL("File Type Not Supported.", e.what())
 	}
 }
-*/
 
 TEST(BitmapSizeTest, BitmapIterator)
 {

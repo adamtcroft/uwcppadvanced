@@ -94,6 +94,7 @@ namespace Binary
 
 		bool operator==(const SizedWord& rhs) const noexcept { return myData == rhs.myData; }
 		bool operator!=(const SizedWord& rhs) const noexcept { return !(operator==(rhs)); }
+		WordSize operator+(const int& rhs) const noexcept { return myData + rhs; }
 
 		explicit operator WordSize() const { return myData; }
 
