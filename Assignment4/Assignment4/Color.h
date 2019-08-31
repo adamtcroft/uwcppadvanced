@@ -36,5 +36,6 @@ namespace BitmapGraphics
 		Binary::Byte green{ 0 };
 		Binary::Byte blue{ 0 };
 	};
-	std::ostream& operator<<(std::ostream& os, const Color& color);
+	//std::ostream& operator<<(std::ostream& os, const Color& color);
+	//std::ostream& operator<<(std::ostream& os, const BitmapGraphics::Color& color);
 }

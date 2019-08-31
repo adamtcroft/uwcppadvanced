@@ -3,8 +3,8 @@
 
 namespace BitmapGraphics
 {
-	BrightnessDecorator::BrightnessDecorator(HBitmapIterator const& iterator) :
-		originalIterator(iterator)
+	BrightnessDecorator::BrightnessDecorator(HBitmapIterator const& iterator, int adjustment) :
+		originalIterator(iterator), brightnessAdjustment(adjustment)
 	{
 	}
 
@@ -40,35 +40,32 @@ namespace BitmapGraphics
 
 	Color BrightnessDecorator::getColor() const
 	{
-		Color const originalColor = originalIterator->getColor();
+		Color const oldColor = originalIterator->getColor();
 
-		uint8_t red = originalColor.getRed() + brightnessAdjustment;
-		if (red > 255) {
+		uint8_t red = oldColor.getRed() + brightnessAdjustment;
+
+		if (red > 255)
 			red = 255;
-		}
-		else if (red < 0) {
+		else if (red < 0) 
 			red = 0;
-		}
 
-		uint8_t green = originalColor.getGreen() + brightnessAdjustment;
-		if (green > 255) {
+		uint8_t green = oldColor.getGreen() + brightnessAdjustment;
+
+		if (green > 255)
 			green = 255;
-		}
-		else if (green < 0) {
-			red = 0;
-		}
+		else if (green < 0)
+			green = 0;
 
-		uint8_t blue = originalColor.getBlue() + brightnessAdjustment;
-		if (blue > 255) {
+		uint8_t blue = oldColor.getBlue() + brightnessAdjustment;
+
+		if (blue > 255)
 			blue = 255;
-		}
-		else if (blue < 0) {
+		else if (blue < 0)
 			blue = 0;
-		}
 
-		Binary::Byte redByte(red);
-		Binary::Byte greenByte(green);
-		Binary::Byte blueByte(blue);
+		Binary::Byte redByte{ red };
+		Binary::Byte greenByte{ green };
+		Binary::Byte blueByte{ blue };
 
 		return Color(redByte, greenByte, blueByte);
 	}

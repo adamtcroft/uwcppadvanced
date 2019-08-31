@@ -6,7 +6,7 @@ namespace BitmapGraphics
 	class BrightnessDecorator : public IBitmapIterator
 	{
 	public:
-		BrightnessDecorator(HBitmapIterator const& iterator);
+		BrightnessDecorator(HBitmapIterator const& iterator, int adjustment);
 		~BrightnessDecorator() = default;
 
 		void setBrightnessAdjustment(int adjustment);
