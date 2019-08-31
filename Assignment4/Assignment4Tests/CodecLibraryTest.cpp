@@ -48,7 +48,7 @@ TEST(invalidDecoder, CodecLibrary)
 
 TEST(invalidEncoder, CodecLibrary)
 {
-    HBitmapEncoder encoder{std::make_shared<WindowsBitmapEncoder>());
+	HBitmapEncoder encoder{ std::make_shared<WindowsBitmapEncoder>() };
 
     try
     {

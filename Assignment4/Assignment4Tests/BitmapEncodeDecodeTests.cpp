@@ -32,7 +32,7 @@ TEST(failCreateDecoder, WindowsBitmapDecoder)
 	}
 	catch (std::exception e)
 	{
-		CHECK_EQUAL("File Type Not Supported.", e.what())
+		CHECK_EQUAL("firstIdentifier does not match 'B'", e.what())
 	}
 }
 
