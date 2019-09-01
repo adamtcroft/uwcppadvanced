@@ -3,28 +3,8 @@
 namespace BitmapGraphics
 {
 	GrayscaleDecorator::GrayscaleDecorator(HBitmapIterator const& iterator) :
-		originalIterator(iterator)
+		BitmapDecorator(iterator)
 	{
-	}
-
-	void GrayscaleDecorator::nextScanLine()
-	{
-		originalIterator->nextScanLine();
-	}
-
-	bool GrayscaleDecorator::isEndOfImage()
-	{
-		return originalIterator->isEndOfImage();
-	}
-
-	void GrayscaleDecorator::nextPixel()
-	{
-		originalIterator->nextPixel();
-	}
-
-	bool GrayscaleDecorator::isEndOfScanLine()
-	{
-		return originalIterator->isEndOfScanLine();
 	}
 
 	Color GrayscaleDecorator::getColor() const
@@ -41,22 +21,4 @@ namespace BitmapGraphics
 
 		return Color(gray, gray, gray);
 	}
-
-	int GrayscaleDecorator::getBitmapWidth() const
-	{
-		return originalIterator->getBitmapWidth();
-	}
-
-	int GrayscaleDecorator::getBitmapHeight() const
-	{
-		return originalIterator->getBitmapHeight();
-	}
-
-	int GrayscaleDecorator::getBitmapFileSize() const
-	{
-		return originalIterator->getBitmapFileSize();
-	}
 }
-
-
-
