@@ -31,7 +31,6 @@ namespace BitmapGraphics
 		Bitmap decodeHeader(std::istream& sourceStream);
 		void decodeScanlines(std::istream& sourceStream);
 
-
 	private:
 		Bitmap myBitmap;
 		const std::string myMimeType = "image/x-ms-bmp";
