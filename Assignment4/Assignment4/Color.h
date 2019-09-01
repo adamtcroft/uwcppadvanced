@@ -30,12 +30,17 @@ namespace BitmapGraphics
 
 		bool operator==(const Color& rhs) const;
 		bool operator!=(const Color& rhs) const;
+		Color operator+(int const& rhs) const;
+		static const int MAX_COLOR_VALUE{ 255 };
+		static const int MIN_COLOR_VALUE{ 0 };
 
 	private:
 		Binary::Byte red{ 0 };
 		Binary::Byte green{ 0 };
 		Binary::Byte blue{ 0 };
 	};
+
+	Color operator-(const int& lhs, const Color& rhs);
 	//std::ostream& operator<<(std::ostream& os, const Color& color);
 	//std::ostream& operator<<(std::ostream& os, const BitmapGraphics::Color& color);
 }

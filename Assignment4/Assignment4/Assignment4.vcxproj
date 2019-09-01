@@ -77,6 +77,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -123,6 +124,7 @@
     <ClInclude Include="CodecInterfaces.h" />
     <ClInclude Include="CodecLibrary.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="ColorInversionDecorator.h" />
     <ClInclude Include="Element.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="Parse.h" />
@@ -149,6 +151,7 @@
     <ClCompile Include="BrightnessDecorator.cpp" />
     <ClCompile Include="CodecLibrary.cpp" />
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="ColorInversionDecorator.cpp" />
     <ClCompile Include="Element.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Parse.cpp" />

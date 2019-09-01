@@ -93,6 +93,9 @@
     <ClInclude Include="BrightnessDecorator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ColorInversionDecorator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="XmlFactories.cpp">
@@ -156,6 +159,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BrightnessDecorator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorInversionDecorator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
