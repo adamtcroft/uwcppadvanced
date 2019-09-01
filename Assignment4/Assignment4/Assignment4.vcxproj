@@ -126,6 +126,7 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="ColorInversionDecorator.h" />
     <ClInclude Include="Element.h" />
+    <ClInclude Include="GrayscaleDecorator.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="Parse.h" />
     <ClInclude Include="PlacedGraphic.h" />
@@ -153,6 +154,7 @@
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="ColorInversionDecorator.cpp" />
     <ClCompile Include="Element.cpp" />
+    <ClCompile Include="GrayscaleDecorator.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Parse.cpp" />
     <ClCompile Include="PlacedGraphic.cpp" />

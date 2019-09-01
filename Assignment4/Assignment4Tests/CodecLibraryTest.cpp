@@ -3,6 +3,7 @@
 #include "CodecLibrary.h"
 #include "BrightnessDecorator.h"
 #include "ColorInversionDecorator.h"
+#include "GrayscaleDecorator.h"
 #include "WindowsBitmapDecoder.h"
 #include "WindowsBitmapEncoder.h"
 #include "BitmapIterator.h"
@@ -255,6 +256,30 @@ TEST(colorInvertDecoratorIterator, CodecLibrary)
     HBitmapEncoder encoder {theCodecLibrary->createEncoder(msBmp, colorInvertIterator)};
 
     std::ofstream outFile{"output_basicColorInvert.bmp", std::ios::binary};
+    encoder->encodeToStream(outFile);
+    // TODO: file compare input/output
+
+    tearDown();
+}
+
+TEST(grayscaleDecoratorIterator, CodecLibrary)
+{
+    setUp();
+
+    std::ifstream inFile{"../basic.bmp", std::ios::binary};
+    CHECK_EQUAL(0, !inFile);
+    
+    HBitmapDecoder decoder {theCodecLibrary->createDecoder(inFile)};
+    HBitmapIterator iterator {decoder->createIterator()};
+    
+    CHECK(iterator.get());
+    CHECK_EQUAL(100, iterator->getBitmapHeight());
+    CHECK_EQUAL(100, iterator->getBitmapWidth());
+
+    HBitmapIterator colorInvertIterator{new GrayscaleDecorator{iterator}};
+    HBitmapEncoder encoder {theCodecLibrary->createEncoder(msBmp, colorInvertIterator)};
+
+    std::ofstream outFile{"output_Grayscale.bmp", std::ios::binary};
     encoder->encodeToStream(outFile);
     // TODO: file compare input/output
 

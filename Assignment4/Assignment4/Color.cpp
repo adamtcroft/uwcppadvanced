@@ -48,9 +48,13 @@ namespace BitmapGraphics
 		uint8_t blueValue = std::clamp(static_cast<int>(green.getValue()) + rhs, MIN_COLOR_VALUE, MAX_COLOR_VALUE);
 		auto newGreen = Binary::Byte{ blueValue };
 
-		Color newColor(newRed, newGreen, newBlue);
+		return Color(newRed, newGreen, newBlue);
+	}
 
-		return newColor;
+	Color Color::operator/(int const& rhs) const
+	{
+		Color temp;
+		return temp;
 	}
 
 	Color operator-(const int& lhs, const Color& rhs)

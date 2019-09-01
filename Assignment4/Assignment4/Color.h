@@ -31,6 +31,7 @@ namespace BitmapGraphics
 		bool operator==(const Color& rhs) const;
 		bool operator!=(const Color& rhs) const;
 		Color operator+(int const& rhs) const;
+		Color operator/(int const& rhs) const;
 		static const int MAX_COLOR_VALUE{ 255 };
 		static const int MIN_COLOR_VALUE{ 0 };
 
