@@ -5,7 +5,6 @@
 
 namespace VG
 {
-    
     class VectorGraphicStreamer
     {
     public:
@@ -14,5 +13,4 @@ namespace VG
         static void toXml(const VectorGraphic& vg,
                           std::ostream& os);
     };
-    
 }

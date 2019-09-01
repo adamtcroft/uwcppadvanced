@@ -1,40 +1,43 @@
 #include "SceneWriter.h"
 
-Xml::HElement Framework::SceneWriter::writeScene(const Scene& scene)
+namespace Framework
 {
-	Xml::HElement root(Xml::ElementFactory::createElement("Scene"));
-	root->setAttribute("width", std::to_string(scene.getWidth()));
-	root->setAttribute("height", std::to_string(scene.getHeight()));
-
-	Scene::LayerIterator iLayer;
-	for (iLayer = scene.begin(); iLayer != scene.end(); ++iLayer)
+	Xml::HElement SceneWriter::writeScene(const Scene& scene)
 	{
-		const Layer& layer = *iLayer;
-		Xml::HElement layerElement(root->appendChild("Layer"));
-		layerElement->setAttribute("alias", layer.getAlias());
+		Xml::HElement root(Xml::ElementFactory::createElement("Scene"));
+		root->setAttribute("width", std::to_string(scene.getWidth()));
+		root->setAttribute("height", std::to_string(scene.getHeight()));
 
-		Layer::PlacedGraphicIterator iPlacedGraphic;
-		for (iPlacedGraphic = layer.begin(); iPlacedGraphic != layer.end(); ++iPlacedGraphic)
+		Scene::LayerIterator iLayer;
+		for (iLayer = scene.begin(); iLayer != scene.end(); ++iLayer)
 		{
-			const PlacedGraphic& placedGraphic = *iPlacedGraphic;
-			Xml::HElement placedGraphicElement(layerElement->appendChild("PlacedGraphic"));
-			const auto& placementPoint = placedGraphic.getPlacementPoint();
-			placedGraphicElement->setAttribute("x", std::to_string(placementPoint.getX()));
-			placedGraphicElement->setAttribute("y", std::to_string(placementPoint.getY()));
+			const Layer& layer = *iLayer;
+			Xml::HElement layerElement(root->appendChild("Layer"));
+			layerElement->setAttribute("alias", layer.getAlias());
 
-			Xml::HElement vectorGraphicElement(placedGraphicElement->appendChild("VectorGraphic"));
-			const auto& vectorGraphic = placedGraphic.getGraphic();
-			vectorGraphicElement->setAttribute("closed", Parse::boolToString(vectorGraphic.isClosed()));
-
-			for (int i = 0; i < vectorGraphic.getPointCount(); ++i)
+			Layer::PlacedGraphicIterator iPlacedGraphic;
+			for (iPlacedGraphic = layer.begin(); iPlacedGraphic != layer.end(); ++iPlacedGraphic)
 			{
-				VG::Point p = vectorGraphic.getPoint(i);
-				Xml::HElement pointElement(vectorGraphicElement->appendChild("Point"));
-				pointElement->setAttribute("x", std::to_string(p.getX()));
-				pointElement->setAttribute("y", std::to_string(p.getY()));
-			}
-		}
+				const PlacedGraphic& placedGraphic = *iPlacedGraphic;
+				Xml::HElement placedGraphicElement(layerElement->appendChild("PlacedGraphic"));
+				const auto& placementPoint = placedGraphic.getPlacementPoint();
+				placedGraphicElement->setAttribute("x", std::to_string(placementPoint.getX()));
+				placedGraphicElement->setAttribute("y", std::to_string(placementPoint.getY()));
 
+				Xml::HElement vectorGraphicElement(placedGraphicElement->appendChild("VectorGraphic"));
+				const auto& vectorGraphic = placedGraphic.getGraphic();
+				vectorGraphicElement->setAttribute("closed", Parse::boolToString(vectorGraphic.isClosed()));
+
+				for (int i = 0; i < vectorGraphic.getPointCount(); ++i)
+				{
+					VG::Point p = vectorGraphic.getPoint(i);
+					Xml::HElement pointElement(vectorGraphicElement->appendChild("Point"));
+					pointElement->setAttribute("x", std::to_string(p.getX()));
+					pointElement->setAttribute("y", std::to_string(p.getY()));
+				}
+			}
+
+		}
+		return root;
 	}
-	return root;
 }

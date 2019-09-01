@@ -22,12 +22,6 @@ namespace VG
 		constexpr int getX() const { return x; };
 		constexpr int getY() const { return y; };
 
-//		void setX(int value);
-//		void setY(int value);
-//		int validateCoordinate(int& n);
-
-		//friend std::ostream& operator<<(std::ostream& output, VG::Point& p);
-
 	private:
 		int x{ 0 };
 		int y{ 0 };

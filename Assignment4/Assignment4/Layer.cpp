@@ -1,54 +1,57 @@
 #include "Layer.h"
 
-Framework::Layer::Layer(std::string const& initialAlias) :
-	alias(initialAlias)
+namespace Framework
 {
-}
-
-void Framework::Layer::remove(const PlacedGraphic& pg)
-{
-	graphics.remove(pg);
-}
-
-Framework::Layer::PlacedGraphicIterator Framework::Layer::begin() const
-{
-	return graphics.begin();
-}
-
-Framework::Layer::PlacedGraphicIterator Framework::Layer::end() const
-{
-	return graphics.end();
-}
-
-Framework::PlacedGraphic const& Framework::Layer::getGraphic(const int& index)
-{
-	if (index > graphics.size())
-		throw std::out_of_range("The graphic requested does not exist.");
-	else
+	Layer::Layer(std::string const& initialAlias) :
+		alias(initialAlias)
 	{
-		PlacedGraphicIterator iterator = graphics.begin();
-		std::advance(iterator, index);
-		return *iterator;
 	}
 
-}
+	void Layer::remove(const PlacedGraphic& pg)
+	{
+		graphics.remove(pg);
+	}
 
-void Framework::Layer::setAlias(const std::string& referenceAlias)
-{
-	alias = referenceAlias;
-}
+	Layer::PlacedGraphicIterator Framework::Layer::begin() const
+	{
+		return graphics.begin();
+	}
 
-std::string const& Framework::Layer::getAlias() const
-{
-	return alias;
-}
+	Layer::PlacedGraphicIterator Framework::Layer::end() const
+	{
+		return graphics.end();
+	}
 
-bool Framework::Layer::operator==(const Framework::Layer& rhs) const
-{
-	return (graphics == rhs.graphics) && (alias == rhs.alias);
-}
+	PlacedGraphic const& Framework::Layer::getGraphic(const int& index)
+	{
+		if (index > graphics.size())
+			throw std::out_of_range("The graphic requested does not exist.");
+		else
+		{
+			PlacedGraphicIterator iterator = graphics.begin();
+			std::advance(iterator, index);
+			return *iterator;
+		}
 
-bool Framework::Layer::operator!=(const Framework::Layer& rhs) const
-{
-	return !operator==(rhs);
+	}
+
+	void Layer::setAlias(const std::string& referenceAlias)
+	{
+		alias = referenceAlias;
+	}
+
+	std::string const& Layer::getAlias() const
+	{
+		return alias;
+	}
+
+	bool Layer::operator==(const Framework::Layer& rhs) const
+	{
+		return (graphics == rhs.graphics) && (alias == rhs.alias);
+	}
+
+	bool Layer::operator!=(const Framework::Layer& rhs) const
+	{
+		return !operator==(rhs);
+	}
 }

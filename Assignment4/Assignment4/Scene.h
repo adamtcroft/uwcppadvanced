@@ -39,8 +39,7 @@ namespace Framework
 
 		bool operator==(const Scene& rhs) const;
 		bool operator!=(const Scene& rhs) const;
-		//		friend std::ostream& operator<<(std::ostream& output, Framework::Scene& pg);
-		//
+
 	private:
 		LayerCollection layers;
 		size_t width, height;

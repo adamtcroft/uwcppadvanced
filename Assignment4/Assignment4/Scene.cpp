@@ -1,62 +1,56 @@
 #include "Scene.h"
 
-Framework::Scene::Scene(int initialWidth, int initialHeight) :
-	width(initialWidth), height(initialHeight)
+namespace Framework
 {
-}
+	Scene::Scene(int initialWidth, int initialHeight) :
+		width(initialWidth), height(initialHeight)
+	{
+	}
 
-void Framework::Scene::remove(const Layer&& layer)
-{
-	layers.remove(layer);
-}
+	void Scene::remove(const Layer&& layer)
+	{
+		layers.remove(layer);
+	}
 
-Framework::Scene::LayerIterator Framework::Scene::begin() const
-{
-	return layers.begin();
-}
+	Scene::LayerIterator Framework::Scene::begin() const
+	{
+		return layers.begin();
+	}
 
-Framework::Scene::LayerIterator  Framework::Scene::end() const
-{
-	return layers.end();
-}
+	Scene::LayerIterator  Framework::Scene::end() const
+	{
+		return layers.end();
+	}
 
-void Framework::Scene::setWidth(size_t w)
-{
-	width = w;
-}
+	void Scene::setWidth(size_t w)
+	{
+		width = w;
+	}
 
-void Framework::Scene::setHeight(size_t h)
-{
-	height = h;
-}
+	void Scene::setHeight(size_t h)
+	{
+		height = h;
+	}
 
-int const& Framework::Scene::getWidth() const
-{
-	return width;
-}
+	int const& Scene::getWidth() const
+	{
+		return width;
+	}
 
-int const& Framework::Scene::getHeight() const
-{
-	return height;
-}
+	int const& Scene::getHeight() const
+	{
+		return height;
+	}
 
-bool Framework::Scene::operator==(const Scene& rhs) const
-{
-	return (width == rhs.width)
-		&& (height == rhs.height)
-		&& (layers == rhs.layers);
-}
+	bool Scene::operator==(const Scene& rhs) const
+	{
+		return (width == rhs.width)
+			&& (height == rhs.height)
+			&& (layers == rhs.layers);
+	}
 
-bool Framework::Scene::operator!=(const Scene& rhs) const
-{
-	return !(*this == rhs);
+	bool Scene::operator!=(const Scene& rhs) const
+	{
+		return !(*this == rhs);
+	}
 }
-
-//std::ostream& Framework::operator<<(std::ostream& output, Framework::Scene& s)
-//{
-//
-//	output << s.width << ", " << s.height;
-//	output.flush();
-//
-//	return output;
-//}

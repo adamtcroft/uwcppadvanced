@@ -24,11 +24,6 @@ namespace Xml
 	private:
 		static void writeElement(const HElement& element, std::ostream& os);
 		static void writeAttributes(const HElement& element, std::ostream& os);
-
-//
-//	private:
-//		static void writeAttributes(Xml::HElement& root, tinyxml2::XMLElement* element);
-//		static void buildChildrenRecursively(Xml::HElement& root, tinyxml2::XMLElement* tinyxmlElement);
 	};
 }
 

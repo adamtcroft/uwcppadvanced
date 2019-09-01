@@ -34,7 +34,6 @@ namespace Framework
 		VG::Point const& getPlacementPoint() const;
 		VG::VectorGraphic const& getGraphic() const;
 
-		//		friend std::ostream& operator<<(std::ostream& output, Framework::PlacedGraphic& pg);
 	private:
 		VG::Point placementPoint;
 		VG::VectorGraphic graphic;
