@@ -156,8 +156,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-Dll|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)bin\$(ProjectName)\$(Platform)-$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Platform)-$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)\$(Platform)\Debug\</OutDir>
+    <IntDir>$(SolutionDir)\$(Platform)\Debug\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-Lib|Win32'">
     <LinkIncremental>false</LinkIncremental>
