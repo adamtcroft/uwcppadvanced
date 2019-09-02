@@ -37,14 +37,13 @@ namespace
 		std::ifstream actualFile(actual, std::ios::binary);
 
 		if (expectedFile.fail() || actualFile.fail()) {
-			return false; //file problem
+			return false; 
 		}
 
 		if (expectedFile.tellg() != actualFile.tellg()) {
-			return false; //size mismatch
+			return false; 
 		}
 
-		//seek back to beginning and use std::equal to compare contents
 		expectedFile.seekg(0, std::ifstream::beg);
 		actualFile.seekg(0, std::ifstream::beg);
 
