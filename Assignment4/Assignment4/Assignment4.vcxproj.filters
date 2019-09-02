@@ -13,11 +13,17 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Decorators">
+      <UniqueIdentifier>{cc409b92-217e-43f0-bb3d-be406c268229}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Decorators">
+      <UniqueIdentifier>{15888a93-835e-442c-aa6a-0968913e5442}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interfaces">
+      <UniqueIdentifier>{228d7a57-4f2a-4fa3-a346-0ccc68c223a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="XmlInterfaces.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="XmlReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -78,9 +84,6 @@
     <ClInclude Include="CodecLibrary.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CodecInterfaces.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="WindowsBitmapDecoder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -91,16 +94,31 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BrightnessDecorator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ColorInversionDecorator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GrayscaleDecorator.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Decorators</Filter>
     </ClInclude>
     <ClInclude Include="BitmapDecorator.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Decorators</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorInversionDecorator.h">
+      <Filter>Header Files\Decorators</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorSwapDecorator.h">
+      <Filter>Header Files\Decorators</Filter>
+    </ClInclude>
+    <ClInclude Include="GrayscaleDecorator.h">
+      <Filter>Header Files\Decorators</Filter>
+    </ClInclude>
+    <ClInclude Include="KeepColorDecorator.h">
+      <Filter>Header Files\Decorators</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomDecorator.h">
+      <Filter>Header Files\Decorators</Filter>
+    </ClInclude>
+    <ClInclude Include="CodecInterfaces.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="XmlInterfaces.h">
+      <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -164,17 +182,26 @@
     <ClCompile Include="BitmapIterator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BitmapDecorator.cpp">
+      <Filter>Source Files\Decorators</Filter>
+    </ClCompile>
     <ClCompile Include="BrightnessDecorator.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Decorators</Filter>
     </ClCompile>
     <ClCompile Include="ColorInversionDecorator.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Decorators</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorSwapDecorator.cpp">
+      <Filter>Source Files\Decorators</Filter>
     </ClCompile>
     <ClCompile Include="GrayscaleDecorator.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Decorators</Filter>
     </ClCompile>
-    <ClCompile Include="BitmapDecorator.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="KeepColorDecorator.cpp">
+      <Filter>Source Files\Decorators</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomDecorator.cpp">
+      <Filter>Source Files\Decorators</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
