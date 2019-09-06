@@ -15,6 +15,7 @@ namespace BitmapGraphics
 	class IBitmapDecoder
 	{
 	public:
+		virtual ~IBitmapDecoder() = default;
 		virtual HBitmapDecoder clone(std::istream& sourceStream) = 0;
 		virtual HBitmapIterator createIterator() = 0;
 		virtual std::string getMimeType() const noexcept = 0;
@@ -25,6 +26,7 @@ namespace BitmapGraphics
 	class IBitmapEncoder
 	{
 	public: 
+		virtual ~IBitmapEncoder() = default;
 		virtual HBitmapEncoder clone(HBitmapIterator& iterator) = 0;
 		virtual void encodeToStream(std::ostream& destinationStream) = 0;
 		virtual std::string getMimeType() const = 0;
@@ -34,6 +36,7 @@ namespace BitmapGraphics
 	class IBitmapIterator
 	{
 	public:
+		virtual ~IBitmapIterator() = default;
 		virtual void nextScanLine() = 0;
 		virtual bool isEndOfImage() = 0;
 		virtual void nextPixel() = 0;

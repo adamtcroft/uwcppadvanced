@@ -7,13 +7,20 @@
 
 namespace BitmapGraphics
 {
-	class RandomDecorator : public BitmapDecorator
+	class RandomDecorator final : public BitmapDecorator
 	{
 	public:
-		RandomDecorator(HBitmapIterator const& iterator);
+		explicit RandomDecorator(HBitmapIterator const& iterator);
+
+		RandomDecorator(const RandomDecorator&) noexcept = default;
+		RandomDecorator(RandomDecorator &&) noexcept  = default;
+
+		RandomDecorator& operator=(const RandomDecorator&) = default;
+		RandomDecorator& operator=(RandomDecorator&&) = default;
+
 		~RandomDecorator() = default;
 
-		Color getColor() const override;
+		Color getColor() const override final;
 
 	private:
 		unsigned seed{ 0 };

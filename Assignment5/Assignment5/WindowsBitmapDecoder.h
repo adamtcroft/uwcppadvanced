@@ -11,7 +11,7 @@ namespace BitmapGraphics
 	{
 	public:
 		WindowsBitmapDecoder() = default;
-		WindowsBitmapDecoder(std::istream& sourceStream);
+		explicit WindowsBitmapDecoder(std::istream& sourceStream);
 
 		WindowsBitmapDecoder(const WindowsBitmapDecoder& other) = default;
 		WindowsBitmapDecoder(WindowsBitmapDecoder&& other) = default;

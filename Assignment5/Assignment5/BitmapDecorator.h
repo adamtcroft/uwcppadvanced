@@ -17,13 +17,13 @@ namespace BitmapGraphics
 
 		virtual ~BitmapDecorator() = default;
 
-		void nextScanLine() override;
-		bool isEndOfImage() override;
-		void nextPixel() override;
-		bool isEndOfScanLine() override;
-		int getBitmapWidth() const override;
-		int getBitmapHeight() const override;
-		int getBitmapFileSize() const override;
+		void nextScanLine() override final;
+		bool isEndOfImage() override final;
+		void nextPixel() override final;
+		bool isEndOfScanLine() override final;
+		int getBitmapWidth() const override final;
+		int getBitmapHeight() const override final;
+		int getBitmapFileSize() const override final;
 
 	protected:
 		HBitmapIterator originalIterator;

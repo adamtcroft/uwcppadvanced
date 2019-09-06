@@ -3,13 +3,20 @@
 
 namespace BitmapGraphics
 {
-	class ColorInversionDecorator : public BitmapDecorator
+	class ColorInversionDecorator final : public BitmapDecorator
 	{
 	public:
-		ColorInversionDecorator(HBitmapIterator const& iterator);
+		explicit ColorInversionDecorator(HBitmapIterator const& iterator);
+
+		ColorInversionDecorator(const ColorInversionDecorator&) noexcept = default;
+		ColorInversionDecorator(ColorInversionDecorator &&) noexcept  = default;
+
+		ColorInversionDecorator& operator=(const ColorInversionDecorator&) = default;
+		ColorInversionDecorator& operator=(ColorInversionDecorator&&) = default;
+
 		~ColorInversionDecorator() = default;
 
-		Color getColor() const override;
+		Color getColor() const override final;
 	};
 }
 

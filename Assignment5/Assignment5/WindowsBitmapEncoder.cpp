@@ -9,7 +9,7 @@ namespace BitmapGraphics
 
 	HBitmapEncoder WindowsBitmapEncoder::clone(HBitmapIterator& iterator)
 	{
-		return std::make_unique<WindowsBitmapEncoder>(iterator);
+		return std::make_shared<WindowsBitmapEncoder>(iterator);
 	}
 
 	void WindowsBitmapEncoder::encodeToStream(std::ostream& destinationStream)

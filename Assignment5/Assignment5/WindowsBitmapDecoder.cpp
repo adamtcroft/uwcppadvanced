@@ -15,7 +15,7 @@ namespace BitmapGraphics
 
 	HBitmapDecoder WindowsBitmapDecoder::clone(std::istream& sourceStream)
 	{
-		return std::make_unique<WindowsBitmapDecoder>(sourceStream);
+		return std::make_shared<WindowsBitmapDecoder>(sourceStream);
 	}
 
 	HBitmapIterator WindowsBitmapDecoder::createIterator()

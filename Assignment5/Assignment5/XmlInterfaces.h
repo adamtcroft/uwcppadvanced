@@ -13,6 +13,7 @@ namespace Xml
 	class IElement
 	{
 	public:
+		virtual ~IElement() = default;
 		virtual void createFromXml(std::string& xmlStr) = 0;
 
 		virtual std::string getName() const noexcept = 0;
@@ -28,6 +29,7 @@ namespace Xml
 	class IXmlReader
 	{
 	public:
+		virtual ~IXmlReader() = default;
 		virtual HElement loadXml(std::istream& in) const = 0;
 	};
 }

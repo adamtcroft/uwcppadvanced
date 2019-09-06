@@ -15,7 +15,7 @@ namespace Xml
 		Reader& operator=(const Reader& other) = delete;
 		Reader& operator=(Reader&& other) = delete;
 
-		~Reader() = delete;
+		~Reader() = default;
 
 		static HElement loadXml(std::stringstream& xmlStream);
 	};
