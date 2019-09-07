@@ -2,15 +2,11 @@
 #include "Element.h"
 #include "Scene.h"
 #include "SceneReader.h"
-#include "CodecLibrary.h"
-//#include "BasicCanvas.h"
-//#include "WindowsBitmapFileProjector.h"
+#include "BasicCanvas.h"
+#include "WindowsBitmapFileProjector.h"
 #include "WindowsBitmapDecoder.h"
 #include "WindowsBitmapEncoder.h"
 #include "TestHarness.h"
-#include "Layer.h"
-
-using namespace BitmapGraphics;
 
 const std::string TestXml = R"(
 <Scene width="800" height="600">
@@ -79,7 +75,7 @@ const std::string SceneXml = R"(
 </Scene>)";
 
 
-
+using namespace BitmapGraphics;
 
 TEST(ReadScene, SceneReader)
 {
@@ -161,33 +157,33 @@ namespace
         }
         
     private:
-       CodecLibrary myCodecLibrary;
+        CodecLibrary myCodecLibrary;
     
     };
 }
 
-//TEST(toBitmap, SceneReader)
-//{
-//    std::stringstream xmlStream(SceneXml);
-//    
-//    // Parse the XML into a DOM
-//    Xml::HElement root = Xml::Reader::loadXml(xmlStream);
-//    
-//    // Construct a vector graphic Scene from the DOM
-//    Framework::Scene scene = Framework::SceneReader::readScene(*root);
-//    
-//    // Create an empty Canvas
-//    Color backgroundColor(100, 100, 100);
-//    HCanvas canvas = std::make_shared<BasicCanvas>(scene.getWidth(), scene.getHeight(), backgroundColor);
-//    
-//    // Draw the Scene onto the Canvas
-//    scene.draw(canvas);
-//
-//    // Create a WindowsBitmapFileProjector and give it an output file name to create
-//    // Also give it the CodecLibrary ("dependency injection").
-//    CodecLibrarySetup codecLibrary;
-//    HProjector projector = std::make_shared<WindowsBitmapFileProjector>("output_scene.bmp", codecLibrary);
-//    
-//    // Project the Canvas into the bitmap file
-//    projector->projectCanvas(canvas);
-//}
+TEST(toBitmap, SceneReader)
+{
+    std::stringstream xmlStream(SceneXml);
+    
+    // Parse the XML into a DOM
+    Xml::HElement root = Xml::Reader::loadXml(xmlStream);
+    
+    // Construct a vector graphic Scene from the DOM
+    Framework::Scene scene = Framework::SceneReader::readScene(*root);
+    
+    // Create an empty Canvas
+    Color backgroundColor(100, 100, 100);
+    HCanvas canvas = std::make_shared<BasicCanvas>(scene.getWidth(), scene.getHeight(), backgroundColor);
+    
+    // Draw the Scene onto the Canvas
+    scene.draw(canvas);
+
+    // Create a WindowsBitmapFileProjector and give it an output file name to create
+    // Also give it the CodecLibrary ("dependency injection").
+    CodecLibrarySetup codecLibrary;
+    HProjector projector = std::make_shared<WindowsBitmapFileProjector>("output_scene.bmp", codecLibrary);
+    
+    // Project the Canvas into the bitmap file
+    projector->projectCanvas(canvas);
+}

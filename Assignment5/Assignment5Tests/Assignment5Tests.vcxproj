@@ -118,6 +118,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssignmentTests.cpp" />
+    <ClCompile Include="BasicCanvasTest.cpp" />
     <ClCompile Include="BinaryTest.cpp" />
     <ClCompile Include="BitmapEncodeDecodeTests.cpp" />
     <ClCompile Include="BitmapTest.cpp" />

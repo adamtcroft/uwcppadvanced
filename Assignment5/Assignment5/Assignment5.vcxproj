@@ -117,6 +117,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BasicCanvas.h" />
+    <ClInclude Include="BasicCanvasBitmapIterator.h" />
     <ClInclude Include="binary_ostream_iterator.h" />
     <ClInclude Include="Bitmap.h" />
     <ClInclude Include="BitmapDecorator.h" />
@@ -127,6 +129,7 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="ColorInversionDecorator.h" />
     <ClInclude Include="ColorSwapDecorator.h" />
+    <ClInclude Include="DrawingInterfaces.h" />
     <ClInclude Include="Element.h" />
     <ClInclude Include="GrayscaleDecorator.h" />
     <ClInclude Include="KeepColorDecorator.h" />
@@ -144,6 +147,7 @@
     <ClInclude Include="VerifyEquality.h" />
     <ClInclude Include="WindowsBitmapDecoder.h" />
     <ClInclude Include="WindowsBitmapEncoder.h" />
+    <ClInclude Include="WindowsBitmapFileProjector.h" />
     <ClInclude Include="WindowsBitmapHeader.h" />
     <ClInclude Include="XmlFactories.h" />
     <ClInclude Include="XmlInterfaces.h" />
@@ -151,6 +155,8 @@
     <ClInclude Include="XmlWriter.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BasicCanvas.cpp" />
+    <ClCompile Include="BasicCanvasBitmapIterator.cpp" />
     <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="BitmapDecorator.cpp" />
     <ClCompile Include="BitmapIterator.cpp" />
@@ -174,6 +180,7 @@
     <ClCompile Include="VectorGraphicStreamer.cpp" />
     <ClCompile Include="WindowsBitmapDecoder.cpp" />
     <ClCompile Include="WindowsBitmapEncoder.cpp" />
+    <ClCompile Include="WindowsBitmapFileProjector.cpp" />
     <ClCompile Include="WindowsBitmapHeader.cpp" />
     <ClCompile Include="XmlFactories.cpp" />
     <ClCompile Include="XmlReader.cpp" />

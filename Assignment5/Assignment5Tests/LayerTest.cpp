@@ -1,7 +1,6 @@
-#include "TestHarness.h"
 #include "Layer.h"
-//#include "VectorGraphic.h"
 #include <ostream>
+#include "TestHarness.h"
 
 TEST(ctor, Layer)
 {
