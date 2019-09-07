@@ -1,6 +1,6 @@
 #include "SquareStroke.h"
 
-namespace VG
+namespace BitmapGraphics
 {
 	void SquareStroke::setSize(int size)
 	{
@@ -11,14 +11,14 @@ namespace VG
 		return 1;
 	}
 
-	void SquareStroke::setColor(BitmapGraphics::Color const& color)
+	void SquareStroke::setColor(Color const& color)
 	{
 
 	}
 
-	BitmapGraphics::Color SquareStroke::getColor() const
+	Color SquareStroke::getColor() const
 	{
-		BitmapGraphics::Color temp;
+		Color temp;
 		return temp;
 	}
 

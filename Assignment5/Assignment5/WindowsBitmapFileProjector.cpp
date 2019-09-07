@@ -1,6 +1,6 @@
 #include "WindowsBitmapFileProjector.h"
 
-namespace VG
+namespace BitmapGraphics
 {
 	void WindowsBitmapFileProjector::projectCanvas(HCanvas const & canvas)
 	{

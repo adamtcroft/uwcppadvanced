@@ -2,7 +2,7 @@
 #include "CodecInterfaces.h"
 #include "Point.h"
 
-namespace VG
+namespace BitmapGraphics
 {
 	class ICanvas;
 	class IPen;
@@ -15,8 +15,8 @@ namespace VG
 	public:
 		virtual ~ICanvas() = default;
 
-		virtual void setPixelColor(Point const& location, BitmapGraphics::Color const& color) = 0;
-		virtual BitmapGraphics::Color getPixelColor(Point const& location) const = 0;
+		virtual void setPixelColor(VG::Point const& location, Color const& color) = 0;
+		virtual BitmapGraphics::Color getPixelColor(VG::Point const& location) const = 0;
 		virtual int getWidth() const = 0;
 		virtual int getHeight() const = 0;
 		virtual BitmapGraphics::HBitmapIterator createBitmapIterator() const = 0;
@@ -36,8 +36,8 @@ namespace VG
 		virtual ~IPen() = default;
 
 		// decide which one of these to keep
-		virtual void drawPoint(const HCanvas&, const Point&) = 0;
-		virtual void drawPoint(Point const& point) = 0;
+		virtual void drawPoint(const HCanvas&, const VG::Point&) = 0;
+		virtual void drawPoint(VG::Point const& point) = 0;
 	};
 
 	class IStroke

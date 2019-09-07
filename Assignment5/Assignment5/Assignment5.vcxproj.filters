@@ -63,9 +63,6 @@
     <ClInclude Include="Point.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RandomDecorator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -134,6 +131,12 @@
     </ClInclude>
     <ClInclude Include="SquarePen.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SquareStroke.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomDecorator.h">
+      <Filter>Header Files\Decorators</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -228,6 +231,9 @@
       <Filter>Source Files\Decorators</Filter>
     </ClCompile>
     <ClCompile Include="SquarePen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SquareStroke.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

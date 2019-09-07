@@ -3,16 +3,17 @@
 
 using namespace BitmapGraphics;
 
-//TEST(BackgroundColor, BasicCanvas)
-//{
-//    Color expected(255, 255, 255);
-//    BasicCanvas canvas(10, 10, expected);
-//
-//    Color actual = canvas.getPixelColor(VG::Point(8, 6));
-//
-//    CHECK_EQUAL(expected, actual);
-//}
-//
+TEST(BackgroundColor, BasicCanvas)
+{
+    Color expected(Binary::Byte(255), Binary::Byte(255), Binary::Byte(255));
+    BasicCanvas canvas(10, 10, expected);
+
+    Color actual = canvas.getPixelColor(VG::Point(8, 6));
+
+	CHECK(expected == actual);
+    //CHECK_EQUAL(expected, actual);
+}
+
 //TEST(setPixelColor, BasicCanvas)
 //{
 //    Color background(255, 255, 255);

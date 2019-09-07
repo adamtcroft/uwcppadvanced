@@ -1,13 +1,13 @@
 #include "SquarePen.h"
 
-namespace VG
+namespace BitmapGraphics
 {
-	void SquarePen::drawPoint(const HCanvas&, const Point&)
+	void SquarePen::drawPoint(const HCanvas&, const VG::Point&)
 	{
 
 	}
 
-	void SquarePen::drawPoint(Point const& point)
+	void SquarePen::drawPoint(VG::Point const& point)
 	{
 
 	}

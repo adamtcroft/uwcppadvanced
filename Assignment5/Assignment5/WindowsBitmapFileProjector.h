@@ -1,7 +1,7 @@
 #pragma once
 #include "DrawingInterfaces.h"
 
-namespace VG
+namespace BitmapGraphics
 {
 	class WindowsBitmapFileProjector final : public IProjector
 	{
