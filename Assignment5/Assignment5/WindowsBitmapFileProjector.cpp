@@ -2,5 +2,8 @@
 
 namespace VG
 {
+	void WindowsBitmapFileProjector::projectCanvas(HCanvas const & canvas)
+	{
 
+	}
 }

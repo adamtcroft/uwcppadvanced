@@ -142,6 +142,7 @@
     <ClInclude Include="SceneReader.h" />
     <ClInclude Include="SceneWriter.h" />
     <ClInclude Include="SizedWord.h" />
+    <ClInclude Include="SquarePen.h" />
     <ClInclude Include="VectorGraphic.h" />
     <ClInclude Include="VectorGraphicStreamer.h" />
     <ClInclude Include="VerifyEquality.h" />
@@ -176,6 +177,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneReader.cpp" />
     <ClCompile Include="SceneWriter.cpp" />
+    <ClCompile Include="SquarePen.cpp" />
     <ClCompile Include="VectorGraphic.cpp" />
     <ClCompile Include="VectorGraphicStreamer.cpp" />
     <ClCompile Include="WindowsBitmapDecoder.cpp" />

@@ -32,6 +32,7 @@ namespace VG
 
 	class IPen
 	{
+	public:
 		virtual ~IPen() = default;
 
 		// decide which one of these to keep
@@ -41,6 +42,7 @@ namespace VG
 
 	class IStroke
 	{
+	public:
 		virtual ~IStroke() = default;
 
 		virtual void setSize(int size) = 0;
