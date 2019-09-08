@@ -30,7 +30,6 @@ namespace BitmapGraphics
 	private:
 		Color myBackground{ Binary::Byte(255), Binary::Byte(255), Binary::Byte(255) };
 		Bitmap myBitmap;
-		//ScanLineCollection myCollection;
 
 		void initializeCanvas();
 	};

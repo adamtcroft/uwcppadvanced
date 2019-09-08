@@ -32,6 +32,14 @@ namespace Framework
 		height = h;
 	}
 
+	void Scene::draw(BitmapGraphics::HCanvas& canvas)
+	{
+		for (auto& layer : layers)
+		{
+			layer.draw(canvas);
+		}
+	}
+
 	int const& Scene::getWidth() const
 	{
 		return width;

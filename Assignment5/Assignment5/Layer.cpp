@@ -45,6 +45,14 @@ namespace Framework
 		return alias;
 	}
 
+	void Layer::draw(BitmapGraphics::HCanvas& canvas)
+	{
+		for (auto& graphic : graphics)
+		{
+			graphic.draw(canvas);
+		}
+	}
+
 	bool Layer::operator==(const Framework::Layer& rhs) const
 	{
 		return (graphics == rhs.graphics) && (alias == rhs.alias);

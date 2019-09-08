@@ -1,8 +1,6 @@
 #include "TestHarness.h"
 #include "Bitmap.h"
 #include "WindowsBitmapHeader.h"
-//#include "binary_ostream_iterator.h"
-//#include <fstream>
 
 using namespace BitmapGraphics;
 

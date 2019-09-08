@@ -3,6 +3,7 @@
 #include <functional>
 #include <algorithm>
 #include "Point.h"
+#include "DrawingInterfaces.h"
 
 namespace VG
 {
@@ -14,10 +15,8 @@ namespace VG
 	{
 	public:
 		VectorGraphic() = default;
-
 		VectorGraphic(const VectorGraphic& other) = default;
 		VectorGraphic(VectorGraphic&& other) = default;
-
 		VectorGraphic& operator=(const VectorGraphic& other) = default;
 		VectorGraphic& operator=(VectorGraphic&& other) = default;
 
@@ -42,6 +41,8 @@ namespace VG
 
 		size_t getPointCount() const;
 		const Point& getPoint(int index) const;
+
+		void draw(BitmapGraphics::HCanvas& canvas, Point const& offset);
 
 		bool operator==(const VG::VectorGraphic& rhs) const;
 		bool operator!=(const VG::VectorGraphic& rhs) const;

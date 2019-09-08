@@ -2,6 +2,7 @@
 #include <list>
 #include <string>
 #include "PlacedGraphic.h"
+#include "DrawingInterfaces.h"
 
 namespace Framework
 {
@@ -33,6 +34,8 @@ namespace Framework
 
 		PlacedGraphicIterator begin() const;
 		PlacedGraphicIterator end() const;
+
+		void draw(BitmapGraphics::HCanvas& canvas);
 
 		PlacedGraphic const& getGraphic(const int& index);
 

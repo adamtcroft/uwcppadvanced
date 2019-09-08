@@ -138,6 +138,9 @@
     <ClInclude Include="RandomDecorator.h">
       <Filter>Header Files\Decorators</Filter>
     </ClInclude>
+    <ClInclude Include="LineIterator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="XmlFactories.cpp">
@@ -234,6 +237,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SquareStroke.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LineIterator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -134,6 +134,7 @@
     <ClInclude Include="GrayscaleDecorator.h" />
     <ClInclude Include="KeepColorDecorator.h" />
     <ClInclude Include="Layer.h" />
+    <ClInclude Include="LineIterator.h" />
     <ClInclude Include="Parse.h" />
     <ClInclude Include="PlacedGraphic.h" />
     <ClInclude Include="Point.h" />
@@ -171,6 +172,7 @@
     <ClCompile Include="GrayscaleDecorator.cpp" />
     <ClCompile Include="KeepColorDecorator.cpp" />
     <ClCompile Include="Layer.cpp" />
+    <ClCompile Include="LineIterator.cpp" />
     <ClCompile Include="Parse.cpp" />
     <ClCompile Include="PlacedGraphic.cpp" />
     <ClCompile Include="Point.cpp" />

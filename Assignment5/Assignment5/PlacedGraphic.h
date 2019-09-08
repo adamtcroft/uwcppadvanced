@@ -2,6 +2,7 @@
 #include "PlacedGraphic.h"
 #include "VectorGraphic.h"
 #include "Point.h"
+#include "DrawingInterfaces.h"
 
 namespace Framework
 {
@@ -9,16 +10,11 @@ namespace Framework
 	{
 	public:
 		PlacedGraphic();
-
-
 		PlacedGraphic(const VG::Point& p, const VG::VectorGraphic& vg);
-
 		PlacedGraphic(const PlacedGraphic& other) = default;
 		PlacedGraphic(PlacedGraphic&& other) = default;
-
 		PlacedGraphic& operator=(const PlacedGraphic& other) = default;
 		PlacedGraphic& operator=(PlacedGraphic&& other) = default;
-
 		~PlacedGraphic() = default;
 
 		template <class P> void setPlacementPoint(P&& p)
@@ -33,6 +29,8 @@ namespace Framework
 
 		VG::Point const& getPlacementPoint() const;
 		VG::VectorGraphic const& getGraphic() const;
+
+		void draw(BitmapGraphics::HCanvas& canvas);
 
 	private:
 		VG::Point placementPoint;

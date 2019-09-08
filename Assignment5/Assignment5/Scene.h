@@ -2,6 +2,7 @@
 #include <string>
 #include <list>
 #include "Layer.h"
+#include "DrawingInterfaces.h"
 
 namespace Framework
 {
@@ -33,6 +34,8 @@ namespace Framework
 
 		void setWidth(size_t w);
 		void setHeight(size_t h);
+
+		void draw(BitmapGraphics::HCanvas& canvas);
 
 		int const& getWidth() const;
 		int const& getHeight() const;

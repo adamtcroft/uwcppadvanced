@@ -86,6 +86,11 @@ namespace VG
 		return myPath.at(index);
 	}
 
+	void VectorGraphic::draw(BitmapGraphics::HCanvas& canvas, Point const& offset)
+	{
+
+	}
+
 	bool VectorGraphic::operator==(const VG::VectorGraphic& rhs) const
 	{
 		return (shapeOpenness == rhs.shapeOpenness) && (myPath == rhs.myPath);

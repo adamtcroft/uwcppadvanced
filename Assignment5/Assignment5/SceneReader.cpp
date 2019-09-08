@@ -93,13 +93,28 @@ namespace Framework
 			throw std::runtime_error("Invalid VectorGraphic attribute");
 		}
 
-		Xml::ElementCollection points = vgElement->getChildElements();
-		Xml::ElementCollection::const_iterator p;
-		for (p = points.begin(); p != points.end(); ++p)
+		Xml::ElementCollection elements = vgElement->getChildElements();
+		Xml::ElementCollection::const_iterator elementIterator = elements.begin();
+		Xml::HElement stroke;
+		Xml::ElementCollection points;
+		while (elementIterator != elements.end())
 		{
-			int x = std::stoi((*p)->getAttribute("x"));
-			int y = std::stoi((*p)->getAttribute("y"));
-			vg.addPoint(VG::Point(x, y));
+			if ((*elementIterator)->getName() == "Point")
+			{
+				int x = std::stoi((*elementIterator)->getAttribute("x"));
+				int y = std::stoi((*elementIterator)->getAttribute("y"));
+				vg.addPoint(VG::Point(x, y));
+			}
+
+			if ((*elementIterator)->getName() == "Stroke")
+			{
+				auto tip = (*elementIterator)->getAttribute("tip");
+				auto color = (*elementIterator)->getAttribute("color");
+				int size = stoi((*elementIterator)->getAttribute("size"));
+				// Do Something
+			}
+
+			elementIterator++;
 		}
 
 		return vg;
