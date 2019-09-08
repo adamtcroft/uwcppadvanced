@@ -2,9 +2,9 @@
 
 namespace BitmapGraphics
 {
-	void SquarePen::drawPoint(const HCanvas&, const VG::Point&)
+	void SquarePen::drawPoint(const HCanvas& canvas, const VG::Point& point)
 	{
-
+		canvas->setPixelColor(point, Color(Binary::Byte(0), Binary::Byte(0), Binary::Byte(0)));
 	}
 
 	void SquarePen::drawPoint(VG::Point const& point)

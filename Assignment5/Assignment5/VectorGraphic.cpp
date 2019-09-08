@@ -106,6 +106,15 @@ namespace VG
 	void VectorGraphic::draw(BitmapGraphics::HCanvas& canvas, Point const& offset)
 	{
 		BitmapGraphics::HPen pen = myStroke->createPen(canvas);
+		for(auto p = myPath.begin(); p+1 != myPath.end(); ++p)
+		{
+			LineIterator lineIterator(*p, *(p+1));
+			while (!lineIterator.isEnd())
+			{
+				pen->drawPoint(canvas, lineIterator.getCurrentPoint());
+				lineIterator.nextPoint();
+			}
+		}
 	}
 
 	bool VectorGraphic::operator==(const VG::VectorGraphic& rhs) const

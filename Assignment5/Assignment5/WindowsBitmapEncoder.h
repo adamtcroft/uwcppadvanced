@@ -10,13 +10,10 @@ namespace BitmapGraphics
 	public:
 		WindowsBitmapEncoder() = default;
 		explicit WindowsBitmapEncoder(HBitmapIterator& iterator);
-
 		WindowsBitmapEncoder(const WindowsBitmapEncoder& other) = default;
 		WindowsBitmapEncoder(WindowsBitmapEncoder&& other) = default;
-
 		WindowsBitmapEncoder& operator=(const WindowsBitmapEncoder& other) = default;
 		WindowsBitmapEncoder& operator=(WindowsBitmapEncoder&& other) = default;
-
 		~WindowsBitmapEncoder() noexcept = default;
 
 		HBitmapEncoder clone(HBitmapIterator& iterator) override;

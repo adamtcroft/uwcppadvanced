@@ -6,6 +6,7 @@
 #include "Color.h"
 #include "DrawingInterfaces.h"
 #include "StrokeFactory.h"
+#include "LineIterator.h"
 
 namespace VG
 {

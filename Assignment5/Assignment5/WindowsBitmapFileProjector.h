@@ -1,5 +1,6 @@
 #pragma once
 #include "DrawingInterfaces.h"
+#include "CodecLibrary.h"
 
 namespace BitmapGraphics
 {
@@ -7,6 +8,7 @@ namespace BitmapGraphics
 	{
 	public:
 		WindowsBitmapFileProjector() = default;
+		WindowsBitmapFileProjector(std::string const& filename, CodecLibrary& library);
 		WindowsBitmapFileProjector(const WindowsBitmapFileProjector& other) = default;
 		WindowsBitmapFileProjector(WindowsBitmapFileProjector&& other) = default;
 
@@ -15,6 +17,10 @@ namespace BitmapGraphics
 		~WindowsBitmapFileProjector() = default;
 
 		void projectCanvas(HCanvas const & canvas) override final;
+
+	private:
+		CodecLibrary* myLibrary;
+		std::string myFilename;
 	};
 }
 

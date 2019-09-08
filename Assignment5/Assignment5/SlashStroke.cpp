@@ -24,7 +24,6 @@ namespace BitmapGraphics
 
 	HPen SlashStroke::createPen(HCanvas const& canvas)
 	{
-		HPen temp;
-		return temp;
+		return std::make_shared<SlashPen>();
 	}
 }

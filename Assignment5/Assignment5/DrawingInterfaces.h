@@ -7,10 +7,12 @@ namespace BitmapGraphics
 	class ICanvas;
 	class IPen;
 	class IStroke;
+	class IProjector;
 
 	using HCanvas = std::shared_ptr<ICanvas>;
 	using HPen = std::shared_ptr<IPen>;
 	using HStroke = std::shared_ptr<IStroke>;
+	using HProjector = std::shared_ptr<IProjector>;
 
 	class ICanvas
 	{

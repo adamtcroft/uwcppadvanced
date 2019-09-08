@@ -178,17 +178,18 @@ TEST(toBitmap, SceneReader)
     Framework::Scene scene = Framework::SceneReader::readScene(*root);
     
     // Create an empty Canvas
-    Color backgroundColor(Binary::Byte(100), Binary::Byte(100), Binary::Byte(100));
+    //Color backgroundColor(Binary::Byte(100), Binary::Byte(100), Binary::Byte(100));
+    Color backgroundColor(Binary::Byte(255), Binary::Byte(255), Binary::Byte(255));
     BitmapGraphics::HCanvas canvas = std::make_shared<BasicCanvas>(scene.getWidth(), scene.getHeight(), backgroundColor);
     
     // Draw the Scene onto the Canvas
     scene.draw(canvas);
-//
-//    // Create a WindowsBitmapFileProjector and give it an output file name to create
-//    // Also give it the CodecLibrary ("dependency injection").
-//    CodecLibrarySetup codecLibrary;
-//    HProjector projector = std::make_shared<WindowsBitmapFileProjector>("output_scene.bmp", codecLibrary);
-//    
-//    // Project the Canvas into the bitmap file
-//    projector->projectCanvas(canvas);
+
+    // Create a WindowsBitmapFileProjector and give it an output file name to create
+    // Also give it the CodecLibrary ("dependency injection").
+    CodecLibrarySetup codecLibrary;
+    HProjector projector = std::make_shared<WindowsBitmapFileProjector>("output_scene.bmp", codecLibrary);
+    
+    // Project the Canvas into the bitmap file
+    projector->projectCanvas(canvas);
 }

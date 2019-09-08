@@ -27,8 +27,8 @@ namespace BitmapGraphics
 
 	bool BasicCanvas::inBounds(VG::Point const& location) const
 	{
-		if ((location.getX() > 0 && location.getX() <= myBitmap.getWidth()) &&
-			(location.getY() > 0 && location.getY() <= myBitmap.getHeight()))
+		if ((location.getX() >= 0 && location.getX() <= myBitmap.getWidth()) &&
+			(location.getY() >= 0 && location.getY() <= myBitmap.getHeight()))
 			return true;
 		else
 			return false;
