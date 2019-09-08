@@ -3,15 +3,15 @@
 
 namespace BitmapGraphics
 {
-	class SquarePen final : public IPen
+	class SlashPen final : public IPen
 	{
 	public:
-		SquarePen() = default;
-		SquarePen(const SquarePen& other) = default;
-		SquarePen(SquarePen&& other) = default;
-		SquarePen& operator=(const SquarePen& other) = default;
-		SquarePen& operator=(SquarePen&& other) = default;
-		~SquarePen() = default;
+		SlashPen() = default;
+		SlashPen(const SlashPen& other) = default;
+		SlashPen(SlashPen&& other) = default;
+		SlashPen& operator=(const SlashPen& other) = default;
+		SlashPen& operator=(SlashPen&& other) = default;
+		~SlashPen() = default;
 
 		void drawPoint(const HCanvas&, const VG::Point&) override final;
 		void drawPoint(VG::Point const& point) override final;

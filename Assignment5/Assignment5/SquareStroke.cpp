@@ -4,22 +4,22 @@ namespace BitmapGraphics
 {
 	void SquareStroke::setSize(int size)
 	{
+		mySize = size;
 	}
 
 	int SquareStroke::getSize() const
 	{
-		return 1;
+		return mySize;
 	}
 
 	void SquareStroke::setColor(Color const& color)
 	{
-
+		myColor = color;
 	}
 
 	Color SquareStroke::getColor() const
 	{
-		Color temp;
-		return temp;
+		return myColor;
 	}
 
 	HPen SquareStroke::createPen(HCanvas const& canvas)

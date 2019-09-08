@@ -3,15 +3,15 @@
 
 namespace BitmapGraphics
 {
-	class SquareStroke final : public IStroke
+	class SlashStroke : public IStroke
 	{
 	public:
-		SquareStroke() = default;
-		SquareStroke(const SquareStroke& other) = default;
-		SquareStroke(SquareStroke&& other) = default;
-		SquareStroke& operator=(const SquareStroke& other) = default;
-		SquareStroke& operator=(SquareStroke&& other) = default;
-		~SquareStroke() = default;
+		SlashStroke() = default;
+		SlashStroke(const SlashStroke& other) = default;
+		SlashStroke(SlashStroke&& other) = default;
+		SlashStroke& operator=(const SlashStroke& other) = default;
+		SlashStroke& operator=(SlashStroke&& other) = default;
+		~SlashStroke() = default;
 
 		void setSize(int size) override final;
 		int getSize() const override final;

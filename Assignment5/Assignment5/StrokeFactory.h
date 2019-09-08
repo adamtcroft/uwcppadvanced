@@ -1,6 +1,7 @@
 #pragma once
 #include <map>
 #include "SquareStroke.h"
+#include "SlashStroke.h"
 #include "DrawingInterfaces.h"
 
 namespace BitmapGraphics

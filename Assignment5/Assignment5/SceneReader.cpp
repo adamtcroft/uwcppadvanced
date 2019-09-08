@@ -95,8 +95,6 @@ namespace Framework
 
 		Xml::ElementCollection elements = vgElement->getChildElements();
 		Xml::ElementCollection::const_iterator elementIterator = elements.begin();
-		Xml::HElement stroke;
-		Xml::ElementCollection points;
 		while (elementIterator != elements.end())
 		{
 			if ((*elementIterator)->getName() == "Point")
@@ -109,9 +107,13 @@ namespace Framework
 			if ((*elementIterator)->getName() == "Stroke")
 			{
 				auto tip = (*elementIterator)->getAttribute("tip");
-				auto color = (*elementIterator)->getAttribute("color");
+				auto stringColor = (*elementIterator)->getAttribute("color");
+				std::stringstream ss;
+				int color;
+				ss << std::hex << stringColor;
+				ss >> color;
 				int size = stoi((*elementIterator)->getAttribute("size"));
-				//vg.
+				vg.setStroke(tip, color, size);
 			}
 
 			elementIterator++;

@@ -5,6 +5,7 @@ namespace BitmapGraphics
 	StrokeFactory::StrokeFactory()
 	{
 		addStroke("square", std::make_shared<SquareStroke>());
+		addStroke("slash", std::make_shared<SlashStroke>());
 	}
 
 	void StrokeFactory::addStroke(std::string const& tip, HStroke const& stroke)

@@ -144,6 +144,8 @@
     <ClInclude Include="SceneReader.h" />
     <ClInclude Include="SceneWriter.h" />
     <ClInclude Include="SizedWord.h" />
+    <ClInclude Include="SlashPen.h" />
+    <ClInclude Include="SlashStroke.h" />
     <ClInclude Include="SquarePen.h" />
     <ClInclude Include="SquareStroke.h" />
     <ClInclude Include="StrokeFactory.h" />
@@ -183,6 +185,8 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneReader.cpp" />
     <ClCompile Include="SceneWriter.cpp" />
+    <ClCompile Include="SlashPen.cpp" />
+    <ClCompile Include="SlashStroke.cpp" />
     <ClCompile Include="SquarePen.cpp" />
     <ClCompile Include="SquareStroke.cpp" />
     <ClCompile Include="StrokeFactory.cpp" />

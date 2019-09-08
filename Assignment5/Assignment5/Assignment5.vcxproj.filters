@@ -22,6 +22,12 @@
     <Filter Include="Source Files\Decorators">
       <UniqueIdentifier>{11f2c9e3-ddc5-4515-a854-6e9cb290dcf8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Strokes and Pens">
+      <UniqueIdentifier>{c6eea385-6c42-4db0-ae41-ebe806deaf0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stokes and Pens">
+      <UniqueIdentifier>{e620fea7-2817-4143-90a2-9b3b134e7a01}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="XmlFactories.h">
@@ -129,23 +135,29 @@
     <ClInclude Include="DrawingInterfaces.h">
       <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="SquarePen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SquareStroke.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="RandomDecorator.h">
       <Filter>Header Files\Decorators</Filter>
     </ClInclude>
-    <ClInclude Include="LineIterator.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SlashPen.h">
+      <Filter>Header Files\Strokes and Pens</Filter>
+    </ClInclude>
+    <ClInclude Include="SlashStroke.h">
+      <Filter>Header Files\Strokes and Pens</Filter>
     </ClInclude>
     <ClInclude Include="PenFactory.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Strokes and Pens</Filter>
     </ClInclude>
     <ClInclude Include="StrokeFactory.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Strokes and Pens</Filter>
+    </ClInclude>
+    <ClInclude Include="SquarePen.h">
+      <Filter>Header Files\Strokes and Pens</Filter>
+    </ClInclude>
+    <ClInclude Include="SquareStroke.h">
+      <Filter>Header Files\Strokes and Pens</Filter>
+    </ClInclude>
+    <ClInclude Include="LineIterator.h">
+      <Filter>Header Files\Strokes and Pens</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -239,20 +251,26 @@
     <ClCompile Include="RandomDecorator.cpp">
       <Filter>Source Files\Decorators</Filter>
     </ClCompile>
+    <ClCompile Include="PenFactory.cpp">
+      <Filter>Source Files\Stokes and Pens</Filter>
+    </ClCompile>
+    <ClCompile Include="SlashPen.cpp">
+      <Filter>Source Files\Stokes and Pens</Filter>
+    </ClCompile>
+    <ClCompile Include="SlashStroke.cpp">
+      <Filter>Source Files\Stokes and Pens</Filter>
+    </ClCompile>
     <ClCompile Include="SquarePen.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Stokes and Pens</Filter>
     </ClCompile>
     <ClCompile Include="SquareStroke.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LineIterator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PenFactory.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Stokes and Pens</Filter>
     </ClCompile>
     <ClCompile Include="StrokeFactory.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Stokes and Pens</Filter>
+    </ClCompile>
+    <ClCompile Include="LineIterator.cpp">
+      <Filter>Source Files\Stokes and Pens</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

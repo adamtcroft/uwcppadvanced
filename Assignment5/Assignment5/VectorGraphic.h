@@ -29,7 +29,7 @@ namespace VG
 			myPath.emplace_back(std::forward<C>(p));
 		}
 
-		void setStroke(std::string& tip, std::string& color, int size);
+		void setStroke(std::string& tip, int color, int size);
 
 		void removePoint(const VG::Point& p);
 		void erasePoint(int index);
