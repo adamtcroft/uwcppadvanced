@@ -13,4 +13,9 @@ namespace BitmapGraphics
 		auto pBitmapIterator = std::make_shared<BitmapIterator>(BitmapIterator(*this));
 		return pBitmapIterator;
 	}
+
+	void Bitmap::setPixelColor(VG::Point const& location, Color const& color)
+	{
+		slCollection[location.getX()][location.getY()] = color;
+	}
 }

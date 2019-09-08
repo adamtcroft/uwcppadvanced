@@ -19,7 +19,7 @@ namespace BitmapGraphics
 		virtual BitmapGraphics::Color getPixelColor(VG::Point const& location) const = 0;
 		virtual int getWidth() const = 0;
 		virtual int getHeight() const = 0;
-		virtual BitmapGraphics::HBitmapIterator createBitmapIterator() const = 0;
+		virtual BitmapGraphics::HBitmapIterator createBitmapIterator() = 0;
 	};
 
 	class IProjector
