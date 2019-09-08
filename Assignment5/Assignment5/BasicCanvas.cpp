@@ -3,7 +3,7 @@
 namespace BitmapGraphics
 {
 	BasicCanvas::BasicCanvas(int width, int height, Color const& background) :
-		myWidth(width), myHeight(height), myBackground(background)
+		myBitmap(width, height), myBackground(background)
 	{
 		myBitmap.clearCollection();
 		initializeCanvas();
@@ -11,12 +11,12 @@ namespace BitmapGraphics
 
 	void BasicCanvas::initializeCanvas()
 	{
-		for (auto row = 0; row < myHeight; ++row)
+		for (auto row = 0; row < myBitmap.getHeight(); ++row)
 		{
 			ScanLine scanline;
-			scanline.reserve(myWidth);
+			scanline.reserve(myBitmap.getHeight());
 
-			for (auto column = 0; column < myWidth; ++column)
+			for (auto column = 0; column < myBitmap.getWidth(); ++column)
 			{
 				scanline.push_back(myBackground);
 			}
@@ -27,8 +27,8 @@ namespace BitmapGraphics
 
 	bool BasicCanvas::inBounds(VG::Point const& location) const
 	{
-		if ((location.getX() > 0 && location.getX() <= myWidth) &&
-			(location.getY() > 0 && location.getY() <= myHeight))
+		if ((location.getX() > 0 && location.getX() <= myBitmap.getWidth()) &&
+			(location.getY() > 0 && location.getY() <= myBitmap.getHeight()))
 			return true;
 		else
 			return false;
@@ -52,17 +52,17 @@ namespace BitmapGraphics
 
 	int BasicCanvas::getWidth() const
 	{
-		return myWidth;
+		return myBitmap.getWidth();
 	}
 
 	int BasicCanvas::getHeight() const
 	{
-		return myHeight;
+		return myBitmap.getHeight();
 	}
 
 	HBitmapIterator BasicCanvas::createBitmapIterator()
 	{
-		if (myBitmap.getHeight() == 0 || myBitmap.getWidth() == 0)
+		if (myBitmap.getWidth() == 0 || myBitmap.getHeight() == 0)
 			throw std::runtime_error("Error: Cannot return iterator if canvas has no size.");
 		else
 			return myBitmap.createIterator();

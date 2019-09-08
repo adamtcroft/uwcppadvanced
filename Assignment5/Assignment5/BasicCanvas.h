@@ -28,8 +28,6 @@ namespace BitmapGraphics
 		bool inBounds(VG::Point const& location) const;
 
 	private:
-		int myWidth{ 10 };
-		int myHeight{ 10 };
 		Color myBackground{ Binary::Byte(255), Binary::Byte(255), Binary::Byte(255) };
 		Bitmap myBitmap;
 		//ScanLineCollection myCollection;

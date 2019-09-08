@@ -79,32 +79,33 @@ TEST(getPixelOutsideDimensions, BasicCanvas)
     }
 }
 
-//TEST(IBitmapIterator, BasicCanvas)
-//{
-//    Color backColor(1, 2, 3);
-//    BasicCanvas canvas(8, 9, backColor);
-//
-//    HBitmapIterator bitmapIterator = canvas.createBitmapIterator();
-//
-//    CHECK_EQUAL(8, bitmapIterator->getBitmapWidth());
-//    CHECK_EQUAL(9, bitmapIterator->getBitmapHeight());
-//
-//    int rows = 0;
-//    while (!bitmapIterator->isEndOfImage())
-//    {
-//        int columns = 0;
-//        while (!bitmapIterator->isEndOfScanLine())
-//        {
-//            CHECK_EQUAL(backColor, bitmapIterator->getColor());
-//            bitmapIterator->nextPixel();
-//            columns++;
-//        }
-//
-//        CHECK_EQUAL(8, columns);
-//
-//        bitmapIterator->nextScanLine();
-//        rows++;
-//    }
-//
-//    CHECK_EQUAL(9, rows);
-//}
+TEST(IBitmapIterator, BasicCanvas)
+{
+    Color backColor(Binary::Byte(1), Binary::Byte(2), Binary::Byte(3));
+    BasicCanvas canvas(8, 9, backColor);
+
+    HBitmapIterator bitmapIterator = canvas.createBitmapIterator();
+
+    CHECK_EQUAL(8, bitmapIterator->getBitmapWidth());
+    CHECK_EQUAL(9, bitmapIterator->getBitmapHeight());
+
+    int rows = 0;
+    while (!bitmapIterator->isEndOfImage())
+    {
+        int columns = 0;
+        while (!bitmapIterator->isEndOfScanLine())
+        {
+			CHECK(backColor == bitmapIterator->getColor());
+            //CHECK_EQUAL(backColor, bitmapIterator->getColor());
+            bitmapIterator->nextPixel();
+            columns++;
+        }
+
+        CHECK_EQUAL(8, columns);
+
+        bitmapIterator->nextScanLine();
+        rows++;
+    }
+
+    CHECK_EQUAL(9, rows);
+}
