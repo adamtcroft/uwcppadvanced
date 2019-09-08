@@ -3,7 +3,9 @@
 #include <functional>
 #include <algorithm>
 #include "Point.h"
+#include "Color.h"
 #include "DrawingInterfaces.h"
+#include "StrokeFactory.h"
 
 namespace VG
 {
@@ -26,6 +28,8 @@ namespace VG
 		{
 			myPath.emplace_back(std::forward<C>(p));
 		}
+
+		void setStroke(std::string& tip, std::string& color, int size);
 
 		void removePoint(const VG::Point& p);
 		void erasePoint(int index);
@@ -50,6 +54,7 @@ namespace VG
 
 	private:
 		Points myPath;
+		BitmapGraphics::HStroke myStroke;
 		enum class Openness { Open, Closed } shapeOpenness = Openness::Closed;
 	};
 }

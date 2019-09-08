@@ -136,6 +136,7 @@
     <ClInclude Include="Layer.h" />
     <ClInclude Include="LineIterator.h" />
     <ClInclude Include="Parse.h" />
+    <ClInclude Include="PenFactory.h" />
     <ClInclude Include="PlacedGraphic.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="RandomDecorator.h" />
@@ -145,6 +146,7 @@
     <ClInclude Include="SizedWord.h" />
     <ClInclude Include="SquarePen.h" />
     <ClInclude Include="SquareStroke.h" />
+    <ClInclude Include="StrokeFactory.h" />
     <ClInclude Include="VectorGraphic.h" />
     <ClInclude Include="VectorGraphicStreamer.h" />
     <ClInclude Include="VerifyEquality.h" />
@@ -174,6 +176,7 @@
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="LineIterator.cpp" />
     <ClCompile Include="Parse.cpp" />
+    <ClCompile Include="PenFactory.cpp" />
     <ClCompile Include="PlacedGraphic.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="RandomDecorator.cpp" />
@@ -182,6 +185,7 @@
     <ClCompile Include="SceneWriter.cpp" />
     <ClCompile Include="SquarePen.cpp" />
     <ClCompile Include="SquareStroke.cpp" />
+    <ClCompile Include="StrokeFactory.cpp" />
     <ClCompile Include="VectorGraphic.cpp" />
     <ClCompile Include="VectorGraphicStreamer.cpp" />
     <ClCompile Include="WindowsBitmapDecoder.cpp" />

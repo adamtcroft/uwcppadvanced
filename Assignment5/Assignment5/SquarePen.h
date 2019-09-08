@@ -14,8 +14,15 @@ namespace BitmapGraphics
 		SquarePen& operator=(SquarePen&& other) = default;
 		~SquarePen() = default;
 
-		virtual void drawPoint(const HCanvas&, const VG::Point&) override final;
-		virtual void drawPoint(VG::Point const& point) override final;
+		void drawPoint(const HCanvas&, const VG::Point&) override final;
+		void drawPoint(VG::Point const& point) override final;
+
+		void setSize(int size) { mySize = size; }
+
+		HPen clone() override;
+
+	private:
+		int mySize;
 	};
 }
 

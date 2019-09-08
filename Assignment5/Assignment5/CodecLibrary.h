@@ -11,13 +11,10 @@ namespace BitmapGraphics
 	{
 	public:
 		CodecLibrary() = default;
-
 		CodecLibrary(const CodecLibrary& other) = default;
 		CodecLibrary(CodecLibrary&& other) noexcept = default;
-
 		CodecLibrary& operator=(const CodecLibrary& other) = default;
 		CodecLibrary& operator=(CodecLibrary&& other) = default;
-
 		~CodecLibrary() noexcept = default;
 
 		void registerEncoder(HBitmapEncoder const& encoder);

@@ -6,9 +6,11 @@ namespace BitmapGraphics
 {
 	class ICanvas;
 	class IPen;
+	class IStroke;
 
 	using HCanvas = std::shared_ptr<ICanvas>;
 	using HPen = std::shared_ptr<IPen>;
+	using HStroke = std::shared_ptr<IStroke>;
 
 	class ICanvas
 	{
@@ -38,6 +40,8 @@ namespace BitmapGraphics
 		// decide which one of these to keep
 		virtual void drawPoint(const HCanvas&, const VG::Point&) = 0;
 		virtual void drawPoint(VG::Point const& point) = 0;
+
+		virtual HPen clone() = 0;
 	};
 
 	class IStroke

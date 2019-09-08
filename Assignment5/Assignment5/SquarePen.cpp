@@ -11,4 +11,9 @@ namespace BitmapGraphics
 	{
 
 	}
+
+	HPen SquarePen::clone()
+	{
+		return std::make_shared<SquarePen>();
+	}
 }

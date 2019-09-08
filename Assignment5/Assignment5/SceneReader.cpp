@@ -111,7 +111,7 @@ namespace Framework
 				auto tip = (*elementIterator)->getAttribute("tip");
 				auto color = (*elementIterator)->getAttribute("color");
 				int size = stoi((*elementIterator)->getAttribute("size"));
-				// Do Something
+				//vg.
 			}
 
 			elementIterator++;
