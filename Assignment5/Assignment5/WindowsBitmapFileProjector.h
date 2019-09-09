@@ -1,6 +1,7 @@
 #pragma once
 #include "DrawingInterfaces.h"
 #include "CodecLibrary.h"
+#include <stack>
 
 namespace BitmapGraphics
 {

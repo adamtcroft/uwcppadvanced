@@ -10,12 +10,18 @@ namespace BitmapGraphics
 
 	HBitmapIterator Bitmap::createIterator()
 	{
-		auto pBitmapIterator = std::make_shared<BitmapIterator>(BitmapIterator(*this));
-		return pBitmapIterator;
+		return std::make_shared<BitmapIterator>(BitmapIterator(*this));
 	}
 
 	void Bitmap::setPixelColor(VG::Point const& location, Color const& color)
 	{
+		std::cout << "slCollection size: " << slCollection.size() << std::endl;
+		std::cout << "getY: " << location.getY() << std::endl;
 		slCollection[location.getX()][location.getY()] = color;
+	}
+
+	void Bitmap::flip()
+	{
+		std::reverse(slCollection.begin(), slCollection.end());
 	}
 }

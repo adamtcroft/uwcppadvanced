@@ -65,6 +65,7 @@ namespace BitmapGraphics
 		if (myBitmap.getWidth() == 0 || myBitmap.getHeight() == 0)
 			throw std::runtime_error("Error: Cannot return iterator if canvas has no size.");
 		else
+			myBitmap.flip();
 			return myBitmap.createIterator();
 	}
 }

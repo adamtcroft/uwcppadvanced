@@ -8,7 +8,7 @@
 #include <fstream>
 #include <vector>
 #include <iostream>
-
+#include <algorithm>
 
 namespace BitmapGraphics
 {
@@ -43,6 +43,7 @@ namespace BitmapGraphics
 		void clearCollection() { slCollection.clear(); }
 
 		HBitmapIterator createIterator();
+		void flip();
 
 	private:
 		uint32_t bitmapWidth{ 0 };
