@@ -107,11 +107,7 @@ namespace Framework
 			if ((*elementIterator)->getName() == "Stroke")
 			{
 				auto tip = (*elementIterator)->getAttribute("tip");
-				auto stringColor = (*elementIterator)->getAttribute("color");
-				std::stringstream ss;
-				int color;
-				ss << std::hex << stringColor;
-				ss >> color;
+				auto color = (*elementIterator)->getAttribute("color");
 				int size = stoi((*elementIterator)->getAttribute("size"));
 				vg.setStroke(tip, color, size);
 			}

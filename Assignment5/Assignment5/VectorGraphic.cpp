@@ -86,21 +86,10 @@ namespace VG
 		return myPath.at(index);
 	}
 
-	void VectorGraphic::setStroke(std::string& tip, int color, int size)
+	void VectorGraphic::setStroke(std::string& tip, std::string& color, int size)
 	{
 		BitmapGraphics::StrokeFactory strokeFactory;
-		myStroke = strokeFactory.createStroke(tip);
-		myStroke->setSize(size);
-		myStroke->setColor
-		(
-			BitmapGraphics::Color
-			(
-				Binary::Byte(((color >> 16) & 0xFF) / 255.0),
-				Binary::Byte(((color >> 8) & 0xFF) / 255.0),
-				Binary::Byte(((color) & 0xFF) / 255.0)
-			)
-
-		);
+		myStroke = strokeFactory.createStroke(tip, color, size);
 	}
 
 	void VectorGraphic::draw(BitmapGraphics::HCanvas& canvas, Point const& offset)

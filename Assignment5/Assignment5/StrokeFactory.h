@@ -18,7 +18,7 @@ namespace BitmapGraphics
 
 		void addStroke(std::string const& tip, HStroke const& stroke);
 
-		HStroke createStroke(std::string const& tip);
+		HStroke createStroke(std::string const& tip, std::string& color, int size);
 
 	private:
 		std::map<std::string, HStroke> myStrokes;

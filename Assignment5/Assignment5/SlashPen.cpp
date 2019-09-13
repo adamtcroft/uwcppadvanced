@@ -11,10 +11,4 @@ namespace BitmapGraphics
 	{
 
 	}
-
-	HPen SlashPen::clone()
-	{
-		HPen temp;
-		return temp;
-	}
 }

@@ -1,4 +1,5 @@
 #include "SquareStroke.h"
+#include "SquarePen.h"
 
 namespace BitmapGraphics
 {
@@ -24,6 +25,6 @@ namespace BitmapGraphics
 
 	HPen SquareStroke::createPen(HCanvas const& canvas)
 	{
-		return std::make_shared<SquarePen>();
+		return std::make_shared<SquarePen>(*this);
 	}
 }

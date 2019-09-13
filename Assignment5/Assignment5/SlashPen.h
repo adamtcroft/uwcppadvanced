@@ -18,8 +18,6 @@ namespace BitmapGraphics
 
 		void setSize(int size) { mySize = size; }
 
-		HPen clone() override;
-
 	private:
 		int mySize;
 	};

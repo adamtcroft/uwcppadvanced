@@ -144,9 +144,6 @@
     <ClInclude Include="SlashStroke.h">
       <Filter>Header Files\Strokes and Pens</Filter>
     </ClInclude>
-    <ClInclude Include="PenFactory.h">
-      <Filter>Header Files\Strokes and Pens</Filter>
-    </ClInclude>
     <ClInclude Include="StrokeFactory.h">
       <Filter>Header Files\Strokes and Pens</Filter>
     </ClInclude>
@@ -250,9 +247,6 @@
     </ClCompile>
     <ClCompile Include="RandomDecorator.cpp">
       <Filter>Source Files\Decorators</Filter>
-    </ClCompile>
-    <ClCompile Include="PenFactory.cpp">
-      <Filter>Source Files\Stokes and Pens</Filter>
     </ClCompile>
     <ClCompile Include="SlashPen.cpp">
       <Filter>Source Files\Stokes and Pens</Filter>

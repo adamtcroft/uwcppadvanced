@@ -136,7 +136,6 @@
     <ClInclude Include="Layer.h" />
     <ClInclude Include="LineIterator.h" />
     <ClInclude Include="Parse.h" />
-    <ClInclude Include="PenFactory.h" />
     <ClInclude Include="PlacedGraphic.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="RandomDecorator.h" />
@@ -178,7 +177,6 @@
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="LineIterator.cpp" />
     <ClCompile Include="Parse.cpp" />
-    <ClCompile Include="PenFactory.cpp" />
     <ClCompile Include="PlacedGraphic.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="RandomDecorator.cpp" />

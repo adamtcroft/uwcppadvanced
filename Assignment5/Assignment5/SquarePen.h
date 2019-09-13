@@ -1,4 +1,5 @@
 #pragma once
+#include "SquareStroke.h"
 #include "DrawingInterfaces.h"
 
 namespace BitmapGraphics
@@ -7,6 +8,7 @@ namespace BitmapGraphics
 	{
 	public:
 		SquarePen() = default;
+		SquarePen(SquareStroke& stroke) : myStroke(&stroke) {};
 		SquarePen(const SquarePen& other) = default;
 		SquarePen(SquarePen&& other) = default;
 		SquarePen& operator=(const SquarePen& other) = default;
@@ -16,12 +18,8 @@ namespace BitmapGraphics
 		void drawPoint(const HCanvas&, const VG::Point&) override final;
 		void drawPoint(VG::Point const& point) override final;
 
-		void setSize(int size) { mySize = size; }
-
-		HPen clone() override;
-
 	private:
-		int mySize;
+		SquareStroke* myStroke;
 	};
 }
 
