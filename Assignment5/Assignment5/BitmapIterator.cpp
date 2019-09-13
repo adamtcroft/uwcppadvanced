@@ -8,14 +8,14 @@ namespace BitmapGraphics
 		myWidth = myBitmap->getWidth();
 		myHeight = myBitmap->getHeight();
 		rowIterator = myBitmap->begin();
-		if (!(rowIterator == myBitmap->end()))
+		if (!isEndOfImage())
 			columnIterator = rowIterator->begin();
 	}
 
 	void BitmapIterator::nextScanLine()
 	{
-		rowIterator++;
-		if (rowIterator != myBitmap->end())
+		++rowIterator;
+		if (!isEndOfImage())
 			columnIterator = rowIterator->begin();
 	}
 
@@ -26,7 +26,7 @@ namespace BitmapGraphics
 
 	void BitmapIterator::nextPixel()
 	{
-		columnIterator++;
+		++columnIterator;
 	}
 
 	bool BitmapIterator::isEndOfScanLine()
