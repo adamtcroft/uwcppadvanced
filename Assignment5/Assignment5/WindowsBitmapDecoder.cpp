@@ -26,12 +26,8 @@ namespace BitmapGraphics
 			return myBitmap.createIterator();
 	}
 
-	bool WindowsBitmapDecoder::isSupported(std::istream& sourceStream)
+	bool WindowsBitmapDecoder::isSupported(std::string const& first100)
 	{
-		std::string first100(100, ' ');
-		sourceStream.read(&first100[0], 100);
-		sourceStream.seekg(0);
-
 		if (first100.substr(0, 2) == "BM")
 			return true;
 		else

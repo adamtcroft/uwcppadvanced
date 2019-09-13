@@ -12,10 +12,8 @@ namespace BitmapGraphics
 	public:
 		WindowsBitmapDecoder() = default;
 		explicit WindowsBitmapDecoder(std::istream& sourceStream);
-
 		WindowsBitmapDecoder(const WindowsBitmapDecoder& other) = default;
 		WindowsBitmapDecoder(WindowsBitmapDecoder&& other) = default;
-
 		WindowsBitmapDecoder& operator=(const WindowsBitmapDecoder& other) = default;
 		WindowsBitmapDecoder& operator=(WindowsBitmapDecoder&& other) = default;
 
@@ -24,7 +22,7 @@ namespace BitmapGraphics
 		HBitmapDecoder clone(std::istream& sourceStream) override;
 		HBitmapIterator createIterator() override;
 		std::string getMimeType() const noexcept override { return myMimeType; };
-		bool isSupported(std::istream& sourceStream) override;
+		bool isSupported(std::string const& first100) override;
 		uint32_t calculatePadBytes() override;
 
 		bool deferDecode(std::istream& sourceStream);

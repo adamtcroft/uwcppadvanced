@@ -8,10 +8,8 @@ namespace BitmapGraphics
 	public:
 		BitmapDecorator() = default;
 		BitmapDecorator(HBitmapIterator const& iterator);
-
 		BitmapDecorator(const BitmapDecorator&) noexcept = default;
 		BitmapDecorator(BitmapDecorator &&) noexcept  = default;
-
 		BitmapDecorator& operator=(const BitmapDecorator&) = default;
 		BitmapDecorator& operator=(BitmapDecorator&&) = default;
 

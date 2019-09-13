@@ -1,24 +1,35 @@
 #include "CodecLibrary.h"
 
+namespace
+{
+	const int CHUNK_SIZE = 100;
+}
+
 namespace BitmapGraphics
 {
 	void CodecLibrary::registerEncoder(HBitmapEncoder const& encoder)
 	{
-		myEncoders.push_back(encoder);
+		myEncoders.push_back(std::move(encoder));
 	}
 
 	void CodecLibrary::registerDecoder(HBitmapDecoder const& decoder)
 	{
-		myDecoders.push_back(decoder);
+		myDecoders.push_back(std::move(decoder));
 	}
 
 	HBitmapDecoder CodecLibrary::createDecoder(std::istream& sourceStream)
 	{
 		HBitmapDecoder decoder;
 
+		char firstChunk[CHUNK_SIZE]{};
+		sourceStream.get(firstChunk, CHUNK_SIZE);
+
+		sourceStream.clear();
+		sourceStream.seekg(std::istream::beg);
+
 		for (auto decoderProto : myDecoders)
 		{
-			if (decoderProto->isSupported(sourceStream))
+			if (decoderProto->isSupported(firstChunk))
 				decoder = decoderProto->clone(sourceStream);
 		}
 
