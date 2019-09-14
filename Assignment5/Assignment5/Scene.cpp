@@ -40,12 +40,12 @@ namespace Framework
 		}
 	}
 
-	int const& Scene::getWidth() const
+	int const Scene::getWidth() const
 	{
 		return width;
 	}
 
-	int const& Scene::getHeight() const
+	int const Scene::getHeight() const
 	{
 		return height;
 	}

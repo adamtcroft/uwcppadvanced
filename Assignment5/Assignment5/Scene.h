@@ -37,8 +37,8 @@ namespace Framework
 
 		void draw(BitmapGraphics::HCanvas& canvas);
 
-		int const& getWidth() const;
-		int const& getHeight() const;
+		int const getWidth() const;
+		int const getHeight() const;
 
 		bool operator==(const Scene& rhs) const;
 		bool operator!=(const Scene& rhs) const;

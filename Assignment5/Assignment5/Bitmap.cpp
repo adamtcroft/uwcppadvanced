@@ -15,8 +15,6 @@ namespace BitmapGraphics
 
 	void Bitmap::setPixelColor(VG::Point const& location, Color const& color)
 	{
-		std::cout << "slCollection size: " << slCollection.size() << std::endl;
-		std::cout << "getY: " << location.getY() << std::endl;
 		slCollection[location.getX()][location.getY()] = color;
 	}
 

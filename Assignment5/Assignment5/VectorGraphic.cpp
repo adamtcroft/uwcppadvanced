@@ -92,18 +92,50 @@ namespace VG
 		myStroke = strokeFactory.createStroke(tip, color, size);
 	}
 
+	Point VectorGraphic::calculatePointOffset(Point const& initial, Point const& offset)
+	{
+		return Point 
+		{
+			static_cast<unsigned int>(initial.getX() + offset.getX()),
+			static_cast<unsigned int>(initial.getY() + offset.getY())
+		};
+
+	}
+
 	void VectorGraphic::draw(BitmapGraphics::HCanvas& canvas, Point const& offset)
 	{
+		std::cout << "Drawing..." << std::endl;
 		BitmapGraphics::HPen pen = myStroke->createPen(canvas);
-		for(auto p = myPath.begin(); p+1 != myPath.end(); ++p)
+		for (auto p = myPath.begin(); p + 1 != myPath.end(); ++p)
 		{
-			LineIterator lineIterator(*p, *(p+1));
+			auto p1 = (p + 1);
+
+			Point start = calculatePointOffset(*p, offset);
+			Point end = calculatePointOffset(*p1, offset);
+
+			std::cout << "Start: " << start << " - " << "End: " << end << std::endl;
+
+			LineIterator lineIterator(start, end);
 			while (!lineIterator.isEnd())
 			{
 				pen->drawPoint(canvas, lineIterator.getCurrentPoint());
 				lineIterator.nextPoint();
 			}
 		}
+
+		if (shapeOpenness == Openness::Closed)
+		{
+			Point start = calculatePointOffset(*myPath.begin(), offset);
+			Point end = calculatePointOffset(*(myPath.end()-1), offset);
+
+			LineIterator lineIterator(start, end);
+			while (!lineIterator.isEnd())
+			{
+				pen->drawPoint(canvas, lineIterator.getCurrentPoint());
+				lineIterator.nextPoint();
+			}
+		}
+
 	}
 
 	bool VectorGraphic::operator==(const VG::VectorGraphic& rhs) const

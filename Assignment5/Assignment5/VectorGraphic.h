@@ -47,6 +47,7 @@ namespace VG
 		size_t getPointCount() const;
 		const Point& getPoint(int index) const;
 
+		Point calculatePointOffset(Point const& initial, Point const& offset);
 		void draw(BitmapGraphics::HCanvas& canvas, Point const& offset);
 
 		bool operator==(const VG::VectorGraphic& rhs) const;
