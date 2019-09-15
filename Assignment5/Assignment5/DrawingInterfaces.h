@@ -41,7 +41,6 @@ namespace BitmapGraphics
 
 		// decide which one of these to keep
 		virtual void drawPoint(const HCanvas&, const VG::Point&) = 0;
-		virtual void drawPoint(VG::Point const& point) = 0;
 	};
 
 	class IStroke

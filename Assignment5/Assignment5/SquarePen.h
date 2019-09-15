@@ -16,7 +16,6 @@ namespace BitmapGraphics
 		~SquarePen() = default;
 
 		void drawPoint(const HCanvas&, const VG::Point&) override final;
-		void drawPoint(VG::Point const& point) override final;
 
 	private:
 		SquareStroke* myStroke;

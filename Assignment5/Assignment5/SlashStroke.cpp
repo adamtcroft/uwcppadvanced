@@ -1,4 +1,5 @@
 #include "SlashStroke.h"
+#include "SlashPen.h"
 
 namespace BitmapGraphics
 {
@@ -24,6 +25,6 @@ namespace BitmapGraphics
 
 	HPen SlashStroke::createPen(HCanvas const& canvas)
 	{
-		return std::make_shared<SlashPen>();
+		return std::make_shared<SlashPen>(*this);
 	}
 }

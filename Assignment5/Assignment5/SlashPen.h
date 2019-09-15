@@ -1,5 +1,6 @@
 #pragma once
 #include "DrawingInterfaces.h"
+#include "SlashStroke.h"
 
 namespace BitmapGraphics
 {
@@ -7,6 +8,7 @@ namespace BitmapGraphics
 	{
 	public:
 		SlashPen() = default;
+		SlashPen(SlashStroke& stroke) : myStroke(&stroke) {};
 		SlashPen(const SlashPen& other) = default;
 		SlashPen(SlashPen&& other) = default;
 		SlashPen& operator=(const SlashPen& other) = default;
@@ -14,12 +16,9 @@ namespace BitmapGraphics
 		~SlashPen() = default;
 
 		void drawPoint(const HCanvas&, const VG::Point&) override final;
-		void drawPoint(VG::Point const& point) override final;
-
-		void setSize(int size) { mySize = size; }
 
 	private:
-		int mySize;
+		SlashStroke* myStroke;
 	};
 }
 

@@ -85,12 +85,11 @@ const std::string FakeXml = R"(
     <PlacedGraphic x="0" y="0">
       <VectorGraphic closed="true">
         <Stroke tip="slash" size="7" color="FF0000" />
-        <Point x="100" y="500" />
+        <Point x="10" y="100" />
         <Point x="100" y="100" />
-        <Point x="500" y="600" />
        </VectorGraphic>
     </PlacedGraphic>
-    <PlacedGraphic x="400" y="300">
+    <PlacedGraphic x="0" y="10">
       <VectorGraphic closed="true">
         <Stroke tip="square" size="5" color="00FF00" />
         <Point x="0" y="0" />
@@ -203,7 +202,7 @@ namespace
 TEST(toBitmap, SceneReader)
 {
     //std::stringstream xmlStream(SceneXml);
-    std::stringstream xmlStream(FakeXml);
+    std::stringstream xmlStream(SceneXml);
     
     // Parse the XML into a DOM
     Xml::HElement root = Xml::Reader::loadXml(xmlStream);

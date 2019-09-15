@@ -2,13 +2,24 @@
 
 namespace BitmapGraphics
 {
-	void SlashPen::drawPoint(const HCanvas&, const VG::Point&)
+	void SlashPen::drawPoint(const HCanvas& canvas, const VG::Point& point)
 	{
+		//canvas->setPixelColor(point, myStroke->getColor());
 
-	}
-
-	void SlashPen::drawPoint(VG::Point const& point)
-	{
-
+		unsigned int sizeX = 0;
+		while (sizeX < myStroke->getSize())
+		{
+			if (sizeX >= (myStroke->getSize() / 2))
+			{
+				VG::Point p{ (point.getX() + sizeX), (point.getY() - (sizeX + 2)) };
+				canvas->setPixelColor(p, myStroke->getColor());
+			}
+			else
+			{
+				VG::Point p{ (point.getX() + sizeX), (point.getY() - (sizeX + 1)) };
+				canvas->setPixelColor(p, myStroke->getColor());
+			}
+			++sizeX;
+		}
 	}
 }

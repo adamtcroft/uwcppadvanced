@@ -1,6 +1,5 @@
 #pragma once
 #include "DrawingInterfaces.h"
-#include "SlashPen.h"
 
 namespace BitmapGraphics
 {

@@ -15,7 +15,7 @@ namespace BitmapGraphics
 
 	void Bitmap::setPixelColor(VG::Point const& location, Color const& color)
 	{
-		slCollection[location.getX()][location.getY()] = color;
+		slCollection[location.getY()][location.getX()] = color;
 	}
 
 	void Bitmap::flip()

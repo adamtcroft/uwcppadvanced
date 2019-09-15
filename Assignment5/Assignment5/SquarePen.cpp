@@ -4,6 +4,8 @@ namespace BitmapGraphics
 {
 	void SquarePen::drawPoint(const HCanvas& canvas, const VG::Point& point)
 	{
+		//canvas->setPixelColor(point, myStroke->getColor());
+
 		unsigned int sizeX = 0;
 		unsigned int sizeY = 0;
 		while (sizeX < myStroke->getSize())
@@ -17,10 +19,5 @@ namespace BitmapGraphics
 			++sizeX;
 			sizeY = 0;
 		}
-	}
-
-	void SquarePen::drawPoint(VG::Point const& point)
-	{
-
 	}
 }
