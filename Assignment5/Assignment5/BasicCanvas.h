@@ -1,7 +1,7 @@
 #pragma once
 #include "DrawingInterfaces.h"
 #include "Bitmap.h"
-#include "BasicCanvasBitmapIterator.h"
+#include <map>
 #include <vector>
 
 namespace BitmapGraphics
@@ -30,7 +30,8 @@ namespace BitmapGraphics
 
 	private:
 		Color myBackground{ Binary::Byte(255), Binary::Byte(255), Binary::Byte(255) };
-		Bitmap myBitmap;
+		int myWidth, myHeight;
+		std::map<VG::Point, Color, VG::mapComparePoints> myPointMap;
 
 		void initializeCanvas();
 	};

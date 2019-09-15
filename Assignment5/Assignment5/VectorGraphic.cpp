@@ -103,7 +103,6 @@ namespace VG
 
 	void VectorGraphic::draw(BitmapGraphics::HCanvas& canvas, Point const& offset)
 	{
-		//std::cout << "Drawing..." << std::endl;
 		BitmapGraphics::HPen pen = myStroke->createPen(canvas);
 
 		for (auto p = myPath.begin(); p + 1 != myPath.end(); ++p)
@@ -114,11 +113,11 @@ namespace VG
 			Point end = calculatePointOffset(*p1, offset);
 
 			LineIterator lineIterator(start, end);
-			while (!lineIterator.isEnd())
+			do
 			{
 				pen->drawPoint(canvas, lineIterator.getCurrentPoint());
 				lineIterator.nextPoint();
-			}
+			} while (!lineIterator.isEnd());
 		}
 
 		if (shapeOpenness == Openness::Closed)

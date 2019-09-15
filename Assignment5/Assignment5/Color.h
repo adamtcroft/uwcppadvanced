@@ -42,6 +42,6 @@ namespace BitmapGraphics
 	};
 
 	Color operator-(const int& lhs, const Color& rhs);
-	//std::ostream& operator<<(std::ostream& os, const Color& color);
+	std::ostream& operator<<(std::ostream& os, const Color& color);
 	//std::ostream& operator<<(std::ostream& os, const BitmapGraphics::Color& color);
 }

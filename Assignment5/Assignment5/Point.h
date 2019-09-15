@@ -8,7 +8,7 @@ namespace VG
 	public:
 		Point() = default;
 		constexpr Point(unsigned int initialX, unsigned int initialY) :
-			x(initialX), 
+			x(initialX),
 			y(initialY) {};
 
 		Point(const Point& other) = default;
@@ -27,7 +27,15 @@ namespace VG
 		int y{ 0 };
 	};
 
-		bool operator==(const VG::Point& lhs, const VG::Point& rhs);
-		bool operator!=(const VG::Point& lhs, const VG::Point& rhs);
-		std::ostream& operator<<(std::ostream& output, const VG::Point& p);
+	bool operator==(const VG::Point& lhs, const VG::Point& rhs);
+	bool operator!=(const VG::Point& lhs, const VG::Point& rhs);
+	std::ostream& operator<<(std::ostream& output, const VG::Point& p);
+
+	struct mapComparePoints
+	{
+		bool operator()(Point const& lhs, Point const& rhs) const
+		{
+			return (lhs.getX() < rhs.getX()) || (lhs.getX() == rhs.getX() && lhs.getY() < rhs.getY());
+		}
+	};
 }

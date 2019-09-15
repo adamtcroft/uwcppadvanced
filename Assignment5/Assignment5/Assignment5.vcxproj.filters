@@ -126,9 +126,6 @@
     <ClInclude Include="BasicCanvas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BasicCanvasBitmapIterator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="WindowsBitmapFileProjector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -155,6 +152,9 @@
     </ClInclude>
     <ClInclude Include="LineIterator.h">
       <Filter>Header Files\Strokes and Pens</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicCanvasBitmapIterator.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -239,9 +239,6 @@
     <ClCompile Include="BasicCanvas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BasicCanvasBitmapIterator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="WindowsBitmapFileProjector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -265,6 +262,9 @@
     </ClCompile>
     <ClCompile Include="LineIterator.cpp">
       <Filter>Source Files\Stokes and Pens</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicCanvasBitmapIterator.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

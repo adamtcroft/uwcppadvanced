@@ -81,112 +81,111 @@ const std::string SceneXml = R"(
 
 TEST(ReadScene, SceneReader)
 {
-    std::stringstream xmlStream(TestXml);
-    auto root = Xml::Reader::loadXml(xmlStream);
+	std::stringstream xmlStream(TestXml);
+	auto root = Xml::Reader::loadXml(xmlStream);
 
-    auto s = Framework::SceneReader::readScene(*root);
+	auto s = Framework::SceneReader::readScene(*root);
 
-    CHECK_EQUAL(800, s.getWidth());
-    CHECK_EQUAL(600, s.getHeight());
+	CHECK_EQUAL(800, s.getWidth());
+	CHECK_EQUAL(600, s.getHeight());
 
-    int numberOfLayers = 0;
-    for (auto pos = s.begin(); pos != s.end(); ++numberOfLayers, ++pos)
-    {
-        auto layer = (*pos);
-        if (numberOfLayers == 0)
-        {
-            // verify sky layer
-            CHECK_EQUAL("sky", layer.getAlias());
-            Framework::Layer::PlacedGraphicIterator graphic;
-            int iGraphic;
-            for (iGraphic = 0, graphic = layer.begin(); graphic != layer.end(); ++iGraphic, ++graphic)
-            {
-                if (iGraphic == 0)
-                {
-                    CHECK_EQUAL(VG::Point(0, 0), (*graphic).getPlacementPoint());
-                    auto vg = (*graphic).getGraphic();
-                    CHECK_EQUAL(true, vg.isClosed());
-                    CHECK_EQUAL(3, vg.getPointCount());
-                    CHECK_EQUAL(VG::Point(1, 2), vg.getPoint(0));
-                    CHECK_EQUAL(VG::Point(3, 4), vg.getPoint(1));
-                    CHECK_EQUAL(VG::Point(5, 6), vg.getPoint(2));
-                }
-                else if (iGraphic == 1)
-                {
-                    CHECK_EQUAL(VG::Point(700, 0), (*graphic).getPlacementPoint());
-                    auto vg = (*graphic).getGraphic();
-                    CHECK_EQUAL(false, vg.isClosed());
-                }
-            }
+	int numberOfLayers = 0;
+	for (auto pos = s.begin(); pos != s.end(); ++numberOfLayers, ++pos)
+	{
+		auto layer = (*pos);
+		if (numberOfLayers == 0)
+		{
+			// verify sky layer
+			CHECK_EQUAL("sky", layer.getAlias());
+			Framework::Layer::PlacedGraphicIterator graphic;
+			int iGraphic;
+			for (iGraphic = 0, graphic = layer.begin(); graphic != layer.end(); ++iGraphic, ++graphic)
+			{
+				if (iGraphic == 0)
+				{
+					CHECK_EQUAL(VG::Point(0, 0), (*graphic).getPlacementPoint());
+					auto vg = (*graphic).getGraphic();
+					CHECK_EQUAL(true, vg.isClosed());
+					CHECK_EQUAL(3, vg.getPointCount());
+					CHECK_EQUAL(VG::Point(1, 2), vg.getPoint(0));
+					CHECK_EQUAL(VG::Point(3, 4), vg.getPoint(1));
+					CHECK_EQUAL(VG::Point(5, 6), vg.getPoint(2));
+				}
+				else if (iGraphic == 1)
+				{
+					CHECK_EQUAL(VG::Point(700, 0), (*graphic).getPlacementPoint());
+					auto vg = (*graphic).getGraphic();
+					CHECK_EQUAL(false, vg.isClosed());
+				}
+			}
 
-            CHECK_EQUAL(2, iGraphic);
-        }
-        else if (numberOfLayers == 1)
-        {
-            // verify mountains layer
-            CHECK_EQUAL("mountains", layer.getAlias());
+			CHECK_EQUAL(2, iGraphic);
+		}
+		else if (numberOfLayers == 1)
+		{
+			// verify mountains layer
+			CHECK_EQUAL("mountains", layer.getAlias());
 
-            int numberOfGraphics = 0;
-            for (auto graphic = layer.begin(); graphic != layer.end(); ++graphic)
-            {
-                ++numberOfGraphics;
-            }
+			int numberOfGraphics = 0;
+			for (auto graphic = layer.begin(); graphic != layer.end(); ++graphic)
+			{
+				++numberOfGraphics;
+			}
 
-            CHECK_EQUAL(1, numberOfGraphics);
-        }
-    }
+			CHECK_EQUAL(1, numberOfGraphics);
+		}
+	}
 
-    // Expect 2 layers
-    CHECK_EQUAL(2, numberOfLayers);
+	// Expect 2 layers
+	CHECK_EQUAL(2, numberOfLayers);
 }
 
 //////////////////
 
 namespace
 {
-    class CodecLibrarySetup
-    {
-    public:
-        CodecLibrarySetup()
-        {
-            myCodecLibrary.registerEncoder(std::make_shared<WindowsBitmapEncoder>());
-            myCodecLibrary.registerDecoder(std::make_shared<WindowsBitmapDecoder>());
-        }
-        
-        operator CodecLibrary&()
-        {
-            return myCodecLibrary;
-        }
-        
-    private:
-       CodecLibrary myCodecLibrary;
-    
-    };
+	class CodecLibrarySetup
+	{
+	public:
+		CodecLibrarySetup()
+		{
+			myCodecLibrary.registerEncoder(std::make_shared<WindowsBitmapEncoder>());
+			myCodecLibrary.registerDecoder(std::make_shared<WindowsBitmapDecoder>());
+		}
+
+		operator CodecLibrary&()
+		{
+			return myCodecLibrary;
+		}
+
+	private:
+		CodecLibrary myCodecLibrary;
+
+	};
 }
 
 TEST(toBitmap, SceneReader)
 {
-    //std::stringstream xmlStream(SceneXml);
-    std::stringstream xmlStream(SceneXml);
-    
-    // Parse the XML into a DOM
-    Xml::HElement root = Xml::Reader::loadXml(xmlStream);
-    
-    // Construct a vector graphic Scene from the DOM
-    Framework::Scene scene = Framework::SceneReader::readScene(*root);
-    
-    // Create an empty Canvas
-    Color backgroundColor(Binary::Byte(100), Binary::Byte(100), Binary::Byte(100));
-    BitmapGraphics::HCanvas canvas = std::make_shared<BasicCanvas>(scene.getWidth(), scene.getHeight(), backgroundColor);
-    
-    // Draw the Scene onto the Canvas
-    scene.draw(canvas);
+	std::stringstream xmlStream(SceneXml);
 
-    // Create a WindowsBitmapFileProjector and give it an output file name to create
-    // Also give it the CodecLibrary ("dependency injection").
-    CodecLibrarySetup codecLibrary;
-    HProjector projector = std::make_shared<WindowsBitmapFileProjector>("output_scene.bmp", codecLibrary);
-    
-    // Project the Canvas into the bitmap file
-    projector->projectCanvas(canvas);
+	// Parse the XML into a DOM
+	Xml::HElement root = Xml::Reader::loadXml(xmlStream);
+
+	// Construct a vector graphic Scene from the DOM
+	Framework::Scene scene = Framework::SceneReader::readScene(*root);
+
+	// Create an empty Canvas
+	Color backgroundColor(Binary::Byte(100), Binary::Byte(100), Binary::Byte(100));
+	BitmapGraphics::HCanvas canvas = std::make_shared<BasicCanvas>(scene.getWidth(), scene.getHeight(), backgroundColor);
+
+	// Draw the Scene onto the Canvas
+	scene.draw(canvas);
+
+	// Create a WindowsBitmapFileProjector and give it an output file name to create
+	// Also give it the CodecLibrary ("dependency injection").
+	CodecLibrarySetup codecLibrary;
+	HProjector projector = std::make_shared<WindowsBitmapFileProjector>("output_scene.bmp", codecLibrary);
+
+	// Project the Canvas into the bitmap file
+	projector->projectCanvas(canvas);
 }
