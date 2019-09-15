@@ -26,8 +26,8 @@ namespace BitmapGraphics
 
 	private:
 		BasicCanvas* myCanvas;
-		unsigned int myX{ 0 };
-		unsigned int myY{ 0 };
+		unsigned int myX;
+		unsigned int myY;
 	};
 }
 
