@@ -6,14 +6,14 @@ namespace BitmapGraphics
 	BasicCanvasBitmapIterator::BasicCanvasBitmapIterator(BasicCanvas& canvas) :
 		myCanvas(&canvas)
 	{
-		myX = myCanvas->getWidth();
+		myX = 0;
 		myY = myCanvas->getHeight();
 	}
 
 	void BasicCanvasBitmapIterator::nextScanLine()
 	{
 		--myY;
-		myX = myCanvas->getWidth();
+		myX = 0;
 	}
 
 	bool BasicCanvasBitmapIterator::isEndOfImage()
@@ -26,8 +26,8 @@ namespace BitmapGraphics
 
 	void BasicCanvasBitmapIterator::nextPixel()
 	{
-		if (myX > 0)
-			--myX;
+		if (myX < myCanvas->getWidth())
+			++myX;
 		else
 		{
 			nextScanLine();
@@ -36,7 +36,7 @@ namespace BitmapGraphics
 
 	bool BasicCanvasBitmapIterator::isEndOfScanLine()
 	{
-		if (myX <= 0)
+		if (myX >= myCanvas->getWidth())
 			return true;
 		else
 			return false;
