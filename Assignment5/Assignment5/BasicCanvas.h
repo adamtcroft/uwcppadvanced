@@ -15,7 +15,6 @@ namespace BitmapGraphics
 		BasicCanvas(int width, int height, Color const& background);
 		BasicCanvas(const BasicCanvas& other) = default;
 		BasicCanvas(BasicCanvas&& other) = default;
-
 		BasicCanvas& operator=(const BasicCanvas& other) = default;
 		BasicCanvas& operator=(BasicCanvas&& other) = default;
 		~BasicCanvas() = default;
@@ -26,14 +25,12 @@ namespace BitmapGraphics
 		int getHeight() const override final;
 		HBitmapIterator createBitmapIterator() override final;
 
-		bool inBounds(VG::Point const& location) const;
-
 	private:
 		Color myBackground{ Binary::Byte(255), Binary::Byte(255), Binary::Byte(255) };
 		int myWidth, myHeight;
 		std::map<VG::Point, Color, VG::mapComparePoints> myPointMap;
 
-		void initializeCanvas();
+		bool inBounds(VG::Point const& location) const;
 	};
 }
 

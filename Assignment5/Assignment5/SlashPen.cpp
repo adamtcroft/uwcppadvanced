@@ -4,8 +4,6 @@ namespace BitmapGraphics
 {
 	void SlashPen::drawPoint(const HCanvas& canvas, const VG::Point& point)
 	{
-		//canvas->setPixelColor(point, myStroke->getColor());
-
 		unsigned int sizeX = 0;
 		while (sizeX < myStroke->getSize())
 		{

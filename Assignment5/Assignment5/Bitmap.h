@@ -40,7 +40,6 @@ namespace BitmapGraphics
 		void clearCollection() { slCollection.clear(); }
 
 		HBitmapIterator createIterator();
-		void flip();
 
 	private:
 		uint32_t bitmapWidth{ 0 };

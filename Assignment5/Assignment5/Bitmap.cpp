@@ -17,9 +17,4 @@ namespace BitmapGraphics
 	{
 		slCollection[location.getY()][location.getX()] = color;
 	}
-
-	void Bitmap::flip()
-	{
-		std::reverse(slCollection.begin(), slCollection.end());
-	}
 }

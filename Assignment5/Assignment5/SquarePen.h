@@ -8,7 +8,7 @@ namespace BitmapGraphics
 	{
 	public:
 		SquarePen() = default;
-		SquarePen(SquareStroke& stroke) : myStroke(&stroke) {};
+		explicit SquarePen(SquareStroke& stroke) : myStroke(&stroke) {};
 		SquarePen(const SquarePen& other) = default;
 		SquarePen(SquarePen&& other) = default;
 		SquarePen& operator=(const SquarePen& other) = default;

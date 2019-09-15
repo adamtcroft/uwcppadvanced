@@ -11,13 +11,10 @@ namespace BitmapGraphics
 	{
 	public:
 		explicit RandomDecorator(HBitmapIterator const& iterator);
-
 		RandomDecorator(const RandomDecorator&) noexcept = default;
 		RandomDecorator(RandomDecorator &&) noexcept  = default;
-
 		RandomDecorator& operator=(const RandomDecorator&) = default;
 		RandomDecorator& operator=(RandomDecorator&&) = default;
-
 		~RandomDecorator() = default;
 
 		Color getColor() const override final;

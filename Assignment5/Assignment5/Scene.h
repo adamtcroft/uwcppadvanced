@@ -13,13 +13,10 @@ namespace Framework
 	public:
 		Scene() = delete;
 		Scene(int initialWidth, int initialHeight);
-
 		Scene(const Scene& other) = default;
 		Scene(Scene&& other) = default;
-
 		Scene& operator=(const Scene& other) = default;
 		Scene& operator=(Scene&& other) = default;
-
 		~Scene() = default;
 
 		template <class L> void pushBack(L&& layer)

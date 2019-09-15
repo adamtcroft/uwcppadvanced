@@ -12,13 +12,11 @@ namespace Xml
 	{
 	public:
 		Element();
-		Element(const std::string& name);
-
+		explicit Element(const std::string& name);
 		Element(const Element& other) = delete;
 		Element(Element&& other) = delete;
 		Element& operator=(const Element& other) = delete;
 		Element& operator=(Element&& other) = delete;
-
 		~Element() = default;
 
 		void createFromXml(std::string& xmlStr) override;

@@ -7,7 +7,7 @@ namespace BitmapGraphics
 	{
 	public:
 		BitmapDecorator() = default;
-		BitmapDecorator(HBitmapIterator const& iterator);
+		explicit BitmapDecorator(HBitmapIterator const& iterator);
 		BitmapDecorator(const BitmapDecorator&) noexcept = default;
 		BitmapDecorator(BitmapDecorator &&) noexcept  = default;
 		BitmapDecorator& operator=(const BitmapDecorator&) = default;

@@ -16,7 +16,6 @@ namespace BitmapGraphics
 		WindowsBitmapDecoder(WindowsBitmapDecoder&& other) = default;
 		WindowsBitmapDecoder& operator=(const WindowsBitmapDecoder& other) = default;
 		WindowsBitmapDecoder& operator=(WindowsBitmapDecoder&& other) = default;
-
 		~WindowsBitmapDecoder() noexcept = default;
 
 		HBitmapDecoder clone(std::istream& sourceStream) override;

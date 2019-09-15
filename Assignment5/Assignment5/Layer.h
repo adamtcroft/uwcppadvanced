@@ -16,14 +16,11 @@ namespace Framework
 	public:
 		using PlacedGraphicIterator = PlacedGraphicCollection::const_iterator;
 		Layer() = delete;
-		Layer(std::string const& initialAlias);
-
+		explicit Layer(std::string const& initialAlias);
 		Layer(const Layer& other) = default;
 		Layer(Layer&& other) = default;
-
 		Layer& operator=(const Layer& other) = default;
 		Layer& operator=(Layer&& other) = default;
-
 		~Layer() = default;
 
 		template<class C> void pushBack(C&& placedGraphic)

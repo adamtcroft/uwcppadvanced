@@ -7,13 +7,10 @@ namespace BitmapGraphics
 	{
 	public:
 		KeepColorDecorator(HBitmapIterator const& iterator, int adjustment);
-
 		KeepColorDecorator(const KeepColorDecorator&) noexcept = default;
 		KeepColorDecorator(KeepColorDecorator &&) noexcept  = default;
-
 		KeepColorDecorator& operator=(const KeepColorDecorator&) = default;
 		KeepColorDecorator& operator=(KeepColorDecorator&&) = default;
-
 		~KeepColorDecorator() = default;
 
 		Color getColor() const override final;

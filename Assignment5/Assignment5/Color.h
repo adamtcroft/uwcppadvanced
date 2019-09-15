@@ -12,13 +12,10 @@ namespace BitmapGraphics
 			const Binary::Byte& redInput = Binary::Byte(0),
 			const Binary::Byte& greenInput = Binary::Byte(0),
 			const Binary::Byte& blueInput = Binary::Byte(0)) noexcept;
-
 		Color(const Color&) noexcept = default;
 		Color(Color &&) noexcept  = default;
-
 		Color& operator=(const Color&) = default;
 		Color& operator=(Color&&) = default;
-
 		~Color() noexcept = default;
 
 		static Color read(std::istream& sourceStream);
@@ -43,5 +40,4 @@ namespace BitmapGraphics
 
 	Color operator-(const int& lhs, const Color& rhs);
 	std::ostream& operator<<(std::ostream& os, const Color& color);
-	//std::ostream& operator<<(std::ostream& os, const BitmapGraphics::Color& color);
 }

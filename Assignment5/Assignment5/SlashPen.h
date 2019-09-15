@@ -8,7 +8,7 @@ namespace BitmapGraphics
 	{
 	public:
 		SlashPen() = default;
-		SlashPen(SlashStroke& stroke) : myStroke(&stroke) {};
+		explicit SlashPen(SlashStroke& stroke) : myStroke(&stroke) {};
 		SlashPen(const SlashPen& other) = default;
 		SlashPen(SlashPen&& other) = default;
 		SlashPen& operator=(const SlashPen& other) = default;

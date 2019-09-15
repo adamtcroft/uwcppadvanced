@@ -22,7 +22,6 @@ namespace VG
 		VectorGraphic(VectorGraphic&& other) = default;
 		VectorGraphic& operator=(const VectorGraphic& other) = default;
 		VectorGraphic& operator=(VectorGraphic&& other) = default;
-
 		~VectorGraphic() = default;
 
 		template<class C> void addPoint(C&& p)
@@ -47,7 +46,6 @@ namespace VG
 		size_t getPointCount() const;
 		const Point& getPoint(int index) const;
 
-		Point calculatePointOffset(Point const& initial, Point const& offset);
 		void draw(BitmapGraphics::HCanvas& canvas, Point const& offset);
 
 		bool operator==(const VG::VectorGraphic& rhs) const;
@@ -58,5 +56,7 @@ namespace VG
 		Points myPath;
 		BitmapGraphics::HStroke myStroke;
 		enum class Openness { Open, Closed } shapeOpenness = Openness::Closed;
+		
+		Point calculatePointOffset(Point const& initial, Point const& offset);
 	};
 }
