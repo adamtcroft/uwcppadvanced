@@ -1,6 +1,7 @@
 #pragma once
 #include "DrawingInterfaces.h"
 #include "Bitmap.h"
+#include "BasicCanvasBitmapIterator.h"
 #include <vector>
 
 namespace BitmapGraphics
