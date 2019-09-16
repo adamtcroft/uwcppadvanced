@@ -18,9 +18,6 @@
     <ClCompile Include="PointTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ranged_numberTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SceneReaderTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
